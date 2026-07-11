@@ -1,0 +1,57 @@
+html {
+  /* overflow-x: hidden; */
+  scroll-behavior: auto;
+  scrollbar-width: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* #root {
+  padding: 30px;
+} */
+
+/* ================= CURSOR SAFETY FIX ================= */
+
+/* Custom cursor must NEVER block interaction */
+.ai-cursor,
+.ai-glow,
+.ai-ring,
+.ai-core,
+.ai-cursor *,
+.ai-glow * {
+  pointer-events: none !important;
+}
+
+/* Force pointer for interactive elements */
+.scroll-arrow,
+.scroll-arrow *,
+.scroll-btn *,
+.s-icon *,
+.blog-link *,
+.project-link-icon *,
+.quote-btn *,
+.switch-thumb *,
+a,
+button,
+.call-float,
+.call-icon,
+.whatsapp-float,
+.wa-icon,
+.cyber-nav a,
+.cyber-hamburger {
+  cursor: pointer !important;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}

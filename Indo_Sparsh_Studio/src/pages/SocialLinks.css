@@ -1,0 +1,89 @@
+.social-mini {
+  grid-column: 1 / -1; /* 🔥 THIS is the key line */
+  width: 100%;
+  margin-top: 60px;
+  padding-bottom: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontal center */
+  justify-content: center;
+  text-align: center;
+}
+
+.social-mini h3 {
+  margin-bottom: 14px;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: #22d3ee;
+  text-shadow: 0 0 12px #22d3ee;
+}
+
+/* Row */
+.social-mini-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Icon button */
+.s-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.9);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover */
+.s-icon:hover {
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 0 22px currentColor;
+}
+
+/* Brand colors */
+.facebook {
+  color: #1877f2;
+}
+.instagram {
+  color: #e1306c;
+}
+.linkedin {
+  color: #0a66c2;
+}
+.twitter {
+  color: #22d3ee;
+}
+.youtube {
+  color: #ff0033;
+}
+.email {
+  color: #a855f7;
+}
+.website {
+  color: #22d3ee;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .s-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .social-mini h3 {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,140 @@
+:root {
+  --ai: #a855f7; /* main */
+  --ai-soft: 168, 85, 247; /* rgb */
+}
+
+/* hide default cursor */
+* {
+  cursor: none;
+}
+
+input,
+textarea,
+iframe {
+  cursor: auto;
+}
+
+/* ===== STRONG GLOW TRAIL ===== */
+
+.ai-glow {
+  position: fixed;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.55),
+    rgba(var(--ai-soft), 0.45),
+    transparent 72%
+  );
+
+  filter: blur(14px);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  /* z-index: 9996; */
+  z-index: 2147483646;
+  /* mix-blend-mode: screen; */
+  mix-blend-mode: normal;
+}
+
+/* ===== MAIN CURSOR ===== */
+
+.ai-cursor {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  /* z-index: 9999; */
+  z-index: 2147483647; /* 🔥 max safe browser layer */
+  display: grid;
+  place-items: center;
+}
+
+/* ===== CORE DOT (VERY VISIBLE) ===== */
+
+.ai-core {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+
+  box-shadow:
+    0 0 4px white,
+    0 0 10px white,
+    0 0 18px var(--ai),
+    0 0 36px var(--ai),
+    0 0 70px rgba(var(--ai-soft), 1);
+
+  animation: corePulse 1.2s ease-in-out infinite;
+}
+
+/* ===== MAIN RING ===== */
+
+.ai-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2.5px solid white;
+
+  box-shadow:
+    0 0 8px white,
+    0 0 18px var(--ai),
+    inset 0 0 12px rgba(var(--ai-soft), 0.9);
+
+  animation: aiSpin 5s linear infinite;
+}
+
+/* ===== OUTER RING ===== */
+
+.ai-ring.r2 {
+  inset: -9px;
+  border: 2px dashed rgba(var(--ai-soft), 0.75);
+
+  box-shadow:
+    0 0 14px var(--ai),
+    0 0 32px rgba(var(--ai-soft), 0.9);
+
+  animation-duration: 9s;
+}
+
+/* ===== CLICK BLAST ===== */
+.ai-cursor.fire {
+  animation: aiFire 0.18s ease;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes aiSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes corePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.9);
+    opacity: 0.4;
+  }
+}
+
+@keyframes aiFire {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(2.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
