@@ -2,7 +2,8 @@ import { sendMail } from "../utils/sendMail.js";
 
 export const contact = async (req, res) => {
   try {
-    const { firstName, lastName, contact, email, message } = req.body;
+    const { firstName, lastName, phone, email, message } = req.body;
+    console.log(req.body)
     await sendMail({
       to: process.env.EMAIL_USER,
       subject: "New Contact Form",
@@ -33,7 +34,7 @@ export const contact = async (req, res) => {
 
                     <tr>
                     <td style="padding:12px; font-weight:bold;">📞 Contact</td>
-                    <td style="padding:12px;">${contact}</td>
+                    <td style="padding:12px;">${phone}</td>
                     </tr>
                 </table>
 
