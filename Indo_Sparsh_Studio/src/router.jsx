@@ -11,6 +11,7 @@ import ITTrends from "./pages/ITTrends";
 import BusinessGrowth from "./pages/BusinessGrowth";
 import CaseStudies from "./pages/CaseStudies";
 import FutureAI from "./pages/FutureAI";
+import RequestAquote from "./pages/RequestAQuote";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: "blog", element: <Blog /> },
       { path: "career", element: <Career /> },
       { path: "contact", element: <Contact /> },
+      { path: "request-quote", element: <RequestAquote /> },
       { path: "digital-marketing", element: <DigitalMarketing /> },
       { path: "it-trends", element: <ITTrends /> },
       { path: "business-growth", element: <BusinessGrowth /> },

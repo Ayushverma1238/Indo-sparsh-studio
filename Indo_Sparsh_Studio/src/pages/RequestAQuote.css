@@ -11,12 +11,10 @@
   background: transparent;
   color: white;
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1.2fr;
   grid-template-areas:
     "header header"
-    "form info1"
-    "form info2"
-    "form info3";
+    "form";
   gap: 35px;
 }
 
@@ -55,6 +53,12 @@
   background: rgba(2, 6, 23, 0.88);
   border-radius: 24px;
   padding: 50px 40px;
+  margin: 0 auto;
+  width: 60vw;
+  max-width: 70vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgba(34, 211, 238, 0.35);
   backdrop-filter: blur(14px);
   animation: rgbGlow 8s ease-in-out infinite;
@@ -65,62 +69,71 @@
 
 /* ================= FORM ================= */
 
-.contact-form-page {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+.contact-form {
+  width: 95%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 22px;
 }
 
-.form-row-page {
+.form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-.form-group-contact {
+.form-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.form-group-contact label {
+.form-group label {
   font-size: 0.8rem;
   letter-spacing: 1.5px;
   color: #cbd5f5;
 }
 
-.form-group-contact input,
-.form-group-contact textarea {
+.form-group input,
+.form-group textarea,
+.select-box {
   background: rgba(2, 6, 23, 0.9);
   border: 1px solid rgba(34, 211, 238, 0.35);
   border-radius: 14px;
   padding: 14px 14px;
+
   color: white;
   font-size: 0.9rem;
   outline: none;
   transition: 0.3s ease;
 }
 
-.form-group-contact textarea {
+.form-group textarea {
   min-height: 130px;
   resize: vertical;
 }
 
 /* RGB focus glow */
-.form-group-contact input:focus,
-.form-group-contact textarea:focus {
+.form-group input:focus,
+.form-group textarea:focus,
+.select-box:focus {
   border-color: transparent;
   animation: rgbGlow 3s linear infinite;
 }
 
+.select-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* Align inputs when label is missing */
-.form-row-page .form-group-contact {
+.form-row .form-group {
   position: relative;
 }
 
-/* If a form-group-contact has NO label, push input down */
-.form-row-page .form-group-contact:not(:has(label)) input {
+/* If a form-group has NO label, push input down */
+.form-row .form-group:not(:has(label)) input {
   margin-top: 22px; /* match label + gap height */
 }
 
@@ -245,21 +258,19 @@
   }
 }
 
-@media (max-width:860px) {
-  .form-row-page {
-    grid-template-columns: 1fr;
-    gap: 12px; /* reduce space between First & Last name */
-  }
-  /* .form-row-page .form-group-contact:not(:has(label)) input {
-    margin-top: 0;
-  } */
-}
-
 @media (max-width: 635px) {
-  .contact-form-page {
+  .contact-form {
     gap: 14px; /* was 22px */
+    width: 100%;
+    padding: 5px;
+    grid-template-columns: 1fr;
   }
 
+  .form-group input,
+  .form-group textarea,
+  .select-box {
+    width: 80%;
+  }
   .contact-section {
     padding: 80px 6%;
   }
@@ -268,24 +279,19 @@
     padding: 35px 22px;
   }
 
-  .form-row-page {
+  .form-row {
     grid-template-columns: 1fr;
     gap: 12px; /* reduce space between First & Last name */
   }
 
-  .form-group-contact {
-    width:100%;
+  .form-group {
     gap: 6px;
   }
 
-  .form-group-contact input{
-    width: 100%;
-  }
-
   /* REMOVE artificial spacing on mobile */
-  /* .form-row-page .form-group-contact:not(:has(label)) input {
+  .form-row .form-group:not(:has(label)) input {
     margin-top: 0;
-  } */
+  }
 
   .contact-btn {
     width: 100%;
@@ -502,12 +508,18 @@
     letter-spacing: 2px;
   }
 
-  .contact-form-page {
+  .contact-form {
     gap: 18px;
+    padding: 5px;
   }
 
-  .form-group-contact input,
-  .form-group-contact textarea {
+  .contact-card {
+    padding: 20px auto;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .select-box {
     padding: 12px;
     font-size: 0.85rem;
   }
@@ -532,6 +544,10 @@
 
   .contact-header h1 {
     font-size: 1.9rem;
+  }
+
+  .contact-form {
+    padding: 10px;
   }
 
   .info-card h2 {
@@ -561,4 +577,32 @@
   .contact-section {
     padding: 70px 6% 90px;
   }
+}
+
+.select-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+
+  width: 90%;
+  margin: 0 auto;
+    z-index: 10000;
+  border-radius: 15px;
+  padding: 15px 20px;
+  background: rgba(5, 10, 36, 0.9);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+  max-height: 400px;
+  overflow-y: auto;
+  transition: 0.3s ease;
+}
+
+.select-item span:hover{
+    font-size: 1rem;
+    font-weight: 500;
 }

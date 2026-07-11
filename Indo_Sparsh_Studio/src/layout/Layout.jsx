@@ -175,7 +175,7 @@ export default function Layout() {
             </NavLink>
 
             {/* 🔥 Quote Button */}
-            <NavLink to="/contact" className="quote-btn">
+            <NavLink to="/request-quote" className="quote-btn">
               <span className="quote-text">Request A Quote</span>
             </NavLink>
 

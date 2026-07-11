@@ -13,6 +13,7 @@ import BusinessGrowth from "./pages/BusinessGrowth";
 import CaseStudies from "./pages/CaseStudies";
 import FutureAI from "./pages/FutureAI";
 import { useLocation } from "react-router-dom";
+import RequestAquote from "./pages/RequestAQuote";
 
 export default function App() {
    
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/career" element={<Career />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/request-quote" element={<RequestAquote />} />
         <Route path="/digital-marketing" element={<DigitalMarketing />} />
         <Route path="/it-trends" element={<ITTrends />} />
         <Route path="/business-growth" element={<BusinessGrowth />} />

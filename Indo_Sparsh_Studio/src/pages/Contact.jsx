@@ -69,10 +69,10 @@ export default function Contact() {
 
       {/* Form Card */}
       <div className="contact-card">
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Name *</label>
+        <form className="contact-form-page" onSubmit={handleSubmit}>
+          <div className="form-row-page">
+            <div className="form-group-contact">
+              <label>First Name *</label>
               <input
                 name="firstName"
                 value={formData.firstName}
@@ -81,7 +81,8 @@ export default function Contact() {
                 required
               />
             </div>
-            <div className="form-group">
+            <div className="form-group-contact">
+              <label>Last Name </label>
               <input
                 name="lastName"
                 value={formData.lastName}
@@ -91,7 +92,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="form-group">
+          <div className="form-group-contact">
             <label>Conatct No. *</label>
             <input
               name="contact"
@@ -101,7 +102,7 @@ export default function Contact() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-contact">
             <label>Email Id *</label>
             <input
               name="email"
@@ -111,7 +112,7 @@ export default function Contact() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-contact">
             <label>Message *</label>
             <textarea
               name="message"
