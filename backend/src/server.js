@@ -14,12 +14,7 @@ app.use(
       "https://www.indosparsh.com",
     ],
     credentials: true,
-    methods:[
-      "GET",
-      "POST"
 
-    ],
-    allowedHeaders:['Content-type', "Authorization", "multipart/form-data"]
   }),
 );
 
