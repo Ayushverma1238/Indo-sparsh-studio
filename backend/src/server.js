@@ -5,7 +5,6 @@ import cors from "cors";
 
 const app = express();
 
-app.use(express.json());
 
 app.use(
   cors({
@@ -17,11 +16,15 @@ app.use(
     credentials: true,
     methods:[
       "GET",
-      "POST"
+      "POST",
+      "OPTIONS"
+
     ],
     allowedHeaders:['Content-type', "Authorization", "multipart/form-data"]
   }),
 );
+app.options("*", cors());
+app.use(express.json());
 
 // Route
 import mailRoute from "./routes/mail.routes.js";
