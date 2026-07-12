@@ -7,7 +7,8 @@ export const contact = async (req, res) => {
     await sendMail({
       to: process.env.EMAIL_USER,
       subject: "New Contact Form",
-      html: `
+      html: 
+      `
                 
             <div style="font-family: Arial, sans-serif; background:#f4f6f8; padding:30px;">
             <div style="max-width:600px; margin:auto; background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08);">

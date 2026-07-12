@@ -10,7 +10,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    contact: "",
+    phone: "",
     email: "",
     message: "",
   });
@@ -26,7 +26,7 @@ export default function Contact() {
 
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URI}/api/v1/contact`,
+        `${import.meta.env.VITE_BACKEND_URI}/api/contact.php`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -41,7 +41,7 @@ export default function Contact() {
         setFormData({
           firstName: "",
           lastName: "",
-          contact: "",
+          phone: "",
           email: "",
           message: "",
         });
@@ -93,10 +93,10 @@ export default function Contact() {
           </div>
 
           <div className="form-group-contact">
-            <label>Conatct No. *</label>
+            <label>Phone No. *</label>
             <input
-              name="contact"
-              value={formData.contact}
+              name="phone"
+              value={formData.phone}
               onChange={handleChange}
               placeholder="Contact Number"
               required

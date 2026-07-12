@@ -73,18 +73,25 @@ export default function RequestAQuota() {
     setLoading(true);
 
     try {
+      const data = new FormData();
+
+      Object.entries(formData).forEach(([key, value]) => {
+        if (value !== null && value !== undefined) {
+          data.append(key, value);
+        }
+      });
+
       const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URI}/api/v1/request-quote`,
+        `${import.meta.env.VITE_BACKEND_URI}/api/request-quote.php`,
         {
           method: "POST",
-          headers: {  "Content-Type": "multipart/form-data", },
-          body: JSON.stringify(formData),
+          body: data,
         },
       );
 
-      const data = await res.json();
+      const response = await res.json();
 
-      if (data.success) {
+      if (response.success) {
         setSuccess(true);
         setFormData({
           firstName: "",

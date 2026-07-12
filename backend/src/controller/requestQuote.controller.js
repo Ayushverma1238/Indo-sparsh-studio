@@ -45,7 +45,8 @@ export const RequestAQuote = async (req, res) => {
       to: process.env.EMAIL_USER,
       subject: `📩 New Project Quote Request - ${projectTitle}`,
 
-    html: `
+    html: 
+    `
         <!DOCTYPE html>
         <html>
         <head>
