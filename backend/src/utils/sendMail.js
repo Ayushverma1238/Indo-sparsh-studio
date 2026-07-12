@@ -26,10 +26,10 @@ export const sendMail = async ({ to, subject, html,attachments = [], }) => {
 };
 
 
-import { Resend } from 'resend';
+// import { Resend } from 'resend';
 
-const resend = new Resend('re_xxxxxxxxx');
+// const resend = new Resend('re_xxxxxxxxx');
 
-const { data, error } = await resend.apiKeys.create({ name: 'Production' });
-console.log("API KEYS",data)
-console.log("API KEYS ERROR",error)
+// const { data, error } = await resend.apiKeys.create({ name: 'Production' });
+// console.log("API KEYS",data)
+// console.log("API KEYS ERROR",error)
