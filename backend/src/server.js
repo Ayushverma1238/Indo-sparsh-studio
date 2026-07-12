@@ -12,9 +12,14 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://localhost:5174",
-      "http://localhost:5173",
+      "https://www.indosparsh.com",
     ],
     credentials: true,
+    methods:[
+      "GET",
+      "POST"
+    ],
+    allowedHeaders:['Content-type', "Authorization", "multipart/form-data"]
   }),
 );
 

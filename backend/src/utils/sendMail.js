@@ -13,11 +13,23 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export const sendMail = async ({ to, subject, html }) => {
+export const sendMail = async ({ to, subject, html,attachments = [], }) => {
+  //  await transporter.verify();
+  // console.log("SMTP Server Connected");
   await transporter.sendMail({
     from: `"Indo Sparsh Studio" <${process.env.EMAIL_USER}>`,
     to,
     subject,
     html,
+    attachments
   });
 };
+
+
+import { Resend } from 'resend';
+
+const resend = new Resend('re_xxxxxxxxx');
+
+const { data, error } = await resend.apiKeys.create({ name: 'Production' });
+console.log("API KEYS",data)
+console.log("API KEYS ERROR",error)

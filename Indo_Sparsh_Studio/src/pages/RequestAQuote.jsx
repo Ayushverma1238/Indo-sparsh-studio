@@ -44,12 +44,10 @@ export default function RequestAQuota() {
   const [isBudgetArrow, setIsBudgetArrow] = useState(false);
   const [isTimeLineArrow, setIsTimeLineArrow] = useState(false);
   const [isCountryArrow, setIsCountryArrow] = useState(false);
-  const [isPreferedContactMethod, setIsPreferedContactMethod] = useState(false)
+  const [isPreferedContactMethod, setIsPreferedContactMethod] = useState(false);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  console.log(countries.slice(0, 10));
 
   const handleFileChange = (e) => {
     setFormData((prev) => ({
@@ -58,7 +56,17 @@ export default function RequestAQuota() {
     }));
   };
 
+  const handleSelectChange = (field, value, setDropdown) => {
+    console.log(field, value, setDropdown);
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
 
+    if (setDropdown) {
+      setDropdown(false);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,10 +74,10 @@ export default function RequestAQuota() {
 
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URI}/api/v1/contact`,
+        `${import.meta.env.VITE_BACKEND_URI}/api/v1/request-quote`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {  "Content-Type": "multipart/form-data", },
           body: JSON.stringify(formData),
         },
       );
@@ -81,9 +89,29 @@ export default function RequestAQuota() {
         setFormData({
           firstName: "",
           lastName: "",
-          contact: "",
           email: "",
-          message: "",
+          phone: "",
+
+          // Company Information
+          companyName: "",
+          website: "",
+
+          // Project Information
+          service: services[0],
+          projectType: "",
+          budget: budget[0],
+          timeline: timeLine[0],
+          country: countries[0],
+
+          // Project Details
+          projectTitle: "",
+          projectDescription: "",
+
+          // Attachment
+          attachment: null,
+
+          // Optional
+          preferredContact: preferedContactMethod[0],
         });
 
         setTimeout(() => setSuccess(false), 3000);
@@ -204,7 +232,14 @@ export default function RequestAQuota() {
                 className="select-item"
               >
                 {services.map((item, index) => (
-                  <span key={index}>{item}</span>
+                  <span
+                    onClick={() =>
+                      handleSelectChange("service", item, setIsServiceArrow)
+                    }
+                    key={index}
+                  >
+                    {item}
+                  </span>
                 ))}
               </div>
             )}
@@ -239,7 +274,14 @@ export default function RequestAQuota() {
                 className="select-item"
               >
                 {budget.map((item, index) => (
-                  <span key={index}>{item}</span>
+                  <span
+                    onClick={() =>
+                      handleSelectChange("budget", item, setIsBudgetArrow)
+                    }
+                    key={index}
+                  >
+                    {item}
+                  </span>
                 ))}
               </div>
             )}
@@ -261,7 +303,14 @@ export default function RequestAQuota() {
                 className="select-item"
               >
                 {timeLine.map((item, index) => (
-                  <span key={index}>{item}</span>
+                  <span
+                    onClick={() =>
+                      handleSelectChange("timeline", item, setIsTimeLineArrow)
+                    }
+                    key={index}
+                  >
+                    {item}
+                  </span>
                 ))}
               </div>
             )}
@@ -283,7 +332,14 @@ export default function RequestAQuota() {
                 className="select-item"
               >
                 {countries.map((item, index) => (
-                  <span key={index}>{index + 1}. {item}</span>
+                  <span
+                    onClick={() =>
+                      handleSelectChange("country", item, setIsCountryArrow)
+                    }
+                    key={index}
+                  >
+                    {index + 1}. {item}
+                  </span>
                 ))}
               </div>
             )}
@@ -307,7 +363,9 @@ export default function RequestAQuota() {
             <label>Preferred Contact Method</label>
             <div
               className="select-box"
-              onClick={() => setIsPreferedContactMethod(!isPreferedContactMethod)}
+              onClick={() =>
+                setIsPreferedContactMethod(!isPreferedContactMethod)
+              }
             >
               <span>{formData.preferredContact}</span>
               {isPreferedContactMethod ? <IoIosArrowUp /> : <IoIosArrowDown />}
@@ -318,7 +376,18 @@ export default function RequestAQuota() {
                 className="select-item"
               >
                 {preferedContactMethod.map((item, index) => (
-                  <span key={index}>{item}</span>
+                  <span
+                    onClick={() =>
+                      handleSelectChange(
+                        "preferredContact",
+                        item,
+                        setIsPreferedContactMethod,
+                      )
+                    }
+                    key={index}
+                  >
+                    {item}
+                  </span>
                 ))}
               </div>
             )}
