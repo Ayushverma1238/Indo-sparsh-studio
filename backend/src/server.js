@@ -23,7 +23,7 @@ app.use(
     allowedHeaders:['Content-type', "Authorization", "multipart/form-data"]
   }),
 );
-app.options("*", cors());
+
 app.use(express.json());
 
 // Route
