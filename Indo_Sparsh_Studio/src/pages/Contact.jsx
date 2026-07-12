@@ -26,7 +26,7 @@ export default function Contact() {
 
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URI}/api/contact.php`,
+        `/backend-php/api/contact.php`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

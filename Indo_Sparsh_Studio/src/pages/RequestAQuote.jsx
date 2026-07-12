@@ -82,7 +82,7 @@ export default function RequestAQuota() {
       });
 
       const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URI}/api/request-quote.php`,
+        `/backend-php/api/request-quote.php`,
         {
           method: "POST",
           body: data,
