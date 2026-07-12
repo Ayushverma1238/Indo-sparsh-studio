@@ -57,6 +57,7 @@ export const contact = async (req, res) => {
 
             `,
     });
+    console.log("Rewsponsef")
     res.json({
       success: true,
       message: "Email Sent Successfully",
