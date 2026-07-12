@@ -16,8 +16,7 @@ app.use(
     credentials: true,
     methods:[
       "GET",
-      "POST",
-      "OPTIONS"
+      "POST"
 
     ],
     allowedHeaders:['Content-type', "Authorization", "multipart/form-data"]
