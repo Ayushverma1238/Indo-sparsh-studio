@@ -206,7 +206,7 @@ export default function EthicsPolicyPage() {
         <section className="policy-cta why-card">
           <h2>Questions about any of this?</h2>
           <p>Reach out and we'll walk you through it in plain language.</p>
-          <a onClick={()=> Navigate('/contact')} className="policy-cta-btn" href="mailto:contact@indosparsh.com">
+          <a onClick={()=> navigate('/contact')} className="policy-cta-btn" href="mailto:contact@indosparsh.com">
             Contact us
             <span className="policy-cta-arrow">→</span>
           </a>

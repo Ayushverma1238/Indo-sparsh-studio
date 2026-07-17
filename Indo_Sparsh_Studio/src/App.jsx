@@ -34,6 +34,8 @@ import SocialShowcase from "./pages/src/Footer/Services/SocialMediaPage";
 import RowCallingData from "./pages/src/Footer/Services/RowCallingData";
 import MaintenanceSupportPage from "./pages/src/Footer/Services/MaintenanceAndSupportPage";
 import BrandingMarketingPage from "./pages/src/Footer/Services/BrandingAndMarketing";
+import BusinessConsultancy from "./pages/src/Footer/Services/BusinessConsultancy";
+import GraphicDesignPage from "./pages/src/Footer/Services/GraphicDesign";
 
 export default function App() {
    
@@ -78,6 +80,8 @@ export default function App() {
         <Route path="/services/row-calling-data" element={<RowCallingData />} />
         <Route path="/services/maintenance-support" element={<MaintenanceSupportPage />} />
         <Route path="/services/branding-marketing" element={<BrandingMarketingPage />} />
+        <Route path="/services/business-consultancy" element={<BusinessConsultancy />} />
+        <Route path="/services/graphic-design" element={<GraphicDesignPage />} />
         {/* Supports */}
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/tech-stack" element={<TechStackPage />} />

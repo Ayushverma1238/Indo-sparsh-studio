@@ -32,6 +32,8 @@ import SocialShowcase from "./pages/src/Footer/Services/SocialMediaPage";
 import RowCallingData from "./pages/src/Footer/Services/RowCallingData";
 import MaintenanceSupportPage from "./pages/src/Footer/Services/MaintenanceAndSupportPage";
 import BrandingMarketingPage from "./pages/src/Footer/Services/BrandingAndMarketing";
+import BusinessConsultancy from "./pages/src/Footer/Services/BusinessConsultancy";
+import GraphicDesignPage from "./pages/src/Footer/Services/GraphicDesign";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +69,8 @@ const router = createBrowserRouter([
       { path: "services/row-calling-data", element: <RowCallingData /> },
       { path: "services/maintenance-support", element: <MaintenanceSupportPage /> },
       { path: "services/branding-marketing", element: <BrandingMarketingPage /> },
+      { path: "services/business-consultancy", element: <BusinessConsultancy /> },
+      { path: "services/graphic-design", element: <GraphicDesignPage /> },
       
       // Supports
       

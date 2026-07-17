@@ -438,7 +438,7 @@ export default function Home() {
                 marginTop: "auto",
               }}
               onClick={() => {
-                scrollToSection("we-serve-for");
+                
                 navigate("/services/profile-creation");
               }}
             >
@@ -471,7 +471,7 @@ export default function Home() {
                 marginTop: "auto",
               }}
               onClick={() => {
-                scrollToSection("we-serve-for");
+                
                 navigate("/services/website-development");
               }}
             >
@@ -504,7 +504,7 @@ export default function Home() {
                 marginTop: "auto",
               }}
               onClick={() => {
-                scrollToSection("we-serve-for");
+                
                 navigate("/services/app-development");
               }}
             >
@@ -540,7 +540,7 @@ export default function Home() {
                 marginTop: "auto",
               }}
               onClick={() => {
-                scrollToSection("we-serve-for");
+                
                 navigate("/services/digital-marketing");
               }}
             >
@@ -575,7 +575,7 @@ export default function Home() {
                 marginTop: "auto",
               }}
               onClick={() => {
-                scrollToSection("we-serve-for");
+                
                 navigate("/services/social-media");
               }}
             >
@@ -611,7 +611,7 @@ export default function Home() {
                 marginTop: "auto",
               }}
               onClick={() => {
-                scrollToSection("we-serve-for");
+                
                 navigate("/services/ui-ux-design");
               }}
             >
@@ -647,7 +647,7 @@ export default function Home() {
                 marginTop: "auto",
               }}
               onClick={() => {
-                scrollToSection("we-serve-for");
+                
                 navigate("/services/graphic-design");
               }}
             >
@@ -682,7 +682,7 @@ export default function Home() {
                 marginTop: "auto",
               }}
               onClick={() => {
-                scrollToSection("we-serve-for");
+                
                 navigate("/services/branding");
               }}
             >
@@ -715,7 +715,7 @@ export default function Home() {
                 marginTop: "auto",
               }}
               onClick={() => {
-                scrollToSection("we-serve-for");
+                
                 navigate("/services/row-calling-data");
               }}
             >
@@ -748,7 +748,7 @@ export default function Home() {
                 marginTop: "auto",
               }}
               onClick={() => {
-                scrollToSection("we-serve-for");
+                
                 navigate("/services/content-hub");
               }}
             >
@@ -784,7 +784,7 @@ export default function Home() {
                 marginTop: "auto",
               }}
               onClick={() => {
-                scrollToSection("we-serve-for");
+                
                 navigate("/services/business-consultancy");
               }}
             >

@@ -1,0 +1,540 @@
+/* ==========================================================================
+   1. Design Tokens & Theme Management
+   ========================================================================== */
+:root {
+  /* Layout Shared Values */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --radius-md: 12px;
+  --radius-lg: 24px;
+}
+
+/* Light Theme Variables */
+body.light-mode {
+  --bg-primary: #ffffff;
+  --bg-muted: #f8f9fa;
+  --text-main: #16161a;
+  --text-muted: #64646f;
+  --text-inverse: #0c0b0b;
+  --btn-dark-bg: #16161a;
+  --btn-dark-text: #ffffff;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --accent-color: #2f5cff;
+}
+
+/* Dark Theme Variables */
+body.dark-mode {
+  --bg-primary: #0d0d11;
+  --bg-muted: #16161a;
+  --text-main: #f3f3f6;
+  --text-muted: #9494a1;
+  --text-inverse: #e4e4f0;
+  --btn-dark-bg: #ffffff;
+  --btn-dark-text: #0d0d11;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --accent-color: #ffc738;
+}
+
+/* Global Component Shell */
+.gd {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   2. Global Reveal Animation Structure
+   ========================================================================== */
+.gd-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--transition-smooth), 
+              transform 0.8s var(--transition-smooth);
+  transition-delay: var(--delay, 0ms);
+  will-change: transform, opacity;
+}
+
+.gd-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+/* ==========================================================================
+   4. Hero Section & Geometric Floating Shapes
+   ========================================================================== */
+.gd-hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  position: relative;
+  text-align: center;
+}
+
+.gd-hero__inner {
+  max-width: 800px;
+  z-index: 2;
+}
+
+.gd-eyebrow {
+  display: inline-block;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 24px;
+}
+
+.gd-hero__headline {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+/* Multi-stage entry for text segments in the h1 */
+.gd-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroTextFadeIn 0.8s var(--transition-smooth) forwards;
+}
+.gd-word--a { animation-delay: 100ms; }
+.gd-word--b { animation-delay: 200ms; }
+.gd-word--c { animation-delay: 300ms; }
+.gd-word--d { animation-delay: 400ms; color: var(--accent-color); }
+
+@keyframes heroTextFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gd-hero__subtext {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+}
+
+.gd-hero__cta-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Floating Shapes & Keyframes */
+.gd-shape {
+  position: absolute;
+  background: linear-gradient(135deg, var(--accent-color), rgba(47, 92, 255, 0.2));
+  opacity: 0.12;
+  filter: blur(1px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.gd-shape--circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  top: 15%;
+  left: 10%;
+  animation: floatGeometric 4s ease-in-out infinite alternate;
+}
+
+.gd-shape--square {
+  width: 100px;
+  height: 100px;
+  bottom: 20%;
+  right: 30%;
+  transform: rotate(45deg);
+  animation: floatGeometric 12s ease-in-out infinite alternate-reverse;
+}
+
+.gd-shape--triangle {
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-bottom: 100px solid var(--accent-color);
+  background: none;
+  top: 60%;
+  left: 15%;
+  animation: floatGeometric 10s ease-in-out infinite alternate;
+}
+
+@keyframes floatGeometric {
+  0% {
+    transform: translateY(0px) rotate(0deg) scale(0.8) translateX(0px);
+  }
+
+  100% {
+    transform: translateY(-25px) rotate(15deg) scale(1.2) translateX(300px);
+  }
+}
+/* ==========================================================================
+   5. Reusable Common Buttons
+   ========================================================================== */
+.gd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: transform 0.2s var(--transition-smooth), background-color 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.gd-btn:hover {
+  transform: translateY(-2px);
+}
+
+.gd-btn--primary {
+  background-color: var(--text-main);
+  color: var(--bg-primary);
+}
+
+.gd-btn--ghost {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.gd-btn--dark {
+  background-color: var(--btn-dark-bg);
+  color: var(--btn-dark-text);
+}
+
+.gd-btn--ghost-light {
+  background-color: transparent;
+  color: var(--text-inverse);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   6. Tools Continuous Infinite Marquee
+   ========================================================================== */
+.gd-marquee {
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  padding: 24px 0;
+  white-space: nowrap;
+}
+
+.gd-marquee__track {
+  display: inline-flex;
+  gap: 60px;
+  animation: continuousMarquee 25s linear infinite;
+}
+
+.gd-marquee__item {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--text-main);
+  opacity: 0.4;
+}
+
+@keyframes continuousMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   7. Section Structuring & Architecture
+   ========================================================================== */
+.gd-section {
+  padding: 120px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gd-section--muted {
+  max-width: 100%;
+  background-color: var(--bg-muted);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.gd-section__head {
+  max-width: 600px;
+  margin-bottom: 64px;
+}
+
+.gd-kicker {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.gd-h2 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.gd-lead {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   8. Portfolio Masonry System
+   ========================================================================== */
+.gd-masonry {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: 220px;
+  gap: 32px;
+}
+
+.gd-piece {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Asymmetrical Masonry Scaling Rules */
+.gd-piece--short { grid-row: span 1; }
+.gd-piece--medium { grid-row: span 2; }
+.gd-piece--tall { grid-row: span 2; }
+
+@media (min-width: 768px) {
+  .gd-piece--tall { grid-row: span 3; }
+}
+
+.gd-piece__media {
+  flex: 1;
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s var(--transition-smooth);
+}
+
+/* Hover Zoom Effect for Portfolio items */
+.gd-piece__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gd-piece:hover .gd-piece__media {
+  transform: scale(0.98);
+}
+
+.gd-piece:hover .gd-piece__media::after {
+  opacity: 1;
+}
+
+.gd-piece__category {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #16161a;
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+.gd-piece__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 12px;
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   9. Standard Grids & Capabilities Cards
+   ========================================================================== */
+.gd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.gd-grid--2 {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.gd-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 32px;
+  border-radius: var(--radius-md);
+  transition: border-color 0.3s ease, transform 0.3s var(--transition-smooth);
+}
+
+.gd-card:hover {
+  border-color: var(--text-main);
+  transform: translateY(-4px);
+}
+
+.gd-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.gd-card__text {
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   10. Linear Process Design Architecture
+   ========================================================================== */
+.gd-process {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  position: relative;
+}
+
+.gd-process__line {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--border-color);
+  z-index: 1;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .gd-process__line { display: block; }
+}
+
+.gd-process__item {
+  position: relative;
+  z-index: 2;
+}
+
+.gd-process__step {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-bottom: 24px;
+  box-shadow: 0 0 0 8px var(--bg-muted);
+}
+
+.gd-process__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.gd-process__text {
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   11. Testimonials & Client Feedback Blockquotes
+   ========================================================================== */
+.gd-quote {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.gd-quote__text {
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+}
+
+.gd-quote__author {
+  display: flex;
+  flex-direction: column;
+}
+
+.gd-quote__name {
+  font-weight: 700;
+}
+
+.gd-quote__role {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   12. Final High-Contrast Call To Action
+   ========================================================================== */
+.gd-cta {
+  padding: 32px;
+  max-width: 1200px;
+  margin: 0 auto 80px auto;
+}
+
+.gd-cta__inner {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  padding: 80px 24px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gd-cta__title {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  max-width: 600px;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.gd-cta__text {
+  color: #9494a1;
+  font-size: 1.15rem;
+  max-width: 500px;
+  margin-bottom: 40px;
+}

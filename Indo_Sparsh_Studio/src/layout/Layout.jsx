@@ -127,7 +127,7 @@ export default function Layout() {
   }, [darkMode]);
 
   const message = encodeURIComponent(
-    "Hi Indosparsh Studio! 👋\n\nI would like to claim the 10% discount offer on my website/project.\n\nPlease share the next steps. Thank you!",
+    "Hi Indosparsh Studio! 👋\n\nSaw your 2026 branding offer and it caught my eye 👀. Can you tell me more about what's include",
   );
   return (
     <>
