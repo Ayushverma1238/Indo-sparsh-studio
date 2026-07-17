@@ -1,0 +1,536 @@
+/* ==========================================================================
+   1. DYNAMIC THEMATIC TOKENS & LIFECYCLES
+   ========================================================================== */
+/* Default Light Palette (Triggered when body has .light-mode) */
+body.light-mode {
+  --hub-bg: #f8fafc;
+  --hub-surface: #ffffff;
+  --hub-surface-alt: #f1f5f9;
+  --hub-border: rgba(15, 23, 42, 0.08);
+  --hub-txt-main: #0f172a;
+  --hub-txt-muted: #64748b;
+  --card-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+  --card-shadow-hover: 0 20px 35px -5px rgba(99, 102, 241, 0.15);
+  
+  --status-editing: #0284c7;
+  --status-rendering: #d97706;
+  --status-completed: #16a34a;
+  --status-ingest: #7c3aed;
+}
+
+/* Premium Dark Palette (Triggered when body has .dark-mode) */
+body.dark-mode {
+  --hub-bg: #07090e;
+  --hub-surface: #0e131f;
+  --hub-surface-alt: #161d30;
+  --hub-border: rgba(255, 255, 255, 0.06);
+  --hub-txt-main: #f8fafc;
+  --hub-txt-muted: #94a3b8;
+  --card-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.6);
+  --card-shadow-hover: 0 25px 40px -10px rgba(99, 102, 241, 0.3);
+  
+  --status-editing: #38bdf8;
+  --status-rendering: #fbbf24;
+  --status-completed: #10b981;
+  --status-ingest: #a855f7;
+}
+
+/* Core System Constants */
+:root {
+  --hub-accent: #6366f1;
+  --transition-elastic: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Container Structural Layer */
+.content-hub-container {
+  background-color: var(--hub-bg);
+  color: var(--hub-txt-main);
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  padding: 40px 60px;
+  box-sizing: border-box;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ==========================================================================
+   2. HIGH-PERFORMANCE ENTANCE ANIMATIONS
+   ========================================================================== */
+.hub-title-block {
+  animation: slideDownFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hub-stats-panel {
+  animation: slideDownFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  opacity: 0;
+}
+
+.filter-bar {
+  animation: slideRightFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+/* Staggered entry structural cascade for grid items */
+.prod-card {
+  opacity: 0;
+  animation: fadeInUpScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.prod-card:nth-child(1) { animation-delay: 0.35s; }
+.prod-card:nth-child(2) { animation-delay: 0.45s; }
+.prod-card:nth-child(3) { animation-delay: 0.55s; }
+.prod-card:nth-child(4) { animation-delay: 0.65s; }
+
+/* ==========================================================================
+   3. STRUCTURAL ELEMENTS & MICRO-INTERACTIONS
+   ========================================================================== */
+.hub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--hub-border);
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  transition: border-color 0.3s ease;
+}
+
+.hub-badge {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--hub-accent);
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+/* Decorative background pulse glow behind text badge */
+.hub-badge::after {
+  content: '';
+  position: absolute;
+  inset: -4px -8px;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.hub-title-block h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.hub-title-block p {
+  color: var(--hub-txt-muted);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.hub-stats-panel {
+  display: flex;
+  gap: 24px;
+}
+
+.hub-stat-item {
+  background: var(--hub-surface);
+  border: 1px solid var(--hub-border);
+  padding: 16px 24px;
+  border-radius: 14px;
+  min-width: 170px;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-smooth);
+}
+
+.hub-stat-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--hub-accent);
+}
+
+.stat-lbl {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--hub-txt-muted);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.stat-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.stat-val small {
+  font-size: 0.85rem;
+  color: var(--hub-txt-muted);
+}
+
+.text-neon {
+  color: var(--status-completed);
+  text-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Filter Module Track Layout */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.filter-btn {
+  background: var(--hub-surface);
+  border: 1px solid var(--hub-border);
+  color: var(--hub-txt-main);
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.filter-btn:hover {
+  background: var(--hub-surface-alt);
+  transform: translateY(-2px);
+}
+
+.filter-btn.active-filter {
+  background: var(--hub-accent);
+  border-color: var(--hub-accent);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* ==========================================================================
+   4. PIPELINE MEDIA CARD ARCHITECTURE
+   ========================================================================== */
+.production-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 32px;
+}
+
+.prod-card {
+  background: var(--hub-surface);
+  border: 1px solid var(--hub-border);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s ease, 
+              box-shadow 0.4s ease, 
+              background-color 0.4s ease;
+}
+
+.prod-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Media Thumbnail Container Frame */
+.prod-thumb-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+.prod-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.88;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Kinetic camera zooms on card engagement */
+.prod-card:hover .prod-img {
+  transform: scale(1.08) rotate(0.5deg);
+  opacity: 1;
+}
+
+.thumb-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.85) 100%);
+  transition: opacity 0.3s ease;
+}
+
+.prod-card:hover .thumb-gradient-overlay {
+  opacity: 0.95;
+}
+
+/* Floating Component Overlays */
+.asset-type-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transform: translateZ(0);
+}
+
+.runtime-badge {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Dynamic Status Indicators */
+.status-pill {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.status-pill.in-editing { background: rgba(56, 189, 248, 0.2); color: var(--status-editing); border: 1px solid rgba(56, 189, 248, 0.3); }
+.status-pill.rendering { background: rgba(251, 191, 36, 0.2); color: var(--status-rendering); border: 1px solid rgba(251, 191, 36, 0.3); }
+.status-pill.completed { background: rgba(16, 185, 129, 0.2); color: var(--status-completed); border: 1px solid rgba(16, 185, 129, 0.3); }
+.status-pill.footage-ingestion { background: rgba(168, 85, 247, 0.2); color: var(--status-ingest); border: 1px solid rgba(168, 85, 247, 0.3); }
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Dynamic pulse signatures based on process state */
+.status-pill.rendering .pulse-dot,
+.status-pill.in-editing .pulse-dot {
+  animation: pulseGlow 1s infinite alternate cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+/* Card Info Body Architecture */
+.prod-body {
+  padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.prod-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.4;
+  margin: 0 0 8px 0;
+  transition: color 0.2s ease;
+}
+
+.prod-card:hover .prod-title {
+  color: var(--hub-accent);
+}
+
+.prod-specs-row {
+  display: flex;
+  gap: 8px;
+  color: var(--hub-txt-muted);
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+}
+
+/* Dynamic Interactive Processing Timelines */
+.progress-container {
+  margin-bottom: 24px;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--hub-txt-muted);
+  margin-bottom: 8px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 6px;
+  background: var(--hub-surface-alt);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--hub-accent), #a855f7);
+  border-radius: 10px;
+  width: 0%; /* Populates cleanly on render */
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+/* Animated gradient scanning effect running along active loaders */
+.prod-card:not(.status-done) .progress-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: scanline 2s infinite linear;
+}
+
+.status-done .progress-fill {
+  background: var(--status-completed);
+}
+
+/* Processing Tag Blocks */
+.prod-tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.prod-tag {
+  background: var(--hub-surface-alt);
+  border: 1px solid var(--hub-border);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--hub-txt-muted);
+  transition: var(--transition-smooth);
+}
+
+.prod-card:hover .prod-tag {
+  color: var(--hub-txt-main);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+/* Card Operation Footer Rails */
+.prod-actions-footer {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 12px;
+  padding: 16px 24px 24px 24px;
+  border-top: 1px solid var(--hub-border);
+  background: rgba(0,0,0,0.01);
+  transition: border-color 0.3s ease;
+}
+
+.action-btn {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 11px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-align: center;
+}
+
+.secondary-hub-btn {
+  background: transparent;
+  border: 1px solid var(--hub-border);
+  color: var(--hub-txt-main);
+}
+
+.secondary-hub-btn:hover {
+  background: var(--hub-surface-alt);
+  transform: translateY(-2px);
+}
+
+.primary-hub-btn {
+  background: var(--hub-surface-alt);
+  border: 1px solid var(--hub-accent);
+  color: var(--hub-txt-main);
+}
+
+/* Transform matching primary engine status color on hover execution */
+.prod-card:hover .primary-hub-btn {
+  background: var(--hub-accent);
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
+}
+
+.status-done .primary-hub-btn {
+  border-color: var(--status-completed);
+}
+
+.status-done:hover .primary-hub-btn {
+  background: var(--status-completed);
+  border-color: var(--status-completed);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+}
+
+/* ==========================================================================
+   5. TIMING SCALES & ANIMATION KEYFRAMES
+   ========================================================================== */
+@keyframes pulseGlow {
+  0% { opacity: 0.3; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes scanline {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes slideDownFade {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideRightFade {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUpScale {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive Media Controls */
+@media (max-width: 1024px) {
+  .content-hub-container { padding: 30px; }
+  .hub-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .hub-stats-panel { width: 100%; }
+  .hub-stat-item { flex: 1; }
+}
+
+@media (max-width: 640px) {
+  .production-grid { grid-template-columns: 1fr; }
+  .hub-stats-panel { flex-direction: column; }
+}

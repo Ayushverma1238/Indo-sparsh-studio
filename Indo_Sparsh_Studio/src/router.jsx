@@ -12,6 +12,26 @@ import BusinessGrowth from "./pages/BusinessGrowth";
 import CaseStudies from "./pages/CaseStudies";
 import FutureAI from "./pages/FutureAI";
 import RequestAquote from "./pages/RequestAQuote";
+import WebsiteDevelopment from "./pages/src/Footer/Services/WebsiteDevelopment";
+import LandingPage from "./pages/src/Footer/Services/LandingPage";
+import EcommerceBuildStory from "./pages/src/Footer/Services/EcommercePage";
+import PortfolioWork from "./pages/src/Footer/Services/PortfolioWork";
+import WebAppBuildStory from "./pages/src/Footer/Services/WebApplicationPage";
+import UiUxService from "./pages/src/Footer/Services/UiUxPage";
+import WebsiteRedesign from "./pages/src/Footer/Services/WebsiteRedesign";
+import ContentHub from "./pages/src/Footer/Services/ContentHub";
+import OptimizationPage from "./pages/src/Footer/Services/OptimizationPage";
+import BusinessProfileCreation from "./pages/src/Footer/Services/BusinessProfileCreation";
+import DigitalMarketingShowcase from "./pages/src/Footer/Services/DigitalMarketing";
+import FAQPage from "./pages/src/Footer/Supports/FaqPage";
+import TechStackPage from "./pages/src/Footer/Supports/TechStack";
+import EthicsPolicyPage from "./pages/src/Footer/Supports/EthichsAndPolicies";
+import SocialMediaHandlingPage from "./pages/src/Footer/Supports/SocialMediaPage";
+import AppDevHero from "./pages/src/Footer/Services/AppDevelopment";
+import SocialShowcase from "./pages/src/Footer/Services/SocialMediaPage";
+import RowCallingData from "./pages/src/Footer/Services/RowCallingData";
+import MaintenanceSupportPage from "./pages/src/Footer/Services/MaintenanceAndSupportPage";
+import BrandingMarketingPage from "./pages/src/Footer/Services/BrandingAndMarketing";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +50,31 @@ const router = createBrowserRouter([
       { path: "business-growth", element: <BusinessGrowth /> },
       { path: "case-studies", element: <CaseStudies /> },
       { path: "future-ai", element: <FutureAI /> },
+      
+      // Services
+      { path: "services/website-development", element: <WebsiteDevelopment /> },
+      { path: "services/landing-page", element: <LandingPage /> },
+      { path: "services/ecommerce-website", element: <EcommerceBuildStory /> },
+      { path: "services/portfolio-website", element: <PortfolioWork /> },
+      { path: "services/web-application", element: <WebAppBuildStory /> },
+      { path: "services/ui-ux-design", element: <UiUxService /> },
+      { path: "services/website-redesign", element: <WebsiteRedesign /> },
+      { path: "services/content-hub", element: <ContentHub /> },
+      { path: "services/seo-optimization", element: <OptimizationPage /> },
+      { path: "services/profile-creation", element: <BusinessProfileCreation /> },
+      { path: "services/digital-marketing", element: <DigitalMarketingShowcase /> },
+      { path: "services/app-development", element: <AppDevHero /> },
+      { path: "services/row-calling-data", element: <RowCallingData /> },
+      { path: "services/maintenance-support", element: <MaintenanceSupportPage /> },
+      { path: "services/branding-marketing", element: <BrandingMarketingPage /> },
+      
+      // Supports
+      
+      { path: "faq", element: <FAQPage /> },
+      { path: "tech-stack", element: <TechStackPage /> },
+      { path: "ethics-policy", element: <EthicsPolicyPage /> },
+      { path: "services/social-media", element: <SocialShowcase /> },
+
     ],
   },
 ]);

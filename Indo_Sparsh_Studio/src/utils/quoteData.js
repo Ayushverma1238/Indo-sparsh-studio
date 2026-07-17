@@ -8,7 +8,7 @@ export const services = [
   "Website Redesign",
   "Maintenance & Support",
   "SEO Optimization",
-  "Other"
+  "Other",
 ];
 
 export const budget = [
@@ -16,8 +16,8 @@ export const budget = [
   "₹10,000 - ₹25,000",
   "₹25,000 - ₹50,000",
   "₹50,000 - ₹1,00,000",
-  "₹1,00,000+"
-]
+  "₹1,00,000+",
+];
 
 export const timeLine = [
   "ASAP",
@@ -25,11 +25,11 @@ export const timeLine = [
   "Within 2 Weeks",
   "Within 1 Month",
   "1–3 Months",
-  "Flexible"
-]
+  "Flexible",
+];
 
 export const countries = [
-    "India",
+  "India",
   "Afghanistan",
   "Albania",
   "Algeria",
@@ -106,7 +106,7 @@ export const countries = [
   "Honduras",
   "Hungary",
   "Iceland",
-  
+
   "Indonesia",
   "Iran",
   "Iraq",
@@ -225,11 +225,58 @@ export const countries = [
   "Vietnam",
   "Yemen",
   "Zambia",
-  "Zimbabwe"
+  "Zimbabwe",
 ];
 
-export const preferedContactMethod = [
-    "Email",
-    "Phone",
-    "Whatsapp"
-]
+export const preferedContactMethod = ["Email", "Phone", "Whatsapp"];
+
+export const footerServices = [
+  { name: "Website Development", path: "/services/website-development" },
+  { name: "App Development", path: "/services/app-development" },
+  { name: "Landing Page", path: "/services/landing-page" },
+  { name: "E-commerce Website", path: "/services/ecommerce-website" },
+  { name: "Portfolio Website", path: "/services/portfolio-website" },
+  { name: "Web Application", path: "/services/web-application" },
+  { name: "UI/UX Design", path: "/services/ui-ux-design" },
+  { name: "Website Redesign", path: "/services/website-redesign" },
+  { name: "Content creation & video editing", path: "/services/content-hub" }, 
+
+  { name: "SEO Optimization", path: "/services/seo-optimization" },
+  { name: "Business Profile Creation", path: "/services/profile-creation" }, 
+  { name: "Digital Marketing Services", path: "/services/digital-marketing" }, 
+   { name: "Social media management", path: "/services/social-media" }, 
+  { name: "Maintenance & Support", path: "/services/maintenance-support" },
+
+  { name: "Branding and marketing", path: "/services/branding-marketing" }, 
+  { name: "Business Consultancy", path: "/services/business-consultancy" }, 
+  { name: "Graphic Designing", path: "/services/graphic-design" }, 
+  { name: "Row Calling data", path: "/services/row-calling-data" }, 
+  { name: "Other", path: "/services" },
+];
+
+export const companies = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Services", path: "/services" },
+  { name: "Blogs", path: "/blogs" },
+  { name: "Contact", path: "/contact" },
+  { name: "Career", path: "/career" },
+];
+
+export const supports = [
+  { name: "Request a Quote", path: "/request-quote" },
+  { name: "FAQ's", path: "/faq" },
+  { name: "Contact", path: "/contact" },
+  { name: "Tech Stacks", path: "/tech-stack" },
+  { name: "Ethics Policy", path: "/ethics-policy" },
+ 
+];
+
+export const policies = [
+  { name: "Privacy Policy", path: "/privacy-policy" },
+  { name: "Terms & Conditions", path: "/terms-and-conditions" },
+  { name: "Refund Policy", path: "/refund-policy" },
+  { name: "Modern Slavery Act", path: "/modern-slavery-act" },
+  { name: "Recruitment Policy", path: "/recruitment-policy" },
+  { name: "Sitemap", path: "/sitemap" },
+];

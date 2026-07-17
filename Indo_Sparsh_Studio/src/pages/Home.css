@@ -389,7 +389,7 @@
   flex-wrap: wrap;
 }
 
-.btn-primary {
+.main-btn-primary {
   padding: 14px 38px;
   background: linear-gradient(135deg, #22d3ee, #a855f7);
   border: none;
@@ -402,7 +402,7 @@
   transition: 0.3s ease;
 }
 
-.btn-primary:hover {
+.main-btn-primary:hover {
   transform: scale(1.08);
   box-shadow: 0 0 40px #22d3ee;
 }
@@ -425,6 +425,9 @@
   color: black;
   box-shadow: 0 0 35px #22d3ee;
 }
+
+
+
 
 /* ================= RESPONSIVE ================= */
 
@@ -1852,7 +1855,7 @@
   color: #94a3b8;
 }
 
-.project-card button {
+.project-card-btn {
   padding: 8px 20px;
   border: none;
   border-radius: 30px;
@@ -1876,4 +1879,10 @@
   100% {
     transform: translateX(0);
   }
+}
+
+
+.main-services-btn{
+  position: absolute;
+  bottom: 0;
 }

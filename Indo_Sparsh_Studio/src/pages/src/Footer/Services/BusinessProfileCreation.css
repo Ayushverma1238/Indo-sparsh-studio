@@ -1,0 +1,364 @@
+/* ==========================================================================
+   1. AUTO-SYNCHRONIZING ENVIRONMENT THEME CONSTANTS
+   ========================================================================== */
+body.light-mode {
+  --pro-bg: #f4f6fa;
+  --pro-surface: #ffffff;
+  --pro-surface-alt: #f8fafc;
+  --pro-border: rgba(15, 23, 42, 0.08);
+  --pro-txt-main: #0f172a;
+  --pro-txt-muted: #64748b;
+  --pro-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.05);
+  --pro-shadow-hover: 0 30px 50px -15px rgba(99, 102, 241, 0.15);
+  --pro-card-bg: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+}
+
+body.dark-mode {
+  --pro-bg: #06090e;
+  --pro-surface: #0b0f19;
+  --pro-surface-alt: #111827;
+  --pro-border: rgba(255, 255, 255, 0.05);
+  --pro-txt-main: #f8fafc;
+  --pro-txt-muted: #94a3b8;
+  --pro-shadow: 0 25px 50px -20px rgba(0, 0, 0, 0.6);
+  --pro-shadow-hover: 0 35px 60px -20px rgba(99, 102, 241, 0.3);
+  --pro-card-bg: linear-gradient(135deg, #0f172a 0%, #070a10 100%);
+}
+
+:root {
+  --pro-accent: #6366f1;
+  --pro-accent-hover: #4f46e5;
+  --pro-green: #10b981;
+  --radius-xl: 20px;
+  --radius-md: 10px;
+  --ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Canvas Setup */
+.pro-showcase-wrapper {
+  background-color: var(--pro-bg);
+  color: var(--pro-txt-main);
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  padding: 80px 60px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Ambient Visual Layout Graphics */
+.bg-structural-mesh {
+  position: absolute;
+  inset: 0;
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, var(--pro-border) 1px, transparent 1px),
+                    linear-gradient(to bottom, var(--pro-border) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at 50% 30%, black 20%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, black 20%, transparent 85%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ambient-accent-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.12;
+  z-index: 0;
+}
+.glow-top { top: -10%; left: 10%; background: var(--pro-accent); }
+.glow-bottom { bottom: -10%; right: 10%; background: #a855f7; }
+
+/* ==========================================================================
+   2. EXECUTIVE SECTION HERO ELEMENTS
+   ========================================================================== */
+.pro-hero-section {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 80px auto;
+}
+
+.pro-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--pro-accent);
+  background: rgba(99, 102, 241, 0.12);
+  padding: 5px 14px;
+  border-radius: 30px;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.pro-hero-section h1 {
+  font-size: 3.75rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 24px 0;
+}
+
+.gradient-highlight {
+  background: linear-gradient(135deg, var(--pro-accent), #a855f7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pro-subtitle {
+  font-size: 1.2rem;
+  color: var(--pro-txt-muted);
+  line-height: 1.6;
+  margin: 0 0 48px 0;
+}
+
+/* Horizontal Metrics Control Banner Row */
+.pro-metrics-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  background: var(--pro-surface);
+  border: 1px solid var(--pro-border);
+  padding: 24px 48px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--pro-shadow);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.metric-card-node h3 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin: 0 0 4px 0;
+  color: var(--pro-accent);
+}
+
+.metric-card-node p {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--pro-txt-muted);
+  margin: 0;
+}
+
+/* ==========================================================================
+   3. PORTFOLIO CARDS MATRIX GRID SETUP
+   ========================================================================== */
+.pro-portfolio-area {
+  position: relative;
+  z-index: 10;
+  max-width: 1300px;
+  margin: 0 auto 60px auto;
+}
+
+.portfolio-action-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--pro-border);
+  padding-bottom: 24px;
+  margin-bottom: 40px;
+}
+
+.header-meta-titles h2 { font-size: 1.75rem; font-weight: 800; margin: 0 0 6px 0; letter-spacing: -0.02em; }
+.header-meta-titles p { font-size: 0.95rem; color: var(--pro-txt-muted); margin: 0; }
+
+.portfolio-filter-rail {
+  display: flex;
+  gap: 8px;
+  background: var(--pro-surface-alt);
+  padding: 6px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--pro-border);
+}
+
+.filter-matrix-btn {
+  background: transparent;
+  border: none;
+  color: var(--pro-txt-muted);
+  padding: 8px 18px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--ease-smooth);
+}
+
+.filter-matrix-btn.active {
+  background: var(--pro-accent);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+/* The Core Project Cards Grid */
+.portfolio-cards-matrix {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 32px;
+}
+
+.portfolio-display-card {
+  background: var(--pro-card-bg);
+  border: 1px solid var(--pro-border);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--pro-shadow);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s var(--ease-smooth),
+              box-shadow 0.4s var(--ease-smooth),
+              border-color 0.4s var(--ease-smooth);
+}
+
+.portfolio-display-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: var(--pro-shadow-hover);
+}
+
+.card-ambient-overlay {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+  filter: blur(16px);
+  pointer-events: none;
+}
+
+.card-header-rail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.card-monogram-frame {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--pro-surface);
+  border: 1px solid var(--pro-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.card-category-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--pro-accent);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.card-body-rail h3 { font-size: 1.35rem; font-weight: 800; margin: 0 0 4px 0; letter-spacing: -0.01em; }
+.card-routing-url { font-family: monospace; font-size: 0.82rem; color: var(--pro-accent); margin: 0 0 16px 0; }
+.card-description-text { font-size: 0.9rem; color: var(--pro-txt-muted); line-height: 1.5; margin: 0 0 24px 0; }
+
+.card-feature-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.feature-pill-tag {
+  background: var(--pro-surface-alt);
+  border: 1px solid var(--pro-border);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--pro-txt-muted);
+}
+
+.portfolio-display-card:hover .feature-pill-tag {
+  color: var(--pro-txt-main);
+  border-color: rgba(99, 102, 241, 0.15);
+}
+
+/* Card Actions Rail Footer */
+.card-footer-rail {
+  border-top: 1px solid var(--pro-border);
+  padding-top: 20px;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.card-action-link {
+  color: var(--pro-txt-main);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.portfolio-display-card:hover .card-action-link { color: var(--pro-accent); }
+
+.system-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--pro-green);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.status-ping-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--pro-green);
+  animation: pulseIndicator 1s infinite alternate;
+}
+
+/* Bottom Compliance Banner Box */
+.pro-compliance-footer {
+  position: relative;
+  z-index: 10;
+  max-width: 1300px;
+  margin: 48px auto 0 auto;
+}
+.compliance-box-content {
+  background: var(--pro-surface-alt);
+  border: 1px solid var(--pro-border);
+  padding: 24px;
+  border-radius: var(--radius-md);
+}
+.compliance-box-content h5 { font-size: 0.95rem; font-weight: 800; margin: 0 0 6px 0; }
+.compliance-box-content p { font-size: 0.85rem; color: var(--pro-txt-muted); margin: 0; line-height: 1.5; }
+
+/* ==========================================================================
+   4. HARDWARE GPU ACCELERATED TRANSFORMS & KEYFRAMES
+   ========================================================================== */
+.animate-slide-down { animation: slideDown 0.6s var(--ease-smooth) forwards; }
+.animate-fade-in-up { animation: fadeInUp 0.6s var(--ease-smooth) 0.15s forwards; opacity: 0; }
+.portfolio-display-card { opacity: 0; animation: cardUp 0.6s var(--ease-smooth) forwards; }
+.animate-fade-in { animation: fadeIn 0.5s ease forwards; opacity: 0; animation-delay: 0.5s; }
+
+@keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes cardUp { from { opacity: 0; transform: translateY(40px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulseIndicator { from { opacity: 0.4; } to { opacity: 1; } }
+
+/* Complete Mobile Responsive Bounds Scaling */
+@media (max-width: 1024px) {
+  .portfolio-cards-matrix { grid-template-columns: 1fr; }
+  .pro-showcase-wrapper { padding: 40px 24px; }
+  .portfolio-action-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .portfolio-filter-rail { width: 100%; justify-content: space-between; }
+  .pro-hero-section h1 { font-size: 2.5rem; }
+  .pro-metrics-grid { flex-direction: column; gap: 16px; padding: 20px; text-align: center; }
+}

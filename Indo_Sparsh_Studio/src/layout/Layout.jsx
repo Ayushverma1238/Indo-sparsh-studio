@@ -117,13 +117,18 @@ export default function Layout() {
       document.body.classList.add("dark-mode");
       document.body.classList.remove("light-mode");
       localStorage.setItem("theme", "dark");
+      window.dispatchEvent(new Event("themeChange"));
     } else {
       document.body.classList.add("light-mode");
       document.body.classList.remove("dark-mode");
       localStorage.setItem("theme", "light");
+      window.dispatchEvent(new Event("themeChange"));
     }
   }, [darkMode]);
 
+  const message = encodeURIComponent(
+    "Hi Indosparsh Studio! 👋\n\nI would like to claim the 10% discount offer on my website/project.\n\nPlease share the next steps. Thank you!",
+  );
   return (
     <>
       <PageLoader show={loading} />
@@ -139,7 +144,12 @@ export default function Layout() {
         <div className="promo-bar">
           <div className="promo-content">
             Grow Your Brand in 2026 📈 - Limited Period Offer 🎯
-            <NavLink to="/contact" className="promo-btn">
+            <NavLink
+              to={`https://wa.me/918005351770?text=${message}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="promo-btn"
+            >
               Claim Now
             </NavLink>
           </div>
@@ -147,7 +157,7 @@ export default function Layout() {
 
         {/* 🔥 HEADER */}
         <header className="cyber-header">
-          <div className="cyber-logo">INDO SPARSH STUDIO</div>
+          <div className="cyber-logo">Indo Sparsh Studio</div>
 
           <nav className={`cyber-nav ${open ? "active" : ""}`}>
             <NavLink to="/" onClick={() => setOpen(false)}>

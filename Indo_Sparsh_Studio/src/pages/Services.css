@@ -40,11 +40,15 @@
   background: rgba(2, 6, 23, 0.9);
   border-radius: 22px;
   padding: 40px 28px;
+  height: 100%;
   text-align: center;
   position: relative;
   border: 1px solid rgba(34, 211, 238, 0.35);
   animation: rgbGlow 6s ease-in-out infinite;
   transition: 0.4s ease;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .service-card:hover {

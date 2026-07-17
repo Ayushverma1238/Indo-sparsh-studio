@@ -275,7 +275,7 @@ export default function Career() {
               <h2>Apply for {jobTitle}</h2>
 
               <form onSubmit={handleJobSubmit}>
-                <div className="form-group">
+                <div className="form-group-contact">
                   <input
                     type="text"
                     placeholder="Full Name"
@@ -284,7 +284,7 @@ export default function Career() {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group-contact">
                   <input
                     type="email"
                     placeholder="Email Address"
@@ -293,7 +293,7 @@ export default function Career() {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group-contact">
                   <input
                     type="tel"
                     placeholder="Phone Number"
@@ -302,7 +302,7 @@ export default function Career() {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group-contact">
                   <input
                     type="text"
                     placeholder="Years of Experience"
@@ -310,7 +310,7 @@ export default function Career() {
                   />
                 </div>
 
-                <div className="form-group file-upload">
+                <div className="form-group-contact file-upload">
                   <label className="upload-label">
                     <input type="file" onChange={handleFileChange} />
                     <span className="upload-btn">
@@ -321,7 +321,7 @@ export default function Career() {
                   {fileName && <p className="file-name">{fileName}</p>}
                 </div>
 
-                <div className="form-group">
+                <div className="form-group-contact">
                   <textarea
                     placeholder="Tell us about yourself"
                     onChange={handleJobChange}
@@ -360,9 +360,9 @@ export default function Career() {
 
         {/* Form Card */}
         <div className="contact-card">
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="form-row">
-              <div className="form-group">
+          <form className="contact-form-page" onSubmit={handleSubmit}>
+            <div className="form-row-page">
+              <div className="form-group-contact">
                 <label>Name *</label>
                 <input
                   name="name"
@@ -372,7 +372,7 @@ export default function Career() {
                   required
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group-contact">
                 <input
                   name="lastName"
                   value={formData.lastName}
@@ -382,7 +382,7 @@ export default function Career() {
               </div>
             </div>
 
-            <div className="form-group">
+            <div className="form-group-contact">
               <label>Conatct No. *</label>
               <input
                 name="phone"
@@ -392,7 +392,7 @@ export default function Career() {
                 required
               />
             </div>
-            <div className="form-group">
+            <div className="form-group-contact">
               <label>Email Id *</label>
               <input
                 name="email"
@@ -402,7 +402,7 @@ export default function Career() {
                 required
               />
             </div>
-            <div className="form-group">
+            <div className="form-group-contact">
               <label>Message *</label>
               <textarea
                 name="message"
@@ -464,7 +464,6 @@ export default function Career() {
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-        <SocialLinks />
       </section>
     </>
   );

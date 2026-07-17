@@ -17,11 +17,13 @@ import {
   FaDatabase,
 } from "react-icons/fa";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Services() {
   useEffect(() => {
     document.title = "Services | Indo Sparsh Studio";
   }, []);
+  const navigate = useNavigate();
   return (
     <>
       <section className="services-section">
@@ -59,6 +61,20 @@ export default function Services() {
               Account, Professional Business Mail, Other Digital Solutions with
               Integration & Automation.
             </p>
+            <button
+              className="main-btn-primary why-card main-services-btn"
+              style={{
+                padding: "10px 30px",
+                color: "white",
+                marginTop: "auto",
+              }}
+              onClick={() => {
+                scrollToSection("we-serve-for");
+                navigate("/services/profile-creation");
+              }}
+            >
+              Explore more
+            </button>
           </div>
 
           <div className="service-card">
@@ -78,6 +94,20 @@ export default function Services() {
             </div>
             <h3>Web Development</h3>
             <p>Static Website, Dynamic Website, Landing Page, Portfolio etc.</p>
+            <button
+              className="main-btn-primary why-card services-btn"
+              style={{
+                padding: "10px 30px",
+                color: "white",
+                marginTop: "auto",
+              }}
+              onClick={() => {
+                navigate("/services/website-development");
+                scrollToSection("we-serve-for");
+              }}
+            >
+              Explore more
+            </button>
           </div>
 
           <div className="service-card">
@@ -97,6 +127,20 @@ export default function Services() {
             </div>
             <h3>App Development</h3>
             <p>Android Apps, iOS Apps, Cross-Platform Solutions etc.</p>
+            <button
+              className="main-btn-primary why-card services-btn"
+              style={{
+                padding: "10px 30px",
+                color: "white",
+                marginTop: "auto",
+              }}
+              onClick={() => {
+                scrollToSection("we-serve-for");
+                navigate("/services/app-development");
+              }}
+            >
+              Explore more
+            </button>
           </div>
 
           <div className="service-card">
@@ -119,6 +163,20 @@ export default function Services() {
               WhatsApp Marketing, SMS Marketing, Google Ads, Meta Ads, Telegram
               Ads, SEO etc.
             </p>
+            <button
+              className="main-btn-primary why-card services-btn"
+              style={{
+                padding: "10px 30px",
+                color: "white",
+                marginTop: "auto",
+              }}
+              onClick={() => {
+                scrollToSection("we-serve-for");
+                navigate("/services/digital-marketing");
+              }}
+            >
+              Explore more
+            </button>
           </div>
 
           <div className="service-card">
@@ -140,6 +198,20 @@ export default function Services() {
             <p>
               Content Planning, Post Design, Scheduling, Engagement Growth etc.
             </p>
+            <button
+              className="main-btn-primary why-card services-btn"
+              style={{
+                padding: "10px 30px",
+                color: "white",
+                marginTop: "auto",
+              }}
+              onClick={() => {
+                scrollToSection("we-serve-for");
+                navigate("/services/social-media");
+              }}
+            >
+              Explore more
+            </button>
           </div>
 
           <div className="service-card">
@@ -162,6 +234,20 @@ export default function Services() {
               User-Centric Design, Wireframes & Prototypes, Conversion-Optimized
               Interfaces etc.
             </p>
+            <button
+              className="main-btn-primary why-card services-btn"
+              style={{
+                padding: "10px 30px",
+                color: "white",
+                marginTop: "auto",
+              }}
+              onClick={() => {
+                scrollToSection("we-serve-for");
+                navigate("/services/ui-ux-design");
+              }}
+            >
+              Explore more
+            </button>
           </div>
 
           <div className="service-card">
@@ -184,6 +270,20 @@ export default function Services() {
               Logo Design, Posters & Banners, Social Media Creatives, Business
               Branding Materials etc.
             </p>
+            <button
+              className="main-btn-primary why-card services-btn"
+              style={{
+                padding: "10px 30px",
+                color: "white",
+                marginTop: "auto",
+              }}
+              onClick={() => {
+                scrollToSection("we-serve-for");
+                navigate("/services/graphic-design");
+              }}
+            >
+              Explore more
+            </button>
           </div>
 
           <div className="service-card">
@@ -205,6 +305,20 @@ export default function Services() {
             <p>
               Brand Strategy, Brand Identity, Online & Offline Marketing etc.
             </p>
+            <button
+              className="main-btn-primary why-card services-btn"
+              style={{
+                padding: "10px 30px",
+                color: "white",
+                marginTop: "auto",
+              }}
+              onClick={() => {
+                scrollToSection("we-serve-for");
+                navigate("/services/branding");
+              }}
+            >
+              Explore more
+            </button>
           </div>
 
           <div className="service-card">
@@ -224,6 +338,20 @@ export default function Services() {
             </div>
             <h3>Row Calling Data</h3>
             <p>Verified Business Leads, Industry-Specific Data etc.</p>
+            <button
+              className="main-btn-primary why-card services-btn"
+              style={{
+                padding: "10px 30px",
+                color: "white",
+                marginTop: "auto",
+              }}
+              onClick={() => {
+                scrollToSection("we-serve-for");
+                navigate("/services/row-calling-data");
+              }}
+            >
+              Explore more
+            </button>
           </div>
 
           <div className="service-card">
@@ -243,6 +371,20 @@ export default function Services() {
             </div>
             <h3>Content Creation & Video Editing Services</h3>
             <p>Promotional Videos, Reels & Shorts, Corporate Videos etc.</p>
+            <button
+              className="main-btn-primary why-card services-btn"
+              style={{
+                padding: "10px 30px",
+                color: "white",
+                marginTop: "auto",
+              }}
+              onClick={() => {
+                scrollToSection("we-serve-for");
+                navigate("/services/content-hub");
+              }}
+            >
+              Explore more
+            </button>
           </div>
 
           <div className="service-card">
@@ -264,6 +406,20 @@ export default function Services() {
             <p>
               Business Growth Planning, Digital Transformation Strategy etc.
             </p>
+            <button
+              className="main-btn-primary why-card services-btn"
+              style={{
+                padding: "10px 30px",
+                color: "white",
+                marginTop: "auto",
+              }}
+              onClick={() => {
+                scrollToSection("we-serve-for");
+                navigate("/services/business-consultancy");
+              }}
+            >
+              Explore more
+            </button>
           </div>
         </div>
       </section>
