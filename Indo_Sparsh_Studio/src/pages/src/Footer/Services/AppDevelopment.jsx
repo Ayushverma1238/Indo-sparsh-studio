@@ -112,7 +112,7 @@ export default function AppDevPage() {
               move slow.
             </p>
             <div className="appdev-hero__cta-row">
-              <button className="appdev-btn appdev-btn--primary">Start a project</button>
+              <button onClick={() => navigate("/request-quote")} className="appdev-btn appdev-btn--primary">Start a project</button>
               <button className="appdev-btn appdev-btn--ghost">See our work</button>
             </div>
             <dl className="appdev-hero__stats">
@@ -227,7 +227,7 @@ export default function AppDevPage() {
           <h2 className="adh-cta__title">Have an app in mind?</h2>
           <p className="adh-cta__text">Tell us what you're building. We'll reply with a scoped timeline within two business days.</p>
           <div className="appdev-hero__cta-row">
-            <button className="appdev-btn appdev-btn--primary">Start a project</button>
+            <button onClick={() => navigate("/request-quote")} className="appdev-btn appdev-btn--primary">Start a project</button>
             <button onClick={()=> navigate("/contact")} className="appdev-btn appdev-btn--ghost">Book a call</button>
           </div>
         </Reveal>

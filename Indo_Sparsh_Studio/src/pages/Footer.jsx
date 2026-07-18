@@ -54,7 +54,7 @@ export default function Footer() {
   const handleSubscribe = async () => {
     try {
       setIsSending(true);
-      const response = await fetch(`http://localhost:8000/api/subscribe.php`, {
+      const response = await fetch(`/backend-php/api/subscribe.php`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email }),

@@ -39,8 +39,8 @@ const UiUxService = () => {
             We bridge the gap between human emotion and digital interfaces. Our designs aren't just beautiful—they are built to perform, convert, and scale.
           </p>
           <div className="hero-cta-group animate-fade-in-up">
-            <button className="btn btn-primary project-card-btn">Start a Project</button>
-            <button className="btn btn-secondary">View Case Studies</button>
+            <button onClick={() => navigate('/request-quote')} className="btn btn-primary project-card-btn">Start a Project</button>
+            <button onClick={() => navigate("/blog")} className="btn btn-secondary">View Case Studies</button>
           </div>
         </div>
       </section>

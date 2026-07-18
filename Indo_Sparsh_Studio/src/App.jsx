@@ -36,6 +36,12 @@ import MaintenanceSupportPage from "./pages/src/Footer/Services/MaintenanceAndSu
 import BrandingMarketingPage from "./pages/src/Footer/Services/BrandingAndMarketing";
 import BusinessConsultancy from "./pages/src/Footer/Services/BusinessConsultancy";
 import GraphicDesignPage from "./pages/src/Footer/Services/GraphicDesign";
+import PrivacyPolicyPage from "./pages/src/Footer/Policies/PrivacyPolicy";
+import TermsConditionsPage from "./pages/src/Footer/Policies/TermConditionPage";
+import RefundPolicyPage from "./pages/src/Footer/Policies/RefundPolicyPage";
+import ModernSlaveryActPage from "./pages/src/Footer/Policies/ModernSlaveryActPage";
+import RecruitmentPolicyPage from "./pages/src/Footer/Policies/RecruitmentPolicyPage";
+import SitemapPage from "./pages/src/Footer/Policies/SitemapPage";
 
 export default function App() {
    
@@ -87,6 +93,15 @@ export default function App() {
         <Route path="/tech-stack" element={<TechStackPage />} />
         <Route path="/ethics-policy" element={<EthicsPolicyPage />} />
         <Route path="/services/social-media" element={<SocialShowcase />} />
+
+        {/* Policies */}
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
+        <Route path="/refund-policy" element={<RefundPolicyPage />} />
+        <Route path="/modern-slavery-act" element={<ModernSlaveryActPage />} />
+        <Route path="/recruitment-policy" element={<RecruitmentPolicyPage />} />
+        <Route path="/sitemap" element={<SitemapPage />} />
+
 
       </Routes>
     </Layout>

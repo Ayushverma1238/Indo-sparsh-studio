@@ -189,7 +189,7 @@ export default function BrandingMarketingPage() {
             <a href="#work" className="bm-btn bm-btn--primary">
               See our work
             </a>
-            <a href="#contact" className="bm-btn bm-btn--ghost">
+            <a href="/request-quote" className="bm-btn bm-btn--ghost">
               Start a project
             </a>
           </div>
@@ -314,7 +314,7 @@ export default function BrandingMarketingPage() {
             Tell us where the brand is today, and where you want it in a year.
           </p>
           <div className="bm-hero__cta-row">
-            <button className="bm-btn bm-btn--primary">Start a project</button>
+            <button onClick={() => navigate("/request-quote")} className="bm-btn bm-btn--primary">Start a project</button>
             <button className="bm-btn bm-btn--ghost-light" onClick={() => navigate("/contact")}>Book a call</button>
           </div>
         </Reveal>

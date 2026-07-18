@@ -34,6 +34,12 @@ import MaintenanceSupportPage from "./pages/src/Footer/Services/MaintenanceAndSu
 import BrandingMarketingPage from "./pages/src/Footer/Services/BrandingAndMarketing";
 import BusinessConsultancy from "./pages/src/Footer/Services/BusinessConsultancy";
 import GraphicDesignPage from "./pages/src/Footer/Services/GraphicDesign";
+import PrivacyPolicyPage from "./pages/src/Footer/Policies/PrivacyPolicy";
+import TermsConditionsPage from "./pages/src/Footer/Policies/TermConditionPage";
+import RefundPolicyPage from "./pages/src/Footer/Policies/RefundPolicyPage";
+import ModernSlaveryActPage from "./pages/src/Footer/Policies/ModernSlaveryActPage";
+import RecruitmentPolicyPage from "./pages/src/Footer/Policies/RecruitmentPolicyPage";
+import SitemapPage from "./pages/src/Footer/Policies/SitemapPage";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +84,15 @@ const router = createBrowserRouter([
       { path: "tech-stack", element: <TechStackPage /> },
       { path: "ethics-policy", element: <EthicsPolicyPage /> },
       { path: "services/social-media", element: <SocialShowcase /> },
+      
+      // Policies
+      { path: "privacy-policy", element: <PrivacyPolicyPage /> },
+      { path: "terms-and-conditions", element: <TermsConditionsPage /> },                   
+      { path: "refund-policy", element: <RefundPolicyPage /> },
+      { path: "modern-slavery-act", element: <ModernSlaveryActPage /> },
+      { path: "recruitment-policy", element: <RecruitmentPolicyPage /> },
+      { path: "sitemap", element: <SitemapPage /> },
+
 
     ],
   },

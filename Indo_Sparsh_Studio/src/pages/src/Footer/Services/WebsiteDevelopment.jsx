@@ -325,7 +325,7 @@ const WebsiteDevelopment = () => {
                   <li>Dedicated project lead</li>
                   <li>Timeline scoped together</li>
                 </ul>
-                <a href="contact.html" className="btn btn-ghost btn-block">
+                <a href="tel:+918005351770" className="btn btn-ghost btn-block">
                   Request a scope call
                 </a>
               </article>
@@ -342,7 +342,7 @@ const WebsiteDevelopment = () => {
                 sitemap within two business days.
               </p>
             </div>
-            <a href="contact.html" className="btn btn-primary btn-lg">
+            <a href="/request-quote" className="btn btn-primary btn-lg">
               Request a quote
             </a>
           </div>

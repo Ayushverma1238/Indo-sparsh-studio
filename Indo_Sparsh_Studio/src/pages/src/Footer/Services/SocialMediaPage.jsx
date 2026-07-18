@@ -7,7 +7,7 @@ function StatNumber({ value, suffix = "" }) {
   const ref = useRef(null);
   const [display, setDisplay] = useState(0);
   const done = useRef(false);
-  const navigate = useNavigate()
+
 
   useEffect(() => {
     const el = ref.current;
@@ -113,7 +113,7 @@ const work = [
 
 export default function SocialShowcase() {
   const [theme, setTheme] = useState("light");
-
+  const navigate = useNavigate()
   return (
     <section className="ss" data-theme={theme}>
       <div className="ss__orb ss__orb--a" aria-hidden="true" />
@@ -131,7 +131,7 @@ export default function SocialShowcase() {
           </p>
 
           <div className="ss__cta-row">
-            <button onClick={() => Navigate('/contact')} className="ss-btn ss-btn--primary">Book a strategy call</button>
+            <button onClick={() => navigate('/contact')} className="ss-btn ss-btn--primary">Book a strategy call</button>
           </div>
 
           <div className="ss__stats">

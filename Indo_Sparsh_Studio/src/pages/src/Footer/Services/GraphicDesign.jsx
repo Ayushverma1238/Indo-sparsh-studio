@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./GraphicDesign.css";
+import {useNavigate} from 'react-router-dom'
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -72,7 +73,7 @@ const testimonials = [
 ];
 
 export default function GraphicDesignPage() {
-
+  const navigate = useNavigate()
   return (
     <div className="gd">
 
@@ -98,7 +99,7 @@ export default function GraphicDesignPage() {
           </p>
           <div className="gd-hero__cta-row">
             <a href="/blog" className="gd-btn gd-btn--primary">View portfolio</a>
-            <a href="/contact" className="gd-btn gd-btn--ghost">Start a project</a>
+            <a href="/request-quote" className="gd-btn gd-btn--ghost">Start a project</a>
           </div>
         </div>
       </section>
@@ -191,8 +192,8 @@ export default function GraphicDesignPage() {
           <h2 className="gd-cta__title">Have something that needs designing?</h2>
           <p className="gd-cta__text">Tell us what it is — we'll reply with next steps within a day.</p>
           <div className="gd-hero__cta-row">
-            <button className="gd-btn gd-btn--dark">Start a project</button>
-            <button className="gd-btn gd-btn--ghost-light">View portfolio</button>
+            <button onClick={() => navigate("/request-quote")} className="gd-btn gd-btn--dark">Start a project</button>
+            <button onClick={() => navigate('/blog')} className="gd-btn gd-btn--ghost-light">View portfolio</button>
           </div>
         </Reveal>
       </section>

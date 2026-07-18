@@ -19,54 +19,70 @@ export default function Career() {
   }, []);
   const [success, setSuccess] = useState(false);
   const [jobSuccess, setJobSuccess] = useState(false);
-  const [resume, setResume] = useState(null);
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
     lastName: "",
     phone: "",
     email: "",
     message: "",
   });
+  const [resume, setResume] = useState(null);
+  const [fileName, setFileName] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+
   const [jobForm, setJobForm] = useState({
-    fullName: "",
+    name: "",
     email: "",
     phone: "",
     experience: "",
-    description: "",
+    about: "",
   });
+
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [jobTitle, setJobTitle] = useState("");
-  const [fileName, setFileName] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleJobSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const res = await fetch("https://indosparsh.com/send-email", {
+      const formData = new FormData();
+
+      formData.append("name", jobForm.name);
+      formData.append("email", jobForm.email);
+      formData.append("phone", jobForm.phone);
+      formData.append("experience", jobForm.experience);
+      formData.append("about", jobForm.about);
+      formData.append("role", jobTitle);
+      formData.append("resume", resume);
+      const res = await fetch("/backend-php/api/career.php", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: formData,
       });
 
       const data = await res.json();
 
       if (data.success) {
-        setSuccess(true);
-        setFormData({
+        setJobSuccess(true);
+        setJobForm({
           name: "",
-          lastName: "",
-          phone: "",
           email: "",
-          message: "",
+          phone: "",
+          experience: "",
+          about: "",
         });
+        setJobTitle("");
+        setResume("");
+        setFileName("");
 
-        setTimeout(() => setSuccess(false), 3000);
+        setTimeout(() => {
+          setJobSuccess(false);
+          setShowForm(false);
+        }, 3000);
       }
     } catch (err) {
       alert("❌ Failed to send message");
@@ -88,37 +104,38 @@ export default function Career() {
     setFileName(file?.name);
   };
 
-  const handleJobSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const data = new FormData();
-
-    data.append("jobTitle", jobTitle);
-    data.append("fullName", jobForm.fullName);
-    data.append("email", jobForm.email);
-    data.append("phone", jobForm.phone);
-    data.append("experience", jobForm.experience);
-    data.append("description", jobForm.description);
-    data.append("resume", resume);
+    setLoading(true);
 
     try {
-      const res = await fetch("https://indosparsh.com/apply-job", {
-        method: "POST",
-        body: data,
-      });
+      const res = await fetch(
+        `/backend-php/api/contact.php`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        },
+      );
 
-      const result = await res.json();
+      const data = await res.json();
 
-      if (result.success) {
-        setJobSuccess(true);
+      if (data.success) {
+        setSuccess(true);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          phone: "",
+          email: "",
+          message: "",
+        });
 
-        setTimeout(() => {
-          setJobSuccess(false);
-          setShowForm(false);
-        }, 3000);
+        setTimeout(() => setSuccess(false), 3000);
       }
-    } catch (error) {
-      alert("❌ Application failed");
+    } catch (err) {
+      alert("❌ Failed to send message");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -278,6 +295,8 @@ export default function Career() {
                 <div className="form-group-contact">
                   <input
                     type="text"
+                    name="name"
+                    value={jobForm.name}
                     placeholder="Full Name"
                     onChange={handleJobChange}
                     required
@@ -287,6 +306,8 @@ export default function Career() {
                 <div className="form-group-contact">
                   <input
                     type="email"
+                    name="email"
+                    value={jobForm.email}
                     placeholder="Email Address"
                     onChange={handleJobChange}
                     required
@@ -296,6 +317,8 @@ export default function Career() {
                 <div className="form-group-contact">
                   <input
                     type="tel"
+                    name="phone"
+                    value={jobForm.phone}
                     placeholder="Phone Number"
                     onChange={handleJobChange}
                     required
@@ -305,6 +328,8 @@ export default function Career() {
                 <div className="form-group-contact">
                   <input
                     type="text"
+                    name="experience"
+                    value={jobForm.experience}
                     placeholder="Years of Experience"
                     onChange={handleJobChange}
                   />
@@ -312,7 +337,11 @@ export default function Career() {
 
                 <div className="form-group-contact file-upload">
                   <label className="upload-label">
-                    <input type="file" onChange={handleFileChange} />
+                    <input
+                      type="file"
+                      name="resume"
+                      onChange={handleFileChange}
+                    />
                     <span className="upload-btn">
                       <FaUpload /> Upload Resume
                     </span>
@@ -323,12 +352,14 @@ export default function Career() {
 
                 <div className="form-group-contact">
                   <textarea
+                    value={jobForm.about}
+                    name="about"
                     placeholder="Tell us about yourself"
                     onChange={handleJobChange}
                   ></textarea>
                 </div>
 
-                <button className="submit-btn">Submit Application</button>
+                <button className="submit-btn">{loading ? "Request Sending..":"Submit Application"}</button>
               </form>
               {jobSuccess && (
                 <div className="success-overlay">
@@ -365,8 +396,8 @@ export default function Career() {
               <div className="form-group-contact">
                 <label>Name *</label>
                 <input
-                  name="name"
-                  value={formData.name}
+                  name="firstName"
+                  value={formData.firstName}
                   onChange={handleChange}
                   placeholder="First Name"
                   required

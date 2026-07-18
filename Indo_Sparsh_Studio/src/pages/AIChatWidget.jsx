@@ -6,24 +6,28 @@ export default function AIChatWidget() {
   const [messages, setMessages] = useState([
     { from: "ai", text: "Hello 👋 I’m Indo AI. How can I help you today?" },
   ]);
+  // const [inputMsg, setInputMsg] = useState("")
   const [input, setInput] = useState("");
 
-  const sendMessage = (e) => {
+  const sendMessage = async (e) => {
     e.preventDefault();
-    if (!input.trim()) return;
-
-    const userMsg = { from: "user", text: input };
-    setMessages((prev) => [...prev, userMsg]);
-    setInput("");
-
-    // Fake AI reply (replace later with real AI / API)
-    setTimeout(() => {
-      const aiMsg = {
-        from: "ai",
-        text: "Thanks for reaching out! Our team will contact you shortly. 🚀",
-      };
-      setMessages((prev) => [...prev, aiMsg]);
-    }, 800);
+    try {
+      const res = await fetch("/backend-php/api/chat.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: input,
+        }),
+      });
+  
+      const data = await res.json();
+  
+      console.log(data);
+    } catch (error) {
+      console.log("Error sending message", error)
+    }
   };
 
   return (

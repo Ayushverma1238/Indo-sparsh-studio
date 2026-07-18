@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./MaintenanceAndSupportPage.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -427,7 +427,7 @@ export default function MaintenanceSupportPage() {
             required to report a critical issue.
           </p>
           <div className="ms-hero__cta-row">
-            <button className="ms-btn ms-btn--primary">Report an issue</button>
+            <Link to="tel:+918005351770" className="ms-btn ms-btn--primary">Report an issue</Link>
             <button
               onClick={() => navigate("/contact")}
               className="ms-btn ms-btn--ghost-dark"
