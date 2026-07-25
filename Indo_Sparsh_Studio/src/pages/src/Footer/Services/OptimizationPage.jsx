@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./OptimizationPage.css";
 
 const OptimizationPage = () => {
+  useEffect(() => {
+    document.title = "Seo Optimization | Indo Sparsh Studio";
+  }, []);
   const [activeMetric, setActiveMetric] = useState("vitals");
   const [isLiveChecking, setIsLiveChecking] = useState(false);
   const [simulatedPing, setSimulatedPing] = useState(14);

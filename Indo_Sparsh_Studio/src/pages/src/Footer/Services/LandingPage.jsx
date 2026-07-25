@@ -143,6 +143,9 @@ function CropMarks() {
 }
 
 export default function LandingPageBuildStory() {
+  useEffect(() => {
+    document.title = "Landing Page | Indo Sparsh Studio";
+  }, []);
   const rootRef = useReveal();
 
   return (

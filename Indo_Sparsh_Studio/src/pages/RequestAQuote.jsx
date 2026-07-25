@@ -130,9 +130,9 @@ export default function RequestAQuota() {
     }
   };
   return (
-    <section className="contact-section">
+    <section className="contact-section-quote">
       {/* Header */}
-      <div className="contact-header">
+      <div className="contact-header-quote">
         <h1>
           Request a <span>Quote</span>
         </h1>
@@ -144,11 +144,11 @@ export default function RequestAQuota() {
       </div>
 
       {/* Form Card */}
-      <div className="contact-card">
-        <form className="contact-form" onSubmit={handleSubmit}>
+      <div className="contact-card-quote">
+        <form className="contact-form-quote" onSubmit={handleSubmit}>
           {/* Name */}
           {/* <div className="form-row"> */}
-          <div className="form-group">
+          <div className="form-group-quote">
             <label>First Name *</label>
             <input
               type="text"
@@ -160,7 +160,7 @@ export default function RequestAQuota() {
             />
           </div>
 
-          <div className="form-group">
+          <div className="form-group-quote">
             <label>Last Name *</label>
             <input
               type="text"
@@ -174,7 +174,7 @@ export default function RequestAQuota() {
           {/* </div> */}
 
           {/* Contact */}
-          <div className="form-group">
+          <div className="form-group-quote">
             <label>Phone Number *</label>
             <input
               type="tel"
@@ -187,7 +187,7 @@ export default function RequestAQuota() {
           </div>
 
           {/* Email */}
-          <div className="form-group">
+          <div className="form-group-quote">
             <label>Email Address *</label>
             <input
               type="email"
@@ -200,7 +200,7 @@ export default function RequestAQuota() {
           </div>
 
           {/* Company */}
-          <div className="form-group">
+          <div className="form-group-quote">
             <label>Company Name</label>
             <input
               type="text"
@@ -212,7 +212,7 @@ export default function RequestAQuota() {
           </div>
 
           {/* Website */}
-          <div className="form-group">
+          <div className="form-group-quote">
             <label>Website</label>
             <input
               type="url"
@@ -224,7 +224,7 @@ export default function RequestAQuota() {
           </div>
 
           {/* Service */}
-          <div style={{ position: "relative" }} className="form-group">
+          <div style={{ position: "relative" }} className="form-group-quote">
             <label>Service Required *</label>
             <div
               className="select-box"
@@ -253,7 +253,7 @@ export default function RequestAQuota() {
           </div>
 
           {/* Project Type */}
-          <div className="form-group">
+          <div className="form-group-quote">
             <label>Project Type *</label>
             <input
               type="text"
@@ -266,7 +266,7 @@ export default function RequestAQuota() {
           </div>
 
           {/* Budget */}
-          <div style={{ position: "relative" }} className="form-group">
+          <div style={{ position: "relative" }} className="form-group-quote">
             <label>Estimated Budget *</label>
             <div
               className="select-box"
@@ -295,7 +295,7 @@ export default function RequestAQuota() {
           </div>
 
           {/* Timeline */}
-          <div style={{ position: "relative" }} className="form-group">
+          <div style={{ position: "relative" }} className="form-group-quote">
             <label>Project Timeline *</label>
             <div
               className="select-box"
@@ -324,7 +324,7 @@ export default function RequestAQuota() {
           </div>
 
           {/* Country */}
-          <div style={{ position: "relative" }} className="form-group">
+          <div style={{ position: "relative" }} className="form-group-quote">
             <label>Country *</label>
             <div
               className="select-box"
@@ -353,7 +353,7 @@ export default function RequestAQuota() {
           </div>
 
           {/* Project Title */}
-          <div className="form-group">
+          <div className="form-group-quote">
             <label>Project Title *</label>
             <input
               type="text"
@@ -366,7 +366,7 @@ export default function RequestAQuota() {
           </div>
 
           {/* Preferred Contact */}
-          <div style={{ position: "relative" }} className="form-group">
+          <div style={{ position: "relative" }} className="form-group-quote">
             <label>Preferred Contact Method</label>
             <div
               className="select-box"
@@ -401,7 +401,7 @@ export default function RequestAQuota() {
           </div>
 
           {/* Attachment */}
-          <div className="form-group">
+          <div className="form-group-quote">
             <label>Upload Attachment</label>
             <input
               type="file"
@@ -412,7 +412,7 @@ export default function RequestAQuota() {
           </div>
 
           {/* Project Description */}
-          <div className="form-group">
+          <div className="form-group-quote">
             <label>Project Description *</label>
             <textarea
               name="projectDescription"
@@ -440,18 +440,7 @@ export default function RequestAQuota() {
         )}
       </div>
 
-      {/* MAP CARD */}
-      <div className="map-card">
-        <iframe
-          title="Indo Sparsh Studio Location"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.2887749198094!2d80.99241317414739!3d26.862564862246256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399be2c9d61cb27b%3A0x2b7487eae56b0919!2sSumit%20Complex%2C%20Vibhuti%20Khand%2C%20Gomti%20Nagar%2C%20Lucknow%2C%20Uttar%20Pradesh%20226010!5e0!3m2!1sen!2sin!4v1769161850031!5m2!1sen!2sin"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
-      <SocialLinks />
+      
     </section>
   );
 }

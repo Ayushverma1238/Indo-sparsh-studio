@@ -254,6 +254,9 @@ function ServiceStackCard({ service, data, index }) {
 }
 
 export default function TechStackPage() {
+  useEffect(() => {
+    document.title = "Tech Stack | Indo Sparsh Studio";
+  }, []);
   const [activeService, setActiveService] = useState("All");
 
   const visibleServices =

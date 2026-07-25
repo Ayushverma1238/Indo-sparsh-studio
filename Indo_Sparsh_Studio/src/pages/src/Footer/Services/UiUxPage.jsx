@@ -3,6 +3,9 @@ import './UiUxPage.css';
 import {useNavigate} from 'react-router-dom'
 
 const UiUxService = () => {
+  useEffect(() => {
+    document.title = "Ui Ux Design | Indo Sparsh Studio";
+  }, []);
   // Set default theme to dark mode
   const [activeTab, setActiveTab] = useState('process');
   const navigate= useNavigate()

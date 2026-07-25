@@ -137,6 +137,9 @@ const sections = [
 ];
 
 export default function TermsConditionsPage() {
+  useEffect(() => {
+    document.title = "Terms & conditions | Indo Sparsh Studio";
+  }, []);
   const [activeId, setActiveId] = useState(sections[0].id);
   const [progress, setProgress] = useState(0);
   const [showTop, setShowTop] = useState(false);

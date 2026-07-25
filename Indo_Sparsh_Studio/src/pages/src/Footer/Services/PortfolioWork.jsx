@@ -110,6 +110,9 @@ function CropMarks() {
 }
 
 export default function PortfolioWork() {
+  useEffect(() => {
+    document.title = "Portfolio Website | Indo Sparsh Studio";
+  }, []);
   const rootRef = useReveal();
 
   return (

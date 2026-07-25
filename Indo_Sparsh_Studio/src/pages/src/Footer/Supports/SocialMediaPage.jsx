@@ -247,7 +247,9 @@ const DATA_POINTS = [
 /* ------------------------------------ page ------------------------------------ */
 
 export default function SocialMediaHandlingPage() {
-  
+  useEffect(() => {
+    document.title = "Social Media Management | Indo Sparsh Studio";
+  }, []);
   return (
     <div className="smp-page" >
     

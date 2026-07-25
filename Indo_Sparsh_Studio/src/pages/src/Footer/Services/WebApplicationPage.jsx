@@ -152,6 +152,9 @@ function CropMarks() {
 }
 
 export default function WebAppBuildStory() {
+  useEffect(() => {
+    document.title = "Web Application | Indo Sparsh Studio";
+  }, []);
   const rootRef = useReveal();
 
   return (

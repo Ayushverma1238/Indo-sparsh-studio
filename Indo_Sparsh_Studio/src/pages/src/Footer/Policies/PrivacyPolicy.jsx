@@ -130,6 +130,9 @@ const sections = [
 ];
 
 export default function PrivacyPolicyPage() {
+  useEffect(() => {
+    document.title = "Privacy Policy | Indo Sparsh Studio";
+  }, []);
   const [activeId, setActiveId] = useState(sections[0].id);
   const [progress, setProgress] = useState(0);
   const [showTop, setShowTop] = useState(false);

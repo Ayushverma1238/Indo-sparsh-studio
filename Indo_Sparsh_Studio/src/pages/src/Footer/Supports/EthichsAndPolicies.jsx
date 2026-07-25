@@ -143,6 +143,9 @@ function PolicyItem({ h, p, index }) {
 }
 
 export default function EthicsPolicyPage() {
+  useEffect(() => {
+    document.title = "Ethics and Policy | Indo Sparsh Studio";
+  }, []);
   const [theme, setTheme] = useState("dark");
   const [activeTab, setActiveTab] = useState(policyData[0].id);
 

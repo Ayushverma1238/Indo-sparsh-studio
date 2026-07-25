@@ -73,6 +73,9 @@ const testimonials = [
 ];
 
 export default function GraphicDesignPage() {
+  useEffect(() => {
+    document.title = "Graphic Design | Indo Sparsh Studio";
+  }, []);
   const navigate = useNavigate()
   return (
     <div className="gd">

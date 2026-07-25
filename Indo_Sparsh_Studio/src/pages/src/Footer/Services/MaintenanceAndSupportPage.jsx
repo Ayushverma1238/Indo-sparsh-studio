@@ -238,6 +238,9 @@ const faqs = [
 ];
 
 export default function MaintenanceSupportPage() {
+  useEffect(() => {
+    document.title = "Maintenance And Support | Indo Sparsh Studio";
+  }, []);
   const [openFaq, setOpenFaq] = useState(0);
   const navigate = useNavigate();
   return (
@@ -289,49 +292,7 @@ export default function MaintenanceSupportPage() {
         </svg>
       </section>
 
-      {/* ---------- Plans ---------- */}
-      <section className="ms-section" id="plans">
-        <Reveal className="ms-section__head">
-          <span className="ms-kicker">Support plans</span>
-          <h2 className="ms-h2">
-            Coverage that matches how critical your site is
-          </h2>
-          <p className="ms-lead">
-            Every plan includes monitoring and backups. Higher tiers shorten
-            response times and widen coverage.
-          </p>
-        </Reveal>
-
-        <div className="ms-plans">
-          {plans.map((plan, i) => (
-            <Reveal
-              key={plan.name}
-              delay={i * 100}
-              className={`ms-plan why-card ${plan.popular ? "ms-plan--popular" : ""}`}
-            >
-              {plan.popular && (
-                <span className="ms-plan__badge">Recommended</span>
-              )}
-              <h3 className="ms-plan__name">{plan.name}</h3>
-              <div className="ms-plan__price">
-                {plan.price}
-                <span className="ms-plan__unit">{plan.unit}</span>
-              </div>
-              <ul className="ms-plan__features">
-                {plan.features.map((f) => (
-                  <li key={f}>
-                    <span className="ms-check">✓</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a href="#contact" className="ms-btn ms-btn--block">
-                Choose {plan.name}
-              </a>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      
 
       {/* ---------- What's included ---------- */}
       <section className="ms-section ms-section--muted">
@@ -394,6 +355,50 @@ export default function MaintenanceSupportPage() {
               <span className="ms-process__step">{p.step}</span>
               <h3 className="ms-process__title">{p.title}</h3>
               <p className="ms-process__text">{p.text}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* ---------- Plans ---------- */}
+      <section className="ms-section" id="plans">
+        <Reveal className="ms-section__head">
+          <span className="ms-kicker">Support plans</span>
+          <h2 className="ms-h2">
+            Coverage that matches how critical your site is
+          </h2>
+          <p className="ms-lead">
+            Every plan includes monitoring and backups. Higher tiers shorten
+            response times and widen coverage.
+          </p>
+        </Reveal>
+
+        <div className="ms-plans">
+          {plans.map((plan, i) => (
+            <Reveal
+              key={plan.name}
+              delay={i * 100}
+              className={`ms-plan ${plan.popular ? "ms-plan--popular" : "why-card "}`}
+            >
+              {plan.popular && (
+                <span className="ms-plan__badge">Recommended</span>
+              )}
+              <h3 className="ms-plan__name">{plan.name}</h3>
+              <div className="ms-plan__price">
+                {plan.price}
+                <span className="ms-plan__unit">{plan.unit}</span>
+              </div>
+              <ul className="ms-plan__features">
+                {plan.features.map((f) => (
+                  <li key={f}>
+                    <span className="ms-check">✓</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <a href="#contact" className="ms-btn ms-btn--block">
+                Choose {plan.name}
+              </a>
             </Reveal>
           ))}
         </div>

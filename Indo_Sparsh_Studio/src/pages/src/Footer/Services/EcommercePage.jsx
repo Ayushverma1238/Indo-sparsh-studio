@@ -147,6 +147,9 @@ function CropMarks() {
 }
 
 export default function EcommerceBuildStory() {
+  useEffect(() => {
+    document.title = "Ecommerce Website | Indo Sparsh Studio";
+  }, []);
   const rootRef = useReveal();
 
   return (

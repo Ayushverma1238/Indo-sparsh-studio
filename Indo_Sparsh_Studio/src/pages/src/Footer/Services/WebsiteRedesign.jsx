@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import './WebsiteRedesign.css';
 
 const WebsiteRedesign = () => {
+  useEffect(() => {
+    document.title = "Website Redesign | Indo Sparsh Studio";
+  }, []);
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef(null);

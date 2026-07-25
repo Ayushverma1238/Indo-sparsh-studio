@@ -148,6 +148,9 @@ function FAQItem({ q, a, isOpen, onToggle, index }) {
 }
 
 export default function FAQPage() {
+  useEffect(() => {
+    document.title = "FAQ's | Indo Sparsh Studio";
+  }, []);
   const [activeCategory, setActiveCategory] = useState(faqData[0].category);
   const [openKey, setOpenKey] = useState(`${faqData[0].category}-0`);
   const [menuOpen, setMenuOpen] = useState(false);

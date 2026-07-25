@@ -113,7 +113,7 @@ body.dark-mode {
   transition: opacity 0.6s ease, transform 0.6s ease;
   transition-delay: var(--delay, 0ms);
 }
-.ms-reveal.is-visible { opacity: 1; transform: translateY(0); }
+.ms-reveal.is-visible { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   .ms-reveal { opacity: 1; transform: none; transition: none; }
 }
@@ -196,7 +196,7 @@ body.dark-mode {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .ms-plan:hover { transform: translateY(-6px); box-shadow: 0 22px 42px var(--ms-shadow); }
-.ms-plan--popular { border-color: var(--ms-accent); box-shadow: 0 16px 34px var(--ms-shadow); }
+.ms-plan--popular { border-color: var(--ms-accent); box-shadow: 0 16px 34px var(--ms-shadow); transform: translateY(-8px); }
 .ms-plan__badge {
   position: absolute; top: -13px; right: 24px;
   background: var(--ms-accent);

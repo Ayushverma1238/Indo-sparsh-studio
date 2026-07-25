@@ -109,14 +109,11 @@ export default function Career() {
     setLoading(true);
 
     try {
-      const res = await fetch(
-        `/backend-php/api/contact.php`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        },
-      );
+      const res = await fetch(`/backend-php/api/contact.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
       const data = await res.json();
 
@@ -254,29 +251,47 @@ export default function Career() {
         <h2 className="career-title">Open Positions</h2>
 
         <div className="job-grid">
-          <div className="job-card">
+          <div className="job-card why-card">
             <h3>Frontend Developer (React)</h3>
             <p>Build immersive, high-performance user interfaces.</p>
-            <span>Experience: 1–3 Years</span>
+            <span>Experience: 0–3 Years</span>
             <button onClick={() => openForm("Frontend Developer (React)")}>
               Apply Now
             </button>
           </div>
 
-          <div className="job-card glow">
+          <div className="job-card why-card glow">
             <h3>Backend Developer (Node.js)</h3>
             <p>Design secure, scalable backend systems and APIs.</p>
-            <span>Experience: 2–4 Years</span>
+            <span>Experience: 0–4 Years</span>
             <button onClick={() => openForm("Backend Developer (Node.js)")}>
               Apply Now
             </button>
           </div>
 
-          <div className="job-card">
+          <div className="job-card why-card">
             <h3>UI/UX Designer</h3>
             <p>Create futuristic, human-centered digital experiences.</p>
-            <span>Experience: 1–3 Years</span>
+            <span>Experience: 0–3 Years</span>
             <button onClick={() => openForm("UI/UX Designer")}>
+              Apply Now
+            </button>
+          </div>
+
+          <div className="job-card why-card">
+            <h3>Explore more jobs</h3>
+            <p>
+              Discover exciting career opportunities across design, development,
+              marketing, and more. Find the role that matches your skills and
+              ambitions.
+            </p>
+            <span>Experience: 0–3 Years</span>
+            <button
+              onClick={() => window.open(
+                "https://docs.google.com/forms/d/e/1FAIpQLSdgO__QQ8NtCMA278ZnQML5BTh9h7ONGlw2zO8iI_LtaBUhHg/viewform",
+                "_blank",
+              )}
+            >
               Apply Now
             </button>
           </div>
@@ -359,7 +374,9 @@ export default function Career() {
                   ></textarea>
                 </div>
 
-                <button className="submit-btn">{loading ? "Request Sending..":"Submit Application"}</button>
+                <button className="submit-btn">
+                  {loading ? "Request Sending.." : "Submit Application"}
+                </button>
               </form>
               {jobSuccess && (
                 <div className="success-overlay">
@@ -377,7 +394,7 @@ export default function Career() {
 
       <ScrollBeam />
 
-      <section className="contact-section">
+      <section className="contact-section-page">
         {/* Header */}
         <div className="contact-header">
           <h1>
@@ -390,7 +407,7 @@ export default function Career() {
         </div>
 
         {/* Form Card */}
-        <div className="contact-card">
+        <div className="contact-card-page">
           <form className="contact-form-page" onSubmit={handleSubmit}>
             <div className="form-row-page">
               <div className="form-group-contact">
@@ -460,13 +477,13 @@ export default function Career() {
           )}
         </div>
 
-        <div className="info-card">
+        <div className="info-card why-card">
           <h2>Contacts</h2>
           <p className="info-highlight">contact@indosparsh.com</p>
           <p>+91 80053 51770</p>
         </div>
 
-        <div className="info-card">
+        <div className="info-card why-card">
           <h2>Address</h2>
           <p>
             Incuspaze, 11th Floor Rohtas Summit, Vibhuti Khand, Gomtinagar,
@@ -474,7 +491,7 @@ export default function Career() {
           </p>
         </div>
 
-        <div className="info-card">
+        <div className="info-card why-card">
           <h2>Opening Hours</h2>
           <p>
             Monday – Saturday: <span>10:00 AM – 5:00 PM</span>

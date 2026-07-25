@@ -1,7 +1,10 @@
-import React from "react";
-import './WebsiteDevelopment.css'
+import React, { useEffect } from "react";
+import "./WebsiteDevelopment.css";
 
 const WebsiteDevelopment = () => {
+  useEffect(() => {
+    document.title = "Website Development | Indo Sparsh Studio";
+  }, []);
   return (
     <>
       <a className="skip-link" href="#main">
@@ -68,7 +71,13 @@ const WebsiteDevelopment = () => {
                   height="330"
                   className="plan-frame"
                 />
-                <rect x="60" y="40" width="360" height="46" className="plan-line" />
+                <rect
+                  x="60"
+                  y="40"
+                  width="360"
+                  height="46"
+                  className="plan-line"
+                />
                 <text x="72" y="68" className="plan-label">
                   NAV — 1440 &times; 72
                 </text>
@@ -83,9 +92,27 @@ const WebsiteDevelopment = () => {
                 <text x="72" y="106" className="plan-label">
                   HERO
                 </text>
-                <line x1="80" y1="130" x2="260" y2="130" className="plan-dash" />
-                <line x1="80" y1="150" x2="220" y2="150" className="plan-dash" />
-                <rect x="80" y="170" width="120" height="30" className="plan-cta" />
+                <line
+                  x1="80"
+                  y1="130"
+                  x2="260"
+                  y2="130"
+                  className="plan-dash"
+                />
+                <line
+                  x1="80"
+                  y1="150"
+                  x2="220"
+                  y2="150"
+                  className="plan-dash"
+                />
+                <rect
+                  x="80"
+                  y="170"
+                  width="120"
+                  height="30"
+                  className="plan-cta"
+                />
 
                 <rect
                   x="60"
@@ -209,7 +236,9 @@ const WebsiteDevelopment = () => {
                     handover before your site goes live.
                   </p>
                 </div>
-                <span className="stage-artifact">Artifact: launch checklist</span>
+                <span className="stage-artifact">
+                  Artifact: launch checklist
+                </span>
               </li>
             </ol>
           </div>
@@ -275,37 +304,45 @@ const WebsiteDevelopment = () => {
               <article className="package-card why-card">
                 <p className="sheet-no">SHEET 01 / 03</p>
                 <h3>Starter</h3>
-                <p className="package-price">From $1,800</p>
+                <p className="package-price">₹4,999</p>
                 <p className="package-desc">
-                  A focused site for a new business — up to 5 pages, built on a
-                  single visual system.
+                  A clean, single-page landing site — perfect for launching fast
+                  and making a strong first impression.
                 </p>
                 <ul className="package-list">
-                  <li>Up to 5 pages</li>
+                  <li>1 landing page</li>
                   <li>Mobile-first responsive build</li>
-                  <li>Contact form &amp; basic SEO</li>
-                  <li>2-week delivery</li>
+                  <li>Contact form integration</li>
+                  <li>Basic on-page SEO</li>
+                  <li>3&ndash;5 day delivery</li>
                 </ul>
+                <p className="package-note">
+                  Need more than one page? Move up to Growth.
+                </p>
                 <a href="contact.html" className="btn btn-ghost btn-block">
                   Start with this sheet
                 </a>
               </article>
 
-              <article className="package-card package-featured why-card">
+              <article  className="package-card package-featured ">
                 <p className="sheet-no">SHEET 02 / 03</p>
-                <span className="badge">Most requested</span>
+                <span className="badge">Most populer</span>
                 <h3>Growth</h3>
-                <p className="package-price">From $4,200</p>
+                <p className="package-price">₹9,999</p>
                 <p className="package-desc">
-                  For businesses that need content management, more pages, and a
-                  stronger visual identity.
+                  A multi-page site built for businesses that need more room to
+                  tell their story and showcase what they offer.
                 </p>
                 <ul className="package-list">
-                  <li>Up to 12 pages</li>
+                  <li>5&ndash;8 pages</li>
                   <li>Custom component library</li>
-                  <li>CMS setup &amp; team training</li>
-                  <li>4&ndash;6 week delivery</li>
+                  <li>On-page SEO across all pages</li>
+                  <li>Contact form &amp; lead capture</li>
+                  <li>1&ndash;2 week delivery</li>
                 </ul>
+                <p className="package-note">
+                  Need more pages or advanced features? Move up to Custom.
+                </p>
                 <a href="contact.html" className="btn btn-primary btn-block">
                   Start with this sheet
                 </a>
@@ -314,17 +351,22 @@ const WebsiteDevelopment = () => {
               <article className="package-card why-card">
                 <p className="sheet-no">SHEET 03 / 03</p>
                 <h3>Custom</h3>
-                <p className="package-price">Scoped on request</p>
+                <p className="package-price">₹19,999</p>
                 <p className="package-desc">
-                  Multi-language sites, e-commerce, or bespoke integrations —
-                  drawn up to your exact spec.
+                  A complete full-stack build — frontend and backend
+                  development, scoped and structured around your project.
                 </p>
                 <ul className="package-list">
                   <li>Unlimited pages</li>
-                  <li>E-commerce &amp; integrations</li>
+                  <li>Frontend + backend development</li>
+                  <li>Database &amp; API integration</li>
                   <li>Dedicated project lead</li>
                   <li>Timeline scoped together</li>
                 </ul>
+                <p className="package-note">
+                  Secure login (JWT / NextAuth) and deployment are available as
+                  paid add-ons based on your requirements.
+                </p>
                 <a href="tel:+918005351770" className="btn btn-ghost btn-block">
                   Request a scope call
                 </a>
@@ -348,8 +390,6 @@ const WebsiteDevelopment = () => {
           </div>
         </section>
       </main>
-
-    
     </>
   );
 };

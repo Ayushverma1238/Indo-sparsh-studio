@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './BusinessProfileCreation.css';
 
 const ProfessionalShowcase = () => {
+  useEffect(() => {
+    document.title = "Business Profile | Indo Sparsh Studio";
+  }, []);
   const [activeTab, setActiveTab] = useState('all');
 
   const coreMetrics = [

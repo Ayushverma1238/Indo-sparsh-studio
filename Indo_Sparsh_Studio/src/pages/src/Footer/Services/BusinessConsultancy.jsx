@@ -180,6 +180,9 @@ const testimonials = [
 ];
 
 export default function BusinessConsultancy() {
+  useEffect(() => {
+    document.title = "Business Consultancy | Indo Sparsh Studio";
+  }, []);
   const message = encodeURIComponent(
     "Hi Indosparsh Studio! /n/nI'd like to book a free consultation regarding my project./n/nI'm interested in learning more about your services, pricing, timeline, and how you can help bring my idea to life./n/nPlease let me know your available time slots. Looking forward to connecting with you./n/nThank you!",
   );

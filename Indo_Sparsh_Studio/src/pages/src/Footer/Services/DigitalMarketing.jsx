@@ -56,6 +56,9 @@ const trends = [
 ];
 
 export default function DigitalMarketingShowcase() {
+  useEffect(() => {
+    document.title = "Digital Marketing | Indo Sparsh Studio";
+  }, []);
   const [theme, setTheme] = useState("light");
 
   // Respect the user's OS preference on first load

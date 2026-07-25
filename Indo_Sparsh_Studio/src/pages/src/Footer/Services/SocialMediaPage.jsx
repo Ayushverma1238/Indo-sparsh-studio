@@ -112,6 +112,9 @@ const work = [
 ];
 
 export default function SocialShowcase() {
+  useEffect(() => {
+    document.title = "Social Media Management | Indo Sparsh Studio";
+  }, []);
   const [theme, setTheme] = useState("light");
   const navigate = useNavigate()
   return (

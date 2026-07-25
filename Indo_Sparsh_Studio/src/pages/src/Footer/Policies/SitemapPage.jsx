@@ -59,6 +59,10 @@ const siteMap = [
 ];
 
 export default function SitemapPage() {
+
+  useEffect(() => {
+    document.title = "Sitemap | Indo Sparsh Studio";
+  }, []);
   const [query, setQuery] = useState("");
 
   const q = query.trim().toLowerCase();

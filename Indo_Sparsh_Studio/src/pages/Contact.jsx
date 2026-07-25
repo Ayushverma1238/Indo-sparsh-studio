@@ -25,14 +25,11 @@ export default function Contact() {
     setLoading(true);
 
     try {
-      const res = await fetch(
-        `/backend-php/api/contact.php`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        },
-      );
+      const res = await fetch(`/backend-php/api/contact.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
       const data = await res.json();
 
@@ -55,7 +52,7 @@ export default function Contact() {
     }
   };
   return (
-    <section className="contact-section">
+    <section className="contact-section-page">
       {/* Header */}
       <div className="contact-header">
         <h1>
@@ -68,7 +65,7 @@ export default function Contact() {
       </div>
 
       {/* Form Card */}
-      <div className="contact-card">
+      <div className="contact-card-page">
         <form className="contact-form-page" onSubmit={handleSubmit}>
           <div className="form-row-page">
             <div className="form-group-contact">
@@ -139,13 +136,13 @@ export default function Contact() {
         )}
       </div>
 
-      <div className="info-card">
+      <div className="info-card why-card">
         <h2>Contacts</h2>
         <p className="info-highlight">contact@indosparsh.com</p>
         <p>+91 80053 51770</p>
       </div>
 
-      <div className="info-card">
+      <div className="info-card why-card">
         <h2>Address</h2>
         <p>
           Incuspaze, 11th Floor Rohtas Summit, Vibhuti Khand, Gomtinagar,
@@ -153,7 +150,7 @@ export default function Contact() {
         </p>
       </div>
 
-      <div className="info-card">
+      <div className="info-card why-card">
         <h2>Opening Hours</h2>
         <p>
           Monday – Saturday: <span>10:00 AM – 5:00 PM</span>

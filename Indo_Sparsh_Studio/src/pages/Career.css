@@ -111,10 +111,45 @@
   text-shadow: 0 0 18px #22d3ee;
 }
 
+/* ================= JOB GRID =================
+   Responsive column plan:
+   - Mobile (<640px):        1 column
+   - Small tablets (>=640px): 2 columns
+   - Desktop (>=1024px):     3 columns   (up to 1500px)
+   - Large screens (>=1500px): 4 columns
+*/
+
 .job-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: 1fr;
   gap: 35px;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .job-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .job-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1500px) {
+  .job-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 🔥 Center a lone 4th card when the grid is in 3-column mode
+   (only fires when there are exactly 4 job cards total) */
+@media (min-width: 1024px) and (max-width: 1499px) {
+  .job-card:nth-child(4):last-child {
+    grid-column: 1 / span 2;
+  }
 }
 
 .job-card {
@@ -818,5 +853,3 @@
     opacity: 1;
   }
 }
-
-

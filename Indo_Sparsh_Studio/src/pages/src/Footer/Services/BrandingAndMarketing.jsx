@@ -159,6 +159,9 @@ const process = [
 ];
 
 export default function BrandingMarketingPage() {
+  useEffect(() => {
+    document.title = "Branding and Marketing | Indo Sparsh Studio";
+  }, []);
     const navigate = useNavigate()
   const [filter, setFilter] = useState("All");
 

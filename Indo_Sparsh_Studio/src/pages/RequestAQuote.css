@@ -5,7 +5,7 @@
 
 /* ================= SECTION ================= */
 
-.contact-section {
+.contact-section-quote {
   min-height: 100vh;
   padding: 100px 8%;
   background: transparent;
@@ -13,21 +13,21 @@
   display: grid;
   grid-template-columns: 1.2fr;
   grid-template-areas:
-    "header header"
+    "header"
     "form";
   gap: 35px;
 }
 
 /* ================= HEADER ================= */
 
-.contact-header {
+.contact-header-quote {
   grid-area: header;
   max-width: 850px;
   margin: 0 auto 30px;
   text-align: center;
 }
 
-.contact-header h1 {
+.contact-header-quote h1 {
   font-size: clamp(2.2rem, 5vw, 3.3rem);
   letter-spacing: 3px;
   margin-bottom: 18px;
@@ -36,11 +36,11 @@
     0 0 40px rgba(34, 211, 238, 0.4);
 }
 
-.contact-header span {
+.contact-header-quote span {
   color: #22d3ee;
 }
 
-.contact-header p {
+.contact-header-quote p {
   color: #94a3b8;
   line-height: 1.8;
   font-size: clamp(1rem, 2vw, 1.1rem);
@@ -48,7 +48,7 @@
 
 /* ================= FORM CARD ================= */
 
-.contact-card {
+.contact-card-quote {
   grid-area: form;
   background: rgba(2, 6, 23, 0.88);
   border-radius: 24px;
@@ -69,33 +69,49 @@
 
 /* ================= FORM ================= */
 
-.contact-form {
+.contact-form-quote {
   width: 95%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 22px;
+  /* FIX: prevents content-based track blowout so both columns stay equal width */
+  min-width: 0;
+}
+
+/* FIX: stops any single grid item's intrinsic content width
+   from forcing its column wider than its sibling column */
+.contact-form-quote > * {
+  min-width: 0;
 }
 
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  /* FIX: same blowout protection for nested First/Last name row */
+  min-width: 0;
 }
 
-.form-group {
+.form-row > * {
+  min-width: 0;
+}
+
+.form-group-quote {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  /* FIX: flex children also need this to respect parent grid track width */
+  min-width: 0;
 }
 
-.form-group label {
+.form-group-quote label {
   font-size: 0.8rem;
   letter-spacing: 1.5px;
   color: #cbd5f5;
 }
 
-.form-group input,
-.form-group textarea,
+.form-group-quote input,
+.form-group-quote textarea,
 .select-box {
   background: rgba(2, 6, 23, 0.9);
   border: 1px solid rgba(34, 211, 238, 0.35);
@@ -106,16 +122,19 @@
   font-size: 0.9rem;
   outline: none;
   transition: 0.3s ease;
+  /* FIX: force fields to always fill their column instead of their content size */
+  width: 100%;
+  min-width: 0;
 }
 
-.form-group textarea {
+.form-group-quote textarea {
   min-height: 130px;
   resize: vertical;
 }
 
 /* RGB focus glow */
-.form-group input:focus,
-.form-group textarea:focus,
+.form-group-quote input:focus,
+.form-group-quote textarea:focus,
 .select-box:focus {
   border-color: transparent;
   animation: rgbGlow 3s linear infinite;
@@ -128,12 +147,12 @@
 }
 
 /* Align inputs when label is missing */
-.form-row .form-group {
+.form-row .form-group-quote {
   position: relative;
 }
 
-/* If a form-group has NO label, push input down */
-.form-row .form-group:not(:has(label)) input {
+/* If a form-group-quote has NO label, push input down */
+.form-row .form-group-quote:not(:has(label)) input {
   margin-top: 22px; /* match label + gap height */
 }
 
@@ -247,35 +266,37 @@
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 900px) {
-  .contact-section {
+  .contact-section-quote {
     grid-template-columns: 1fr;
     grid-template-areas:
       "header"
       "form"
-      "info1"
-      "info2"
-      "info3";
+    
+  }
+  .contact-card-quote{
+    width: 100%;
+    padding: 20px 10px;
   }
 }
 
 @media (max-width: 635px) {
-  .contact-form {
+  .contact-form-quote {
     gap: 14px; /* was 22px */
     width: 100%;
     padding: 5px;
     grid-template-columns: 1fr;
   }
 
-  .form-group input,
-  .form-group textarea,
+  .form-group-quote input,
+  .form-group-quote textarea,
   .select-box {
     width: 80%;
   }
-  .contact-section {
+  .contact-section-quote {
     padding: 80px 6%;
   }
 
-  .contact-card {
+  .contact-card-quote {
     padding: 35px 22px;
   }
 
@@ -284,12 +305,12 @@
     gap: 12px; /* reduce space between First & Last name */
   }
 
-  .form-group {
+  .form-group-quote {
     gap: 6px;
   }
 
   /* REMOVE artificial spacing on mobile */
-  .form-row .form-group:not(:has(label)) input {
+  .form-row .form-group-quote:not(:has(label)) input {
     margin-top: 0;
   }
 
@@ -460,25 +481,25 @@
 
 /* Very large screens */
 @media (min-width: 1400px) {
-  .contact-section {
+  .contact-section-quote {
     max-width: 1400px;
     margin: auto;
     column-gap: 60px;
   }
 
-  .contact-card {
+  .contact-card-quote {
     padding: 60px 60px;
   }
 }
 
 /* Tablets landscape */
 @media (max-width: 1024px) {
-  .contact-section {
+  .contact-section-quote {
     padding: 90px 6%;
     gap: 28px;
   }
 
-  .contact-card {
+  .contact-card-quote {
     padding: 40px 30px;
   }
 
@@ -489,11 +510,11 @@
 
 /* Tablets portrait & large phones */
 @media (max-width: 820px) {
-  .contact-header {
+  .contact-header-quote {
     margin-bottom: 10px;
   }
 
-  .contact-header p {
+  .contact-header-quote p {
     font-size: 0.95rem;
   }
 
@@ -504,23 +525,24 @@
 
 /* Normal phones */
 @media (max-width: 600px) {
-  .contact-header h1 {
+  .contact-header-quote h1 {
     letter-spacing: 2px;
   }
 
-  .contact-form {
+  .contact-form-quote {
     gap: 18px;
     padding: 5px;
   }
 
-  .contact-card {
+  .contact-card-quote {
     padding: 20px auto;
   }
 
-  .form-group input,
-  .form-group textarea,
+  .form-group-quote input,
+  .form-group-quote textarea,
   .select-box {
     padding: 12px;
+    width: 100%;
     font-size: 0.85rem;
   }
 
@@ -538,15 +560,15 @@
 
 /* Small phones */
 @media (max-width: 380px) {
-  .contact-section {
+  .contact-section-quote {
     padding: 65px 5%;
   }
 
-  .contact-header h1 {
+  .contact-header-quote h1 {
     font-size: 1.9rem;
   }
 
-  .contact-form {
+  .contact-form-quote {
     padding: 10px;
   }
 
@@ -569,12 +591,12 @@
 }
 
 /* Fix success overlay positioning */
-.contact-card {
+.contact-card-quote {
   position: relative;
 }
 
 @media (max-width: 600px) {
-  .contact-section {
+  .contact-section-quote {
     padding: 70px 6% 90px;
   }
 }
@@ -612,21 +634,21 @@
 /* ================= LIGHT THEME OVERRIDES ================= */
 /* Matches: document.body.classList.add("light-mode") / "dark-mode" */
 
-body.light-mode .contact-section {
+body.light-mode .contact-section-quote {
   color: #0f172a;
 }
 
-body.light-mode .contact-header h1 {
+body.light-mode .contact-header-quote h1 {
   text-shadow:
     0 0 14px rgba(34, 211, 238, 0.45),
     0 0 28px rgba(34, 211, 238, 0.2);
 }
 
-body.light-mode .contact-header p {
+body.light-mode .contact-header-quote p {
   color: #475569;
 }
 
-body.light-mode .contact-card {
+body.light-mode .contact-card-quote {
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(34, 211, 238, 0.4);
   box-shadow:
@@ -634,13 +656,13 @@ body.light-mode .contact-card {
     inset 0 0 15px rgba(34, 211, 238, 0.04);
 }
 
-body.light-mode .form-group label {
+body.light-mode .form-group-quote label {
   color: #151c27;
   font-weight: 600;
 }
 
-body.light-mode .form-group input,
-body.light-mode .form-group textarea,
+body.light-mode .form-group-quote input,
+body.light-mode .form-group-quote textarea,
 body.light-mode .select-box {
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(51, 163, 180, 0.4);
@@ -706,3 +728,4 @@ body.light-mode .select-item {
   border: 1px solid rgba(34, 211, 238, 0.4);
   color: #0f172a;
 }
+

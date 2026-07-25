@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './ContentHub.css';
 
 const ContentHub = () => {
+  useEffect(() => {
+    document.title = "ContentHub | Indo Sparsh Studio";
+  }, []);
   const [filter, setFilter] = useState('All');
 
   const productionCards = [
