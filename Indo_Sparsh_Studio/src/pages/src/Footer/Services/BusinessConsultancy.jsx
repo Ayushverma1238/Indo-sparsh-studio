@@ -1,356 +1,886 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./BusinessConsultancy.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  FaArrowRight,
+  FaChartLine,
+  FaHandshake,
+  FaBullseye,
+  FaRocket,
+  FaPlay,
+  FaCheckCircle,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaGlobe,
+} from "react-icons/fa";
+import { HiOutlineLightBulb, HiOutlineTrendingUp } from "react-icons/hi";
+import { motion, useInView } from "framer-motion";
 
-/* ---------- scroll-reveal wrapper ---------- */
-function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
+/* ==========================================================
+   REVEAL COMPONENT
+========================================================== */
+
+function RevealBC({ children, className = "", delay = 0, as: Tag = "div" }) {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          obs.unobserve(el);
-        }
-      },
-      { threshold: 0.2 },
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+
+  const visible = useInView(ref, {
+    once: true,
+    margin: "-100px",
+  });
 
   return (
     <Tag
       ref={ref}
-      className={`bc-reveal ${visible ? "is-visible" : ""} ${className}`}
-      style={{ "--delay": `${delay}ms` }}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0px)" : "translateY(60px)",
+        transition: `all .8s cubic-bezier(.22,.61,.36,1) ${delay}ms`,
+      }}
     >
       {children}
     </Tag>
   );
 }
 
-/* ---------- animated KPI ring ---------- */
-function KpiRing({ percent, label, prefix = "", suffix = "%" }) {
+/* ==========================================================
+   COUNTER COMPONENT
+========================================================== */
+
+function CounterBC({ end, suffix = "" }) {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-  const [display, setDisplay] = useState(0);
-  const radius = 46;
-  const circumference = 2 * Math.PI * radius;
+
+  const visible = useInView(ref, {
+    once: true,
+  });
+
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !visible) {
-          setVisible(true);
-          const duration = 1200;
-          const start = performance.now();
-          const tick = (now) => {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            setDisplay(Math.round(percent * eased));
-            if (progress < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
-          obs.unobserve(el);
-        }
-      },
-      { threshold: 0.4 },
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [percent]);
+    if (!visible) return;
 
-  const offset = circumference - (Math.min(percent, 100) / 100) * circumference;
+    let startTime = null;
+
+    const duration = 1800;
+
+    function animate(time) {
+      if (!startTime) startTime = time;
+
+      const progress = Math.min((time - startTime) / duration, 1);
+
+      setCount(Math.floor(progress * end));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }, [visible, end]);
 
   return (
-    <div className="bc-kpi" ref={ref}>
-      <svg className="bc-kpi__ring" viewBox="0 0 110 110">
-        <circle className="bc-kpi__track" cx="55" cy="55" r={radius} />
-        <circle
-          className="bc-kpi__fill"
-          cx="55"
-          cy="55"
-          r={radius}
-          style={{
-            strokeDasharray: circumference,
-            strokeDashoffset: visible ? offset : circumference,
-          }}
-        />
-      </svg>
-      <div className="bc-kpi__value">
-        {prefix}
-        {display}
-        {suffix}
-      </div>
-      <div className="bc-kpi__label">{label}</div>
-    </div>
+    <h2 ref={ref}>
+      {count}
+      {suffix}
+    </h2>
   );
 }
 
-/* ---------- data ---------- */
-const services = [
+/* ==========================================================
+   DATA
+========================================================== */
+
+const statsBC = [
   {
-    title: "Strategy & Planning",
-    text: "A clear three-year plan built around where the market is actually heading.",
+    icon: <FaHandshake />,
+    number: 150,
+    suffix: "+",
+    title: "Businesses Helped",
   },
   {
-    title: "Operations Consulting",
-    text: "Process audits that find the bottleneck no one's been willing to name.",
+    icon: <FaChartLine />,
+    number: 38,
+    suffix: "%",
+    title: "Average Revenue Growth",
   },
   {
-    title: "Financial Advisory",
-    text: "Forecasting, unit economics, and a runway plan you can defend to investors.",
+    icon: <FaBullseye />,
+    number: 95,
+    suffix: "%",
+    title: "Client Satisfaction",
   },
   {
-    title: "Market Expansion",
-    text: "Entry plans for new regions or segments, sized to your actual capacity.",
-  },
-  {
-    title: "Change Management",
-    text: "Restructures and transitions that keep the team functioning, not just informed.",
-  },
-  {
-    title: "Risk & Compliance",
-    text: "Frameworks that hold up under audit, not just under a slide deck.",
+    icon: <FaRocket />,
+    number: 12,
+    suffix: "+",
+    title: "Years Experience",
   },
 ];
 
-const roadmap = [
+const processBC = [
   {
     step: "01",
-    title: "Assess",
-    text: "A structured audit of the business, the market, and the gap between them.",
+    icon: <HiOutlineLightBulb />,
+    title: "Business Audit",
+    description:
+      "We understand your business, identify challenges and uncover opportunities for growth.",
   },
   {
     step: "02",
-    title: "Strategize",
-    text: "A prioritized plan, with tradeoffs made explicit instead of hidden.",
+    icon: <FaBullseye />,
+    title: "Strategy",
+    description:
+      "A customized roadmap designed around your goals, customers and market.",
   },
   {
     step: "03",
-    title: "Execute",
-    text: "Hands-on delivery alongside your team, not a handoff after the deck.",
+    icon: <HiOutlineTrendingUp />,
+    title: "Execution",
+    description:
+      "Implementation support with measurable KPIs and practical business improvements.",
   },
   {
     step: "04",
+    icon: <FaRocket />,
     title: "Scale",
-    text: "Systems and metrics that keep working after the engagement ends.",
+    description:
+      "Continuous optimization to help your business grow sustainably.",
   },
 ];
 
-const cases = [
-  {
-    industry: "Manufacturing",
-    challenge: "Margins eroding under rising input costs",
-    result: "+19% gross margin in two quarters",
-  },
-  {
-    industry: "SaaS",
-    challenge: "Growth stalled after Series A",
-    result: "3.1x pipeline growth in 6 months",
-  },
-  {
-    industry: "Retail",
-    challenge: "Expansion into two new regions",
-    result: "Break-even 4 months ahead of plan",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "They didn't just hand us a strategy deck. They stayed until the numbers moved.",
-    name: "Anjali Mehra",
-    role: "COO, Fieldstone Manufacturing",
-  },
-  {
-    quote:
-      "The clearest, most honest read on our business we've gotten from an outside firm.",
-    name: "David Okafor",
-    role: "Founder, Ridgeline SaaS",
-  },
-];
+/* ==========================================================
+   MAIN COMPONENT
+========================================================== */
 
 export default function BusinessConsultancy() {
+  const navigate = useNavigate()
   useEffect(() => {
     document.title = "Business Consultancy | Indo Sparsh Studio";
   }, []);
+
   const message = encodeURIComponent(
-    "Hi Indosparsh Studio! /n/nI'd like to book a free consultation regarding my project./n/nI'm interested in learning more about your services, pricing, timeline, and how you can help bring my idea to life./n/nPlease let me know your available time slots. Looking forward to connecting with you./n/nThank you!",
+    "Hi Indo Sparsh Studio! I want to book a Business Consultancy session.",
   );
+
   return (
-    <div className="bc">
-      {/* ---------- Hero ---------- */}
-      <section className="bc-hero">
-        <div className="bc-hero__inner">
-          <div className="bc-hero__content">
-            <span className="bc-eyebrow">Business Consultancy</span>
-            <h1 className="bc-hero__headline">
-              Strategy that shows up{" "}
-              <span className="bc-accent">in your numbers.</span>
-            </h1>
-            <p className="bc-hero__subtext">
-              We work alongside leadership teams to fix what's actually slowing
-              growth — not just what's easiest to present in a slide.
+    <div className="business-consultancy-page-bc">
+      {/* ==================================================
+          HERO SECTION
+      ================================================== */}
+
+      <section className="hero-section-bc">
+        <div className="hero-blob-one-bc"></div>
+        <div className="hero-blob-two-bc"></div>
+        <div className="hero-blob-three-bc"></div>
+
+        <div className="container-bc">
+          <div className="hero-grid-bc">
+            {/* LEFT */}
+
+            <RevealBC className="hero-content-bc">
+              <span className="hero-badge-bc">BUSINESS CONSULTANCY</span>
+
+              <h1 className="hero-title-bc">
+                Transform Your Business Into A<span> Growth Machine.</span>
+              </h1>
+
+              <p className="hero-description-bc">
+                We help startups, entrepreneurs and established businesses build
+                profitable strategies, improve operations and accelerate revenue
+                through practical consulting.
+              </p>
+
+              <div className="hero-buttons-bc">
+                <Link
+                  to={`https://wa.me/918005351770?text=${message}`}
+                  target="_blank"
+                  className="primary-button-bc"
+                >
+                  Book Consultation
+                  <FaArrowRight />
+                </Link>
+
+                <Link to="/services" className="secondary-button-bc">
+                  <FaPlay />
+                  Explore Services
+                </Link>
+              </div>
+
+              <div className="hero-mini-stats-bc">
+                <div className="mini-stat-bc">
+                  <h3>150+</h3>
+                  <span>Projects</span>
+                </div>
+
+                <div className="mini-stat-bc">
+                  <h3>95%</h3>
+                  <span>Success</span>
+                </div>
+
+                <div className="mini-stat-bc">
+                  <h3>12+</h3>
+                  <span>Years</span>
+                </div>
+              </div>
+            </RevealBC>
+
+            {/* RIGHT */}
+
+            <RevealBC className="hero-image-bc" delay={200}>
+              <div className="analytics-card-bc">
+                <span className="analytics-badge-bc">Live Analytics</span>
+
+                <h3>Revenue Growth</h3>
+
+                <div className="chart-box-bc">
+                  <svg viewBox="0 0 500 250" preserveAspectRatio="none">
+                    <path
+                      className="chart-line-bc"
+                      d="
+                        M0 210
+                        C60 200
+                        110 170
+                        170 150
+                        C240 120
+                        300 90
+                        360 70
+                        C410 55
+                        460 35
+                        500 15
+                      "
+                    />
+                  </svg>
+                </div>
+
+                <div className="analytics-footer-bc">
+                  <div>
+                    <small>Growth</small>
+
+                    <h4>+38%</h4>
+                  </div>
+
+                  <div>
+                    <small>Efficiency</small>
+
+                    <h4>+24%</h4>
+                  </div>
+                </div>
+              </div>
+            </RevealBC>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================
+          STATS SECTION
+      ================================================== */}
+
+      <section className="stats-section-bc">
+        <div className="container-bc">
+          <div className="stats-grid-bc">
+            {statsBC.map((item, index) => (
+              <RevealBC
+                key={index}
+                className="stat-card-bc why-card"
+                delay={index * 120}
+              >
+                <div className="stat-icon-bc">{item.icon}</div>
+
+                <CounterBC end={item.number} suffix={item.suffix} />
+
+                <p>{item.title}</p>
+              </RevealBC>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* ==================================================
+          ABOUT SECTION
+      ================================================== */}
+
+      <section className="about-section-bc">
+        <div className="container-bc">
+          <RevealBC className="section-header-bc">
+            <span className="section-tag-bc">ABOUT US</span>
+
+            <h2 className="section-title-bc">
+              We Help Businesses Grow
+              <span> Smarter</span>
+            </h2>
+
+            <p className="section-description-bc">
+              Our consulting approach is focused on solving real business
+              problems instead of delivering lengthy presentations. We work
+              closely with founders and business owners to create practical
+              strategies that increase revenue, improve operations and build
+              sustainable growth.
             </p>
-            <div className="bc-hero__cta-row">
+          </RevealBC>
+
+          <div className="about-grid-bc">
+            {/* LEFT IMAGE */}
+
+            <RevealBC className="about-image-wrapper-bc">
+              <div className="about-image-card-bc">
+                <div className="floating-circle-one-bc"></div>
+                <div className="floating-circle-two-bc"></div>
+
+                <div className="about-center-content-bc">
+                  <FaChartLine className="about-big-icon-bc" />
+
+                  <h3>Growth Driven Strategy</h3>
+
+                  <p>
+                    We combine consulting, branding, technology and marketing to
+                    create measurable business growth.
+                  </p>
+                </div>
+              </div>
+            </RevealBC>
+
+            {/* RIGHT CONTENT */}
+
+            <RevealBC className="about-content-bc" delay={150}>
+              <div className="feature-card-bc why-card">
+                <div className="feature-icon-bc">
+                  <FaCheckCircle />
+                </div>
+
+                <div>
+                  <h3>Business Analysis</h3>
+
+                  <p>
+                    Understand where your business is today and discover hidden
+                    opportunities.
+                  </p>
+                </div>
+              </div>
+
+              <div className="feature-card-bc why-card">
+                <div className="feature-icon-bc">
+                  <FaCheckCircle />
+                </div>
+
+                <div>
+                  <h3>Market Research</h3>
+
+                  <p>
+                    Learn about competitors, customer behaviour and current
+                    market trends.
+                  </p>
+                </div>
+              </div>
+
+              <div className="feature-card-bc why-card">
+                <div className="feature-icon-bc">
+                  <FaCheckCircle />
+                </div>
+
+                <div>
+                  <h3>Growth Planning</h3>
+
+                  <p>
+                    Build realistic short-term and long-term strategies for
+                    consistent business growth.
+                  </p>
+                </div>
+              </div>
+
+              <div className="feature-card-bc why-card">
+                <div className="feature-icon-bc">
+                  <FaCheckCircle />
+                </div>
+
+                <div>
+                  <h3>Continuous Support</h3>
+
+                  <p>
+                    We stay connected during implementation to ensure measurable
+                    business outcomes.
+                  </p>
+                </div>
+              </div>
+            </RevealBC>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================
+          PROCESS SECTION
+      ================================================== */}
+
+      <section className="process-section-bc">
+        <div className="container-bc">
+          <RevealBC className="section-header-bc">
+            <span className="section-tag-bc">OUR PROCESS</span>
+
+            <h2 className="section-title-bc">How We Work</h2>
+
+            <p className="section-description-bc">
+              Every engagement follows a structured consulting process designed
+              to maximize business growth.
+            </p>
+          </RevealBC>
+
+          <div className="timeline-wrapper-bc">
+            {processBC.map((item, index) => (
+              <RevealBC
+                key={index}
+                delay={index * 120}
+                className="timeline-card-bc why-card"
+              >
+                <div className="timeline-number-bc">{item.step}</div>
+
+                <div className="timeline-icon-bc">{item.icon}</div>
+
+                <h3>{item.title}</h3>
+
+                <p>{item.description}</p>
+              </RevealBC>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================
+          WHY CHOOSE US
+      ================================================== */}
+
+      <section className="why-section-bc">
+        <div className="container-bc">
+          <RevealBC className="section-header-bc">
+            <span className="section-tag-bc">WHY CHOOSE US</span>
+
+            <h2 className="section-title-bc">
+              Why Businesses
+              <span> Trust Us</span>
+            </h2>
+          </RevealBC>
+
+          <div className="why-grid-bc">
+            <RevealBC className="why-card-bc why-card">
+              <div className="why-icon-bc">🚀</div>
+
+              <h3>Revenue Focused</h3>
+
+              <p>
+                Every recommendation is directly linked to increasing business
+                performance.
+              </p>
+            </RevealBC>
+
+            <RevealBC delay={100} className="why-card-bc why-card">
+              <div className="why-icon-bc">📊</div>
+
+              <h3>Data Driven</h3>
+
+              <p>
+                Every strategy is backed by research, analytics and industry
+                insights.
+              </p>
+            </RevealBC>
+
+            <RevealBC delay={200} className="why-card-bc why-card">
+              <div className="why-icon-bc">💡</div>
+
+              <h3>Practical Solutions</h3>
+
+              <p>
+                We deliver actionable plans instead of complicated business
+                reports.
+              </p>
+            </RevealBC>
+
+            <RevealBC delay={300} className="why-card-bc why-card">
+              <div className="why-icon-bc">🤝</div>
+
+              <h3>Long-Term Partnership</h3>
+
+              <p>
+                We continue supporting businesses during implementation and
+                scaling.
+              </p>
+            </RevealBC>
+          </div>
+        </div>
+      </section>
+      {/* ==================================================
+          SERVICES SECTION
+      ================================================== */}
+
+      <section className="services-section-bc">
+        <div className="container-bc">
+          <RevealBC className="section-header-bc">
+            <span className="section-tag-bc">OUR SERVICES</span>
+
+            <h2 className="section-title-bc">
+              Business Solutions That
+              <span> Deliver Results</span>
+            </h2>
+
+            <p className="section-description-bc">
+              Whether you're launching a startup or scaling an established
+              company, we provide practical consulting solutions designed for
+              sustainable business growth.
+            </p>
+          </RevealBC>
+
+          <div className="services-grid-bc">
+            {[
+              {
+                icon: "📈",
+                title: "Business Strategy",
+                desc: "Growth planning, competitor analysis, expansion strategy and execution roadmap.",
+              },
+              {
+                icon: "💰",
+                title: "Financial Advisory",
+                desc: "Improve cash flow, profitability, pricing strategy and revenue optimization.",
+              },
+              {
+                icon: "🎯",
+                title: "Brand Positioning",
+                desc: "Create a powerful brand identity that customers trust and remember.",
+              },
+              {
+                icon: "📢",
+                title: "Marketing Strategy",
+                desc: "Generate qualified leads through digital marketing and branding.",
+              },
+              {
+                icon: "⚙️",
+                title: "Operations Consulting",
+                desc: "Optimize business workflow and reduce unnecessary operational costs.",
+              },
+              {
+                icon: "💻",
+                title: "Digital Transformation",
+                desc: "Modernize your business with automation, websites and digital systems.",
+              },
+            ].map((service, index) => (
+              <RevealBC
+                key={index}
+                delay={index * 100}
+                className="service-card-bc"
+              >
+                <div className="service-icon-bc">{service.icon}</div>
+
+                <h3>{service.title}</h3>
+
+                <p>{service.desc}</p>
+
+                <button className="service-button-bc">
+                  Learn More
+                  <FaArrowRight />
+                </button>
+              </RevealBC>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================
+          PRICING SECTION
+      ================================================== */}
+
+      <section className="pricing-section-bc">
+        <div className="container-bc">
+          <RevealBC className="section-header-bc">
+            <span className="section-tag-bc">CONSULTING PACKAGES</span>
+
+            <h2 className="section-title-bc">
+              Choose The Right
+              <span> Plan</span>
+            </h2>
+
+            <p className="section-description-bc">
+              Flexible consulting packages tailored for startups, SMEs and
+              growing enterprises.
+            </p>
+          </RevealBC>
+
+          <div className="pricing-grid-bc">
+            <RevealBC className="pricing-card-bc">
+              <span className="pricing-label-bc">STARTER</span>
+
+              <h3>Business Discovery</h3>
+
+              <h1>₹999</h1>
+
+              <ul className="pricing-list-bc">
+                <li>✔ 30 Minute Consultation</li>
+                <li>✔ Business Review</li>
+                <li>✔ Growth Suggestions</li>
+                <li>✔ Action Summary</li>
+              </ul>
+
+              <button onClick={() => navigate('/contact')} className="pricing-button-bc">Get Started</button>
+            </RevealBC>
+
+            <RevealBC
+              delay={120}
+              className="pricing-card-bc featured-pricing-card-bc"
+            >
+              <div className="popular-badge-bc">MOST POPULAR</div>
+
+              <span className="pricing-label-bc">PROFESSIONAL</span>
+
+              <h3>Revenue Audit</h3>
+
+              <h1>₹4,999</h1>
+
+              <ul className="pricing-list-bc">
+                <li>✔ Complete Business Audit</li>
+                <li>✔ Revenue Analysis</li>
+                <li>✔ Marketing Review</li>
+                <li>✔ Competitor Research</li>
+                <li>✔ Growth Roadmap</li>
+              </ul>
+
               <Link
                 to={`https://wa.me/918005351770?text=${message}`}
                 target="_blank"
-                rel="noopener noreferrer"
-                className="bc-btn bc-btn--primary"
+                className="primary-button-bc"
               >
-                Book a consultation
+                Book Consultation
+                <FaArrowRight />
               </Link>
-              <a href="/services" className="bc-btn bc-btn--ghost">
-                Explore services
-              </a>
+            </RevealBC>
+
+            <RevealBC delay={240} className="pricing-card-bc">
+              <span className="pricing-label-bc">ENTERPRISE</span>
+
+              <h3>Monthly Advisory</h3>
+
+              <h1>₹14,999</h1>
+
+              <ul className="pricing-list-bc">
+                <li>✔ Unlimited Consultation</li>
+                <li>✔ Weekly Meetings</li>
+                <li>✔ Business Planning</li>
+                <li>✔ Team Support</li>
+                <li>✔ Monthly Reports</li>
+              </ul>
+
+              <button onClick={() => navigate("/contact")} className="pricing-button-bc">Contact Us</button>
+            </RevealBC>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================
+          CALL TO ACTION
+      ================================================== */}
+
+      <section className="consultation-banner-bc">
+        <div className="container-bc">
+          <RevealBC className="consultation-box-bc">
+            <div className="consultation-content-bc">
+              <span>FREE CONSULTATION</span>
+
+              <h2>Let's Build Your Next Growth Strategy</h2>
+
+              <p>
+                Discuss your business goals with our experts and receive
+                practical recommendations tailored specifically for your
+                business.
+              </p>
             </div>
-          </div>
 
-          <div className="bc-hero__chart">
-            <svg viewBox="0 0 420 260" className="bc-chart" aria-hidden="true">
-              <g className="bc-chart__grid">
-                {[40, 90, 140, 190].map((y) => (
-                  <line key={y} x1="0" y1={y} x2="420" y2={y} />
-                ))}
-              </g>
-              <path
-                className="bc-chart__area"
-                d="M0,210 C60,200 90,150 140,140 C190,130 220,90 270,80 C320,70 360,40 420,20 L420,240 L0,240 Z"
-              />
-              <path
-                className="bc-chart__line"
-                d="M0,210 C60,200 90,150 140,140 C190,130 220,90 270,80 C320,70 360,40 420,20"
-              />
-              <circle className="bc-chart__dot" cx="420" cy="20" r="6" />
-            </svg>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- KPI band ---------- */}
-      <section className="bc-kpis">
-        <Reveal delay={0}>
-          <KpiRing percent={38} label="avg revenue growth" prefix="+" />
-        </Reveal>
-        <Reveal delay={100}>
-          <KpiRing percent={24} label="cost efficiency gained" prefix="+" />
-        </Reveal>
-        <Reveal delay={200}>
-          <KpiRing percent={94} label="client retention rate" />
-        </Reveal>
-        <Reveal delay={300}>
-          <KpiRing percent={30} label="faster time to market" prefix="-" />
-        </Reveal>
-      </section>
-
-      {/* ---------- Services ---------- */}
-      <section className="bc-section" id="services">
-        <Reveal className="bc-section__head">
-          <span className="bc-kicker">What we help with</span>
-          <h2 className="bc-h2">
-            Consulting across the parts that actually move the business
-          </h2>
-        </Reveal>
-        <div className="bc-grid">
-          {services.map((s, i) => (
-            <Reveal key={s.title} delay={i * 70} className="bc-card why-card">
-              <h3 className="bc-card__title">{s.title}</h3>
-              <p className="bc-card__text">{s.text}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* ---------- Roadmap ---------- */}
-      <section className="bc-section bc-section--muted">
-        <Reveal className="bc-section__head">
-          <span className="bc-kicker">Engagement roadmap</span>
-          <h2 className="bc-h2">Four phases, one accountable plan</h2>
-        </Reveal>
-        <div className="bc-process">
-          <div className="bc-process__line" aria-hidden="true" />
-          {roadmap.map((r, i) => (
-            <Reveal key={r.step} delay={i * 100} className="bc-process__item">
-              <span className="bc-process__step">{r.step}</span>
-              <h3 className="bc-process__title">{r.title}</h3>
-              <p className="bc-process__text">{r.text}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* ---------- Case studies ---------- */}
-      <section className="bc-section">
-        <Reveal className="bc-section__head">
-          <span className="bc-kicker">Results</span>
-          <h2 className="bc-h2">A few outcomes we're proud of</h2>
-        </Reveal>
-        <div className="bc-grid bc-grid--3">
-          {cases.map((c, i) => (
-            <Reveal key={c.industry} delay={i * 90} className="bc-case">
-              <span className="bc-case__industry">{c.industry}</span>
-              <p className="bc-case__challenge">{c.challenge}</p>
-              <span className="bc-case__result">{c.result}</span>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* ---------- Testimonials ---------- */}
-      <section className="bc-section bc-section--muted">
-        <Reveal className="bc-section__head">
-          <span className="bc-kicker">What clients say</span>
-          <h2 className="bc-h2">Straight talk from people we've worked with</h2>
-        </Reveal>
-        <div className="bc-grid bc-grid--2">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={i * 100} className="bc-quote why-card">
-              <p className="bc-quote__text">"{t.quote}"</p>
-              <div className="bc-quote__author">
-                <span className="bc-quote__name">{t.name}</span>
-                <span className="bc-quote__role">{t.role}</span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* ---------- Final CTA ---------- */}
-      <section className="bc-cta" id="contact">
-        <Reveal className="bc-cta__inner">
-          <h2 className="bc-cta__title">
-            Let's find what's actually slowing you down.
-          </h2>
-          <p className="bc-cta__text">
-            A first consultation is free — bring the numbers you already have.
-          </p>
-          <div className="bc-hero__cta-row">
-            {/* TODO:"ADD a whatspp link with some content" */}
             <Link
               to={`https://wa.me/918005351770?text=${message}`}
               target="_blank"
-              rel="noopener noreferrer"
-              className="bc-btn bc-btn--primary"
+              className="primary-button-bc"
             >
-              Book a consultation
+              Schedule Consultation
+              <FaArrowRight />
             </Link>
-            {/* <button  className="bc-btn bc-btn--primary">Book a consultation</button>  */}
-            <Link to="tel:+918005351770" className="bc-btn bc-btn--ghost-dark">
-              Talk to our team
-            </Link>
-          </div>
-        </Reveal>
+          </RevealBC>
+        </div>
       </section>
+      {/* ==================================================
+          TESTIMONIALS SECTION
+      ================================================== */}
+
+      <section className="testimonials-section-bc">
+        <div className="container-bc">
+          <RevealBC className="section-header-bc">
+            <span className="section-tag-bc">CLIENT TESTIMONIALS</span>
+
+            <h2 className="section-title-bc">
+              What Our
+              <span> Clients Say</span>
+            </h2>
+
+            <p className="section-description-bc">
+              We believe long-term partnerships create the biggest impact.
+              Here's what our clients say about working with us.
+            </p>
+          </RevealBC>
+
+          <div className="testimonial-grid-bc">
+            {[
+              {
+                name: "Rahul Sharma",
+                company: "Retail Business",
+                review:
+                  "Their business strategy completely transformed our sales process. We experienced consistent growth within just a few months.",
+              },
+              {
+                name: "Priya Gupta",
+                company: "Startup Founder",
+                review:
+                  "Professional, practical and easy to work with. Every recommendation was actionable and delivered measurable results.",
+              },
+              {
+                name: "Amit Verma",
+                company: "Manufacturing",
+                review:
+                  "Their consulting helped us optimize operations and improve profitability while reducing unnecessary costs.",
+              },
+            ].map((item, index) => (
+              <RevealBC
+                key={index}
+                delay={index * 120}
+                className="testimonial-card-bc  why-card"
+              >
+                <div className="stars-bc">★★★★★</div>
+
+                <p className="testimonial-review-bc">"{item.review}"</p>
+
+                <div className="testimonial-footer-bc">
+                  <div className="testimonial-avatar-bc">
+                    {item.name.charAt(0)}
+                  </div>
+
+                  <div>
+                    <h4>{item.name}</h4>
+
+                    <span>{item.company}</span>
+                  </div>
+                </div>
+              </RevealBC>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================
+          FAQ SECTION
+      ================================================== */}
+
+      <section className="faq-section-bc">
+        <div className="container-bc">
+          <RevealBC className="section-header-bc">
+            <span className="section-tag-bc">FAQ</span>
+
+            <h2 className="section-title-bc">
+              Frequently Asked
+              <span> Questions</span>
+            </h2>
+          </RevealBC>
+
+          <div className="faq-wrapper-bc">
+            {[
+              {
+                q: "Who can benefit from business consultancy?",
+                a: "Startups, entrepreneurs, SMEs and established companies looking to improve growth and profitability.",
+              },
+              {
+                q: "Do you provide online consultations?",
+                a: "Yes. We offer both online and offline consulting sessions depending on your preference.",
+              },
+              {
+                q: "How long does a consulting project take?",
+                a: "It depends on your business requirements. Small consultations may take one session while growth projects may continue for several months.",
+              },
+              {
+                q: "Can you help with digital transformation?",
+                a: "Absolutely. We assist businesses with branding, websites, automation, digital marketing and process optimization.",
+              },
+            ].map((faq, index) => (
+              <RevealBC key={index} delay={index * 100} className="faq-card-bc">
+                <h3>{faq.q}</h3>
+
+                <p>{faq.a}</p>
+              </RevealBC>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================
+          CONTACT SECTION
+      ================================================== */}
+
+      <section className="contact-section-bc">
+        <div className="container-bc">
+          <div className="contact-grid-bc">
+            <RevealBC className="contact-content-bc">
+              <span className="section-tag-bc">CONTACT US</span>
+
+              <h2 className="section-title-bc">
+                Let's Discuss
+                <span> Your Business</span>
+              </h2>
+
+              <p className="section-description-bc">
+                Whether you're launching a startup or growing an established
+                company, we're here to help you achieve measurable business
+                success.
+              </p>
+
+              <div className="contact-list-bc">
+                <div className="contact-item-bc">
+                  <FaPhoneAlt />
+
+                  <span>+91 80053 51770</span>
+                </div>
+
+                <div className="contact-item-bc">
+                  <FaEnvelope />
+
+                  <span>info@indosparshstudio.com</span>
+                </div>
+
+                <div className="contact-item-bc">
+                  <FaGlobe />
+
+                  <span>www.indosparshstudio.com</span>
+                </div>
+
+                <div className="contact-item-bc">
+                  <FaMapMarkerAlt />
+
+                  <span>Lucknow, Uttar Pradesh, India</span>
+                </div>
+              </div>
+            </RevealBC>
+
+            <RevealBC delay={200} className="contact-card-bc">
+              <h3>Ready To Grow?</h3>
+
+              <p>
+                Book your first consultation and receive a customized roadmap
+                designed specifically for your business goals.
+              </p>
+
+              <Link
+                to={`https://wa.me/918005351770?text=${message}`}
+                target="_blank"
+                className="primary-button-bc"
+              >
+                Book Consultation
+                <FaArrowRight />
+              </Link>
+            </RevealBC>
+          </div>
+        </div>
+      </section>
+
+     
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./RowCallingData.css";
+import { Link } from "react-router-dom";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -46,6 +47,7 @@ const plans = [
       "Cost-effective outreach",
       "Ideal for mass campaigns",
     ],
+    message: "Hi! I'm interested in the Cold Data package (₹499/1000 records) for a mass outreach campaign.\n\n Can you share how I can get started?"
   },
   {
     name: "Warm Data",
@@ -59,6 +61,7 @@ const plans = [
       "Better conversion rate",
       "Ideal for telecalling",
     ],
+    message:"Hi! I saw the Warm Data plan (₹999/1000 records) for telecalling with better conversion.\n\n Can you tell me more about the targeting and how soon I can get the data?"
   },
   {
     name: "Hot Data",
@@ -71,6 +74,7 @@ const plans = [
       "Daily / weekly refresh",
       "High-intent decision makers",
     ],
+    message:"Hi! I need high-intent, decision-maker leads for quick sales closure — interested in the Hot Data plan (₹9,999/1000 records).\n\n Can you share more details and how fast I can get access?"
   },
 ];
 
@@ -221,9 +225,9 @@ export default function RowCallingData() {
                   </li>
                 ))}
               </ul>
-              <a href="#contact" className="dp-btn dp-btn--block">
+              <Link target="_blank" to={`https://wa.me/918005351770?text=${plan.message}`} className="dp-btn dp-btn--block">
                 Request this data
-              </a>
+              </Link>
             </Reveal>
           ))}
         </div>
@@ -251,9 +255,9 @@ export default function RowCallingData() {
               </li>
             </ul>
           </div>
-          <a href="/request-quote" className="dp-btn dp-btn--light">
+          <Link target="_blank" to={`https://wa.me/918005351770?text=${"Hi! I need 10,000+ leads with custom targeting. Can we discuss a bulk/custom plan and pricing?"}`} className="dp-btn dp-btn--light">
             Request custom quote
-          </a>
+          </Link>
         </Reveal>
       </section>
 
