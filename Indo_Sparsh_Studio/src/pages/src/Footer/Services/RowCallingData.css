@@ -14,8 +14,8 @@ body.light-mode {
   --dp-shadow: rgba(18, 20, 28, 0.12);
 }
 body.dark-mode {
-  --dp-bg: #0b0d12;
-  --dp-bg-2: #12141b;
+  --dp-bg: #060a16;
+  --dp-bg-2: #060d1f;
   --dp-surface: #151821;
   --dp-text: #edeef2;
   --dp-text-muted: #9aa0ac;

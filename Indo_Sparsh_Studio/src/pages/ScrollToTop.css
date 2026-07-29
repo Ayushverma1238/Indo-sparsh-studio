@@ -156,7 +156,7 @@
   .scroll-arrow {
     width: 46px;
     height: 46px;
-    right: 25px;
+    right: 30px;
     bottom: 120px;
   }
 
@@ -169,3 +169,22 @@
     height: 26px;
   }
 }
+
+@media (max-width: 480px) {
+  .scroll-arrow {
+    width: 46px;
+    height: 46px;
+    right: 24px;
+    bottom: 120px;
+  }
+
+  .scroll-arrow svg {
+    font-size: 22px;
+  }
+
+  .scroll-arrow .arrow-core {
+    width: 26px;
+    height: 26px;
+  }
+}
+

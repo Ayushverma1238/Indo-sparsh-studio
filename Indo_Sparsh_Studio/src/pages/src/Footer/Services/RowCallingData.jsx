@@ -264,47 +264,7 @@ export default function RowCallingData() {
         </Reveal>
       </section>
 
-      {/* ---------- Contact ---------- */}
-      <section className="dp-contact" id="contact">
-        <Reveal className="dp-contact__inner">
-          <span className="dp-kicker dp-kicker--light">Get in touch</span>
-          <h2 className="dp-contact__title">Tell us the data you need</h2>
-          <p className="dp-contact__text">
-            Reach out and we'll scope the right cold, warm or hot list for your
-            campaign.
-          </p>
-
-          <div className="dp-contact__grid">
-            <a href="tel:+918005351770" className="dp-contact__item why-card">
-              <span className="dp-contact__label">Call / WhatsApp</span>
-              <span className="dp-contact__value">+91-8005351770</span>
-            </a>
-            <a
-              href="mailto:contact@indosparsh.com"
-              className="dp-contact__item why-card"
-            >
-              <span className="dp-contact__label">Email</span>
-              <span className="dp-contact__value">contact@indosparsh.com</span>
-            </a>
-            <a
-              href="https://www.indosparsh.com"
-              target="_blank"
-              rel="noreferrer"
-              className="dp-contact__item why-card"
-            >
-              <span className="dp-contact__label">Website</span>
-              <span className="dp-contact__value">www.indosparsh.com</span>
-            </a>
-            <div className="dp-contact__item why-card">
-              <span className="dp-contact__label">Office</span>
-              <span className="dp-contact__value">
-                Incuspaze, 11th Floor Rohtas Summit, Vibhuti Khand, Gomtinagar,
-                Lucknow, Uttar Pradesh 226010, India
-              </span>
-            </div>
-          </div>
-        </Reveal>
-      </section>
+    
     </div>
   );
 }

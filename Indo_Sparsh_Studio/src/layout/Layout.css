@@ -46,6 +46,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 10px;
 
   background: linear-gradient(90deg, #22d3ee, #a855f7);
   color: white;
@@ -56,7 +57,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 18px;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 /* Button */
@@ -68,8 +69,19 @@ body {
   border-radius: 30px;
   text-decoration: none;
   font-size: 0.8rem;
+  text-align: center;
+  width: fit-content;
+  display: inline-block;
   font-weight: 600;
   transition: 0.3s ease;
+  word-break: keep-all;
+}
+
+@media (max-width: 400px) {
+  .promo-btn {
+    padding: 6px;
+    width: 150px;
+  }
 }
 
 .promo-btn:hover {
@@ -267,7 +279,7 @@ body {
   background-size: 300% 300%;
 
   animation: borderFlow 5s linear infinite;
-
+  
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
