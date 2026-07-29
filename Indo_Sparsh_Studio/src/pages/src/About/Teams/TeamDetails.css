@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 /* ===================================================================
    THEME TOKENS
    Driven by body.dark-mode / body.light-mode, set elsewhere in the app.
@@ -18,7 +17,7 @@
   --accent-ink: #f7f7f2;
   --shadow: rgba(27, 27, 24, 0.16);
 
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Roboto", Georgia, serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "Space Mono", "SFMono-Regular", Consolas, monospace;
 

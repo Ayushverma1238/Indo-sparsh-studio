@@ -16,17 +16,17 @@ import "./TeamDetails.css";
 
 const TEAM = [
   {
-    image: "/images/ayush.jpeg",
-    name: "Aarav Mehta",
-    role: "Lead Product Designer",
-    study: "M.Des, IIT Bombay",
-    bio: "Spends more time on type scales than most people spend on vacation. Came from a print-design background, which is why every sheet still gets crop marks.",
-    focus: ["Design systems", "Interaction", "Typography"],
+    image: "/images/vidit.jpeg",
+    name: "Vidit Kumar Maurya",
+    role: "Digital Marketer, 3+ year Experience",
+    study: "B.Sc.(Hons.) Ag, CSAUAT Kanpur",
+    bio: "Focused on running targeted campaigns and growing branch reach. Currently leading campaign strategy and SEO efforts, with a proven track record of growing online account.",
+    focus: ["Social Media Marketing", "Campaign Strategy", "Content & SEO"],
   },
   {
     image: "/images/ayush.jpeg",
     name: "Ayush Verma",
-    role: "Software Developer Engineer",
+    role: "Software Developer Engineer, 1+ year Experience",
     study: "B.Tech CSE(AI), BBD University, Lucknow",
     bio: "Crafts responsive websites and high-performance mobile apps, turning ideas into seamless digital experiences.",
     focus: ["React", "Performance", "Accessibility", "Full Stack Website"],
