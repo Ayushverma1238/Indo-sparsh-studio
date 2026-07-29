@@ -2,7 +2,6 @@
 // import "./PortfolioWork.css";
 // import { Link } from "react-router-dom";
 
-
 // const STATS = [
 //   { value: "4", label: "years running" },
 //   { value: "27", label: "sheets shipped" },
@@ -642,11 +641,10 @@
 //   );
 // }
 
-
-
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./PortfolioWork.css";
 import { Link } from "react-router-dom";
+import ScrollBeam from "../../../ScrollBeam";
 
 /**
  * PortfolioWork
@@ -814,32 +812,188 @@ const SERVICES = [
    `link` with real assets whenever a real case study is ready — the
    layout and filtering logic handle any count per service. */
 const WORK = [
-  { title: "Hola 9", date: "Feb 2025", tag: "Website Development", image: "https://picsum.photos/seed/hola9/640/460", link: "https://hola9.com" },
-  { title: "Kavir Interiors", date: "Oct 2024", tag: "Website Development", image: "https://picsum.photos/seed/kavir-interiors/640/460", link: "https://example.com/kavir-interiors" },
-  { title: "Verve Fitness", date: "Nov 2024", tag: "App Development", image: "https://picsum.photos/seed/verve-fitness/640/460", link: "https://example.com/verve-fitness" },
-  { title: "Tiffin Trail", date: "Jun 2024", tag: "App Development", image: "https://picsum.photos/seed/tiffin-trail/640/460", link: "https://example.com/tiffin-trail" },
-  { title: "Bloomsbury Launch", date: "Jan 2025", tag: "Landing Page", image: "https://picsum.photos/seed/bloomsbury-launch/640/460", link: "https://example.com/bloomsbury" },
-  { title: "Circuit Summit '24", date: "Sep 2024", tag: "Landing Page", image: "https://picsum.photos/seed/circuit-summit/640/460", link: "https://example.com/circuit-summit" },
-  { title: "Saffron & Silk", date: "Mar 2025", tag: "E-commerce Website", image: "https://picsum.photos/seed/saffron-silk/640/460", link: "https://example.com/saffron-silk" },
-  { title: "Foundry Roasters", date: "Aug 2024", tag: "E-commerce Website", image: "https://picsum.photos/seed/foundry-roasters/640/460", link: "https://example.com/foundry-roasters" },
-  { title: "Northwind Dispatch", date: "Dec 2023", tag: "Web Application", image: "https://picsum.photos/seed/northwind-dispatch/640/460", link: "https://example.com/northwind" },
-  { title: "Ledgerly", date: "Apr 2025", tag: "Web Application", image: "https://picsum.photos/seed/ledgerly/640/460", link: "https://example.com/ledgerly" },
-  { title: "Aurora Analytics — UI Kit", date: "Feb 2025", tag: "UI/UX Design", image: "https://picsum.photos/seed/aurora-uikit/640/460", link: "https://example.com/aurora-uikit" },
-  { title: "Marrow & Co. Wireframes", date: "Jul 2023", tag: "UI/UX Design", image: "https://picsum.photos/seed/marrow-wireframes/640/460", link: "https://example.com/marrow-wireframes" },
-  { title: "Pinewood Realty Refresh", date: "May 2024", tag: "Website Redesign", image: "https://picsum.photos/seed/pinewood-realty/640/460", link: "https://example.com/pinewood-realty" },
-  { title: "Harbor & Vine, v2", date: "Jan 2024", tag: "Website Redesign", image: "https://picsum.photos/seed/harbor-vine/640/460", link: "https://example.com/harbor-vine" },
-  { title: "Marrow & Co. Reel Series", date: "Nov 2023", tag: "Content creation & video editing", image: "https://picsum.photos/seed/marrow-reels/640/460", link: "https://example.com/marrow-reels" },
-  { title: "Foundry Roasters — Launch Film", date: "Sep 2024", tag: "Content creation & video editing", image: "https://picsum.photos/seed/foundry-film/640/460", link: "https://example.com/foundry-film" },
-  { title: "Kavir Interiors — SEO Sprint", date: "Dec 2024", tag: "SEO Optimization", image: "https://picsum.photos/seed/kavir-seo/640/460", link: "https://example.com/kavir-seo" },
-  { title: "Hola 9 — Local Search", date: "Mar 2025", tag: "SEO Optimization", image: "https://picsum.photos/seed/hola9-seo/640/460", link: "https://example.com/hola9-seo" },
-  { title: "Basilico Trattoria — Profile", date: "Jun 2024", tag: "Business Profile Creation", image: "https://picsum.photos/seed/basilico-profile/640/460", link: "https://example.com/basilico-profile" },
-  { title: "Circuit Summit — Growth Push", date: "Oct 2024", tag: "Digital Marketing Services", image: "https://picsum.photos/seed/circuit-growth/640/460", link: "https://example.com/circuit-growth" },
-  { title: "Saffron & Silk — Socials", date: "Apr 2025", tag: "Social media management", image: "https://picsum.photos/seed/saffron-socials/640/460", link: "https://example.com/saffron-socials" },
-  { title: "Northwind — Care Plan", date: "Ongoing", tag: "Maintenance & Support", image: "https://picsum.photos/seed/northwind-care/640/460", link: "https://example.com/northwind-care" },
-  { title: "Bloomsbury — Brand System", date: "Jan 2025", tag: "Branding and marketing", image: "https://picsum.photos/seed/bloomsbury-brand/640/460", link: "https://example.com/bloomsbury-brand" },
-  { title: "Pinewood Realty — Go-to-Market", date: "May 2024", tag: "Business Consultancy", image: "https://picsum.photos/seed/pinewood-consult/640/460", link: "https://example.com/pinewood-consult" },
-  { title: "Harbor & Vine — Menu Art", date: "Feb 2024", tag: "Graphic Designing", image: "https://picsum.photos/seed/harbor-graphics/640/460", link: "https://example.com/harbor-graphics" },
-  { title: "Ledgerly — Data Cleanup", date: "Apr 2025", tag: "Row Calling data", image: "https://picsum.photos/seed/ledgerly-data/640/460", link: "https://example.com/ledgerly-data" },
+  {
+    title: "Hola 9",
+    date: "Feb 2025",
+    tag: "Website Development",
+    image: "https://picsum.photos/seed/hola9/640/460",
+    link: "https://hola9.com",
+  },
+  {
+    title: "Kavir Interiors",
+    date: "Oct 2024",
+    tag: "Website Development",
+    image: "https://picsum.photos/seed/kavir-interiors/640/460",
+    link: "https://example.com/kavir-interiors",
+  },
+  {
+    title: "Verve Fitness",
+    date: "Nov 2024",
+    tag: "App Development",
+    image: "https://picsum.photos/seed/verve-fitness/640/460",
+    link: "https://example.com/verve-fitness",
+  },
+  {
+    title: "Tiffin Trail",
+    date: "Jun 2024",
+    tag: "App Development",
+    image: "https://picsum.photos/seed/tiffin-trail/640/460",
+    link: "https://example.com/tiffin-trail",
+  },
+  {
+    title: "Bloomsbury Launch",
+    date: "Jan 2025",
+    tag: "Landing Page",
+    image: "https://picsum.photos/seed/bloomsbury-launch/640/460",
+    link: "https://example.com/bloomsbury",
+  },
+  {
+    title: "Circuit Summit '24",
+    date: "Sep 2024",
+    tag: "Landing Page",
+    image: "https://picsum.photos/seed/circuit-summit/640/460",
+    link: "https://example.com/circuit-summit",
+  },
+  {
+    title: "Saffron & Silk",
+    date: "Mar 2025",
+    tag: "E-commerce Website",
+    image: "https://picsum.photos/seed/saffron-silk/640/460",
+    link: "https://example.com/saffron-silk",
+  },
+  {
+    title: "Foundry Roasters",
+    date: "Aug 2024",
+    tag: "E-commerce Website",
+    image: "https://picsum.photos/seed/foundry-roasters/640/460",
+    link: "https://example.com/foundry-roasters",
+  },
+  {
+    title: "Northwind Dispatch",
+    date: "Dec 2023",
+    tag: "Web Application",
+    image: "https://picsum.photos/seed/northwind-dispatch/640/460",
+    link: "https://example.com/northwind",
+  },
+  {
+    title: "Ledgerly",
+    date: "Apr 2025",
+    tag: "Web Application",
+    image: "https://picsum.photos/seed/ledgerly/640/460",
+    link: "https://example.com/ledgerly",
+  },
+  {
+    title: "Aurora Analytics — UI Kit",
+    date: "Feb 2025",
+    tag: "UI/UX Design",
+    image: "https://picsum.photos/seed/aurora-uikit/640/460",
+    link: "https://example.com/aurora-uikit",
+  },
+  {
+    title: "Marrow & Co. Wireframes",
+    date: "Jul 2023",
+    tag: "UI/UX Design",
+    image: "https://picsum.photos/seed/marrow-wireframes/640/460",
+    link: "https://example.com/marrow-wireframes",
+  },
+  {
+    title: "Pinewood Realty Refresh",
+    date: "May 2024",
+    tag: "Website Redesign",
+    image: "https://picsum.photos/seed/pinewood-realty/640/460",
+    link: "https://example.com/pinewood-realty",
+  },
+  {
+    title: "Harbor & Vine, v2",
+    date: "Jan 2024",
+    tag: "Website Redesign",
+    image: "https://picsum.photos/seed/harbor-vine/640/460",
+    link: "https://example.com/harbor-vine",
+  },
+  {
+    title: "Marrow & Co. Reel Series",
+    date: "Nov 2023",
+    tag: "Content creation & video editing",
+    image: "https://picsum.photos/seed/marrow-reels/640/460",
+    link: "https://example.com/marrow-reels",
+  },
+  {
+    title: "Foundry Roasters — Launch Film",
+    date: "Sep 2024",
+    tag: "Content creation & video editing",
+    image: "https://picsum.photos/seed/foundry-film/640/460",
+    link: "https://example.com/foundry-film",
+  },
+  {
+    title: "Kavir Interiors — SEO Sprint",
+    date: "Dec 2024",
+    tag: "SEO Optimization",
+    image: "https://picsum.photos/seed/kavir-seo/640/460",
+    link: "https://example.com/kavir-seo",
+  },
+  {
+    title: "Hola 9 — Local Search",
+    date: "Mar 2025",
+    tag: "SEO Optimization",
+    image: "https://picsum.photos/seed/hola9-seo/640/460",
+    link: "https://example.com/hola9-seo",
+  },
+  {
+    title: "Basilico Trattoria — Profile",
+    date: "Jun 2024",
+    tag: "Business Profile Creation",
+    image: "https://picsum.photos/seed/basilico-profile/640/460",
+    link: "https://example.com/basilico-profile",
+  },
+  {
+    title: "Circuit Summit — Growth Push",
+    date: "Oct 2024",
+    tag: "Digital Marketing Services",
+    image: "https://picsum.photos/seed/circuit-growth/640/460",
+    link: "https://example.com/circuit-growth",
+  },
+  {
+    title: "Saffron & Silk — Socials",
+    date: "Apr 2025",
+    tag: "Social media management",
+    image: "https://picsum.photos/seed/saffron-socials/640/460",
+    link: "https://example.com/saffron-socials",
+  },
+  {
+    title: "Northwind — Care Plan",
+    date: "Ongoing",
+    tag: "Maintenance & Support",
+    image: "https://picsum.photos/seed/northwind-care/640/460",
+    link: "https://example.com/northwind-care",
+  },
+  {
+    title: "Bloomsbury — Brand System",
+    date: "Jan 2025",
+    tag: "Branding and marketing",
+    image: "https://picsum.photos/seed/bloomsbury-brand/640/460",
+    link: "https://example.com/bloomsbury-brand",
+  },
+  {
+    title: "Pinewood Realty — Go-to-Market",
+    date: "May 2024",
+    tag: "Business Consultancy",
+    image: "https://picsum.photos/seed/pinewood-consult/640/460",
+    link: "https://example.com/pinewood-consult",
+  },
+  {
+    title: "Harbor & Vine — Menu Art",
+    date: "Feb 2024",
+    tag: "Graphic Designing",
+    image: "https://picsum.photos/seed/harbor-graphics/640/460",
+    link: "https://example.com/harbor-graphics",
+  },
+  {
+    title: "Ledgerly — Data Cleanup",
+    date: "Apr 2025",
+    tag: "Row Calling data",
+    image: "https://picsum.photos/seed/ledgerly-data/640/460",
+    link: "https://example.com/ledgerly-data",
+  },
 ];
 
 function useReveal() {
@@ -858,7 +1012,7 @@ function useReveal() {
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
@@ -920,7 +1074,6 @@ export default function PortfolioWork() {
     <main className="pf" ref={rootRef}>
       {/* HEADER ------------------------------------------------------ */}
       <section className="pf-header">
-        <div className="pf-grid-bg" aria-hidden="true" />
         <p className="pf-eyebrow js-reveal">Sheet 000 — Studio Index</p>
 
         <h1 className="pf-title">
@@ -941,10 +1094,10 @@ export default function PortfolioWork() {
         </p>
 
         <p className="pf-page-note js-reveal">
-          This page is the studio's running record: how we work, who's on
-          the team, and the actual work, sorted by the service it came out
-          of. Scroll for the process, or skip straight to the service
-          ticker at the bottom to see what we've shipped in that lane.
+          This page is the studio's running record: how we work, who's on the
+          team, and the actual work, sorted by the service it came out of.
+          Scroll for the process, or skip straight to the service ticker at the
+          bottom to see what we've shipped in that lane.
         </p>
 
         <div className="pf-stamp js-reveal" aria-hidden="true">
@@ -952,25 +1105,26 @@ export default function PortfolioWork() {
           <span>Approved</span>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ABOUT --------------------------------------------------------- */}
       <section className="pf-about">
         <div className="pf-about-copy js-reveal">
           <span className="pf-label">Sheet 000 / About</span>
           <h2>
-            A small studio that treats every project like a print run —
-            proofed before it ships.
+            A small studio that treats every project like a print run — proofed
+            before it ships.
           </h2>
           <p>
             Indo Sparsh Studio is a two-person shop working across product
-            design and front-end engineering. We take on a handful of
-            projects at a time so each one gets an actual review pass
-            instead of a rush job — dashboards, storefronts, dispatch tools,
-            editorial sites, whatever the brief calls for.
+            design and front-end engineering. We take on a handful of projects
+            at a time so each one gets an actual review pass instead of a rush
+            job — dashboards, storefronts, dispatch tools, editorial sites,
+            whatever the brief calls for.
           </p>
           <p>
-            No account managers, no hand-offs between five different
-            people. Whoever designs the sheet is the one who builds it.
+            No account managers, no hand-offs between five different people.
+            Whoever designs the sheet is the one who builds it.
           </p>
         </div>
 
@@ -984,13 +1138,14 @@ export default function PortfolioWork() {
         </div>
       </section>
 
+      <ScrollBeam />
       {/* PROCESS --------------------------------------------------------- */}
       <section className="pf-process">
         <span className="pf-label js-reveal">How a sheet gets made</span>
         <div className="pf-process-list">
           {PROCESS.map((step, i) => (
             <div
-              className="pf-process-step js-reveal"
+              className="pf-process-step js-reveal why-card"
               style={{ transitionDelay: `${i * 90}ms` }}
               key={step.n}
             >
@@ -1003,11 +1158,13 @@ export default function PortfolioWork() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* CARD GRID ------------------------------------------------------ */}
       <section className="pf-work">
         <span className="pf-label js-reveal">
-          Sheets 01–{PROJECTS.length.toString().padStart(2, "0")} / Selected work
+          Sheets 01–{PROJECTS.length.toString().padStart(2, "0")} / Selected
+          work
         </span>
 
         <div className="pf-grid">
@@ -1063,45 +1220,14 @@ export default function PortfolioWork() {
         </div>
       </section>
 
-      {/* TEAM ------------------------------------------------------ */}
-      <section className="pf-team">
-        <span className="pf-label js-reveal">The people on the sheet</span>
-        <h2 className="pf-team-heading js-reveal">My team</h2>
-
-        <div className="pf-team-grid">
-          {TEAM.map((member, i) => (
-            <article
-              className="pf-team-card js-reveal"
-              style={{ transitionDelay: `${i * 110}ms` }}
-              key={member.name}
-            >
-              <CropMarks />
-              <div className="pf-team-avatar" aria-hidden="true">
-                <span>{member.initials}</span>
-              </div>
-
-              <h3>{member.name}</h3>
-              <p className="pf-team-role">{member.role}</p>
-              <p className="pf-team-study">{member.study}</p>
-              <p className="pf-team-bio">{member.bio}</p>
-
-              <ul className="pf-tags">
-                {member.focus.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
+      <ScrollBeam />
 
       {/* CLOSING CTA ------------------------------------------------------ */}
       <section className="pf-cta js-reveal">
         <h2>Have a sheet worth printing?</h2>
         <p>
-          More case studies get added here as work ships — the full list
-          always lives in the footer. If you've got a brief, we'd like to
-          hear it.
+          More case studies get added here as work ships — the full list always
+          lives in the footer. If you've got a brief, we'd like to hear it.
         </p>
         <Link className="pf-cta-link" to="/request-quote">
           Start a project
@@ -1110,6 +1236,7 @@ export default function PortfolioWork() {
           </svg>
         </Link>
       </section>
+      <ScrollBeam />
 
       {/* BROWSE BY SERVICE ------------------------------------------------------ */}
       <section className="pf-services" ref={workRef}>

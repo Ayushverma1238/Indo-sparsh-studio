@@ -275,7 +275,7 @@ export default function Home() {
 
             <button
               className="btn-secondary"
-              onClick={() => scrollToSection("recent-project")}
+              onClick={() => navigate('/portfolio')}
             >
               View Portfolio
             </button>
