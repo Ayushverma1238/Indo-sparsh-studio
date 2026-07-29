@@ -58,12 +58,13 @@ const router = createBrowserRouter([
       { path: "business-growth", element: <BusinessGrowth /> },
       { path: "case-studies", element: <CaseStudies /> },
       { path: "future-ai", element: <FutureAI /> },
+      { path: "portfolio", element: <PortfolioWork /> },
+
       
       // Services
       { path: "services/website-development", element: <WebsiteDevelopment /> },
       { path: "services/landing-page", element: <LandingPage /> },
       { path: "services/ecommerce-website", element: <EcommerceBuildStory /> },
-      { path: "services/portfolio-website", element: <PortfolioWork /> },
       { path: "services/web-application", element: <WebAppBuildStory /> },
       { path: "services/ui-ux-design", element: <UiUxService /> },
       { path: "services/website-redesign", element: <WebsiteRedesign /> },

@@ -1,140 +1,106 @@
-:root {
-  --ai: #a855f7; /* main */
-  --ai-soft: 168, 85, 247; /* rgb */
-}
-
-/* hide default cursor */
+/* Hide default cursor */
 * {
   cursor: none;
 }
 
+/* Allow typing cursor */
 input,
-textarea,
-iframe {
-  cursor: auto;
+textarea {
+  cursor: text;
 }
 
-/* ===== STRONG GLOW TRAIL ===== */
+/* ============================= */
 
-.ai-glow {
+.glass-cursor {
   position: fixed;
-  width: 46px;
-  height: 46px;
+  top: 0;
+  left: 0;
+
+  width: 42px;
+  height: 42px;
+
   border-radius: 50%;
 
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.55),
-    rgba(var(--ai-soft), 0.45),
-    transparent 72%
-  );
-
-  filter: blur(14px);
-  pointer-events: none;
   transform: translate(-50%, -50%);
-  /* z-index: 9996; */
-  z-index: 2147483646;
-  /* mix-blend-mode: screen; */
-  mix-blend-mode: normal;
-}
-
-/* ===== MAIN CURSOR ===== */
-
-.ai-cursor {
-  position: fixed;
-  width: 36px;
-  height: 36px;
   pointer-events: none;
-  transform: translate(-50%, -50%);
-  /* z-index: 9999; */
-  z-index: 2147483647; /* 🔥 max safe browser layer */
-  display: grid;
-  place-items: center;
-}
 
-/* ===== CORE DOT (VERY VISIBLE) ===== */
+  z-index: 999999;
 
-.ai-core {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: white;
+  /* Glass Effect */
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border: 1.4px solid rgba(255, 255, 255, 0.4);
 
   box-shadow:
-    0 0 4px white,
-    0 0 10px white,
-    0 0 18px var(--ai),
-    0 0 36px var(--ai),
-    0 0 70px rgba(var(--ai-soft), 1);
+    inset 0 0 10px rgba(255,255,255,.35),
+    0 8px 20px rgba(0,0,0,.18),
+    0 0 25px rgba(255,255,255,.12);
 
-  animation: corePulse 1.2s ease-in-out infinite;
+  transition:
+    width .28s ease,
+    height .28s ease,
+    background .28s ease,
+    border .28s ease,
+    transform .12s linear;
 }
 
-/* ===== MAIN RING ===== */
+/* Center Dot */
 
-.ai-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2.5px solid white;
+.glass-dot{
+    position:absolute;
+    top:50%;
+    left:50%;
 
-  box-shadow:
-    0 0 8px white,
-    0 0 18px var(--ai),
-    inset 0 0 12px rgba(var(--ai-soft), 0.9);
+    width:6px;
+    height:6px;
 
-  animation: aiSpin 5s linear infinite;
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:
+      0 0 10px rgba(255,255,255,.9),
+      0 0 20px rgba(255,255,255,.8);
 }
 
-/* ===== OUTER RING ===== */
+/* Hover on links/buttons */
 
-.ai-ring.r2 {
-  inset: -9px;
-  border: 2px dashed rgba(var(--ai-soft), 0.75);
+.glass-cursor.hover{
+    width:50px;
+    height:50px;
 
-  box-shadow:
-    0 0 14px var(--ai),
-    0 0 32px rgba(var(--ai-soft), 0.9);
+    background:rgba(255,255,255,.14);
 
-  animation-duration: 9s;
+    border:1.6px solid rgba(255,255,255,.7);
+
+    box-shadow:
+      inset 0 0 18px rgba(255,255,255,.45),
+      0 0 30px rgba(255,255,255,.35);
 }
 
-/* ===== CLICK BLAST ===== */
-.ai-cursor.fire {
-  animation: aiFire 0.18s ease;
+/* Click Effect */
+
+.glass-cursor.click{
+    animation:glassClick .25s ease;
 }
 
-/* ===== ANIMATIONS ===== */
+@keyframes glassClick{
 
-@keyframes aiSpin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+    0%{
+        transform:translate(-50%,-50%) scale(1);
+    }
 
-@keyframes corePulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.9);
-    opacity: 0.4;
-  }
-}
+    50%{
+        transform:translate(-50%,-50%) scale(.82);
+    }
 
-@keyframes aiFire {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(2.2);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
+    100%{
+        transform:translate(-50%,-50%) scale(1);
+    }
+
 }

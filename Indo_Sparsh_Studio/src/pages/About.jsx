@@ -9,6 +9,7 @@ import {
   FaChartLine,
   FaRocket,
 } from "react-icons/fa";
+import TeamMarquee from "./src/About/Teams/TeamDetails";
 
 export default function About() {
   useEffect(() => {
@@ -177,7 +178,8 @@ export default function About() {
       </section>
 
       <ScrollBeam />
-
+      <TeamMarquee/>
+      <ScrollBeam />
       {/* ================= LET'S GET IN TOUCH ================= */}
       <section className="about-cta">
         <div className="cta-glass">

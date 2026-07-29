@@ -235,28 +235,28 @@ export const footerServices = [
   { name: "App Development", path: "/services/app-development" },
   { name: "Landing Page", path: "/services/landing-page" },
   { name: "E-commerce Website", path: "/services/ecommerce-website" },
-  { name: "Portfolio Website", path: "/services/portfolio-website" },
   { name: "Web Application", path: "/services/web-application" },
   { name: "UI/UX Design", path: "/services/ui-ux-design" },
   { name: "Website Redesign", path: "/services/website-redesign" },
-  { name: "Content creation & video editing", path: "/services/content-hub" }, 
+  { name: "Content creation & video editing", path: "/services/content-hub" },
 
   { name: "SEO Optimization", path: "/services/seo-optimization" },
-  { name: "Business Profile Creation", path: "/services/profile-creation" }, 
-  { name: "Digital Marketing Services", path: "/services/digital-marketing" }, 
-   { name: "Social media management", path: "/services/social-media" }, 
+  { name: "Business Profile Creation", path: "/services/profile-creation" },
+  { name: "Digital Marketing Services", path: "/services/digital-marketing" },
+  { name: "Social media management", path: "/services/social-media" },
   { name: "Maintenance & Support", path: "/services/maintenance-support" },
 
-  { name: "Branding and marketing", path: "/services/branding-marketing" }, 
-  { name: "Business Consultancy", path: "/services/business-consultancy" }, 
-  { name: "Graphic Designing", path: "/services/graphic-design" }, 
-  { name: "Row Calling data", path: "/services/row-calling-data" }, 
+  { name: "Branding and marketing", path: "/services/branding-marketing" },
+  { name: "Business Consultancy", path: "/services/business-consultancy" },
+  { name: "Graphic Designing", path: "/services/graphic-design" },
+  { name: "Row Calling data", path: "/services/row-calling-data" },
   { name: "Other", path: "/services" },
 ];
 
 export const companies = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
+  { name: "Portfolio", path: "/portfolio" },
   { name: "Services", path: "/services" },
   { name: "Blogs", path: "/blogs" },
   { name: "Contact", path: "/contact" },
@@ -269,7 +269,6 @@ export const supports = [
   { name: "Contact", path: "/contact" },
   { name: "Tech Stacks", path: "/tech-stack" },
   { name: "Ethics Policy", path: "/ethics-policy" },
- 
 ];
 
 export const policies = [

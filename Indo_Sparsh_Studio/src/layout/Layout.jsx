@@ -9,14 +9,14 @@ import Footer from "../pages/Footer";
 import WhatsAppButton from "../pages/WhatsAppButton";
 import CallButton from "../pages/CallButton";
 import ScrollToTop from "../pages/ScrollToTop";
-import AIHackerCursor from "../pages/AIHackerCursor";
+// import AIHackerCursor from "../pages/AIHackerCursor";
 import PageLoader from "../pages/PageLoader";
 
 export default function Layout() {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("theme");
     return saved ? saved === "dark" : true;
@@ -127,10 +127,12 @@ export default function Layout() {
   }, [darkMode]);
 
   const message = encodeURIComponent(
-    "Hi Indosparsh Studio!\n\nSaw your 2026 branding offer and it caught my eye. Can you tell me more about what's include",
+    `Hi! Saw your 2026 branding offer and it caught my eye.
+Can you tell me more about what's included?`,
   );
   return (
     <>
+
       <PageLoader show={loading} />
 
       {/* 🔥 Custom Scrollbar */}
@@ -176,8 +178,8 @@ export default function Layout() {
               Blog
             </NavLink>
 
-            <NavLink to="/career" onClick={() => setOpen(false)}>
-              Career
+            <NavLink to="/portfolio" onClick={() => setOpen(false)}>
+              Portfolio
             </NavLink>
 
             <NavLink to="/contact" onClick={() => setOpen(false)}>
@@ -245,7 +247,7 @@ export default function Layout() {
       </main>
 
       {/* ================= GLOBAL COMPONENTS ================= */}
-      <AIHackerCursor />
+      {/* <AIHackerCursor /> */}
       <ScrollToTop />
       <AIChatWidget />
       <Footer />

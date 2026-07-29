@@ -1,333 +1,231 @@
-// ===========================
-// HERO
-// ===========================
+// Content sourced from Indo Sparsh Studio — Social Media Management PDF
 
 export const heroData = {
-  badge: "INDO SPARSH STUDIO",
-  title: "Social Media Management",
+  badge: "Digital Business Solution Agency",
+  title: "Posting Randomly Isn't a Strategy",
   subtitle: "Consistent Presence. Real Engagement. Measurable Growth.",
   description:
-    "Posting randomly isn't a strategy. We manage your complete social media presence—from planning and content creation to audience engagement and monthly reporting, helping your business stay active and grow online.",
-  primaryBtn: "Get Started",
-  secondaryBtn: "View Pricing",
+    "We manage your social media accounts end-to-end: planned content, on-time posting, real audience engagement, and monthly reporting that shows what's actually working. No missed weeks, no inconsistent branding, no scrambling for what to post next.",
+  primaryBtn: "Start Your Project",
+  secondaryBtn: "See Pricing",
 };
-
-// ===========================
-// SOCIAL TAGS
-// ===========================
 
 export const socialTags = [
-  "#SOCIALMEDIA",
-  "#DIGITALMARKETING",
-  "#CONTENTCREATION",
+  "#SOCIALMEDIAMANAGEMENT",
+  "#CONTENTMARKETING",
   "#BRANDGROWTH",
+  "#DIGITALPRESENCE",
+  "#SMM",
   "#BUSINESSGROWTH",
-  "#REELS",
-  "#FACEBOOK",
-  "#INSTAGRAM",
-  "#LINKEDIN",
-  "#YOUTUBE",
 ];
-
-// ===========================
-// STATS
-// ===========================
 
 export const stats = [
-  {
-    number: "500+",
-    title: "Posts Designed",
-  },
-  {
-    number: "100+",
-    title: "Brands Managed",
-  },
-  {
-    number: "98%",
-    title: "Client Satisfaction",
-  },
-  {
-    number: "24/7",
-    title: "Support",
-  },
+  { number: "15–30", title: "Posts Managed Monthly" },
+  { number: "3 mo", title: "Recommended Minimum Engagement" },
+  { number: "100%", title: "Transparent Monthly Reporting" },
+  { number: "1", title: "Team, Build To Growth" },
 ];
 
-// ===========================
-// WHY SOCIAL MEDIA
-// ===========================
-
 export const whySocialMedia = {
-  title: "Why Social Media Matters?",
+  title: "Your Accounts, Professionally Managed",
   description:
-    "Your customers spend hours every day on social media. A strong online presence helps you build trust, attract new customers, engage your audience, and increase sales through consistent content and branding.",
+    "While you focus on running your business, we handle the planning, the posting, the replies, and the reporting — so your presence stays consistent even on your busiest weeks.",
 };
-
-// ===========================
-// FEATURES
-// ===========================
 
 export const features = [
   {
-    title: "Content Strategy",
-    description:
-      "Monthly planning based on your business goals and audience.",
     icon: "strategy",
+    title: "Content Strategy & Planning",
+    description:
+      "Every post has a reason to exist. We build a monthly content plan around your brand, your audience, and what actually drives inquiries.",
   },
   {
-    title: "Graphic Designing",
-    description:
-      "Creative social media graphics matching your brand identity.",
     icon: "design",
+    title: "Grid Planning & Brand Design",
+    description:
+      "A cohesive, on-brand grid theme — planned in advance, not improvised post by post.",
   },
   {
-    title: "Professional Reels",
-    description:
-      "Short-form videos designed for higher reach and engagement.",
     icon: "video",
+    title: "Reels & Video Production",
+    description:
+      "Scroll-stopping Reels and graphic posts, with AI-assisted video creation on Pro plans and up.",
   },
   {
-    title: "Community Management",
-    description:
-      "Comment moderation and customer interaction.",
     icon: "community",
+    title: "Comment & DM Management",
+    description:
+      "Real engagement, handled daily — every comment and DM gets a timely, on-brand reply.",
   },
   {
-    title: "Monthly Reports",
-    description:
-      "Performance insights with recommendations.",
     icon: "report",
+    title: "Transparent Monthly Reporting",
+    description:
+      "See exactly what was posted and how it performed. No vanity metrics, no guesswork.",
   },
   {
-    title: "Business Growth",
-    description:
-      "Strategies focused on generating real leads and inquiries.",
     icon: "growth",
+    title: "Business Page Growth",
+    description:
+      "Profile optimization integrated with your Google Business Profile, so your whole presence pulls in one direction.",
   },
 ];
-
-// ===========================
-// PRICING
-// (Same as PDF)
-// ===========================
 
 export const pricingPlans = [
   {
-    id: 1,
+    id: "basic",
     name: "SMM Basic",
-    badge: "",
     price: "₹4,999",
     duration: "/month",
-
-    description:
-      "A fully managed, on-brand social media presence.",
-
+    description: "A fully managed, on-brand social presence — done for you, every month.",
     features: [
-      "Profile Optimization",
-      "15 Posts / Month",
-      "5 Reels",
-      "10 Graphic Posts",
-      "Festival & Occasion Posts",
-      "Grid Planning",
-      "Brand Theme",
-      "Comment & DM Management",
+      "Profile optimization",
+      "15 posts/month",
+      "5 Reels + 10 graphic posts",
+      "Festival & occasion posting",
+      "Grid planning & brand theme design",
+      "Comment & DM management",
     ],
-
-    button: "Choose Plan",
+    button: "Choose Basic",
+    badge: null,
   },
-
   {
-    id: 2,
+    id: "pro",
     name: "SMM Pro",
-    badge: "MOST POPULAR",
     price: "₹11,999",
     duration: "/month",
-
-    description:
-      "Everything included in Basic, plus advanced growth features.",
-
+    description: "Everything in Basic, plus deeper targeting and AI-assisted video.",
     features: [
-      "Everything in Basic",
-      "30 Posts / Month",
-      "10 Reels",
-      "20 Graphic Posts",
-      "AI Assisted Video Creation",
-      "Competitor Analysis",
-      "Audience Research",
-      "Advanced Targeting",
+      "Everything in Basic, plus:",
+      "30 posts/month",
+      "10 Reels + 20 graphic posts",
+      "AI-assisted video creation",
+      "Competitor analysis",
+      "Advanced audience targeting",
+      "Audience research",
     ],
-
-    button: "Choose Plan",
+    button: "Go Pro",
+    badge: "Most Popular",
   },
-
   {
-    id: 3,
-    name: "Premium + UGC",
-    badge: "BEST VALUE",
+    id: "premium",
+    name: "SMM Premium + UGC",
     price: "₹22,999",
     duration: "/month",
-
-    description:
-      "Everything in Pro with premium creator content.",
-
+    description: "Everything in Pro, plus scripted UGC-style video and growth planning.",
     features: [
-      "Everything in Pro",
-      "4 Scripted UGC Videos",
-      "Creative Strategy",
-      "Performance Reporting",
-      "Business Growth Planning",
-      "Priority Support",
+      "Everything in Pro, plus:",
+      "4 scripted UGC-style videos/month",
+      "Creative strategy support",
+      "Performance reporting",
+      "Brand growth planning",
+      "Business page growth",
     ],
-
-    button: "Choose Plan",
+    button: "Go Premium",
+    badge: null,
   },
 ];
-
-// ===========================
-// ADDONS
-// (PDF)
-// ===========================
 
 export const addons = [
-  {
-    service: "Extra Platform (Beyond Primary Coverage)",
-    price: "₹1,999 / Month",
-  },
-  {
-    service: "Product / Business Photoshoot",
-    price: "₹2,999",
-  },
-  {
-    service: "Additional UGC Video",
-    price: "₹2,499 / Video",
-  },
+  { service: "Extra Platform (beyond primary coverage)", price: "₹1,999/month" },
+  { service: "Product/Business Photoshoot (half-day, on-location)", price: "₹2,999" },
+  { service: "Additional UGC Video (beyond plan limit)", price: "₹2,499/video" },
 ];
-
-// ===========================
-// PROCESS
-// ===========================
 
 export const process = [
   {
     step: "01",
-    title: "Strategy",
+    title: "Discovery & Strategy",
     description:
-      "Understand your business, audience, and competitors.",
+      "We learn your brand, audience, and goals, then build a content plan around what actually gets results.",
   },
   {
     step: "02",
-    title: "Content Planning",
+    title: "Content Creation",
     description:
-      "Monthly content calendar with creative ideas.",
+      "Reels, graphic posts, and captions are planned and produced against your grid and brand theme.",
   },
   {
     step: "03",
-    title: "Design & Editing",
+    title: "Posting & Engagement",
     description:
-      "Graphics, reels, captions, and hashtags.",
+      "On-time publishing across your platforms, with comments and DMs handled every day.",
   },
   {
     step: "04",
-    title: "Publishing",
+    title: "Reporting & Optimization",
     description:
-      "Posting at the right time across your platforms.",
-  },
-  {
-    step: "05",
-    title: "Reporting",
-    description:
-      "Monthly analytics with improvement suggestions.",
+      "Monthly performance reports show what worked, so next month's plan gets sharper.",
   },
 ];
-
-// ===========================
-// WHY CHOOSE US
-// ===========================
 
 export const whyChooseUs = [
   {
-    title: "Business Focused",
+    title: "Outcomes Over Vanity Metrics",
     description:
-      "We focus on generating leads and business growth rather than vanity metrics.",
+      "We focus on business outcomes — engagement, inquiries & reach — not vanity follower counts or \"like boosting.\"",
   },
   {
-    title: "Creative Team",
+    title: "One Team, Start to Finish",
     description:
-      "Designers, editors, strategists, and marketers working together.",
+      "The same team that builds your profile also manages it — nothing gets lost in handoff.",
   },
   {
-    title: "Transparent Reporting",
+    title: "Full Transparency",
     description:
-      "Know exactly how your pages are performing every month.",
+      "Transparent monthly reporting — see exactly what was posted and how it performed.",
   },
   {
-    title: "Affordable Plans",
-    description:
-      "Professional services that fit startups and growing businesses.",
+    title: "Flexible By Design",
+    description: "Upgrade, downgrade, or add platforms anytime.",
   },
   {
-    title: "Brand Consistency",
+    title: "One Studio, One Strategy",
     description:
-      "Maintain a professional visual identity across every platform.",
-  },
-  {
-    title: "Long-Term Growth",
-    description:
-      "Every post contributes to your overall marketing strategy.",
+      "Directly integrated with your Google Business Profile & branding — one studio, one strategy.",
   },
 ];
-
-// ===========================
-// FAQ
-// ===========================
 
 export const faqs = [
   {
-    question: "How long should I continue Social Media Management?",
+    question: "Which platforms do you manage?",
     answer:
-      "We recommend a minimum engagement of 3 months for consistent growth and measurable results.",
+      "Instagram, Facebook, LinkedIn, and YouTube are covered under every plan. Need another platform? Add it anytime for ₹1,999/month.",
   },
   {
-    question: "Can I upgrade my package later?",
+    question: "Do I need to provide raw photos or videos?",
     answer:
-      "Yes. You can upgrade your plan at any time based on your business requirements.",
+      "Not necessarily — we can create content from what you already have, or arrange an on-location product/business photoshoot as an add-on.",
   },
   {
-    question: "Do you create Reels?",
+    question: "What's the minimum commitment?",
     answer:
-      "Yes. Every package includes reels according to the selected plan.",
+      "We recommend a minimum of 3 months. Consistent posting and community management compound over time — a single month rarely reflects real growth.",
   },
   {
-    question: "Will you reply to customer comments?",
+    question: "Can I switch plans later?",
+    answer: "Yes. You can upgrade, downgrade, or add platforms anytime — plans stay flexible.",
+  },
+  {
+    question: "How do I know it's actually working?",
     answer:
-      "Yes. Community management is included in our services.",
+      "Every month you get a transparent report showing exactly what was posted and how it performed — no vanity metrics.",
   },
 ];
 
-// ===========================
-// CONTACT
-// ===========================
-
 export const contactData = {
-  phone: "+91 8005351770",
+  phone: "+91-8005351770",
+  phoneLabel: "+91-8005351770 (Call / WhatsApp)",
   email: "contact@indosparsh.com",
   website: "www.indosparsh.com",
-  address:
-    "Incuspaze, 11th Floor, Rohtas Summit, Vibhuti Khand, Gomti Nagar, Lucknow",
+  address: "Incuspaze, 11th Floor Rohtas Summit, Vibhuti Khand, Gomtinagar, Lucknow, Uttar Pradesh – 226010, India",
 };
 
-// ===========================
-// FOOTER TAGS
-// ===========================
-
 export const footerTags = [
-  "#SOCIALMEDIA",
-  "#DIGITALMARKETING",
-  "#CONTENT",
-  "#UGC",
-  "#REELS",
-  "#GRAPHICDESIGN",
-  "#BRANDING",
+  "#DATA",
   "#LEADGENERATION",
-  "#INSTAGRAM",
-  "#FACEBOOK",
+  "#SOCIALMEDIAMANAGEMENT",
+  "#BUSINESSGROWTH",
+  "#DIGITALPRESENCE",
+  "#MSME",
 ];

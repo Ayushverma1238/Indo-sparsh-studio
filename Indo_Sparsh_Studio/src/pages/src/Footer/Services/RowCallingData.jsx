@@ -47,7 +47,8 @@ const plans = [
       "Cost-effective outreach",
       "Ideal for mass campaigns",
     ],
-    message: "Hi! I'm interested in the Cold Data package (₹499/1000 records) for a mass outreach campaign.\n\n Can you share how I can get started?"
+    message: encodeURIComponent(`Hi! I'm interested in the Cold Data package (₹499/1000 records) for a mass outreach campaign.
+      Can you share how I can get started?`)
   },
   {
     name: "Warm Data",
@@ -61,7 +62,8 @@ const plans = [
       "Better conversion rate",
       "Ideal for telecalling",
     ],
-    message:"Hi! I saw the Warm Data plan (₹999/1000 records) for telecalling with better conversion.\n\n Can you tell me more about the targeting and how soon I can get the data?"
+    message: encodeURIComponent(`Hi! I saw the Warm Data plan (₹999/1000 records) for telecalling with better conversion.
+       Can you tell me more about the targeting and how soon I can get the data?`)
   },
   {
     name: "Hot Data",
@@ -74,7 +76,8 @@ const plans = [
       "Daily / weekly refresh",
       "High-intent decision makers",
     ],
-    message:"Hi! I need high-intent, decision-maker leads for quick sales closure — interested in the Hot Data plan (₹9,999/1000 records).\n\n Can you share more details and how fast I can get access?"
+    message: encodeURIComponent(`Hi! I need high-intent, decision-maker leads for quick sales closure — interested in the Hot Data plan (₹9,999/1000 records).
+      Can you share more details and how fast I can get access?`)
   },
 ];
 
