@@ -213,7 +213,7 @@ export default function RowCallingData() {
               className={`dp-plan  dp-plan--${plan.tag} ${plan.popular ? "dp-plan--popular" : "why-card"}`}
             >
               {plan.popular && (
-                <span className="dp-plan__badge">Most popular</span>
+                <span className="dp-plan__badge">Most Recommended</span>
               )}
               <h3 className="dp-plan__name">{plan.name}</h3>
               <div className="dp-plan__price">

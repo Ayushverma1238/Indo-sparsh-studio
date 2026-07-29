@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./OptimizationPage.css";
+import ScrollBeam from "../../../ScrollBeam";
 
 const OptimizationPage = () => {
   useEffect(() => {
@@ -135,7 +136,6 @@ const OptimizationPage = () => {
 
   return (
     <div className="opt-page-container">
-      <div className="opt-mesh-grid"></div>
 
       <header className="opt-header animate-slide-down">
         <div className="opt-title-stack">

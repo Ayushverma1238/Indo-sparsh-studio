@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "./BusinessProfileCreation.css"
+import ScrollBeam from '../../../ScrollBeam';
 /* =========================================================================
    INDO SPARSH STUDIO — Business Profile Creation
    Design direction: "Certificate of Incorporation" — the page reads like an
@@ -258,6 +259,7 @@ const BusinessProfileCreation = () => {
           ))}
         </div>
       </section>
+      
 
       {/* ===================== TAB CONTROLS ===================== */}
       <nav className="isp-tab-rail" id="services">

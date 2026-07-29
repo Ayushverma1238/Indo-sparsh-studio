@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./WebsiteDevelopment.css";
+import ScrollBeam from "../../../ScrollBeam";
 
 const WebsiteDevelopment = () => {
   useEffect(() => {
@@ -172,6 +173,7 @@ const WebsiteDevelopment = () => {
             </div>
           </div>
         </section>
+        <ScrollBeam />
 
         <section className="stages" id="process">
           <div className="wrap">
@@ -243,6 +245,7 @@ const WebsiteDevelopment = () => {
             </ol>
           </div>
         </section>
+        <ScrollBeam />
 
         <section className="capabilities" id="capabilities">
           <div className="wrap">
@@ -294,6 +297,7 @@ const WebsiteDevelopment = () => {
             </div>
           </div>
         </section>
+        <ScrollBeam />
 
         <section className="packages" id="pricing">
           <div className="wrap">
@@ -324,9 +328,9 @@ const WebsiteDevelopment = () => {
                 </a>
               </article>
 
-              <article  className="package-card package-featured ">
+              <article className="package-card package-featured ">
                 <p className="sheet-no">SHEET 02 / 03</p>
-                <span className="badge">Most populer</span>
+                <span className="badge">Most Recommended</span>
                 <h3>Growth</h3>
                 <p className="package-price">₹9,999</p>
                 <p className="package-desc">
@@ -374,6 +378,7 @@ const WebsiteDevelopment = () => {
             </div>
           </div>
         </section>
+        <ScrollBeam />
 
         <section className="cta-banner">
           <div className="wrap cta-inner">

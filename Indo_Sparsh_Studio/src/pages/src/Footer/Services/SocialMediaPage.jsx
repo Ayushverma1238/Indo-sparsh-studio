@@ -26,6 +26,7 @@ import {
 } from "../data/SocialData";
 
 import "./SocialMediaPage.css";
+import ScrollBeam from "../../../ScrollBeam";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
@@ -42,16 +43,15 @@ export default function SocialMediaManagement() {
     document.title = "Social Media Management | Indo Sparsh Studio";
   }, []);
 
- const scrollTo = (id) => {
-
-  const section = document.getElementById(id);
-  if (section) {
-    section.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-};
+  const scrollTo = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
 
   const fadeUp = {
     hidden: {
@@ -68,7 +68,6 @@ export default function SocialMediaManagement() {
     },
   };
 
-  
   return (
     <div className={`smm-page-sm`}>
       {/* Theme Toggle */}
@@ -107,7 +106,7 @@ export default function SocialMediaManagement() {
           >
             {socialTags.map((tag) => (
               <motion.span
-              key={tag}
+                key={tag}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
@@ -167,7 +166,7 @@ export default function SocialMediaManagement() {
 
             <motion.div
               className="center-circle-sm"
-              animate={{ scale: [1, 1.08, 1], y: [0, -20, 0], x:[0, -20, 0] }}
+              animate={{ scale: [1, 1.08, 1], y: [0, -20, 0], x: [0, -20, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
               <h2>Grow</h2>
@@ -176,7 +175,7 @@ export default function SocialMediaManagement() {
           </div>
         </motion.div>
       </section>
-
+      <ScrollBeam />
       {/* STATS */}
       <section className="stats-sm">
         <motion.div
@@ -199,6 +198,7 @@ export default function SocialMediaManagement() {
           ))}
         </motion.div>
       </section>
+      <ScrollBeam />
 
       {/* WHY SOCIAL MEDIA */}
       <section className="why-social-sm">
@@ -212,6 +212,7 @@ export default function SocialMediaManagement() {
           <p>{whySocialMedia.description}</p>
         </motion.div>
       </section>
+      <ScrollBeam />
 
       {/* FEATURES */}
       <section className="features-sm">
@@ -259,6 +260,7 @@ export default function SocialMediaManagement() {
           ))}
         </motion.div>
       </section>
+      <ScrollBeam />
 
       {/* PRICING */}
       <section id="pricing-sm" className="pricing-sm">
@@ -312,6 +314,7 @@ export default function SocialMediaManagement() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ADDONS */}
       <section className="addons-sm">
@@ -360,6 +363,7 @@ export default function SocialMediaManagement() {
           </p>
         </motion.div>
       </section>
+      <ScrollBeam />
 
       {/* PROCESS */}
       <section className="process-sm">
@@ -395,6 +399,7 @@ export default function SocialMediaManagement() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* WHY CHOOSE US */}
       <section className="why-us-sm">
@@ -426,6 +431,7 @@ export default function SocialMediaManagement() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* FAQ */}
       <section className="faq-sm">
@@ -455,6 +461,7 @@ export default function SocialMediaManagement() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* CTA */}
       <section className="cta-sm-sm">
@@ -472,6 +479,7 @@ export default function SocialMediaManagement() {
           <button className="primary-btn-sm">Start Your Project</button>
         </motion.div>
       </section>
+      <ScrollBeam />
 
       {/* FOOTER */}
       <footer className="footer-sm-sm">

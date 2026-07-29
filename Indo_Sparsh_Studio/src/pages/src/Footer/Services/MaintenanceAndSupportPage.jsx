@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./MaintenanceAndSupportPage.css";
 import { Link, useNavigate } from "react-router-dom";
+import ScrollBeam from "../../../ScrollBeam";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -292,7 +293,7 @@ export default function MaintenanceSupportPage() {
         </svg>
       </section>
 
-      
+      <ScrollBeam />
 
       {/* ---------- What's included ---------- */}
       <section className="ms-section ms-section--muted">
@@ -313,6 +314,7 @@ export default function MaintenanceSupportPage() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ---------- SLA table ---------- */}
       <section className="ms-section">
@@ -341,6 +343,7 @@ export default function MaintenanceSupportPage() {
           </table>
         </Reveal>
       </section>
+      <ScrollBeam />
 
       {/* ---------- Process ---------- */}
       <section className="ms-section ms-section--muted">
@@ -359,6 +362,7 @@ export default function MaintenanceSupportPage() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ---------- Plans ---------- */}
       <section className="ms-section" id="plans">
@@ -403,6 +407,7 @@ export default function MaintenanceSupportPage() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ---------- FAQ ---------- */}
       <section className="ms-section">
@@ -422,6 +427,7 @@ export default function MaintenanceSupportPage() {
           ))}
         </Reveal>
       </section>
+      <ScrollBeam />
 
       {/* ---------- Final CTA ---------- */}
       <section className="ms-cta" id="contact">
@@ -432,7 +438,9 @@ export default function MaintenanceSupportPage() {
             required to report a critical issue.
           </p>
           <div className="ms-hero__cta-row">
-            <Link to="tel:+918005351770" className="ms-btn ms-btn--primary">Report an issue</Link>
+            <Link to="tel:+918005351770" className="ms-btn ms-btn--primary">
+              Report an issue
+            </Link>
             <button
               onClick={() => navigate("/contact")}
               className="ms-btn ms-btn--ghost-dark"

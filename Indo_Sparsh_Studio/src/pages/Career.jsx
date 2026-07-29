@@ -246,7 +246,7 @@ export default function Career() {
             </div>
           </div>
         </div>
-
+      <ScrollBeam />
         {/* JOB OPENINGS */}
         <h2 className="career-title">Open Positions</h2>
 

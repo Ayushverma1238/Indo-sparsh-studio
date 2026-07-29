@@ -127,7 +127,7 @@ export default function Layout() {
   }, [darkMode]);
 
   const message = encodeURIComponent(
-    `Hi! Saw your 2026 branding offer and it caught my eye & Can you tell me more about what's included?`,
+    `Hi! Saw your 2026 branding offer and it caught my eye. Can you tell me more about what's included?`,
   );
   return (
     <>

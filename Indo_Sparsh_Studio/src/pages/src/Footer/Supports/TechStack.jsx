@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./TechStack.css";
+import ScrollBeam from "../../../ScrollBeam";
 
 // ---- Your services list ----
 export const services = [
@@ -17,132 +18,182 @@ export const services = [
 
 export const techIcons = {
   // ===== Frontend =====
-  "HTML5": "https://cdn.simpleicons.org/html5",
-  "CSS3": "https://img.icons8.com/?size=100&id=21278&format=png&color=000000",
-  "JavaScript": "https://cdn.simpleicons.org/javascript",
-  "TypeScript": "https://cdn.simpleicons.org/typescript",
-  "React": "https://cdn.simpleicons.org/react",
+  HTML5: "https://cdn.simpleicons.org/html5",
+  CSS3: "https://img.icons8.com/?size=100&id=21278&format=png&color=000000",
+  JavaScript: "https://cdn.simpleicons.org/javascript",
+  TypeScript: "https://cdn.simpleicons.org/typescript",
+  React: "https://cdn.simpleicons.org/react",
   "Next.js": "https://cdn.simpleicons.org/nextdotjs",
-  "Angular": "https://cdn.simpleicons.org/angular",
+  Angular: "https://cdn.simpleicons.org/angular",
   "Vue.js": "https://cdn.simpleicons.org/vuedotjs",
-  "Gatsby": "https://cdn.simpleicons.org/gatsby",
-  "Astro": "https://cdn.simpleicons.org/astro",
+  Gatsby: "https://cdn.simpleicons.org/gatsby",
+  Astro: "https://cdn.simpleicons.org/astro",
   "Tailwind CSS": "https://cdn.simpleicons.org/tailwindcss",
-  "Bootstrap": "https://cdn.simpleicons.org/bootstrap",
+  Bootstrap: "https://cdn.simpleicons.org/bootstrap",
 
   // ===== Backend =====
   "Node.js": "https://cdn.simpleicons.org/nodedotjs",
   "Express.js": "https://cdn.simpleicons.org/express",
   "REST API": "https://cdn.simpleicons.org/openapiinitiative",
-  "Django": "https://cdn.simpleicons.org/django",
-  "GraphQL": "https://cdn.simpleicons.org/graphql",
+  Django: "https://cdn.simpleicons.org/django",
+  GraphQL: "https://cdn.simpleicons.org/graphql",
 
   // ===== Database =====
-  "MongoDB": "https://cdn.simpleicons.org/mongodb",
-  "PostgreSQL": "https://img.icons8.com/?size=100&id=Pv4IGT0TSpt8&format=png&color=000000",
-  "Firebase": "https://cdn.simpleicons.org/firebase",
+  MongoDB: "https://cdn.simpleicons.org/mongodb",
+  PostgreSQL:
+    "https://img.icons8.com/?size=100&id=Pv4IGT0TSpt8&format=png&color=000000",
+  Firebase: "https://cdn.simpleicons.org/firebase",
 
   // ===== Deployment / Hosting =====
-  "Vercel": "https://cdn.simpleicons.org/vercel",
-  "Netlify": "https://cdn.simpleicons.org/netlify",
-  "AWS": "https://img.icons8.com/?size=100&id=33039&format=png&color=000000",
-  "Cloudflare": "https://cdn.simpleicons.org/cloudflare",
-  "Docker": "https://cdn.simpleicons.org/docker",
-  "cPanel": "https://cdn.simpleicons.org/cpanel",
+  Vercel: "https://cdn.simpleicons.org/vercel",
+  Netlify: "https://cdn.simpleicons.org/netlify",
+  AWS: "https://img.icons8.com/?size=100&id=33039&format=png&color=000000",
+  Cloudflare: "https://cdn.simpleicons.org/cloudflare",
+  Docker: "https://cdn.simpleicons.org/docker",
+  cPanel: "https://cdn.simpleicons.org/cpanel",
 
   // ===== CMS / Ecommerce =====
-  "Shopify": "https://cdn.simpleicons.org/shopify",
-  "WooCommerce": "https://cdn.simpleicons.org/woocommerce",
-  "Magento": "https://img.icons8.com/?size=100&id=KOpXw3fX66q2&format=png&color=000000",
+  Shopify: "https://cdn.simpleicons.org/shopify",
+  WooCommerce: "https://cdn.simpleicons.org/woocommerce",
+  Magento:
+    "https://img.icons8.com/?size=100&id=KOpXw3fX66q2&format=png&color=000000",
   "Next.js Commerce": "https://cdn.simpleicons.org/nextdotjs",
-  "WordPress": "https://cdn.simpleicons.org/wordpress",
-  "Webflow": "https://cdn.simpleicons.org/webflow",
+  WordPress: "https://cdn.simpleicons.org/wordpress",
+  Webflow: "https://cdn.simpleicons.org/webflow",
 
   // ===== Payments =====
-  "Stripe": "https://cdn.simpleicons.org/stripe",
-  "Razorpay": "https://cdn.simpleicons.org/razorpay",
-  "PayPal": "https://cdn.simpleicons.org/paypal",
-  "PayU": "https://play-lh.googleusercontent.com/SWLOB5Qm3gdN4fwMn4N2NauXEt7GtCSBW6zm9OUNJ1jczVPjiz2qcHzZAdShZowIQoatdEq6J8qY86iQB427Ww",
+  Stripe: "https://cdn.simpleicons.org/stripe",
+  Razorpay: "https://cdn.simpleicons.org/razorpay",
+  PayPal: "https://cdn.simpleicons.org/paypal",
+  PayU: "https://play-lh.googleusercontent.com/SWLOB5Qm3gdN4fwMn4N2NauXEt7GtCSBW6zm9OUNJ1jczVPjiz2qcHzZAdShZowIQoatdEq6J8qY86iQB427Ww",
 
   // ===== Animation =====
-  "GSAP": "https://gsap.com/favicon.ico",
+  GSAP: "https://gsap.com/favicon.ico",
   "Framer Motion": "https://cdn.simpleicons.org/framer",
-  "Framer": "https://cdn.simpleicons.org/framer",
-  "Lottie": "https://cdn.simpleicons.org/lottiefiles",
+  Framer: "https://cdn.simpleicons.org/framer",
+  Lottie: "https://cdn.simpleicons.org/lottiefiles",
   "Three.js": "https://cdn.simpleicons.org/threedotjs",
   "Screaming Frog": "https://www.screamingfrog.co.uk/favicon.ico",
 
   // ===== Design =====
-  "Figma": "https://cdn.simpleicons.org/figma",
-  "Adobe XD": "https://img.icons8.com/?size=100&id=TF2CQcYTNqU2&format=png&color=000000",
-  "Sketch": "https://cdn.simpleicons.org/sketch",
-  "Adobe Photoshop": "https://img.icons8.com/?size=100&id=13677&format=png&color=000000",
-  "Adobe Illustrator": "https://img.icons8.com/?size=100&id=13631&format=png&color=000000",
-  "CorelDRAW": "https://cdn.simpleicons.org/coreldraw",
-  "InVision": "https://img.icons8.com/?size=100&id=O72vI2OWltx4&format=png&color=000000",
-  "Principle": "https://prototyprwp.gumlet.io/wp-content/uploads/2021/01/www_prototypr_io_cxL2o?w=1920&q=70&format=auto&compress=true&dpr=1",
+  Figma: "https://cdn.simpleicons.org/figma",
+  "Adobe XD":
+    "https://img.icons8.com/?size=100&id=TF2CQcYTNqU2&format=png&color=000000",
+  Sketch: "https://cdn.simpleicons.org/sketch",
+  "Adobe Photoshop":
+    "https://img.icons8.com/?size=100&id=13677&format=png&color=000000",
+  "Adobe Illustrator":
+    "https://img.icons8.com/?size=100&id=13631&format=png&color=000000",
+  CorelDRAW: "https://cdn.simpleicons.org/coreldraw",
+  InVision:
+    "https://img.icons8.com/?size=100&id=O72vI2OWltx4&format=png&color=000000",
+  Principle:
+    "https://prototyprwp.gumlet.io/wp-content/uploads/2021/01/www_prototypr_io_cxL2o?w=1920&q=70&format=auto&compress=true&dpr=1",
 
   // ===== Version Control =====
-  "Git": "https://cdn.simpleicons.org/git",
-  "GitHub": "https://cdn.simpleicons.org/github",
-  "GitLab": "https://cdn.simpleicons.org/gitlab",
+  Git: "https://cdn.simpleicons.org/git",
+  GitHub: "https://cdn.simpleicons.org/github",
+  GitLab: "https://cdn.simpleicons.org/gitlab",
 
   // ===== Analytics / SEO =====
   "Google Analytics": "https://cdn.simpleicons.org/googleanalytics",
   "Google Search Console": "https://cdn.simpleicons.org/googlesearchconsole",
-  "SEMrush": "https://cdn.simpleicons.org/semrush",
-  "Ahrefs": "https://ahrefs.com/favicon.ico",
+  SEMrush: "https://cdn.simpleicons.org/semrush",
+  Ahrefs: "https://ahrefs.com/favicon.ico",
   "Yoast SEO": "https://cdn.simpleicons.org/yoast",
-  "Google PageSpeed Insights": "https://www.gstatic.com/pagespeed/insights/ui/logo/favicon_48.png",
+  "Google PageSpeed Insights":
+    "https://www.gstatic.com/pagespeed/insights/ui/logo/favicon_48.png",
 
   // ===== Monitoring =====
-  "Sentry": "https://cdn.simpleicons.org/sentry",
+  Sentry: "https://cdn.simpleicons.org/sentry",
   "Uptime Robot": "https://uptimerobot.com/favicon.ico",
-  "GTmetrix": "https://gtmetrix.com/favicon.ico",
+  GTmetrix: "https://gtmetrix.com/favicon.ico",
 
   // ===== Mobile =====
   "React Native": "https://cdn.simpleicons.org/react",
-  "Flutter": "https://cdn.simpleicons.org/flutter",
-  "Swift": "https://cdn.simpleicons.org/swift",
-  "Kotlin": "https://cdn.simpleicons.org/kotlin",
+  Flutter: "https://cdn.simpleicons.org/flutter",
+  Swift: "https://cdn.simpleicons.org/swift",
+  Kotlin: "https://cdn.simpleicons.org/kotlin",
 
   // ===== Video =====
-  "Adobe Premiere Pro": "https://img.icons8.com/?size=100&id=e57Y1CnsOasB&format=png&color=000000",
-  "After Effects": "https://img.icons8.com/?size=100&id=tkuwWnXfr4fn&format=png&color=000000",
+  "Adobe Premiere Pro":
+    "https://img.icons8.com/?size=100&id=e57Y1CnsOasB&format=png&color=000000",
+  "After Effects":
+    "https://img.icons8.com/?size=100&id=tkuwWnXfr4fn&format=png&color=000000",
   "DaVinci Resolve": "https://cdn.simpleicons.org/davinciresolve",
 };
 
 // ---- A quick scrolling marquee of core, everyday tools ----
 const marqueeTools = [
-  "React", "Next.js", "Node.js", "Figma", "WordPress", "Tailwind CSS",
-  "Shopify", "MongoDB", "Firebase", "React Native", "Flutter",
-  "Adobe XD", "GitHub", "Vercel",
+  "React",
+  "Next.js",
+  "Node.js",
+  "Figma",
+  "WordPress",
+  "Tailwind CSS",
+  "Shopify",
+  "MongoDB",
+  "Firebase",
+  "React Native",
+  "Flutter",
+  "Adobe XD",
+  "GitHub",
+  "Vercel",
 ];
 
 // ---- Edit this to match your real tech stack per service ----
 const techStackData = {
   "Website Development": {
-    blurb: "Modern, fast and SEO-friendly websites built on reliable, scalable tools.",
+    blurb:
+      "Modern, fast and SEO-friendly websites built on reliable, scalable tools.",
     stacks: [
-      { name: "Frontend", tools: ["HTML5", "CSS3", "JavaScript", "React", "Next.js", "Tailwind CSS", "Bootstrap"] },
-      { name: "Backend", tools: ["Node.js", "Express.js", "REST API", "MongoDB", "PostgreSQL"] },
-      { name: "Hosting & Deployment", tools: ["Vercel", "Netlify", "AWS", "Cloudflare"] },
+      {
+        name: "Frontend",
+        tools: [
+          "HTML5",
+          "CSS3",
+          "JavaScript",
+          "React",
+          "Next.js",
+          "Tailwind CSS",
+          "Bootstrap",
+        ],
+      },
+      {
+        name: "Backend",
+        tools: ["Node.js", "Express.js", "REST API", "MongoDB", "PostgreSQL"],
+      },
+      {
+        name: "Hosting & Deployment",
+        tools: ["Vercel", "Netlify", "AWS", "Cloudflare"],
+      },
     ],
   },
   "Landing Page": {
-    blurb: "High-converting single pages, launched fast with pixel-perfect design.",
+    blurb:
+      "High-converting single pages, launched fast with pixel-perfect design.",
     stacks: [
-      { name: "Build", tools: ["HTML5", "CSS3", "Tailwind CSS", "Webflow", "Framer"] },
+      {
+        name: "Build",
+        tools: ["HTML5", "CSS3", "Tailwind CSS", "Webflow", "Framer"],
+      },
       { name: "Motion & Polish", tools: ["GSAP", "Framer Motion", "Lottie"] },
       { name: "Design", tools: ["Figma", "Adobe XD"] },
     ],
   },
   "E-commerce Website": {
-    blurb: "Full-featured online stores with secure checkout and inventory tools.",
+    blurb:
+      "Full-featured online stores with secure checkout and inventory tools.",
     stacks: [
-      { name: "Platforms", tools: ["Shopify", "WooCommerce", "Magento", "Next.js Commerce"] },
+      {
+        name: "Platforms",
+        tools: ["Shopify", "WooCommerce", "Magento", "Next.js Commerce"],
+      },
       { name: "Payments", tools: ["Stripe", "Razorpay", "PayPal", "PayU"] },
-      { name: "Backend", tools: ["Node.js", "MongoDB", "PostgreSQL", "Firebase"] },
+      {
+        name: "Backend",
+        tools: ["Node.js", "MongoDB", "PostgreSQL", "Firebase"],
+      },
     ],
   },
   "Portfolio Website": {
@@ -154,15 +205,23 @@ const techStackData = {
     ],
   },
   "Web Application": {
-    blurb: "Custom, data-driven applications built to scale with your business.",
+    blurb:
+      "Custom, data-driven applications built to scale with your business.",
     stacks: [
       { name: "Frontend", tools: ["React", "Angular", "Vue.js", "TypeScript"] },
-      { name: "Backend", tools: ["Node.js", "Express.js", "Django", "GraphQL"] },
-      { name: "Database & Infra", tools: ["MongoDB", "PostgreSQL", "Firebase", "Docker", "AWS"] },
+      {
+        name: "Backend",
+        tools: ["Node.js", "Express.js", "Django", "GraphQL"],
+      },
+      {
+        name: "Database & Infra",
+        tools: ["MongoDB", "PostgreSQL", "Firebase", "Docker", "AWS"],
+      },
     ],
   },
   "UI/UX Design": {
-    blurb: "Research-driven interfaces that are as usable as they are beautiful.",
+    blurb:
+      "Research-driven interfaces that are as usable as they are beautiful.",
     stacks: [
       { name: "Design Tools", tools: ["Figma", "Adobe XD", "Sketch"] },
       { name: "Prototyping", tools: ["Framer", "InVision", "Principle"] },
@@ -170,25 +229,44 @@ const techStackData = {
     ],
   },
   "Website Redesign": {
-    blurb: "Modernizing existing sites for speed, usability and today's design standards.",
+    blurb:
+      "Modernizing existing sites for speed, usability and today's design standards.",
     stacks: [
-      { name: "Frontend", tools: ["React", "WordPress", "Webflow", "Tailwind CSS"] },
+      {
+        name: "Frontend",
+        tools: ["React", "WordPress", "Webflow", "Tailwind CSS"],
+      },
       { name: "Planning", tools: ["Figma", "Google Analytics"] },
       { name: "Migration", tools: ["Git", "GitHub", "Vercel"] },
     ],
   },
   "Maintenance & Support": {
-    blurb: "Keeping sites and apps secure, fast and up to date, month after month.",
+    blurb:
+      "Keeping sites and apps secure, fast and up to date, month after month.",
     stacks: [
-      { name: "Hosting & Ops", tools: ["cPanel", "AWS", "Netlify", "Vercel", "Cloudflare"] },
+      {
+        name: "Hosting & Ops",
+        tools: ["cPanel", "AWS", "Netlify", "Vercel", "Cloudflare"],
+      },
       { name: "Version Control", tools: ["Git", "GitHub", "GitLab"] },
-      { name: "Monitoring", tools: ["Google Analytics", "Uptime Robot", "Sentry"] },
+      {
+        name: "Monitoring",
+        tools: ["Google Analytics", "Uptime Robot", "Sentry"],
+      },
     ],
   },
   "SEO Optimization": {
     blurb: "Technical and content SEO to help you rank and get found.",
     stacks: [
-      { name: "Research & Tracking", tools: ["Google Search Console", "Google Analytics", "SEMrush", "Ahrefs"] },
+      {
+        name: "Research & Tracking",
+        tools: [
+          "Google Search Console",
+          "Google Analytics",
+          "SEMrush",
+          "Ahrefs",
+        ],
+      },
       { name: "On-Page", tools: ["Yoast SEO", "Screaming Frog"] },
       { name: "Performance", tools: ["Google PageSpeed Insights", "GTmetrix"] },
     ],
@@ -196,9 +274,18 @@ const techStackData = {
   Other: {
     blurb: "Mobile apps, brand identity and video — the rest of what we build.",
     stacks: [
-      { name: "Mobile Apps", tools: ["React Native", "Flutter", "Swift", "Kotlin"] },
-      { name: "Logo & Branding", tools: ["Adobe Illustrator", "CorelDRAW", "Figma"] },
-      { name: "Video Production", tools: ["Adobe Premiere Pro", "After Effects", "DaVinci Resolve"] },
+      {
+        name: "Mobile Apps",
+        tools: ["React Native", "Flutter", "Swift", "Kotlin"],
+      },
+      {
+        name: "Logo & Branding",
+        tools: ["Adobe Illustrator", "CorelDRAW", "Figma"],
+      },
+      {
+        name: "Video Production",
+        tools: ["Adobe Premiere Pro", "After Effects", "DaVinci Resolve"],
+      },
     ],
   },
 };
@@ -217,7 +304,9 @@ function initials(name) {
 function TechBadge({ tool, index }) {
   return (
     <span className="tech-badge" style={{ animationDelay: `${index * 45}ms` }}>
-      <span className="tech-badge-icon"><img  src={techIcons[tool]} alt={tool} /></span>
+      <span className="tech-badge-icon">
+        <img src={techIcons[tool]} alt={tool} />
+      </span>
       {tool}
     </span>
   );
@@ -230,7 +319,9 @@ function ServiceStackCard({ service, data, index }) {
       style={{ animationDelay: `${index * 80}ms` }}
     >
       <div className="tech-card-head">
-        <span className="tech-card-index">{String(index + 1).padStart(2, "0")}</span>
+        <span className="tech-card-index">
+          {String(index + 1).padStart(2, "0")}
+        </span>
         <div>
           <h3 className="tech-card-title">{service}</h3>
           <p className="tech-card-blurb">{data.blurb}</p>
@@ -259,26 +350,25 @@ export default function TechStackPage() {
   }, []);
   const [activeService, setActiveService] = useState("All");
 
-  const visibleServices =
-    activeService === "All" ? services : [activeService];
+  const visibleServices = activeService === "All" ? services : [activeService];
 
   return (
     <div className="tech-root">
       <div className="tech-glow" aria-hidden="true" />
 
       <main className="tech-main">
-       
-
         <section className="tech-hero">
           <span className="tech-eyebrow">Our Toolkit</span>
           <h1 className="tech-title">
-            The tech stack <span className="tech-title-accent">behind the work.</span>
+            The tech stack{" "}
+            <span className="tech-title-accent">behind the work.</span>
           </h1>
           <p className="tech-subtitle">
-            Every service we offer is backed by tried-and-tested tools —
-            chosen for speed, reliability and long-term maintainability.
+            Every service we offer is backed by tried-and-tested tools — chosen
+            for speed, reliability and long-term maintainability.
           </p>
         </section>
+        <ScrollBeam />
 
         <div className="tech-marquee" aria-hidden="true">
           <div className="tech-marquee-track">
@@ -318,10 +408,14 @@ export default function TechStackPage() {
             />
           ))}
         </section>
+        <ScrollBeam />
 
         <section className="tech-cta why-card">
           <h2>Don't see a tool you use?</h2>
-          <p>We're always adding new tools to our workflow — ask us what fits your project best.</p>
+          <p>
+            We're always adding new tools to our workflow — ask us what fits
+            your project best.
+          </p>
           <a className="tech-cta-btn" href="mailto:hello@sparshstudio.com">
             Talk to us
             <span className="tech-cta-arrow">→</span>

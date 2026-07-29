@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./EcommercePage.css";
+import ScrollBeam from "../../../ScrollBeam";
 
 /**
  * EcommerceBuildStory
@@ -18,8 +19,7 @@ const STAGES = [
   {
     n: "01",
     title: "Discover",
-    copy:
-      "Scope the catalog, the buyer, and the one path from browse to purchase before touching a product card.",
+    copy: "Scope the catalog, the buyer, and the one path from browse to purchase before touching a product card.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <circle cx="21" cy="21" r="12" />
@@ -30,8 +30,7 @@ const STAGES = [
   {
     n: "02",
     title: "Catalog",
-    copy:
-      "Model the product data — variants, pricing, stock, images — so every listing pulls from one clean source.",
+    copy: "Model the product data — variants, pricing, stock, images — so every listing pulls from one clean source.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <rect x="8" y="10" width="14" height="14" />
@@ -44,8 +43,7 @@ const STAGES = [
   {
     n: "03",
     title: "Cart & Checkout",
-    copy:
-      "Persist the cart, keep tax and shipping visible early, and cut checkout down to as few steps as it can hold.",
+    copy: "Persist the cart, keep tax and shipping visible early, and cut checkout down to as few steps as it can hold.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <path d="M8 10h5l4 20h20l4-14H15" />
@@ -57,8 +55,7 @@ const STAGES = [
   {
     n: "04",
     title: "Payments & Trust",
-    copy:
-      "Wire a real payment gateway, show reviews and return policy up front, and never surprise anyone at the last step.",
+    copy: "Wire a real payment gateway, show reviews and return policy up front, and never surprise anyone at the last step.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <rect x="6" y="14" width="36" height="22" rx="2" />
@@ -70,8 +67,7 @@ const STAGES = [
   {
     n: "05",
     title: "Search & Merchandising",
-    copy:
-      "Add filters, search, and related-product logic that actually reflects how people shop, not how the database is shaped.",
+    copy: "Add filters, search, and related-product logic that actually reflects how people shop, not how the database is shaped.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <circle cx="20" cy="20" r="10" />
@@ -83,8 +79,7 @@ const STAGES = [
   {
     n: "06",
     title: "Launch & Iterate",
-    copy:
-      "Ship with analytics and A/B testing wired in from day one, then let real orders tell you what to fix next.",
+    copy: "Ship with analytics and A/B testing wired in from day one, then let real orders tell you what to fix next.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <path d="M8 34l8-10 7 6 8-14 9 8" />
@@ -126,7 +121,7 @@ function useReveal() {
           }
         });
       },
-      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" },
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
@@ -158,9 +153,14 @@ export default function EcommerceBuildStory() {
       <section className="bp-hero">
         <CropMarks />
 
-        <p className="bp-eyebrow js-reveal">Process Document — Commerce Platform Build</p>
+        <p className="bp-eyebrow js-reveal">
+          Process Document — Commerce Platform Build
+        </p>
 
-        <h1 className="bp-title" aria-label="How we build an e-commerce website">
+        <h1
+          className="bp-title"
+          aria-label="How we build an e-commerce website"
+        >
           {["How", "we", "build", "an", "e-commerce", "site"].map((w, i) => (
             <span
               className="bp-word"
@@ -201,7 +201,7 @@ export default function EcommerceBuildStory() {
           <em>scroll</em>
         </div>
       </section>
-
+      <ScrollBeam />
       {/* INTRO ------------------------------------------------------ */}
       <section className="bp-intro">
         <span className="bp-quote-mark" aria-hidden="true">
@@ -213,6 +213,7 @@ export default function EcommerceBuildStory() {
           Everything below is the method that answers it, sheet by sheet.
         </p>
       </section>
+      <ScrollBeam />
 
       {/* PROCESS ------------------------------------------------------ */}
       <section className="bp-process">
@@ -237,6 +238,7 @@ export default function EcommerceBuildStory() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* MATERIALS ------------------------------------------------------ */}
       <section className="bp-materials">
@@ -254,6 +256,7 @@ export default function EcommerceBuildStory() {
           ))}
         </dl>
       </section>
+      <ScrollBeam />
 
       {/* NOTES ------------------------------------------------------ */}
       <section className="bp-notes">
@@ -277,6 +280,7 @@ export default function EcommerceBuildStory() {
           ))}
         </ul>
       </section>
+      <ScrollBeam />
 
       {/* CTA ------------------------------------------------------ */}
       <section className="bp-cta">

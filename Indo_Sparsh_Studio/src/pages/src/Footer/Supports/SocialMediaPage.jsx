@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./SocialMediaPage.css";
+import ScrollBeam from "../../../ScrollBeam";
 
 /**
  * SocialMediaHandlingPage
@@ -61,41 +62,93 @@ const IconShield = (props) => (
       strokeWidth="1.5"
       strokeLinejoin="round"
     />
-    <path d="M9 12.2l2 2 4-4.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M9 12.2l2 2 4-4.2"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const IconCalendar = (props) => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" {...props}>
-    <rect x="3.5" y="5" width="17" height="15.5" rx="2" stroke="currentColor" strokeWidth="1.5" />
-    <path d="M3.5 9.5h17M8 3v3.4M16 3v3.4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <rect
+      x="3.5"
+      y="5"
+      width="17"
+      height="15.5"
+      rx="2"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <path
+      d="M3.5 9.5h17M8 3v3.4M16 3v3.4"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
 const IconSend = (props) => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" {...props}>
-    <path d="M21 3 3 10.5l7.2 2.8L13 20.5 21 3Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-    <path d="M10.2 13.3 21 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <path
+      d="M21 3 3 10.5l7.2 2.8L13 20.5 21 3Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M10.2 13.3 21 3"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
 const IconEye = (props) => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" {...props}>
-    <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+    <path
+      d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinejoin="round"
+    />
     <circle cx="12" cy="12" r="2.6" stroke="currentColor" strokeWidth="1.5" />
   </svg>
 );
 
 const IconArchive = (props) => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" {...props}>
-    <rect x="3.5" y="4" width="17" height="4.4" rx="1" stroke="currentColor" strokeWidth="1.5" />
-    <path d="M4.8 8.4v9.1a2 2 0 0 0 2 2h10.4a2 2 0 0 0 2-2V8.4M10 12.5h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <rect
+      x="3.5"
+      y="4"
+      width="17"
+      height="4.4"
+      rx="1"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <path
+      d="M4.8 8.4v9.1a2 2 0 0 0 2 2h10.4a2 2 0 0 0 2-2V8.4M10 12.5h4"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
 const IconFlag = (props) => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" {...props}>
-    <path d="M5 21V4M5 4.5c2-1.2 4-1.2 6 0s4 1.2 6 0v8c-2 1.2-4 1.2-6 0s-4-1.2-6 0Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+    <path
+      d="M5 21V4M5 4.5c2-1.2 4-1.2 6 0s4 1.2 6 0v8c-2 1.2-4 1.2-6 0s-4-1.2-6 0Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
@@ -143,7 +196,7 @@ function useReveal() {
           observer.unobserve(node);
         }
       },
-      { threshold: 0.18 }
+      { threshold: 0.18 },
     );
     observer.observe(node);
     return () => observer.disconnect();
@@ -172,43 +225,37 @@ const PIPELINE = [
     ch: "CH.01",
     label: "Draft",
     icon: IconPencil,
-    body:
-      "Every post starts as a document, not a text box. Writers work from the content calendar and the brand voice guide, so nothing goes out written in a rush.",
+    body: "Every post starts as a document, not a text box. Writers work from the content calendar and the brand voice guide, so nothing goes out written in a rush.",
   },
   {
     ch: "CH.02",
     label: "Review",
     icon: IconShield,
-    body:
-      "A second person checks facts, links, and alt text before anything is approved. Anything touching a live issue also gets a look from the comms lead.",
+    body: "A second person checks facts, links, and alt text before anything is approved. Anything touching a live issue also gets a look from the comms lead.",
   },
   {
     ch: "CH.03",
     label: "Schedule",
     icon: IconCalendar,
-    body:
-      "Approved posts go into the queue with a time and a channel attached. We don't post ad hoc from a phone in the moment — the queue is the only path to publish.",
+    body: "Approved posts go into the queue with a time and a channel attached. We don't post ad hoc from a phone in the moment — the queue is the only path to publish.",
   },
   {
     ch: "CH.04",
     label: "Publish",
     icon: IconSend,
-    body:
-      "The post goes live at its scheduled time on the assigned channel. Platform-specific formatting (crops, captions, hashtags) is set at this stage, not improvised.",
+    body: "The post goes live at its scheduled time on the assigned channel. Platform-specific formatting (crops, captions, hashtags) is set at this stage, not improvised.",
   },
   {
     ch: "CH.05",
     label: "Monitor",
     icon: IconEye,
-    body:
-      "Comments and replies are triaged against our moderation guidelines for the first 24 hours, when most engagement happens, then checked daily after that.",
+    body: "Comments and replies are triaged against our moderation guidelines for the first 24 hours, when most engagement happens, then checked daily after that.",
   },
   {
     ch: "CH.06",
     label: "Archive",
     icon: IconArchive,
-    body:
-      "Published posts and their engagement numbers are logged for reporting, then archived. We keep the record; we don't keep private message contents.",
+    body: "Published posts and their engagement numbers are logged for reporting, then archived. We keep the record; we don't keep private message contents.",
   },
 ];
 
@@ -251,9 +298,7 @@ export default function SocialMediaHandlingPage() {
     document.title = "Social Media Management | Indo Sparsh Studio";
   }, []);
   return (
-    <div className="smp-page" >
-    
-
+    <div className="smp-page">
       {/* ---------- hero ---------- */}
       <section className="smp-hero">
         <SignalBars className="smp-hero__signal" />
@@ -265,8 +310,9 @@ export default function SocialMediaHandlingPage() {
             every channel.
           </h1>
           <p className="smp-hero__sub">
-            Every post we publish — announcement, reply, or correction — moves through the same
-            pipeline before it goes live. This page is that pipeline, in plain terms.
+            Every post we publish — announcement, reply, or correction — moves
+            through the same pipeline before it goes live. This page is that
+            pipeline, in plain terms.
           </p>
           <div className="smp-status-row">
             <span className="smp-pill smp-pill--live">
@@ -281,19 +327,27 @@ export default function SocialMediaHandlingPage() {
           </div>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ---------- pipeline ---------- */}
       <section className="smp-section" id="pipeline">
         <Reveal as="div" className="smp-section__head">
           <p className="smp-eyebrow">The pipeline</p>
-          <h2 className="smp-section__title">From draft to archive, six steps.</h2>
+          <h2 className="smp-section__title">
+            From draft to archive, six steps.
+          </h2>
         </Reveal>
 
         <div className="smp-pipeline">
           {PIPELINE.map((step, i) => {
             const Icon = step.icon;
             return (
-              <Reveal as="article" className="smp-card why-card" delay={i * 70} key={step.ch}>
+              <Reveal
+                as="article"
+                className="smp-card why-card"
+                delay={i * 70}
+                key={step.ch}
+              >
                 <div className="smp-card__top">
                   <span className="smp-card__ch">{step.ch}</span>
                   <span className="smp-card__icon">
@@ -308,18 +362,28 @@ export default function SocialMediaHandlingPage() {
           })}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ---------- principles ---------- */}
       <section className="smp-section smp-section--muted" id="principles">
         <Reveal as="div" className="smp-section__head">
           <p className="smp-eyebrow">Voice &amp; review</p>
-          <h2 className="smp-section__title">What we check before anything ships.</h2>
+          <h2 className="smp-section__title">
+            What we check before anything ships.
+          </h2>
         </Reveal>
 
         <div className="smp-principles">
           {PRINCIPLES.map((p, i) => (
-            <Reveal as="div" className="smp-principle" delay={i * 60} key={p.title}>
-              <span className="smp-principle__index">{String(i + 1).padStart(2, "0")}</span>
+            <Reveal
+              as="div"
+              className="smp-principle"
+              delay={i * 60}
+              key={p.title}
+            >
+              <span className="smp-principle__index">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               <div>
                 <h3 className="smp-principle__title">{p.title}</h3>
                 <p className="smp-principle__body">{p.body}</p>
@@ -328,12 +392,15 @@ export default function SocialMediaHandlingPage() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ---------- moderation & response ---------- */}
       <section className="smp-section" id="moderation">
         <Reveal as="div" className="smp-section__head">
           <p className="smp-eyebrow">Moderation &amp; response</p>
-          <h2 className="smp-section__title">How fast we answer, and what we remove.</h2>
+          <h2 className="smp-section__title">
+            How fast we answer, and what we remove.
+          </h2>
         </Reveal>
 
         <div className="smp-split">
@@ -354,7 +421,9 @@ export default function SocialMediaHandlingPage() {
               <li>Hate speech, harassment, or threats.</li>
               <li>Anyone's private contact or financial details.</li>
             </ul>
-            <h3 className="smp-remove__title smp-remove__title--keep">We keep</h3>
+            <h3 className="smp-remove__title smp-remove__title--keep">
+              We keep
+            </h3>
             <ul className="smp-remove__list">
               <li>Criticism of us, even when it's blunt.</li>
               <li>Questions we haven't answered yet.</li>
@@ -363,12 +432,15 @@ export default function SocialMediaHandlingPage() {
           </Reveal>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ---------- data ---------- */}
       <section className="smp-section smp-section--muted" id="data">
         <Reveal as="div" className="smp-section__head ">
           <p className="smp-eyebrow">Data we keep</p>
-          <h2 className="smp-section__title">Nothing beyond what's already public.</h2>
+          <h2 className="smp-section__title">
+            Nothing beyond what's already public.
+          </h2>
         </Reveal>
 
         <Reveal as="ul" className="smp-data-list">
@@ -380,13 +452,16 @@ export default function SocialMediaHandlingPage() {
           ))}
         </Reveal>
       </section>
+      <ScrollBeam />
 
       {/* ---------- report ---------- */}
       <section className="smp-section">
         <Reveal as="div" className="smp-report why-card">
           <div>
             <p className="smp-eyebrow">See something off?</p>
-            <h2 className="smp-report__title">Tell us and we'll look at it directly.</h2>
+            <h2 className="smp-report__title">
+              Tell us and we'll look at it directly.
+            </h2>
           </div>
           <a className="smp-button" href="mailto:contact@indosparsh.com">
             <IconFlag />
@@ -394,6 +469,7 @@ export default function SocialMediaHandlingPage() {
           </a>
         </Reveal>
       </section>
+      <ScrollBeam />
 
       <footer className="smp-footer">
         <span>Last reviewed today · Social Operations team</span>

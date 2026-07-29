@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./AppDevelopment.css";
 import { useNavigate } from "react-router-dom";
+import ScrollBeam from '../../../ScrollBeam'
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -178,7 +179,6 @@ export default function AppDevPage() {
     <div className="appdev-page">
       {/* ---------- Hero ---------- */}
       <section className="appdev-hero">
-        <div className="appdev-hero__bg" aria-hidden="true" />
         <div className="appdev-hero__inner">
           <div className="appdev-hero__content">
             <span className="appdev-hero__eyebrow">App Development</span>
@@ -267,6 +267,7 @@ export default function AppDevPage() {
           </div>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ---------- Services ---------- */}
       <section className="adh-section">
@@ -289,6 +290,8 @@ export default function AppDevPage() {
           ))}
         </div>
       </section>
+      
+      <ScrollBeam />
 
       {/* ---------- Process ---------- */}
       <section className="adh-section adh-section--muted">
@@ -312,6 +315,7 @@ export default function AppDevPage() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ---------- Tech stack marquee ---------- */}
       <section className="adh-section adh-section--tight">
@@ -350,6 +354,8 @@ export default function AppDevPage() {
           ))}
         </div>
       </section> */}
+            <ScrollBeam />
+
 
       {/* ---------- Final CTA ---------- */}
       <section className="adh-cta">

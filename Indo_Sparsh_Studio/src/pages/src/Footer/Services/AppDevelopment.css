@@ -11,7 +11,7 @@ body.light-mode {
   --adh-shadow: rgba(20, 23, 31, 0.12);
 }
 body.dark-mode {
-  --adh-bg: #0d1117;
+  --adh-bg: #040c16;
   --adh-bg-2: #11161d;
   --adh-text: #e8eaed;
   --adh-text-muted: #9aa1ac;

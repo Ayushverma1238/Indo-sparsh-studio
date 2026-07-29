@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./BrandingAndMarketing.css";
 import { useNavigate } from "react-router-dom";
+import ScrollBeam from "../../../ScrollBeam";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -162,7 +163,7 @@ export default function BrandingMarketingPage() {
   useEffect(() => {
     document.title = "Branding and Marketing | Indo Sparsh Studio";
   }, []);
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   const [filter, setFilter] = useState("All");
 
   const visible =
@@ -170,7 +171,6 @@ export default function BrandingMarketingPage() {
 
   return (
     <div className="bm">
-     
       {/* ---------- Hero ---------- */}
       <section className="bm-hero">
         <div className="bm-blob bm-blob--a" aria-hidden="true" />
@@ -198,6 +198,7 @@ export default function BrandingMarketingPage() {
           </div>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ---------- Client marquee ---------- */}
       <div className="bm-marquee">
@@ -220,6 +221,7 @@ export default function BrandingMarketingPage() {
             ))}
         </div>
       </div>
+      <ScrollBeam />
 
       {/* ---------- Work ---------- */}
       <section className="bm-section" id="work">
@@ -245,7 +247,11 @@ export default function BrandingMarketingPage() {
 
         <div className="bm-grid">
           {visible.map((p, i) => (
-            <div  className="bm-flip why-card" key={p.name} style={{ "--i": i, padding:"0" }}>
+            <div
+              className="bm-flip why-card"
+              key={p.name}
+              style={{ "--i": i, padding: "0" }}
+            >
               <div className="bm-flip__inner">
                 <div
                   className="bm-flip__front"
@@ -266,6 +272,7 @@ export default function BrandingMarketingPage() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ---------- Process ---------- */}
       <section className="bm-section bm-section--muted">
@@ -284,6 +291,7 @@ export default function BrandingMarketingPage() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ---------- Stats ---------- */}
       <section className="bm-stats">
@@ -306,6 +314,7 @@ export default function BrandingMarketingPage() {
           <span className="bm-stats__label">avg reach growth</span>
         </Reveal>
       </section>
+      <ScrollBeam />
 
       {/* ---------- Final CTA ---------- */}
       <section className="bm-cta" id="contact">
@@ -317,8 +326,18 @@ export default function BrandingMarketingPage() {
             Tell us where the brand is today, and where you want it in a year.
           </p>
           <div className="bm-hero__cta-row">
-            <button onClick={() => navigate("/request-quote")} className="bm-btn bm-btn--primary">Start a project</button>
-            <button className="bm-btn bm-btn--ghost-light" onClick={() => navigate("/contact")}>Book a call</button>
+            <button
+              onClick={() => navigate("/request-quote")}
+              className="bm-btn bm-btn--primary"
+            >
+              Start a project
+            </button>
+            <button
+              className="bm-btn bm-btn--ghost-light"
+              onClick={() => navigate("/contact")}
+            >
+              Book a call
+            </button>
           </div>
         </Reveal>
       </section>

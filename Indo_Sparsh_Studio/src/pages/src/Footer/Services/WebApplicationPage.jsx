@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./WebApplicationPage.css";
+import ScrollBeam from "../../../ScrollBeam";
 
 /**
  * WebAppBuildStory
@@ -21,8 +22,7 @@ const STAGES = [
   {
     n: "01",
     title: "Discover",
-    copy:
-      "Map the core workflows and the users behind them before deciding on a single component or table.",
+    copy: "Map the core workflows and the users behind them before deciding on a single component or table.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <circle cx="24" cy="16" r="7" />
@@ -33,8 +33,7 @@ const STAGES = [
   {
     n: "02",
     title: "Architecture",
-    copy:
-      "Draw the boundaries — frontend, API, services, database — so each piece can change without breaking the others.",
+    copy: "Draw the boundaries — frontend, API, services, database — so each piece can change without breaking the others.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <rect x="6" y="8" width="14" height="10" />
@@ -47,8 +46,7 @@ const STAGES = [
   {
     n: "03",
     title: "Data & State",
-    copy:
-      "Model the data and auth first, then decide what lives in server state versus local UI state — not the other way round.",
+    copy: "Model the data and auth first, then decide what lives in server state versus local UI state — not the other way round.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <ellipse cx="24" cy="12" rx="14" ry="5" />
@@ -60,8 +58,7 @@ const STAGES = [
   {
     n: "04",
     title: "Build",
-    copy:
-      "Component library first, then screens wired to real endpoints — business logic lives in hooks and services, not JSX.",
+    copy: "Component library first, then screens wired to real endpoints — business logic lives in hooks and services, not JSX.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <rect x="8" y="8" width="32" height="8" />
@@ -74,8 +71,7 @@ const STAGES = [
   {
     n: "05",
     title: "Testing & Quality",
-    copy:
-      "Unit tests for logic, integration tests for flows, and a manual pass for keyboard, contrast, and screen readers.",
+    copy: "Unit tests for logic, integration tests for flows, and a manual pass for keyboard, contrast, and screen readers.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <path d="M18 6h12v8l8 20a4 4 0 0 1-4 6H14a4 4 0 0 1-4-6l8-20z" />
@@ -86,8 +82,7 @@ const STAGES = [
   {
     n: "06",
     title: "Deploy & Scale",
-    copy:
-      "Ship through CI/CD with monitoring already wired in, then let real usage tell you where it needs to grow.",
+    copy: "Ship through CI/CD with monitoring already wired in, then let real usage tell you where it needs to grow.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <path d="M24 6l14 8v20l-14 8-14-8V14z" />
@@ -105,7 +100,10 @@ const MATERIALS = [
   ["State", "Server cache (React Query) kept separate from local UI state"],
   ["Testing", "Jest for units, Playwright/Cypress for end-to-end flows"],
   ["CI/CD", "GitHub Actions — lint, test, and preview build on every PR"],
-  ["Styling", "CSS custom properties for every token, light + dark from day one"],
+  [
+    "Styling",
+    "CSS custom properties for every token, light + dark from day one",
+  ],
 ];
 
 const NOTES = [
@@ -131,7 +129,7 @@ function useReveal() {
           }
         });
       },
-      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" },
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
@@ -161,10 +159,12 @@ export default function WebAppBuildStory() {
     <main className="wa" ref={rootRef}>
       {/* HERO ------------------------------------------------------ */}
       <section className="wa-hero">
-        <div className="wa-grid-bg" aria-hidden="true" />
+        {/* <div className="wa-grid-bg" aria-hidden="true" /> */}
         <CropMarks />
 
-        <p className="wa-eyebrow js-reveal">Process Document — Web Application Build</p>
+        <p className="wa-eyebrow js-reveal">
+          Process Document — Web Application Build
+        </p>
 
         <h1 className="wa-title" aria-label="How we build a web application">
           {["How", "we", "build", "a", "web", "app"].map((w, i) => (
@@ -207,6 +207,7 @@ export default function WebAppBuildStory() {
           <em>scroll</em>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* INTRO ------------------------------------------------------ */}
       <section className="wa-intro">
@@ -215,10 +216,14 @@ export default function WebAppBuildStory() {
         </span>
         <p className="js-reveal">
           Every application we build starts with the same question:{" "}
-          <em>what does this data need to do, before it ever needs to look
-          like anything?</em> Everything below is the method that answers it.
+          <em>
+            what does this data need to do, before it ever needs to look like
+            anything?
+          </em>{" "}
+          Everything below is the method that answers it.
         </p>
       </section>
+      <ScrollBeam />
 
       {/* PROCESS ------------------------------------------------------ */}
       <section className="wa-process">
@@ -243,6 +248,7 @@ export default function WebAppBuildStory() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* MATERIALS ------------------------------------------------------ */}
       <section className="wa-materials">
@@ -260,6 +266,7 @@ export default function WebAppBuildStory() {
           ))}
         </dl>
       </section>
+      <ScrollBeam />
 
       {/* NOTES ------------------------------------------------------ */}
       <section className="wa-notes">
@@ -283,6 +290,7 @@ export default function WebAppBuildStory() {
           ))}
         </ul>
       </section>
+      <ScrollBeam />
 
       {/* CTA ------------------------------------------------------ */}
       <section className="wa-cta">

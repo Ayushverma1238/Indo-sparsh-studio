@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./LandingPage.css";
+import ScrollBeam from "../../../ScrollBeam";
 
 /**
  * LandingPageBuildStory
@@ -16,8 +17,7 @@ const STAGES = [
   {
     n: "01",
     title: "Brief",
-    copy:
-      "Pin down one job the page has to do, who it's for, and what 'done' looks like before a single pixel moves.",
+    copy: "Pin down one job the page has to do, who it's for, and what 'done' looks like before a single pixel moves.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <path d="M12 8h18l6 6v26H12z" />
@@ -29,8 +29,7 @@ const STAGES = [
   {
     n: "02",
     title: "Structure",
-    copy:
-      "Wireframe the skeleton — hero, proof, path to action — with boxes and arrows, no color or type yet.",
+    copy: "Wireframe the skeleton — hero, proof, path to action — with boxes and arrows, no color or type yet.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <rect x="8" y="10" width="32" height="9" />
@@ -43,8 +42,7 @@ const STAGES = [
   {
     n: "03",
     title: "System",
-    copy:
-      "Fix the tokens — palette, type scale, spacing unit, motion rules — so every later decision is a lookup, not a guess.",
+    copy: "Fix the tokens — palette, type scale, spacing unit, motion rules — so every later decision is a lookup, not a guess.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <circle cx="16" cy="16" r="6" />
@@ -56,8 +54,7 @@ const STAGES = [
   {
     n: "04",
     title: "Build",
-    copy:
-      "Semantic markup first, then components, then the responsive scaffold. The DOM should read like an outline.",
+    copy: "Semantic markup first, then components, then the responsive scaffold. The DOM should read like an outline.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <path d="M16 14 8 24l8 10M32 14l8 10-8 10M27 12l-6 24" />
@@ -67,8 +64,7 @@ const STAGES = [
   {
     n: "05",
     title: "Motion",
-    copy:
-      "Add movement where it explains something — order, cause, feedback — and cut every animation that's only decoration.",
+    copy: "Add movement where it explains something — order, cause, feedback — and cut every animation that's only decoration.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <path d="M8 30c6 0 6-14 12-14s6 14 12 14 6-14 12-14" />
@@ -78,8 +74,7 @@ const STAGES = [
   {
     n: "06",
     title: "Ship",
-    copy:
-      "Performance pass, keyboard and contrast check, then launch — and watch how real people actually use it.",
+    copy: "Performance pass, keyboard and contrast check, then launch — and watch how real people actually use it.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <path d="M24 6c6 4 8 10 8 18 0 4-2 8-4 10l-4 4-4-4c-2-2-4-6-4-10 0-8 2-14 8-18z" />
@@ -122,7 +117,7 @@ function useReveal() {
           }
         });
       },
-      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" },
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
@@ -154,7 +149,9 @@ export default function LandingPageBuildStory() {
       <section className="bp-hero">
         <CropMarks />
 
-        <p className="bp-eyebrow js-reveal">Process Document — Landing Page Build</p>
+        <p className="bp-eyebrow js-reveal">
+          Process Document — Landing Page Build
+        </p>
 
         <h1 className="bp-title" aria-label="How I build a landing page">
           {["How", "I", "build", "a", "landing", "page"].map((w, i) => (
@@ -197,6 +194,7 @@ export default function LandingPageBuildStory() {
           <em>scroll</em>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* INTRO ------------------------------------------------------ */}
       <section className="bp-intro">
@@ -204,12 +202,13 @@ export default function LandingPageBuildStory() {
           &ldquo;
         </span>
         <p className="js-reveal">
-          Every page on this site started the same way this one did — as a
-          blank sheet with a single question at the top:{" "}
-          <em>what is this page's one job?</em> Everything below is that
-          method, laid out the way I actually work through it.
+          Every page on this site started the same way this one did — as a blank
+          sheet with a single question at the top:{" "}
+          <em>what is this page's one job?</em> Everything below is that method,
+          laid out the way I actually work through it.
         </p>
       </section>
+      <ScrollBeam />
 
       {/* PROCESS ------------------------------------------------------ */}
       <section className="bp-process">
@@ -234,6 +233,7 @@ export default function LandingPageBuildStory() {
           ))}
         </div>
       </section>
+      <ScrollBeam />
 
       {/* MATERIALS ------------------------------------------------------ */}
       <section className="bp-materials">
@@ -251,6 +251,7 @@ export default function LandingPageBuildStory() {
           ))}
         </dl>
       </section>
+      <ScrollBeam />
 
       {/* NOTES ------------------------------------------------------ */}
       <section className="bp-notes">
@@ -274,6 +275,7 @@ export default function LandingPageBuildStory() {
           ))}
         </ul>
       </section>
+      <ScrollBeam />
 
       {/* CTA ------------------------------------------------------ */}
       <section className="bp-cta">

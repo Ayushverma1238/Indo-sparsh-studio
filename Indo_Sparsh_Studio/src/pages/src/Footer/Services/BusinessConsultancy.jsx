@@ -16,6 +16,7 @@ import {
 } from "react-icons/fa";
 import { HiOutlineLightBulb, HiOutlineTrendingUp } from "react-icons/hi";
 import { motion, useInView } from "framer-motion";
+import ScrollBeam from "../../../ScrollBeam";
 
 /* ==========================================================
    REVEAL COMPONENT
@@ -23,7 +24,6 @@ import { motion, useInView } from "framer-motion";
 
 function RevealBC({ children, className = "", delay = 0, as: Tag = "div" }) {
   const ref = useRef(null);
-
 
   const visible = useInView(ref, {
     once: true,
@@ -155,7 +155,7 @@ const processBC = [
 ========================================================== */
 
 export default function BusinessConsultancy() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "Business Consultancy | Indo Sparsh Studio";
   }, []);
@@ -272,6 +272,7 @@ export default function BusinessConsultancy() {
           </div>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ==================================================
           STATS SECTION
@@ -296,6 +297,8 @@ export default function BusinessConsultancy() {
           </div>
         </div>
       </section>
+      <ScrollBeam />
+
       {/* ==================================================
           ABOUT SECTION
       ================================================== */}
@@ -406,6 +409,7 @@ export default function BusinessConsultancy() {
           </div>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ==================================================
           PROCESS SECTION
@@ -443,6 +447,7 @@ export default function BusinessConsultancy() {
           </div>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ==================================================
           WHY CHOOSE US
@@ -506,6 +511,8 @@ export default function BusinessConsultancy() {
           </div>
         </div>
       </section>
+      <ScrollBeam />
+
       {/* ==================================================
           SERVICES SECTION
       ================================================== */}
@@ -580,6 +587,7 @@ export default function BusinessConsultancy() {
           </div>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ==================================================
           PRICING SECTION
@@ -616,14 +624,19 @@ export default function BusinessConsultancy() {
                 <li>✔ Action Summary</li>
               </ul>
 
-              <button onClick={() => navigate('/contact')} className="pricing-button-bc">Get Started</button>
+              <button
+                onClick={() => navigate("/contact")}
+                className="pricing-button-bc"
+              >
+                Get Started
+              </button>
             </RevealBC>
 
             <RevealBC
               delay={120}
               className="pricing-card-bc featured-pricing-card-bc"
             >
-              <div className="popular-badge-bc">MOST POPULAR</div>
+              <div className="popular-badge-bc">MOST RECOMMENDED</div>
 
               <span className="pricing-label-bc">PROFESSIONAL</span>
 
@@ -664,11 +677,17 @@ export default function BusinessConsultancy() {
                 <li>✔ Monthly Reports</li>
               </ul>
 
-              <button onClick={() => navigate("/contact")} className="pricing-button-bc">Contact Us</button>
+              <button
+                onClick={() => navigate("/contact")}
+                className="pricing-button-bc"
+              >
+                Contact Us
+              </button>
             </RevealBC>
           </div>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ==================================================
           CALL TO ACTION
@@ -700,6 +719,8 @@ export default function BusinessConsultancy() {
           </RevealBC>
         </div>
       </section>
+      <ScrollBeam />
+
       {/* ==================================================
           TESTIMONIALS SECTION
       ================================================== */}
@@ -766,6 +787,7 @@ export default function BusinessConsultancy() {
           </div>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ==================================================
           FAQ SECTION
@@ -810,6 +832,7 @@ export default function BusinessConsultancy() {
           </div>
         </div>
       </section>
+      <ScrollBeam />
 
       {/* ==================================================
           CONTACT SECTION
@@ -879,8 +902,6 @@ export default function BusinessConsultancy() {
           </div>
         </div>
       </section>
-
-     
     </div>
   );
 }
