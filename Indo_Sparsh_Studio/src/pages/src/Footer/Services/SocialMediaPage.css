@@ -686,3 +686,10 @@ body.dark-mode {
     transform: none !important;
   }
 }
+
+.plan-btn-sm{
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

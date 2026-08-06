@@ -237,6 +237,22 @@ export default function BusinessConsultancy() {
     "Hi Indo Sparsh Studio! I'd like to book a free 15-minute Fit Call.",
   );
 
+  const price1card = encodeURIComponent(
+    `Hi! I'd like to book the Business Discovery Call (₹999) to discuss my business challenges and goals. When can we schedule the session?`
+  )
+  const price2card = encodeURIComponent(
+    `Hi! I'm interested in the Revenue Growth Audit (₹4,999). I want a complete diagnostic of my business with a clear growth roadmap. Can we book the strategy call?`
+  )
+  const price3card = encodeURIComponent(
+    `Hi! I'd like to know more about the Starter Advisory retainer (₹7,999/month) — the 2 strategy calls and ongoing support. Can you share how we get started?`
+  )
+  const price4card = encodeURIComponent(
+    `Hi! I'm looking for continuous, priority-level support for my business — interested in the Growth Advisory plan (₹14,999/month). Can we discuss the KPI tracking and onboarding process?`
+  )
+  const price5card = encodeURIComponent(
+    `Hi! I need a second opinion on a specific business decision. Can I book a single On-Demand Consulting Call (₹1,499/hour) directly on WhatsApp?`
+  )
+
   return (
     <div className="business-consultancy-page-bc">
       {/* ==================================================
@@ -688,12 +704,13 @@ export default function BusinessConsultancy() {
                 <li>✔ No package or commitment required</li>
               </ul>
 
-              <button
-                onClick={() => navigate("/contact")}
+              <Link
+                to={`https://wa.me/918005351770?text=${price1card}`}
+                target="_blank"
                 className="pricing-button-bc"
               >
                 Get Started
-              </button>
+              </Link>
             </RevealBC>
 
             <RevealBC
@@ -725,9 +742,9 @@ export default function BusinessConsultancy() {
               </ul>
 
               <Link
-                to={`https://wa.me/918005351770?text=${message}`}
+                to={`https://wa.me/918005351770?text=${price2card}`}
                 target="_blank"
-                className="primary-button-bc"
+                className="pricing-button-bc"
               >
                 Book Consultation
                 <FaArrowRight />
@@ -754,12 +771,13 @@ export default function BusinessConsultancy() {
                 <li>✔ Monthly progress review</li>
               </ul>
 
-              <button
-                onClick={() => navigate("/contact")}
+              <Link
+                to={`https://wa.me/918005351770?text=${price3card}`}
+                target="_blank"
                 className="pricing-button-bc"
               >
                 Get Started
-              </button>
+              </Link>
             </RevealBC>
 
             <RevealBC delay={320} className="pricing-card-bc">
@@ -783,12 +801,13 @@ export default function BusinessConsultancy() {
                 <li>✔ Quarterly deep-dive review</li>
               </ul>
 
-              <button
-                onClick={() => navigate("/contact")}
+              <Link
+                to={`https://wa.me/918005351770?text=${price4card}`}
+                target="_blank"
                 className="pricing-button-bc"
               >
                 Contact Us
-              </button>
+              </Link>
             </RevealBC>
 
             <RevealBC delay={400} className="pricing-card-bc">
@@ -812,7 +831,7 @@ export default function BusinessConsultancy() {
               </ul>
 
               <Link
-                to={`https://wa.me/918005351770?text=${message}`}
+                to={`https://wa.me/918005351770?text=${price5card}`}
                 target="_blank"
                 className="pricing-button-bc"
               >

@@ -92,6 +92,16 @@ export const features = [
   },
 ];
 
+const price1Card = encodeURIComponent(
+  `Hi! I'm interested in the SMM Basic plan (₹4,999/month) for managing my social media presence. Can you share how we get started?`,
+);
+const price2Card = encodeURIComponent(
+  `Hi! I'd like to go with the SMM Pro plan (₹11,999/month) — the extra content volume and audience insights look like a good fit. Can we discuss onboarding?`,
+);
+const price3Card = encodeURIComponent(
+  `Hi! I'm interested in the SMM Premium + UGC plan (₹22,999/month) — especially the scripted UGC videos and growth planning. Can you walk me through what's included?`,
+);
+
 // ---- Pricing plans (from PDF, exact prices & feature lists) ----
 export const pricingPlans = [
   {
@@ -99,7 +109,9 @@ export const pricingPlans = [
     name: "SMM Basic",
     price: "₹4,999",
     duration: "/month",
-    description: "A fully managed, on-brand social presence — done for you, every month.",
+    description:
+      "A fully managed, on-brand social presence — done for you, every month.",
+    message: price1Card,
     features: [
       "Profile optimization",
       "15 posts/month",
@@ -116,7 +128,9 @@ export const pricingPlans = [
     name: "SMM Pro",
     price: "₹11,999",
     duration: "/month",
-    description: "Everything in Basic, plus deeper content volume and audience insight.",
+    description:
+      "Everything in Basic, plus deeper content volume and audience insight.",
+    message: price2Card,
     features: [
       "Everything in Basic, plus:",
       "30 posts/month",
@@ -134,7 +148,9 @@ export const pricingPlans = [
     name: "SMM Premium + UGC",
     price: "₹22,999",
     duration: "/month",
-    description: "Everything in Pro, plus scripted UGC video and hands-on growth planning.",
+    description:
+      "Everything in Pro, plus scripted UGC video and hands-on growth planning.",
+    message: price3Card,
     features: [
       "Everything in Pro, plus:",
       "4 scripted UGC-style videos/month",
@@ -150,9 +166,18 @@ export const pricingPlans = [
 
 // ---- Optional add-ons (from PDF) ----
 export const addons = [
-  { service: "Extra Platform (beyond primary coverage)", price: "₹1,999/month" },
-  { service: "Product/Business Photoshoot (half-day, on-location)", price: "₹2,999" },
-  { service: "Additional UGC Video (beyond plan limit)", price: "₹2,499/video" },
+  {
+    service: "Extra Platform (beyond primary coverage)",
+    price: "₹1,999/month",
+  },
+  {
+    service: "Product/Business Photoshoot (half-day, on-location)",
+    price: "₹2,999",
+  },
+  {
+    service: "Additional UGC Video (beyond plan limit)",
+    price: "₹2,499/video",
+  },
 ];
 
 // ---- Process / timeline — EDIT ME ----
@@ -194,7 +219,7 @@ export const whyChooseUs = [
   {
     title: "Outcomes Over Vanity Metrics",
     description:
-      "We focus on business outcomes — engagement, inquiries and reach — not follower counts or \"like boosting.\"",
+      'We focus on business outcomes — engagement, inquiries and reach — not follower counts or "like boosting."',
   },
   {
     title: "One Team, Start To Finish",
@@ -203,11 +228,13 @@ export const whyChooseUs = [
   },
   {
     title: "Transparent Monthly Reporting",
-    description: "See exactly what was posted and how it performed, every single month.",
+    description:
+      "See exactly what was posted and how it performed, every single month.",
   },
   {
     title: "Flexible Plans",
-    description: "Upgrade, downgrade, or add platforms anytime — no long lock-ins.",
+    description:
+      "Upgrade, downgrade, or add platforms anytime — no long lock-ins.",
   },
   {
     title: "One Studio, One Strategy",

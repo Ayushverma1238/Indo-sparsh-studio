@@ -224,8 +224,9 @@ export default function Footer() {
       <div className="copyright">
         <p>
           Copyright {new Date().getFullYear()} <span>Indo Sparsh Studio</span>.
-          All rights reserved.
-          <span className="msme">MSME:</span>
+          All rights reserved. MSME:
+          <span className="msme"> UDYAM-UP-50-0287639</span>
+          
         </p>
       </div>
     </footer>

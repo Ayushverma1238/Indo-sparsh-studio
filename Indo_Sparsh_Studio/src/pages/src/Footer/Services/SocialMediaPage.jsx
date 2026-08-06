@@ -24,6 +24,7 @@ import {
 
 import "./SocialMediaPage.css";
 import ScrollBeam from "../../../ScrollBeam";
+import { Link } from "react-router-dom";
 
 /**
  * Lightweight replacement for framer-motion's `whileInView`.
@@ -46,7 +47,7 @@ function useInView(threshold = 0.2) {
           observer.unobserve(el);
         }
       },
-      { threshold, rootMargin: "0px 0px -60px 0px" }
+      { threshold, rootMargin: "0px 0px -60px 0px" },
     );
 
     observer.observe(el);
@@ -243,9 +244,7 @@ export default function SocialMediaManagement() {
 
         <div
           ref={pricingGridRef}
-          className={`pricing-grid-sm ${
-            pricingGridInView ? "in-view-sm" : ""
-          }`}
+          className={`pricing-grid-sm ${pricingGridInView ? "in-view-sm" : ""}`}
         >
           {pricingPlans.map((plan, index) => (
             <div
@@ -277,7 +276,9 @@ export default function SocialMediaManagement() {
                 ))}
               </ul>
 
-              <button className="plan-btn-sm">{plan.button}</button>
+              <Link to={plan.message} target="_blank" className="plan-btn-sm">
+                {plan.button}
+              </Link>
             </div>
           ))}
         </div>
@@ -298,9 +299,7 @@ export default function SocialMediaManagement() {
 
         <div
           ref={addonsTableRef}
-          className={`addon-table-sm ${
-            addonsTableInView ? "in-view-sm" : ""
-          }`}
+          className={`addon-table-sm ${addonsTableInView ? "in-view-sm" : ""}`}
         >
           <div className="addon-head-sm">
             <span>Service</span>

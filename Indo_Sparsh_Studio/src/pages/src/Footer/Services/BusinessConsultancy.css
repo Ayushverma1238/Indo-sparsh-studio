@@ -711,3 +711,18 @@ body.dark-mode {
     transition-duration: 0.01ms !important;
   }
 }
+
+.pricing-button-bc {
+  border-radius: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #48e6d8;
+  background: linear-gradient(120deg, #d31dbb, #0fafee);
+  transition: all 3s ease-in;
+}
+.pricing-button-bc:hover{
+  background: linear-gradient(120deg, #0fafee,#d31dbb);
+  scale: calc(0.8);
+}
