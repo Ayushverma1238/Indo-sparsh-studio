@@ -9,8 +9,8 @@ body.light-mode {
   --pp-shadow: rgba(26, 29, 35, 0.1);
 }
 body.dark-mode {
-  --pp-bg: #0d0f13;
-  --pp-surface: #15171d;
+  --pp-bg: #120D1F;
+  --pp-surface: #1C1530;
   --pp-text: #e8eaed;
   --pp-text-muted: #949ba6;
   --pp-accent: #5b85ff;

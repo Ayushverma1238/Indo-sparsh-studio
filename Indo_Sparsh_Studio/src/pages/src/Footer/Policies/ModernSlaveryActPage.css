@@ -1,5 +1,5 @@
 /* ============ Theme tokens ============ */
-.msa[data-theme="light"] {
+body.light-mode {
   --msa-bg: #fafafb;
   --msa-surface: #ffffff;
   --msa-text: #1a1d23;
@@ -8,9 +8,9 @@
   --msa-border: rgba(26, 29, 35, 0.09);
   --msa-shadow: rgba(26, 29, 35, 0.1);
 }
-.msa[data-theme="dark"] {
-  --msa-bg: #0d0f13;
-  --msa-surface: #15171d;
+body.dark-mode {
+  --msa-bg: #120D1F;
+  --msa-surface: #1C1530;
   --msa-text: #e8eaed;
   --msa-text-muted: #949ba6;
   --msa-accent: #7292f1;

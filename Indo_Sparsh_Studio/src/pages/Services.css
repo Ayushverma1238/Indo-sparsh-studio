@@ -553,3 +553,27 @@
     opacity: 0.75;
   }
 }
+
+
+.main-service-btn-primary {
+  padding: 14px 38px;
+  background: linear-gradient(135deg, #22d3ee, #a855f7);
+  border: none;
+  border-radius: 40px;
+  color: black;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 0 20px #22d3ee;
+  transition: 0.3s ease;
+}
+
+.main-service-btn-primary:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px #22d3ee;
+}
+
+/* .services-btn {
+  position: absolute;
+  bottom: 0;
+} */

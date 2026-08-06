@@ -3,14 +3,14 @@
    ============================================ */
 
 .dm-root {
-  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Sora", "Segoe UI", system-ui, sans-serif;
   --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
   --radius: 16px;
   --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ---------- LIGHT THEME ---------- */
-.dm-root[data-theme="light"] {
+body.light-mode {
   --bg: #f6f5f1;
   --bg-soft: #ffffff;
   --text: #14171f;
@@ -24,9 +24,9 @@
 }
 
 /* ---------- DARK THEME ---------- */
-.dm-root[data-theme="dark"] {
-  --bg: #0b1220;
-  --bg-soft: #121b2e;
+body.dark-mode {
+  --bg: #120D1F;
+  --bg-soft: #1A1430;
   --text: #eef1f8;
   --text-muted: #9aa4bd;
   --accent: #5ea1ff;

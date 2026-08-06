@@ -1,14 +1,11 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import {
   FaInstagram,
   FaFacebook,
   FaLinkedin,
   FaYoutube,
-  FaMoon,
-  FaSun,
   FaArrowRight,
-} from "react-icons/fa";
+} from "react-icons/fa6";
 
 import {
   heroData,
@@ -28,15 +25,36 @@ import {
 import "./SocialMediaPage.css";
 import ScrollBeam from "../../../ScrollBeam";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-};
+/**
+ * Lightweight replacement for framer-motion's `whileInView`.
+ * Watches an element and flips `inView` to true the first time
+ * it crosses the viewport threshold, then disconnects.
+ * Pair with the `.reveal-*` CSS classes for the actual animation.
+ */
+function useInView(threshold = 0.2) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
-};
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold, rootMargin: "0px 0px -60px 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, inView];
+}
 
 export default function SocialMediaManagement() {
   useEffect(() => {
@@ -53,33 +71,28 @@ export default function SocialMediaManagement() {
     }
   };
 
-  const fadeUp = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
+  const [statsRef, statsInView] = useInView();
+  const [whySocialRef, whySocialInView] = useInView();
+  const [featuresHeadRef, featuresHeadInView] = useInView();
+  const [featuresGridRef, featuresGridInView] = useInView();
+  const [pricingHeadRef, pricingHeadInView] = useInView();
+  const [pricingGridRef, pricingGridInView] = useInView();
+  const [addonsHeadRef, addonsHeadInView] = useInView();
+  const [addonsTableRef, addonsTableInView] = useInView();
+  const [pricingNoteRef, pricingNoteInView] = useInView();
+  const [processHeadRef, processHeadInView] = useInView();
+  const [timelineRef, timelineInView] = useInView();
+  const [whyUsHeadRef, whyUsHeadInView] = useInView();
+  const [whyGridRef, whyGridInView] = useInView();
+  const [faqHeadRef, faqHeadInView] = useInView();
+  const [faqWrapperRef, faqWrapperInView] = useInView();
+  const [ctaRef, ctaInView] = useInView();
 
   return (
-    <div className={`smm-page-sm`}>
-      {/* Theme Toggle */}
-
+    <div className="smm-page-sm">
       {/* HERO */}
       <section className="hero-sm">
-        <motion.div
-          className="hero-left-sm"
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-        >
+        <div className="hero-left-sm reveal-up-sm reveal-onload-sm in-view-sm">
           <span className="hero-badge-sm">{heroData.badge}</span>
           <h1>{heroData.title}</h1>
           <h3>{heroData.subtitle}</h3>
@@ -98,130 +111,85 @@ export default function SocialMediaManagement() {
             </button>
           </div>
 
-          <motion.div
-            className="hero-tags-sm"
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-          >
-            {socialTags.map((tag) => (
-              <motion.span
+          <div className="hero-tags-sm">
+            {socialTags.map((tag, index) => (
+              <span
                 key={tag}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                whileHover={{
-                  scale: 1.08,
-                  y: -10,
-                }}
-                transition={{
-                  duration: 0.25,
-                }}
-                className="tag-sm"
+                className="tag-sm reveal-up-sm reveal-onload-sm in-view-sm"
+                style={{ "--stagger-delay": `${0.15 + index * 0.08}s` }}
               >
                 {tag}
-              </motion.span>
+              </span>
             ))}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        <motion.div
-          className="hero-right-sm"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-        >
+        <div className="hero-right-sm reveal-right-sm reveal-onload-sm in-view-sm">
           <div className="hero-card-sm">
-            <motion.div
-              className="floating-sm insta-sm"
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 4, repeat: Infinity }}
-            >
+            <div className="floating-sm insta-sm float-a-sm">
               <FaInstagram />
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="floating-sm fb-sm"
-              animate={{ y: [10, -10, 10] }}
-              transition={{ duration: 5, repeat: Infinity }}
-            >
+            <div className="floating-sm fb-sm float-b-sm">
               <FaFacebook />
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="floating-sm linkedin-sm"
-              animate={{ y: [-15, 15, -15] }}
-              transition={{ duration: 6, repeat: Infinity }}
-            >
+            <div className="floating-sm linkedin-sm float-c-sm">
               <FaLinkedin />
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="floating-sm youtube-sm"
-              animate={{ y: [15, -15, 15] }}
-              transition={{ duration: 4.5, repeat: Infinity }}
-            >
+            <div className="floating-sm youtube-sm float-d-sm">
               <FaYoutube />
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="center-circle-sm"
-              animate={{ scale: [1, 1.08, 1], y: [0, -20, 0], x: [0, -20, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
+            <div className="center-circle-sm pulse-sm">
               <h2>Grow</h2>
               <p>Your Brand</p>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </section>
       <ScrollBeam />
+
       {/* STATS */}
       <section className="stats-sm">
-        <motion.div
-          className="stats-grid-sm"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+        <div
+          ref={statsRef}
+          className={`stats-grid-sm ${statsInView ? "in-view-sm" : ""}`}
         >
-          {stats.map((item) => (
-            <motion.div
+          {stats.map((item, index) => (
+            <div
               key={item.title}
-              className="stat-card-sm"
-              variants={fadeUp}
-              whileHover={{ y: -8 }}
+              className="stat-card-sm hover-lift-sm reveal-up-sm"
+              style={{ "--stagger-delay": `${index * 0.12}s` }}
             >
               <h2>{item.number}</h2>
               <p>{item.title}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </section>
       <ScrollBeam />
 
       {/* WHY SOCIAL MEDIA */}
       <section className="why-social-sm">
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+        <div
+          ref={whySocialRef}
+          className={`reveal-up-sm ${whySocialInView ? "in-view-sm" : ""}`}
         >
           <h2>{whySocialMedia.title}</h2>
           <p>{whySocialMedia.description}</p>
-        </motion.div>
+        </div>
       </section>
       <ScrollBeam />
 
       {/* FEATURES */}
       <section className="features-sm">
-        <motion.div
-          className="section-heading-sm"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+        <div
+          ref={featuresHeadRef}
+          className={`section-heading-sm reveal-up-sm ${
+            featuresHeadInView ? "in-view-sm" : ""
+          }`}
         >
           <span className="section-badge-sm">WHAT WE DO</span>
           <h2>Everything You Need To Build A Powerful Social Presence</h2>
@@ -230,21 +198,19 @@ export default function SocialMediaManagement() {
             monthly reporting—we handle everything so you can focus on growing
             your business.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="feature-grid-sm"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+        <div
+          ref={featuresGridRef}
+          className={`feature-grid-sm ${
+            featuresGridInView ? "in-view-sm" : ""
+          }`}
         >
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={fadeUp}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="feature-card-sm"
+              className="feature-card-sm hover-lift-scale-sm reveal-up-sm"
+              style={{ "--stagger-delay": `${index * 0.1}s` }}
             >
               <div className="feature-icon-sm">
                 {feature.icon === "strategy" && "📈"}
@@ -256,36 +222,38 @@ export default function SocialMediaManagement() {
               </div>
               <h3>{feature.title}</h3>
               <p>{feature.description}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </section>
       <ScrollBeam />
 
       {/* PRICING */}
       <section id="pricing-sm" className="pricing-sm">
-        <motion.div
-          className="section-heading-sm"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+        <div
+          ref={pricingHeadRef}
+          className={`section-heading-sm reveal-up-sm ${
+            pricingHeadInView ? "in-view-sm" : ""
+          }`}
         >
           <span className="section-badge-sm">PRICING</span>
           <h2>Choose The Perfect Plan</h2>
           <p>Transparent pricing with no hidden charges.</p>
-        </motion.div>
+        </div>
 
-        <div className="pricing-grid-sm">
-          {pricingPlans.map((plan) => (
-            <motion.div
+        <div
+          ref={pricingGridRef}
+          className={`pricing-grid-sm ${
+            pricingGridInView ? "in-view-sm" : ""
+          }`}
+        >
+          {pricingPlans.map((plan, index) => (
+            <div
               key={plan.id}
-              className={`price-card-sm ${plan.badge ? "active-sm" : ""}`}
-              initial={{ opacity: 0, y: 80 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -12 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              className={`price-card-sm hover-lift-strong-sm reveal-up-big-sm ${
+                plan.badge ? "active-sm" : ""
+              }`}
+              style={{ "--stagger-delay": `${index * 0.12}s` }}
             >
               {plan.badge && (
                 <div className="popular-badge-sm">{plan.badge}</div>
@@ -301,8 +269,8 @@ export default function SocialMediaManagement() {
               <p className="plan-description-sm">{plan.description}</p>
 
               <ul className="feature-list-sm">
-                {plan.features.map((item, index) => (
-                  <li key={index}>
+                {plan.features.map((item, i) => (
+                  <li key={i}>
                     <span className="check-sm">✓</span>
                     {item}
                   </li>
@@ -310,7 +278,7 @@ export default function SocialMediaManagement() {
               </ul>
 
               <button className="plan-btn-sm">{plan.button}</button>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
@@ -318,61 +286,62 @@ export default function SocialMediaManagement() {
 
       {/* ADDONS */}
       <section className="addons-sm">
-        <motion.div
-          className="section-heading-sm"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+        <div
+          ref={addonsHeadRef}
+          className={`section-heading-sm reveal-fade-sm ${
+            addonsHeadInView ? "in-view-sm" : ""
+          }`}
         >
           <span className="section-badge-sm">OPTIONAL ADD-ONS</span>
           <h2>Scale Your Marketing</h2>
-        </motion.div>
+        </div>
 
-        <div className="addon-table-sm">
+        <div
+          ref={addonsTableRef}
+          className={`addon-table-sm ${
+            addonsTableInView ? "in-view-sm" : ""
+          }`}
+        >
           <div className="addon-head-sm">
             <span>Service</span>
             <span>Price</span>
           </div>
 
           {addons.map((item, index) => (
-            <motion.div
+            <div
               key={index}
-              className="addon-row-sm"
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.15 }}
-              viewport={{ once: true }}
+              className="addon-row-sm reveal-left-sm"
+              style={{ "--stagger-delay": `${index * 0.15}s` }}
             >
               <span>{item.service}</span>
               <strong>{item.price}</strong>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          className="pricing-note-sm"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          viewport={{ once: true }}
+        <div
+          ref={pricingNoteRef}
+          className={`pricing-note-sm reveal-fade-sm ${
+            pricingNoteInView ? "in-view-sm" : ""
+          }`}
+          style={{ "--stagger-delay": "0.15s" }}
         >
           <p>
             <strong>Recommended:</strong> Minimum engagement of{" "}
             <strong>3 months</strong> for consistent posting, audience growth
             and measurable business results.
           </p>
-        </motion.div>
+        </div>
       </section>
       <ScrollBeam />
 
       {/* PROCESS */}
       <section className="process-sm">
-        <motion.div
-          className="section-heading-sm"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+        <div
+          ref={processHeadRef}
+          className={`section-heading-sm reveal-up-sm ${
+            processHeadInView ? "in-view-sm" : ""
+          }`}
         >
           <span className="section-badge-sm">OUR PROCESS</span>
           <h2>How We Grow Your Brand</h2>
@@ -380,22 +349,22 @@ export default function SocialMediaManagement() {
             A simple, transparent process that ensures your social media
             consistently delivers results.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="timeline-sm">
+        <div
+          ref={timelineRef}
+          className={`timeline-sm ${timelineInView ? "in-view-sm" : ""}`}
+        >
           {process.map((item, index) => (
-            <motion.div
+            <div
               key={index}
-              className="timeline-card-sm"
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.15 }}
-              viewport={{ once: true }}
+              className="timeline-card-sm reveal-up-sm"
+              style={{ "--stagger-delay": `${index * 0.15}s` }}
             >
               <div className="timeline-number-sm">{item.step}</div>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
@@ -403,31 +372,30 @@ export default function SocialMediaManagement() {
 
       {/* WHY CHOOSE US */}
       <section className="why-us-sm">
-        <motion.div
-          className="section-heading-sm"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+        <div
+          ref={whyUsHeadRef}
+          className={`section-heading-sm reveal-fade-sm ${
+            whyUsHeadInView ? "in-view-sm" : ""
+          }`}
         >
           <span className="section-badge-sm">WHY US</span>
           <h2>Why Businesses Choose Indo Sparsh Studio</h2>
-        </motion.div>
+        </div>
 
-        <div className="why-grid-sm">
+        <div
+          ref={whyGridRef}
+          className={`why-grid-sm ${whyGridInView ? "in-view-sm" : ""}`}
+        >
           {whyChooseUs.map((item, index) => (
-            <motion.div
+            <div
               key={index}
-              className="why-card-sm"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -10 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
+              className="why-card-sm hover-lift-sm reveal-scale-sm"
+              style={{ "--stagger-delay": `${index * 0.1}s` }}
             >
               <div className="why-icon-sm">⭐</div>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
@@ -435,29 +403,29 @@ export default function SocialMediaManagement() {
 
       {/* FAQ */}
       <section className="faq-sm">
-        <motion.div
-          className="section-heading-sm"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+        <div
+          ref={faqHeadRef}
+          className={`section-heading-sm reveal-fade-sm ${
+            faqHeadInView ? "in-view-sm" : ""
+          }`}
         >
           <span className="section-badge-sm">FAQ</span>
           <h2>Frequently Asked Questions</h2>
-        </motion.div>
+        </div>
 
-        <div className="faq-wrapper-sm">
+        <div
+          ref={faqWrapperRef}
+          className={`faq-wrapper-sm ${faqWrapperInView ? "in-view-sm" : ""}`}
+        >
           {faqs.map((faq, index) => (
-            <motion.details
+            <details
               key={index}
-              className="faq-item-sm"
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.15 }}
-              viewport={{ once: true }}
+              className="faq-item-sm reveal-left-sm"
+              style={{ "--stagger-delay": `${index * 0.15}s` }}
             >
               <summary>{faq.question}</summary>
               <p>{faq.answer}</p>
-            </motion.details>
+            </details>
           ))}
         </div>
       </section>
@@ -465,11 +433,11 @@ export default function SocialMediaManagement() {
 
       {/* CTA */}
       <section className="cta-sm-sm">
-        <motion.div
-          className="cta-sm-box-sm"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+        <div
+          ref={ctaRef}
+          className={`cta-sm-box-sm reveal-scale-sm ${
+            ctaInView ? "in-view-sm" : ""
+          }`}
         >
           <h2>Ready To Grow Your Business?</h2>
           <p>
@@ -477,7 +445,7 @@ export default function SocialMediaManagement() {
             while you focus on running your business.
           </p>
           <button className="primary-btn-sm">Start Your Project</button>
-        </motion.div>
+        </div>
       </section>
       <ScrollBeam />
 

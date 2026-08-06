@@ -1,5 +1,5 @@
 /* ============ Theme tokens ============ */
-.rp[data-theme="light"] {
+body.light-mode {
   --rp-bg: #fafafb;
   --rp-surface: #ffffff;
   --rp-text: #1a1d23;
@@ -8,9 +8,9 @@
   --rp-border: rgba(26, 29, 35, 0.09);
   --rp-shadow: rgba(26, 29, 35, 0.1);
 }
-.rp[data-theme="dark"] {
-  --rp-bg: #0d0f13;
-  --rp-surface: #15171d;
+body.dark-mode {
+  --rp-bg: #120D1F;
+  --rp-surface: #1C1530;
   --rp-text: #e8eaed;
   --rp-text-muted: #949ba6;
   --rp-accent: #5b85ff;

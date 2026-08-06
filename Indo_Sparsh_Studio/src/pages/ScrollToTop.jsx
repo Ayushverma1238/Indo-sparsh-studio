@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { FaArrowUp } from "react-icons/fa";
+import { FaArrowUp } from "react-icons/fa6";
 import "./ScrollToTop.css";
 
 export default function ScrollToTop() {

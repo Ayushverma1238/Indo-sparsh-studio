@@ -1,7 +1,7 @@
 import "./Footer.css";
 import { GoArrowUpRight } from "react-icons/go";
 import { Link } from "react-router-dom";
-import { FaFacebookF, FaRegCopy } from "react-icons/fa6";
+import { FaFacebookF, FaRegCopy, FaRegCircleCheck } from "react-icons/fa6";
 import {
   footerServices,
   supports,
@@ -10,13 +10,31 @@ import {
 } from "../utils/quoteData.js";
 import { IoLogoInstagram, IoLogoWhatsapp } from "react-icons/io5";
 import SocialLinks from "./SocialLinks.jsx";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useState, useEffect } from "react";
 
 export default function Footer() {
   const [isCopied, setIsCopied] = useState(false);
   const [email, setEmail] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      setTime(
+        new Date().toLocaleTimeString("en-IN", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: true, // Change to false for 24-hour format
+        }),
+      );
+    };
+
+    updateTime(); // Initial time
+    const interval = setInterval(updateTime, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   // ---- Theme: read from localStorage (key: "theme", values: "light" | "dark") ----
   // Applies the value as data-theme on <html> so the CSS overrides cascade
@@ -82,7 +100,6 @@ export default function Footer() {
           <div className="footer-heading-website">
             <img src="/logo.png" alt="logo" />
             <h1>Indo Sparsh Studio</h1>
-            
           </div>
           <p>
             IndoSparsh Studio helps businesses build a strong digital presence
@@ -112,26 +129,13 @@ export default function Footer() {
                 contact@indosparsh.com
               </Link>
               <div onClick={handleCopy} className="mail-copy-icon">
-                {isCopied ? (
-                  <DotLottieReact
-                    src="https://lottie.host/16120193-7a91-4fd0-93b3-a8a89a2a9bad/KuZC2V2tmt.lottie"
-                    loop
-                    autoplay
-                  />
-                ) : (
-                  <DotLottieReact
-                    src="https://lottie.host/627aacae-1dfd-4b06-b525-7122fffc80ce/QE5UWuRlT4.lottie"
-                    loop
-                    autoplay
-                  />
-                )}
+                {!isCopied ? <FaRegCopy /> : <FaRegCircleCheck />}
               </div>
             </div>
             <p>
               or give us a call{" "}
               <Link to="tel:+918005352770"> +91 8005351770</Link>
             </p>
-            
           </div>
 
           <div className="footer-review">
@@ -149,9 +153,18 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="social-links">
-              <SocialLinks />
+          <div className="time-card">
+            <div className="time-icon">🕒</div>
+
+            <div className="time-content">
+              <p className="time-label">Local Time</p>
+              <h2 className="time-value">{time}</h2>
+              <p className="time-zone">India (IST)</p>
             </div>
+          </div>
+          <div className="social-links">
+            <SocialLinks />
+          </div>
         </div>
 
         <div className="footer-right">
@@ -212,6 +225,7 @@ export default function Footer() {
         <p>
           Copyright {new Date().getFullYear()} <span>Indo Sparsh Studio</span>.
           All rights reserved.
+          <span className="msme">MSME:</span>
         </p>
       </div>
     </footer>

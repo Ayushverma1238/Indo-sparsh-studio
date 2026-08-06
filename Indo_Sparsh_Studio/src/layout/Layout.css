@@ -68,9 +68,10 @@ body {
   padding: 6px 16px;
   border-radius: 30px;
   text-decoration: none;
+
   font-size: 0.8rem;
   text-align: center;
-  width: fit-content;
+  width: 125px;
   display: inline-block;
   font-weight: 600;
   transition: 0.3s ease;
@@ -476,7 +477,7 @@ body {
 
   .cyber-header {
     position: relative; /* important */
-    padding: 12px 18px;
+    padding: 12px 30px;
   }
 
   /* Show hamburger */
@@ -534,7 +535,7 @@ body {
 
 @media (max-width: 600px) {
   .cyber-header {
-    padding: 10px 15px;
+    padding: 10px 30px;
   }
 
   .cyber-logo {

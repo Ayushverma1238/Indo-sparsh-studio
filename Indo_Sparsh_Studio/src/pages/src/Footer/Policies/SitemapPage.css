@@ -9,8 +9,8 @@ body.light-mode {
   --stm-shadow: rgba(26, 29, 35, 0.1);
 }
 body.dark-mode {
-  --stm-bg: #0d0f13;
-  --stm-surface: #15171d;
+  --stm-bg: #120D1F;
+  --stm-surface: #1C1530;
   --stm-text: #e8eaed;
   --stm-text-muted: #949ba6;
   --stm-accent: #5b85ff;

@@ -20,9 +20,9 @@ body.light-mode {
 
 /* Premium Dark Palette (Triggered when body has .dark-mode) */
 body.dark-mode {
-  --hub-bg: #07090e;
-  --hub-surface: #0e131f;
-  --hub-surface-alt: #161d30;
+  --hub-bg: #120D1F;
+  --hub-surface: #1A1430;
+  --hub-surface-alt: #1C1530;
   --hub-border: rgba(255, 255, 255, 0.06);
   --hub-txt-main: #f8fafc;
   --hub-txt-muted: #94a3b8;

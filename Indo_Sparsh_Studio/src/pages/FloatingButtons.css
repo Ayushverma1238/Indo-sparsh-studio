@@ -3,7 +3,7 @@
 .call-float {
   position: fixed;
   left: 26px;
-  bottom: 150px;
+  bottom: 135px;
   width: 64px;
   height: 64px;
   border-radius: 50%;
@@ -90,6 +90,18 @@
     opacity: 0;
   }
 }
+
+@media (max-width: 768px) {
+  .call-float {
+    width: 56px;
+    height: 56px;
+    left: 30px;
+    bottom: 120px;
+  }
+
+
+}
+
 
 /* 📱 MOBILE */
 @media (max-width: 480px) {

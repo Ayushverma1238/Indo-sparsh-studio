@@ -3,12 +3,12 @@ import "./About.css";
 import ScrollBeam from "./ScrollBeam";
 import {
   FaBrain,
-  FaCogs,
+  FaGears,
   FaBolt,
-  FaShieldAlt,
+  FaShieldHalved,
   FaChartLine,
   FaRocket,
-} from "react-icons/fa";
+} from "react-icons/fa6";
 import TeamMarquee from "./src/About/Teams/TeamDetails";
 
 export default function About() {
@@ -122,7 +122,7 @@ export default function About() {
 
           <div className="leader-card">
             <div className="leader-icon">
-              <FaCogs />
+              <FaGears />
             </div>
             <h3>End-to-End Execution</h3>
             <p>
@@ -144,7 +144,7 @@ export default function About() {
 
           <div className="leader-card">
             <div className="leader-icon">
-              <FaShieldAlt />
+              <FaShieldHalved />
             </div>
             <h3>Security-First Architecture</h3>
             <p>

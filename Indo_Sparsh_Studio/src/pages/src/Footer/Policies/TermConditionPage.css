@@ -9,8 +9,8 @@ body.light-mode {
   --tc-shadow: rgba(26, 29, 35, 0.1);
 }
 body.dark-mode {
-  --tc-bg: #0d0f13;
-  --tc-surface: #15171d;
+  --tc-bg: #120D1F;
+  --tc-surface: #1C1530;
   --tc-text: #e8eaed;
   --tc-text-muted: #949ba6;
   --tc-accent: #5b85ff;

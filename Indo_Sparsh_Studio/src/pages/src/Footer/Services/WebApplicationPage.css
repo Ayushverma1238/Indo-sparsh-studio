@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
 
 /* ---------------------------------------------------------------
    Tokens
@@ -18,9 +18,9 @@
   --border-strong: 1px solid rgba(139, 150, 171, 0.4);
   --stage-line: rgba(139, 150, 171, 0.22);
   --stage-hover: #182236;
-  --display: "Space Grotesk", sans-serif;
-  --body: "Inter", sans-serif;
-  --mono: "IBM Plex Mono", monospace;
+  --display: "Sora", "Segoe UI", sans-serif;
+  --body: "Inter", "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", "Courier New", monospace;
   --unit: 8px;
 
   position: relative;
@@ -46,11 +46,11 @@
    body.light-mode classes.
 --------------------------------------------------------------- */
 body.dark-mode .wa {
-  --bg: #0e1420;
-  --bg-elevated: #131b2b;
+  --bg: #120D1F;
+  --bg-elevated: #1A1430;
   --grid-line: rgba(90, 169, 230, 0.1);
-  --ink: #edeff2;
-  --ink-muted: #8b96ab;
+  --ink: #F5F1FF;
+  --ink-muted: #8D84A8;
   --ink-faint: #59647c;
   --accent: #f2a93b;
   --accent-soft: rgba(242, 169, 59, 0.14);

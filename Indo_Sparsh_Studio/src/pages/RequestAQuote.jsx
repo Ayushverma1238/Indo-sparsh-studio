@@ -4,7 +4,7 @@ import SocialLinks from "./SocialLinks";
 import { countries } from "../utils/quoteData";
 import { budget, timeLine, preferedContactMethod } from "../utils/quoteData";
 import { services } from "../utils/quoteData";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 export default function RequestAQuota() {
   useEffect(() => {
@@ -231,7 +231,7 @@ export default function RequestAQuota() {
               onClick={() => setIsServiceArrow(!isServiceArrow)}
             >
               <span>{formData.service}</span>
-              {isServiceArrow ? <IoIosArrowUp /> : <IoIosArrowDown />}
+              {isServiceArrow ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
             </div>
             {isServiceArrow && (
               <div
@@ -273,7 +273,7 @@ export default function RequestAQuota() {
               onClick={() => setIsBudgetArrow(!isBudgetArrow)}
             >
               <span>{formData.budget}</span>
-              {isBudgetArrow ? <IoIosArrowUp /> : <IoIosArrowDown />}
+              {isBudgetArrow ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
             </div>
             {isBudgetArrow && (
               <div
@@ -302,7 +302,7 @@ export default function RequestAQuota() {
               onClick={() => setIsTimeLineArrow(!isTimeLineArrow)}
             >
               <span>{formData.timeline}</span>
-              {isTimeLineArrow ? <IoIosArrowUp /> : <IoIosArrowDown />}
+              {isTimeLineArrow ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
             </div>
             {isTimeLineArrow && (
               <div
@@ -331,7 +331,7 @@ export default function RequestAQuota() {
               onClick={() => setIsCountryArrow(!isCountryArrow)}
             >
               <span>{formData.country}</span>
-              {isCountryArrow ? <IoIosArrowUp /> : <IoIosArrowDown />}
+              {isCountryArrow ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
             </div>
             {isCountryArrow && (
               <div
@@ -375,7 +375,7 @@ export default function RequestAQuota() {
               }
             >
               <span>{formData.preferredContact}</span>
-              {isPreferedContactMethod ? <IoIosArrowUp /> : <IoIosArrowDown />}
+              {isPreferedContactMethod ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
             </div>
             {isPreferedContactMethod && (
               <div

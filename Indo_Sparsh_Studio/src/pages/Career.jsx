@@ -8,7 +8,7 @@ import {
   FaPaperPlane,
   FaComments,
   FaUpload,
-} from "react-icons/fa";
+} from "react-icons/fa6";
 
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import ScrollBeam from "./ScrollBeam";

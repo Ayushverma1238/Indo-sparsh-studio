@@ -30,6 +30,15 @@ const TEAM = [
     study: "B.Tech CSE(AI), BBD University, Lucknow",
     bio: "Crafts responsive websites and high-performance mobile apps, turning ideas into seamless digital experiences.",
     focus: ["React", "Performance", "Accessibility", "Full Stack Website"],
+  
+  },
+  {
+    image: "/images/neeraj.jpeg",
+    name: "Neeraj Maurya",
+    role: "Graphic Designer, 8+ Yr Experience",
+    study: "B.A. & LLB, Shia P.G. College, Lucknow",
+    bio: "Brings 8+ years of hands-on design craft across CorelDraw, Photoshop, and Illustrator. Turns brand ideas into polished visuals, from print layouts to digital assets.",
+    focus: ["Graphic Design", "Branding", "Print & Digital Design"],
   },
 ];
 

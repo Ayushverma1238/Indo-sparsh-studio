@@ -9,8 +9,8 @@ body.light-mode {
   --rcp-shadow: rgba(26, 29, 35, 0.1);
 }
 body.dark-mode {
-  --rcp-bg: #0d0f13;
-  --rcp-surface: #15171d;
+  --rcp-bg: #120D1F;
+  --rcp-surface: #1C1530;
   --rcp-text: #e8eaed;
   --rcp-text-muted: #949ba6;
   --rcp-accent: #5b85ff;

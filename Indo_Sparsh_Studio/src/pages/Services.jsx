@@ -2,20 +2,20 @@
 import ScrollBeam from "./ScrollBeam";
 import {
   FaUserAstronaut,
-  FaProjectDiagram,
-  FaHandshake,
+  FaDiagramProject,
+  FaHandshakeSimple,
   FaRocket,
   FaChartLine,
   FaMicrochip,
   FaBriefcase,
   FaCode,
-  FaMobileAlt,
+  FaMobileScreenButton,
   FaBullhorn,
-  FaPaintBrush,
+  FaPaintbrush,
   FaPalette,
   FaVideo,
   FaDatabase,
-} from "react-icons/fa";
+} from "react-icons/fa6";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -62,7 +62,7 @@ export default function Services() {
               Integration & Automation.
             </p>
             <button
-              className="main-btn-primary why-card main-services-btn"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
                 color: "white",
@@ -94,7 +94,7 @@ export default function Services() {
             <h3>Web Development</h3>
             <p>Static Website, Dynamic Website, Landing Page, Portfolio etc.</p>
             <button
-              className="main-btn-primary why-card services-btn"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
                 color: "white",
@@ -112,7 +112,7 @@ export default function Services() {
             <div className="service-icon holo dev">
               <span className="holo-core"></span>
 
-              <FaMobileAlt className="center-icon" />
+              <FaMobileScreenButton className="center-icon" />
 
               <div className="energy-particles">
                 <span></span>
@@ -126,7 +126,7 @@ export default function Services() {
             <h3>App Development</h3>
             <p>Android Apps, iOS Apps, Cross-Platform Solutions etc.</p>
             <button
-              className="main-btn-primary why-card services-btn"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
                 color: "white",
@@ -162,7 +162,7 @@ export default function Services() {
               Ads, SEO etc.
             </p>
             <button
-              className="main-btn-primary why-card services-btn"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
                 color: "white",
@@ -197,7 +197,7 @@ export default function Services() {
               Content Planning, Post Design, Scheduling, Engagement Growth etc.
             </p>
             <button
-              className="main-btn-primary why-card services-btn"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
                 color: "white",
@@ -216,7 +216,7 @@ export default function Services() {
             <div className="service-icon holo cloud">
               <span className="holo-core"></span>
 
-              <FaPaintBrush className="center-icon" />
+              <FaPaintbrush className="center-icon" />
 
               <div className="energy-particles">
                 <span></span>
@@ -233,7 +233,7 @@ export default function Services() {
               Interfaces etc.
             </p>
             <button
-              className="main-btn-primary why-card services-btn"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
                 color: "white",
@@ -269,7 +269,7 @@ export default function Services() {
               Branding Materials etc.
             </p>
             <button
-              className="main-btn-primary why-card services-btn"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
                 color: "white",
@@ -288,7 +288,7 @@ export default function Services() {
             <div className="service-icon holo ai">
               <span className="holo-core"></span>
 
-              <FaHandshake className="center-icon" />
+              <FaHandshakeSimple className="center-icon" />
 
               <div className="energy-particles">
                 <span></span>
@@ -304,7 +304,7 @@ export default function Services() {
               Brand Strategy, Brand Identity, Online & Offline Marketing etc.
             </p>
             <button
-              className="main-btn-primary why-card services-btn"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
                 color: "white",
@@ -337,7 +337,7 @@ export default function Services() {
             <h3>Row Calling Data</h3>
             <p>Verified Business Leads, Industry-Specific Data etc.</p>
             <button
-              className="main-btn-primary why-card services-btn"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
                 color: "white",
@@ -370,7 +370,7 @@ export default function Services() {
             <h3>Content Creation & Video Editing Services</h3>
             <p>Promotional Videos, Reels & Shorts, Corporate Videos etc.</p>
             <button
-              className="main-btn-primary why-card services-btn"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
                 color: "white",
@@ -405,7 +405,7 @@ export default function Services() {
               Business Growth Planning, Digital Transformation Strategy etc.
             </p>
             <button
-              className="main-btn-primary why-card services-btn"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
                 color: "white",
@@ -553,13 +553,13 @@ export default function Services() {
           </div>
 
           <div className="why-card">
-            <FaProjectDiagram className="why-icon" />
+            <FaDiagramProject className="why-icon" />
             <h3>End-to-End Business Solutions</h3>
             <p>From idea to deployment, everything under one roof.</p>
           </div>
 
           <div className="why-card">
-            <FaHandshake className="why-icon" />
+            <FaHandshakeSimple className="why-icon" />
             <h3>Transparent Pricing</h3>
             <p>No hidden costs. Clear, scalable, and fair pricing models.</p>
           </div>

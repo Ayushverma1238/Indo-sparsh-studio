@@ -231,26 +231,27 @@ export const countries = [
 export const preferedContactMethod = ["Email", "Phone", "Whatsapp"];
 
 export const footerServices = [
+  { name: "Business Profile Creation", path: "/services/profile-creation" },
   { name: "Website Development", path: "/services/website-development" },
   { name: "App Development", path: "/services/app-development" },
-  { name: "Landing Page", path: "/services/landing-page" },
-  { name: "E-commerce Website", path: "/services/ecommerce-website" },
   { name: "Web Application", path: "/services/web-application" },
   { name: "UI/UX Design", path: "/services/ui-ux-design" },
-  { name: "Website Redesign", path: "/services/website-redesign" },
-  { name: "Content creation & video editing", path: "/services/content-hub" },
-
-  { name: "SEO Optimization", path: "/services/seo-optimization" },
-  { name: "Business Profile Creation", path: "/services/profile-creation" },
   { name: "Digital Marketing Services", path: "/services/digital-marketing" },
-  { name: "Social media management", path: "/services/social-media" },
-  { name: "Maintenance & Support", path: "/services/maintenance-support" },
-
-  { name: "Branding and marketing", path: "/services/branding-marketing" },
-  { name: "Business Consultancy", path: "/services/business-consultancy" },
   { name: "Graphic Designing", path: "/services/graphic-design" },
+  { name: "Content creation & video editing", path: "/services/content-hub" },
+  { name: "Social media management", path: "/services/social-media" },
+  { name: "Business Consultancy", path: "/services/business-consultancy" },
   { name: "Row Calling data", path: "/services/row-calling-data" },
+  { name: "Branding and marketing", path: "/services/branding-marketing" },
   { name: "Other", path: "/services" },
+
+  // { name: "Landing Page", path: "/services/landing-page" },
+  // { name: "E-commerce Website", path: "/services/ecommerce-website" },
+  // { name: "Website Redesign", path: "/services/website-redesign" },
+
+  // { name: "SEO Optimization", path: "/services/seo-optimization" },
+  // { name: "Maintenance & Support", path: "/services/maintenance-support" },
+
 ];
 
 export const companies = [

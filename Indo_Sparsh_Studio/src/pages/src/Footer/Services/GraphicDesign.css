@@ -24,8 +24,8 @@ body.light-mode {
 
 /* Dark Theme Variables */
 body.dark-mode {
-  --bg-primary: #0d0d11;
-  --bg-muted: #16161a;
+  --bg-primary: #120D1F;
+  --bg-muted: #1A1430;
   --text-main: #f3f3f6;
   --text-muted: #9494a1;
   --text-inverse: #e4e4f0;

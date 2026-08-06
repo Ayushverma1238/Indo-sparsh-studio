@@ -12,9 +12,9 @@ body.light-mode {
   --bm-shadow: rgba(23, 23, 31, 0.14);
 }
 body.dark-mode {
-  --bm-bg: #0f0f14;
-  --bm-bg-2: #17171f;
-  --bm-surface: #1a1a22;
+  --bm-bg: #120D1F;
+  --bm-bg-2: #1A1430;
+  --bm-surface: #1C1530;
   --bm-text: #f1f1f5;
   --bm-text-muted: #9797a6;
   --bm-accent: #a78bfa;

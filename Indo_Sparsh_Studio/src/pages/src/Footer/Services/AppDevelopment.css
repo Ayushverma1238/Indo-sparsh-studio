@@ -11,15 +11,15 @@ body.light-mode {
   --adh-shadow: rgba(20, 23, 31, 0.12);
 }
 body.dark-mode {
-  --adh-bg: #040c16;
-  --adh-bg-2: #11161d;
-  --adh-text: #e8eaed;
-  --adh-text-muted: #9aa1ac;
-  --adh-accent: #0c0c0e;
+  --adh-bg: #120D1F;
+  --adh-bg-2: #1A1430;
+  --adh-text: #F5F1FF;
+  --adh-text-muted: #8D84A8;
+  --adh-accent: #050511;
   --adh-accent-2: #080601;
-  --adh-surface: #161b22;
-  --adh-border: rgba(232, 234, 237, 0.12);
-  --adh-shadow: rgba(0, 0, 0, 0.45);
+  --adh-surface: #1C1530;
+  --adh-border: rgba(255, 255, 255, 0.1);
+  --adh-shadow: rgba(0, 0, 0, 0.55);
 }
 
 .appdev-page {

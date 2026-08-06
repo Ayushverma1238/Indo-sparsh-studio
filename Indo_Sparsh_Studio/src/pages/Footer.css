@@ -13,6 +13,7 @@
   --text-dim: #94a3b8;
   --text-body: #cbd5f5;
   --text-bright: #f8fafc;
+  --bg-time: #03010c;
 }
 
 .cyber-footer {
@@ -227,18 +228,20 @@
 }
 
 .mail-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   color: #fff;
 }
 
 .mail-link a {
+  display: flex;
+  align-items: center;
   color: var(--text-body);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
-  background: none;
+  line-height: 1;
   border-bottom: 1px solid transparent;
   transition: color 0.25s ease, border-color 0.25s ease;
 }
@@ -246,6 +249,28 @@
 .mail-link a:hover {
   color: var(--cyan);
   border-color: var(--cyan);
+}
+
+.mail-copy-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  color: var(--text-body);
+  transition: color 0.25s ease, transform 0.2s ease;
+}
+
+.mail-copy-icon:hover {
+  color: var(--cyan);
+  transform: scale(1.1);
+}
+
+.mail-copy-icon svg {
+  width: 16px;
+  height: 16px;
+  display: block;
 }
 
 .footer-contact {
@@ -812,3 +837,62 @@ body.light-mode .copyright p {
   color: var(--text-dim);
 }
 
+
+.msme{
+  margin: 0 10px;
+}
+
+.time-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: fit-content;
+  padding: 18px 24px;
+  background:var(--bg-time);
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #575758;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.time-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(107, 106, 106, 0.2);
+}
+
+.time-icon {
+ 
+  color: #2563eb;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+
+.time-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.time-label {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.time-value {
+  margin: 5px 0;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--text-body);
+}
+
+.time-zone {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}

@@ -1,20 +1,28 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import "./BusinessConsultancy.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
   FaArrowRight,
   FaChartLine,
-  FaHandshake,
+  FaHandshakeSimple,
   FaBullseye,
   FaRocket,
   FaPlay,
-  FaCheckCircle,
-  FaPhoneAlt,
+  FaCircleCheck,
+  FaPhone,
   FaEnvelope,
-  FaMapMarkerAlt,
+  FaLocationDot,
   FaGlobe,
-} from "react-icons/fa";
-import { HiOutlineLightBulb, HiOutlineTrendingUp } from "react-icons/hi";
+  FaMoon,
+  FaSun,
+} from "react-icons/fa6";
+import {
+  HiOutlineLightBulb,
+  HiOutlineArrowTrendingUp,
+  HiOutlineClipboardDocumentList,
+  HiOutlineCog8Tooth,
+  HiOutlineChartBar,
+} from "react-icons/hi2";
 import { motion, useInView } from "framer-motion";
 import ScrollBeam from "../../../ScrollBeam";
 
@@ -94,7 +102,7 @@ function CounterBC({ end, suffix = "" }) {
 
 const statsBC = [
   {
-    icon: <FaHandshake />,
+    icon: <FaHandshakeSimple />,
     number: 150,
     suffix: "+",
     title: "Businesses Helped",
@@ -119,35 +127,97 @@ const statsBC = [
   },
 ];
 
+// From PDF: "OUR CONSULTING PROCESS"
 const processBC = [
   {
     step: "01",
     icon: <HiOutlineLightBulb />,
-    title: "Business Audit",
+    title: "Diagnose",
     description:
-      "We understand your business, identify challenges and uncover opportunities for growth.",
+      "We study your sales, pricing, marketing channels, operations and competition.",
   },
   {
     step: "02",
     icon: <FaBullseye />,
-    title: "Strategy",
+    title: "Strategize",
     description:
-      "A customized roadmap designed around your goals, customers and market.",
+      "We identify the 3–5 highest-impact opportunities to grow revenue.",
   },
   {
     step: "03",
-    icon: <HiOutlineTrendingUp />,
-    title: "Execution",
+    icon: <HiOutlineClipboardDocumentList />,
+    title: "Roadmap",
     description:
-      "Implementation support with measurable KPIs and practical business improvements.",
+      "You get a practical, prioritized 90-day action plan — in writing.",
   },
   {
     step: "04",
-    icon: <FaRocket />,
-    title: "Scale",
+    icon: <HiOutlineCog8Tooth />,
+    title: "Implement (optional)",
     description:
-      "Continuous optimization to help your business grow sustainably.",
+      "Where a fix touches marketing, branding, or digital presence, our own team can execute it — no handoff to a third party.",
   },
+  {
+    step: "05",
+    icon: <HiOutlineArrowTrendingUp />,
+    title: "Track",
+    description:
+      "Regular check-ins to measure what's working and adjust course.",
+  },
+];
+
+// From PDF: "WHY BUSINESSES SEE RESULTS WITH US"
+const whyPointsBC = [
+  {
+    icon: "🛠️",
+    title: "We Execute, Not Just Advise",
+    description:
+      "When a fix touches marketing, branding, or digital presence, our own team executes it in-house.",
+  },
+  {
+    icon: "📊",
+    title: "India-SME-Tested",
+    description:
+      "Practical, India-SME-tested recommendations — not textbook theory.",
+  },
+  {
+    icon: "🎯",
+    title: "Numbers-First",
+    description:
+      "Every recommendation is tied to a measurable revenue or cost outcome.",
+  },
+  {
+    icon: "🔓",
+    title: "Flexible Entry Point",
+    description: "Start with a ₹999 call, no long-term contract required.",
+  },
+  {
+    icon: "🤝",
+    title: "One Studio, Start To Finish",
+    description:
+      "Strategy and execution — logo, GBP, social, ads & registration — all under one roof.",
+  },
+];
+
+// From PDF hero hashtags
+const heroTagsBC = [
+  "#BUSINESSCONSULTING",
+  "#REVENUEGROWTH",
+  "#BUSINESSSTRATEGY",
+  "#SMEGROWTH",
+  "#BUSINESSCOACH",
+  "#GROWTHPARTNER",
+];
+
+// From PDF footer hashtags
+const footerTagsBC = [
+  "#DATA",
+  "#LEADGENERATION",
+  "#BUSINESSCONSULTING",
+  "#REVENUEGROWTH",
+  "#MSME",
+  "#BUSINESSGROWTH",
+  "#DIGITALPRESENCE",
 ];
 
 /* ==========================================================
@@ -162,6 +232,9 @@ export default function BusinessConsultancy() {
 
   const message = encodeURIComponent(
     "Hi Indo Sparsh Studio! I want to book a Business Consultancy session.",
+  );
+  const fitCallMessage = encodeURIComponent(
+    "Hi Indo Sparsh Studio! I'd like to book a free 15-minute Fit Call.",
   );
 
   return (
@@ -185,6 +258,10 @@ export default function BusinessConsultancy() {
               <h1 className="hero-title-bc">
                 Transform Your Business Into A<span> Growth Machine.</span>
               </h1>
+
+              <p className="hero-tagline-bc">
+                Turn business guesswork into a revenue growth plan.
+              </p>
 
               <p className="hero-description-bc">
                 We help startups, entrepreneurs and established businesses build
@@ -223,6 +300,14 @@ export default function BusinessConsultancy() {
                   <h3>12+</h3>
                   <span>Years</span>
                 </div>
+              </div>
+
+              <div className="hero-tags-bc">
+                {heroTagsBC.map((tag) => (
+                  <span key={tag} className="tag-bc">
+                    {tag}
+                  </span>
+                ))}
               </div>
             </RevealBC>
 
@@ -348,7 +433,7 @@ export default function BusinessConsultancy() {
             <RevealBC className="about-content-bc" delay={150}>
               <div className="feature-card-bc why-card">
                 <div className="feature-icon-bc">
-                  <FaCheckCircle />
+                  <FaCircleCheck />
                 </div>
 
                 <div>
@@ -363,7 +448,7 @@ export default function BusinessConsultancy() {
 
               <div className="feature-card-bc why-card">
                 <div className="feature-icon-bc">
-                  <FaCheckCircle />
+                  <FaCircleCheck />
                 </div>
 
                 <div>
@@ -378,7 +463,7 @@ export default function BusinessConsultancy() {
 
               <div className="feature-card-bc why-card">
                 <div className="feature-icon-bc">
-                  <FaCheckCircle />
+                  <FaCircleCheck />
                 </div>
 
                 <div>
@@ -393,7 +478,7 @@ export default function BusinessConsultancy() {
 
               <div className="feature-card-bc why-card">
                 <div className="feature-icon-bc">
-                  <FaCheckCircle />
+                  <FaCircleCheck />
                 </div>
 
                 <div>
@@ -418,13 +503,13 @@ export default function BusinessConsultancy() {
       <section className="process-section-bc">
         <div className="container-bc">
           <RevealBC className="section-header-bc">
-            <span className="section-tag-bc">OUR PROCESS</span>
+            <span className="section-tag-bc">OUR CONSULTING PROCESS</span>
 
             <h2 className="section-title-bc">How We Work</h2>
 
             <p className="section-description-bc">
-              Every engagement follows a structured consulting process designed
-              to maximize business growth.
+              Every engagement follows the same five-step process — diagnose,
+              strategize, roadmap, implement, track.
             </p>
           </RevealBC>
 
@@ -456,7 +541,9 @@ export default function BusinessConsultancy() {
       <section className="why-section-bc">
         <div className="container-bc">
           <RevealBC className="section-header-bc">
-            <span className="section-tag-bc">WHY CHOOSE US</span>
+            <span className="section-tag-bc">
+              WHY BUSINESSES SEE RESULTS WITH US
+            </span>
 
             <h2 className="section-title-bc">
               Why Businesses
@@ -465,49 +552,19 @@ export default function BusinessConsultancy() {
           </RevealBC>
 
           <div className="why-grid-bc">
-            <RevealBC className="why-card-bc why-card">
-              <div className="why-icon-bc">🚀</div>
+            {whyPointsBC.map((item, index) => (
+              <RevealBC
+                key={item.title}
+                delay={index * 100}
+                className="why-card-bc why-card"
+              >
+                <div className="why-icon-bc">{item.icon}</div>
 
-              <h3>Revenue Focused</h3>
+                <h3>{item.title}</h3>
 
-              <p>
-                Every recommendation is directly linked to increasing business
-                performance.
-              </p>
-            </RevealBC>
-
-            <RevealBC delay={100} className="why-card-bc why-card">
-              <div className="why-icon-bc">📊</div>
-
-              <h3>Data Driven</h3>
-
-              <p>
-                Every strategy is backed by research, analytics and industry
-                insights.
-              </p>
-            </RevealBC>
-
-            <RevealBC delay={200} className="why-card-bc why-card">
-              <div className="why-icon-bc">💡</div>
-
-              <h3>Practical Solutions</h3>
-
-              <p>
-                We deliver actionable plans instead of complicated business
-                reports.
-              </p>
-            </RevealBC>
-
-            <RevealBC delay={300} className="why-card-bc why-card">
-              <div className="why-icon-bc">🤝</div>
-
-              <h3>Long-Term Partnership</h3>
-
-              <p>
-                We continue supporting businesses during implementation and
-                scaling.
-              </p>
-            </RevealBC>
+                <p>{item.description}</p>
+              </RevealBC>
+            ))}
           </div>
         </div>
       </section>
@@ -613,15 +670,22 @@ export default function BusinessConsultancy() {
             <RevealBC className="pricing-card-bc">
               <span className="pricing-label-bc">STARTER</span>
 
-              <h3>Business Discovery</h3>
+              <h3>Business Discovery Call</h3>
 
               <h1>₹999</h1>
 
+              <p className="pricing-desc-bc">
+                A low-risk way to start — understand your business, challenges &
+                goals in one focused session.
+              </p>
+
               <ul className="pricing-list-bc">
-                <li>✔ 30 Minute Consultation</li>
-                <li>✔ Business Review</li>
-                <li>✔ Growth Suggestions</li>
-                <li>✔ Action Summary</li>
+                <li>✔ 45-minute one-on-one video/phone consultation</li>
+                <li>✔ Written summary of key observations</li>
+                <li>
+                  ✔ 2–3 quick-win recommendations you can act on immediately
+                </li>
+                <li>✔ No package or commitment required</li>
               </ul>
 
               <button
@@ -640,16 +704,24 @@ export default function BusinessConsultancy() {
 
               <span className="pricing-label-bc">PROFESSIONAL</span>
 
-              <h3>Revenue Audit</h3>
+              <h3>Revenue Growth Audit</h3>
 
               <h1>₹4,999</h1>
 
+              <p className="pricing-desc-bc">
+                A complete diagnostic of your business, delivered as a written
+                action plan.
+              </p>
+
               <ul className="pricing-list-bc">
-                <li>✔ Complete Business Audit</li>
-                <li>✔ Revenue Analysis</li>
-                <li>✔ Marketing Review</li>
-                <li>✔ Competitor Research</li>
-                <li>✔ Growth Roadmap</li>
+                <li>
+                  ✔ In-depth audit: sales funnel, pricing, marketing channels,
+                  competitor positioning, digital presence
+                </li>
+                <li>✔ Identification of revenue leaks</li>
+                <li>✔ 3–5 prioritized growth opportunities</li>
+                <li>✔ Written 90-day action roadmap</li>
+                <li>✔ 1-hour strategy walkthrough call</li>
               </ul>
 
               <Link
@@ -663,18 +735,52 @@ export default function BusinessConsultancy() {
             </RevealBC>
 
             <RevealBC delay={240} className="pricing-card-bc">
-              <span className="pricing-label-bc">ENTERPRISE</span>
+              <span className="pricing-label-bc">RETAINER</span>
 
-              <h3>Monthly Advisory</h3>
+              <h3>Starter Advisory</h3>
 
-              <h1>₹14,999</h1>
+              <h1>
+                ₹7,999<small>/month</small>
+              </h1>
+
+              <p className="pricing-desc-bc">
+                Ongoing, hands-on guidance to keep your business moving in the
+                right direction.
+              </p>
 
               <ul className="pricing-list-bc">
-                <li>✔ Unlimited Consultation</li>
-                <li>✔ Weekly Meetings</li>
-                <li>✔ Business Planning</li>
-                <li>✔ Team Support</li>
-                <li>✔ Monthly Reports</li>
+                <li>✔ 2 strategy calls/month</li>
+                <li>✔ WhatsApp support</li>
+                <li>✔ Monthly progress review</li>
+              </ul>
+
+              <button
+                onClick={() => navigate("/contact")}
+                className="pricing-button-bc"
+              >
+                Get Started
+              </button>
+            </RevealBC>
+
+            <RevealBC delay={320} className="pricing-card-bc">
+              <span className="pricing-label-bc">RETAINER</span>
+
+              <h3>Growth Advisory</h3>
+
+              <h1>
+                ₹14,999<small>/month</small>
+              </h1>
+
+              <p className="pricing-desc-bc">
+                For businesses that want continuous, priority-level support and
+                tracking.
+              </p>
+
+              <ul className="pricing-list-bc">
+                <li>✔ 4 strategy calls/month</li>
+                <li>✔ KPI tracking dashboard</li>
+                <li>✔ Priority WhatsApp support</li>
+                <li>✔ Quarterly deep-dive review</li>
               </ul>
 
               <button
@@ -684,7 +790,52 @@ export default function BusinessConsultancy() {
                 Contact Us
               </button>
             </RevealBC>
+
+            <RevealBC delay={400} className="pricing-card-bc">
+              <span className="pricing-label-bc">ON-DEMAND</span>
+
+              <h3>On-Demand Consulting Call</h3>
+
+              <h1>
+                ₹1,499<small>/hour</small>
+              </h1>
+
+              <p className="pricing-desc-bc">
+                Need a second opinion on one specific decision — a price change,
+                a new product, an ad budget, a hire?
+              </p>
+
+              <ul className="pricing-list-bc">
+                <li>✔ Single-call booking, no package required</li>
+                <li>✔ Focused on one specific decision</li>
+                <li>✔ Book directly via WhatsApp</li>
+              </ul>
+
+              <Link
+                to={`https://wa.me/918005351770?text=${message}`}
+                target="_blank"
+                className="pricing-button-bc"
+              >
+                Book A Call
+              </Link>
+            </RevealBC>
           </div>
+
+          <RevealBC delay={480} className="pricing-fit-note-bc">
+            <p>
+              <strong>Not sure where to start?</strong> Book a free 15-minute
+              Fit Call — we'll tell you honestly whether consulting is what your
+              business needs right now, before you spend a rupee.
+            </p>
+            <Link
+              to={`https://wa.me/918005351770?text=${fitCallMessage}`}
+              target="_blank"
+              className="secondary-button-bc"
+            >
+              Book Free Fit Call
+              <FaArrowRight />
+            </Link>
+          </RevealBC>
         </div>
       </section>
       <ScrollBeam />
@@ -836,6 +987,7 @@ export default function BusinessConsultancy() {
 
       {/* ==================================================
           CONTACT SECTION
+          (left as-is per instructions — no contact detail changes)
       ================================================== */}
 
       <section className="contact-section-bc">
@@ -857,7 +1009,7 @@ export default function BusinessConsultancy() {
 
               <div className="contact-list-bc">
                 <div className="contact-item-bc">
-                  <FaPhoneAlt />
+                  <FaPhone />
 
                   <span>+91 80053 51770</span>
                 </div>
@@ -875,7 +1027,7 @@ export default function BusinessConsultancy() {
                 </div>
 
                 <div className="contact-item-bc">
-                  <FaMapMarkerAlt />
+                  <FaLocationDot />
 
                   <span>Lucknow, Uttar Pradesh, India</span>
                 </div>
@@ -902,6 +1054,20 @@ export default function BusinessConsultancy() {
           </div>
         </div>
       </section>
+
+      {/* ==================================================
+          FOOTER TAGS
+      ================================================== */}
+
+      <footer className="footer-bc">
+        <div className="footer-tags-bc">
+          {footerTagsBC.map((tag) => (
+            <span key={tag} className="tag-bc">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </footer>
     </div>
   );
 }
