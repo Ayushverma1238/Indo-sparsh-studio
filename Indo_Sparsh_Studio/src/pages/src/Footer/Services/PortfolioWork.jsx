@@ -768,24 +768,6 @@ const PROJECTS = [
   },
 ];
 
-const TEAM = [
-  {
-    initials: "AM",
-    name: "Aarav Mehta",
-    role: "Lead Product Designer",
-    study: "M.Des, IIT Bombay",
-    bio: "Spends more time on type scales than most people spend on vacation. Came from a print-design background, which is why every sheet still gets crop marks.",
-    focus: ["Design systems", "Interaction", "Typography"],
-  },
-  {
-    initials: "SK",
-    name: "Sana Kapoor",
-    role: "Front-End Engineer",
-    study: "B.Tech CSE, IIIT Hyderabad",
-    bio: "Turns the proofs into working sheets. Cares more about a 60fps scroll than almost anything else on the brief.",
-    focus: ["React", "Performance", "Accessibility"],
-  },
-];
 
 /* Every service the studio offers. Also used to build the filter ticker. */
 const SERVICES = [
@@ -1047,13 +1029,6 @@ export default function PortfolioWork() {
     return WORK.filter((w) => w.tag === activeService);
   }, [activeService]);
 
-  // The cards below use the site-wide .js-reveal convention, but that
-  // class is normally driven by the IntersectionObserver in useReveal(),
-  // which only scans the page once on mount. Cards that appear later —
-  // e.g. after clicking a service filter — are never seen by that
-  // observer and stay stuck at opacity: 0. Since a filter click means
-  // this section is already on screen, just reveal its cards directly
-  // instead of waiting on a scroll observer.
   useEffect(() => {
     if (!gridRef.current) return;
     const els = gridRef.current.querySelectorAll(".js-reveal");

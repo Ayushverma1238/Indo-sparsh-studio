@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import "./GraphicDesign.css";
 import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
+import "../../../Services.css"
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -27,7 +28,7 @@ function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
   return (
     <Tag
       ref={ref}
-      className={`gd-reveal ${visible ? "is-visible" : ""} ${className}`}
+      className={`dm-reveal ${visible ? "is-visible" : ""} ${className}`}
       style={{ "--delay": `${delay}ms` }}
     >
       {children}
@@ -35,178 +36,223 @@ function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
   );
 }
 
-/* ---------- data ---------- */
-const tools = [
-  "Illustrator",
-  "Photoshop",
-  "Figma",
-  "InDesign",
-  "Procreate",
-  "After Effects",
-  "Canva Pro",
-  "Lightroom",
-  "Blender",
+/* ---------- theme toggle icons ---------- */
+function SunIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" {...props}>
+      <circle cx="12" cy="12" r="4.2" stroke="currentColor" strokeWidth="1.8" />
+      <g stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+        <path d="M12 2.5v2.4M12 19.1v2.4M21.5 12h-2.4M4.9 12H2.5M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7M18.4 18.4l-1.7-1.7M7.3 7.3 5.6 5.6" />
+      </g>
+    </svg>
+  );
+}
+function MoonIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" {...props}>
+      <path
+        d="M20 14.2A8.4 8.4 0 1 1 9.8 4a6.6 6.6 0 0 0 10.2 10.2Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+/* ---------- data (sourced from the Digital Marketing service sheet) ---------- */
+const CONTACT = {
+  phone: "+91-8005351770",
+  phoneHref: "tel:+918005351770",
+  email: "contact@indosparsh.com",
+  website: "www.indosparsh.com",
+  websiteHref: "https://www.indosparsh.com",
+  address:
+    "Incuspaze, 11th Floor Rohtas Summit, Vibhuti Khand, Gomtinagar, Lucknow, Uttar Pradesh – 226010",
+};
+
+const channels = [
+  "SEO",
+  "Meta Ads",
+  "Google Ads",
+  "WhatsApp Marketing",
+  "SMS Marketing",
+  "Email Marketing",
+  "Telegram Ads",
+  "Performance Marketing",
+  "UGC Ads",
+  "Local SEO",
 ];
 
-const portfolio = [
+/* Bundled plans, shown as the masonry "portfolio" grid */
+const plans = [
   {
-    title: "Solstice Coffee",
-    category: "Logo & Identity",
-    size: "tall",
-    gradient: "linear-gradient(160deg,#FF4B3E,#FFC738)",
-  },
-  {
-    title: "Neon Nights Poster",
-    category: "Print Design",
+    title: "Basic",
+    category: "Digital Foundation",
+    price: "9,999",
     size: "short",
-    gradient: "linear-gradient(160deg,#2F5CFF,#FF4B3E)",
+    gradient: "linear-gradient(160deg,#2F5CFF,#16161A)",
+    features: [
+      "SEO — up to 5 keywords + local SEO",
+      "1 email campaign/month",
+      "WhatsApp — up to 1,000 msgs/month",
+      "SMS — up to 1,000/month",
+    ],
   },
   {
-    title: "Verdant Skincare",
-    category: "Packaging",
+    title: "Growth",
+    category: "Performance Starter",
+    price: "19,999",
+    size: "tall",
+    recommended: true,
+    gradient: "linear-gradient(160deg,#FF4B3E,#FFC738)",
+    features: [
+      "Everything in Basic",
+      "SEO expanded to 10 keywords",
+      "Meta Ads — 2 campaign setups/month",
+      "Google Ads — 2 campaign setups/month",
+      "Bi-weekly strategy call",
+    ],
+  },
+  {
+    title: "Premium",
+    category: "Full-Funnel Performance Marketing",
+    price: "34,999",
     size: "medium",
     gradient: "linear-gradient(160deg,#16161A,#2F5CFF)",
-  },
-  {
-    title: "Weekend Market",
-    category: "Social Creative",
-    size: "medium",
-    gradient: "linear-gradient(160deg,#FFC738,#FF4B3E)",
-  },
-  {
-    title: "Cartography Series",
-    category: "Illustration",
-    size: "tall",
-    gradient: "linear-gradient(160deg,#2F5CFF,#FFC738)",
-  },
-  {
-    title: "Fernbank Rebrand",
-    category: "Brand Identity",
-    size: "short",
-    gradient: "linear-gradient(160deg,#FF4B3E,#16161A)",
-  },
-  {
-    title: "Pulse App",
-    category: "UI Design",
-    size: "medium",
-    gradient: "linear-gradient(160deg,#FFC738,#2F5CFF)",
-  },
-  {
-    title: "Harvest Fest",
-    category: "Print Design",
-    size: "short",
-    gradient: "linear-gradient(160deg,#16161A,#FF4B3E)",
+    features: [
+      "Everything in Growth",
+      "SEO — up to 20 keywords + authority links",
+      "UGC Ads — 2 creatives/month",
+      "Dedicated account manager",
+      "Weekly optimization + reporting",
+    ],
   },
 ];
 
+const planFootnote =
+  "Meta/Google ad spend, WhatsApp/SMS/Telegram message credits, and 18% GST are billed at actual — paid directly to the platform, never marked up. A minimum 3-month engagement is recommended, especially for SEO.";
+
+/* Standalone services, shown in the capabilities grid */
+const capabilities = [
+  { title: "SEO Services", text: "On-page + local SEO, keyword research, monthly report.", price: "From ₹6,999/mo" },
+  { title: "Email Marketing", text: "4 campaigns/month, list segmentation, performance report.", price: "₹2,999/mo" },
+  { title: "WhatsApp Marketing", text: "Broadcast setup & campaign management.", price: "₹2,499/mo" },
+  { title: "SMS Marketing", text: "Campaign setup & scheduling.", price: "₹1,999/mo" },
+  { title: "Meta Ads Management", text: "Facebook + Instagram setup, creative guidance, optimization.", price: "₹5,999/mo" },
+  { title: "Google Ads Management", text: "Search campaign setup, keyword research, conversion tracking.", price: "₹7,999/mo" },
+  { title: "Telegram Ads", text: "Channel/ad setup & promotion strategy.", price: "₹3,999/mo" },
+  { title: "UGC Ads", text: "4 scripted UGC-style ad creatives/month.", price: "₹7,999/mo" },
+  { title: "Performance Marketing", text: "CRO, landing page testing, full-funnel attribution.", price: "₹9,999/mo" },
+];
+
+/* Three ways to work with the studio — reuses the "process" rhythm */
 const process = [
   {
     step: "01",
-    title: "Brief",
-    text: "We get specific about audience, tone, and where the design will actually live.",
+    title: "Bundled plan",
+    text: "Basic, Growth, or Premium — every channel run as one coordinated system, from ₹9,999/month.",
   },
   {
     step: "02",
-    title: "Concept",
-    text: "Two or three directions, explored fast, before we commit to one.",
+    title: "Standalone service",
+    text: "Prefer just one channel? Every service is available on its own, no bundle required.",
   },
   {
     step: "03",
-    title: "Design",
-    text: "The chosen direction, refined round by round against real feedback.",
+    title: "Per-campaign",
+    text: "One-off promotion, no retainer — a single Meta or Google campaign from ₹1,999.",
   },
   {
     step: "04",
-    title: "Deliver",
-    text: "Every file format you need, organized and ready to hand to print or dev.",
+    title: "Add-ons",
+    text: "SEO audits, landing pages, and extra ad platforms layer onto any plan when you need them.",
   },
 ];
 
-const capabilities = [
-  {
-    title: "Logo & Identity",
-    text: "Marks, type systems, and guidelines built to hold up at any size.",
-  },
-  {
-    title: "Print Design",
-    text: "Posters, packaging, and collateral designed for the press, not just the screen.",
-  },
-  {
-    title: "Packaging",
-    text: "Structural and surface design that stands out on a crowded shelf.",
-  },
-  {
-    title: "Social Creative",
-    text: "Templates and one-offs built for how each platform actually gets scrolled.",
-  },
-  {
-    title: "UI Design",
-    text: "Interface design that a dev team can build from without guesswork.",
-  },
-  {
-    title: "Illustration",
-    text: "Custom illustration for editorial, product, or brand work.",
-  },
+/* Per-campaign, one-off pricing table */
+const campaignPricing = [
+  { name: "Meta Ads", includes: "Strategy, 1 ad creative set, setup & launch", price: "₹1,999" },
+  { name: "Google Ads", includes: "Strategy, keyword research, setup & launch", price: "₹2,499" },
+  { name: "Telegram Ads", includes: "Channel/ad setup, one promotional push", price: "₹1,499" },
+  { name: "WhatsApp Marketing", includes: "Broadcast setup & send, one campaign", price: "₹1,499" },
+  { name: "SMS Marketing", includes: "Campaign setup & send, one blast", price: "₹999" },
+  { name: "Email Marketing", includes: "Copy, design & send, one campaign", price: "₹999" },
 ];
 
+const addOns = [
+  { name: "One-Time SEO Audit & Strategy Report", price: "₹4,999" },
+  { name: "Extra Ad Platform (LinkedIn Ads)", price: "₹4,999/mo" },
+  { name: "Additional UGC Ad Creative", price: "₹2,499/video" },
+  { name: "Landing Page Design", price: "₹4,999" },
+];
+
+/* Testimonials — illustrative, not drawn from the sheet */
 const testimonials = [
   {
     quote:
-      "Every round of feedback got a same-day turnaround without losing quality.",
-    name: "Renee Castillo",
-    role: "Marketing Lead, Solstice",
+      "Every channel finally reported to one dashboard — we could see exactly which rupee was working.",
+    name: "Ananya Kapoor",
+    role: "Founder, Kapoor Home Décor",
   },
   {
     quote:
-      "The identity they built is still the first thing people mention about our brand.",
-    name: "Tomás Rivera",
-    role: "Founder, Verdant",
+      "We started with just Google Ads, added SEO two months in, and the compounding was obvious by month three.",
+    name: "Rahul Mehta",
+    role: "Operations Head, Mehta Auto Care",
   },
 ];
 
-export default function GraphicDesignPage() {
-  useEffect(() => {
-    document.title = "Graphic Design | Indo Sparsh Studio";
-  }, []);
+export default function DigitalMarketingPage() {
   const navigate = useNavigate();
-  return (
-    <div className="gd">
-      {/* ---------- Hero ---------- */}
-      <section className="gd-hero">
-        <span className="gd-shape gd-shape--circle" aria-hidden="true" />
-        <span className="gd-shape gd-shape--square" aria-hidden="true" />
-        <span className="gd-shape gd-shape--triangle" aria-hidden="true" />
 
-        <div className="gd-hero__inner">
-          <span className="gd-eyebrow">Graphic Design</span>
-          <h1 className="gd-hero__headline">
-            <span className="gd-word gd-word--a">Design</span>
-            <span className="gd-word gd-word--b">that</span>
-            <span className="gd-word gd-word--c">gets</span>
+  useEffect(() => {
+    document.title = "Digital Marketing | Indo Sparsh Studio";
+  }, []);
+
+ 
+
+  return (
+    <div className="dm">
+     
+
+      {/* ---------- Hero ---------- */}
+      <section className="dm-hero">
+        <span className="dm-shape dm-shape--circle" aria-hidden="true" />
+        <span className="dm-shape dm-shape--square" aria-hidden="true" />
+        <span className="dm-shape dm-shape--triangle" aria-hidden="true" />
+
+        <div className="dm-hero__inner">
+          <span className="dm-eyebrow">Digital Marketing</span>
+          <h1 className="dm-hero__headline">
+            <span className="dm-word dm-word--a">Every</span>
+            <span className="dm-word dm-word--b">channel.</span>
             <br />
-            <span className="gd-word gd-word--d">noticed.</span>
+            <span className="dm-word dm-word--c">One</span>
+            <span className="dm-word dm-word--d">strategy.</span>
           </h1>
-          <p className="gd-hero__subtext">
-            Logos, packaging, print, and digital creative — designed to hold
-            attention for longer than a scroll.
+          <p className="dm-hero__subtext">
+            Scattered marketing — a boosted post here, a random SMS blast there — doesn't compound.
+            We run your SEO, ads, and messaging as one coordinated system, so every channel feeds
+            the next and every rupee spent is tracked back to a result.
           </p>
-          <div className="gd-hero__cta-row">
-            <a href="/blog" className="gd-btn gd-btn--primary">
-              View portfolio
+          <div className="dm-hero__cta-row">
+            <a href="#plans" className="dm-btn dm-btn--primary">
+              View plans
             </a>
-            <a href="/request-quote" className="gd-btn gd-btn--ghost">
-              Start a project
+            <a href={CONTACT.phoneHref} className="dm-btn dm-btn--ghost">
+              Talk to us
             </a>
           </div>
         </div>
       </section>
       <ScrollBeam />
 
-      {/* ---------- Tools marquee ---------- */}
-      <div className="gd-marquee">
-        <div className="gd-marquee__track">
-          {[...tools, ...tools].map((t, i) => (
-            <span className="gd-marquee__item" key={i}>
+      {/* ---------- Channels marquee ---------- */}
+      <div className="dm-marquee">
+        <div className="dm-marquee__track">
+          {[...channels, ...channels].map((t, i) => (
+            <span className="dm-marquee__item" key={i}>
               {t}
             </span>
           ))}
@@ -214,88 +260,146 @@ export default function GraphicDesignPage() {
       </div>
       <ScrollBeam />
 
-      {/* ---------- Portfolio masonry ---------- */}
-      <section className="gd-section" id="work">
-        <Reveal className="gd-section__head">
-          <span className="gd-kicker">Selected work</span>
-          <h2 className="gd-h2">A few pieces from the studio</h2>
-          <p className="gd-lead">
-            A mix of identity, print, and digital work across a handful of
-            clients.
+      {/* ---------- Plans masonry ---------- */}
+      <section className="dm-section" id="plans">
+        <Reveal className="dm-section__head">
+          <span className="dm-kicker">Choose your plan</span>
+          <h2 className="dm-h2">Bundled packages, built to compound</h2>
+          <p className="dm-lead">
+            Not more noise. More pipeline. Every plan runs SEO, ads, and messaging together.
           </p>
         </Reveal>
 
-        <div className="gd-masonry">
-          {portfolio.map((item, i) => (
+        <div className="dm-masonry">
+          {plans.map((plan, i) => (
             <Reveal
-              key={item.title}
+              key={plan.title}
               delay={i * 70}
-              className={`gd-piece gd-piece--${item.size}`}
+              className={`dm-piece dm-piece--${plan.size} ${plan.recommended ? "dm-piece--recommended" : ""}`}
             >
-              <div
-                className="gd-piece__media"
-                style={{ background: item.gradient }}
-              >
-                <span className="gd-piece__category">{item.category}</span>
+              {plan.recommended && <span className="dm-piece__badge">Most Recommended</span>}
+              <div className="dm-piece__media" style={{ background: plan.gradient }}>
+                <span className="dm-piece__category">{plan.category}</span>
+                <span className="dm-piece__price">
+                  ₹{plan.price}
+                  <small>/month</small>
+                </span>
               </div>
-              <h3 className="gd-piece__title">{item.title}</h3>
+              <h3 className="dm-piece__title">{plan.title}</h3>
+              <ul className="dm-piece__features">
+                {plan.features.map((f) => (
+                  <li key={f}>{f}</li>
+                ))}
+              </ul>
             </Reveal>
           ))}
         </div>
+        <p className="dm-footnote">{planFootnote}</p>
       </section>
       <ScrollBeam />
 
-      {/* ---------- Process ---------- */}
-      <section className="gd-section gd-section--muted">
-        <Reveal className="gd-section__head">
-          <span className="gd-kicker">How we work</span>
-          <h2 className="gd-h2">Four steps from brief to final files</h2>
+      {/* ---------- How to work with us ---------- */}
+      <section className="dm-section dm-section--muted">
+        <Reveal className="dm-section__head">
+          <span className="dm-kicker">How it works</span>
+          <h2 className="dm-h2">Four ways to get started</h2>
         </Reveal>
-        <div className="gd-process">
-          <div className="gd-process__line" aria-hidden="true" />
+        <div className="dm-process">
+          <div className="dm-process__line" aria-hidden="true" />
           {process.map((p, i) => (
-            <Reveal key={p.step} delay={i * 100} className="gd-process__item">
-              <span className="gd-process__step">{p.step}</span>
-              <h3 className="gd-process__title">{p.title}</h3>
-              <p className="gd-process__text">{p.text}</p>
+            <Reveal key={p.step} delay={i * 100} className="dm-process__item">
+              <span className="dm-process__step">{p.step}</span>
+              <h3 className="dm-process__title">{p.title}</h3>
+              <p className="dm-process__text">{p.text}</p>
             </Reveal>
           ))}
         </div>
       </section>
       <ScrollBeam />
 
-      {/* ---------- Capabilities ---------- */}
-      <section className="gd-section">
-        <Reveal className="gd-section__head">
-          <span className="gd-kicker">What we design</span>
-          <h2 className="gd-h2">
-            Everything from a wordmark to a full campaign
-          </h2>
+      {/* ---------- Standalone services ---------- */}
+      <section className="dm-section" id="services">
+        <Reveal className="dm-section__head">
+          <span className="dm-kicker">Prefer just one service?</span>
+          <h2 className="dm-h2">Every channel, available on its own</h2>
+          <p className="dm-lead">No bundle required — pick exactly what you need.</p>
         </Reveal>
-        <div className="gd-grid">
+        <div className="dm-grid">
           {capabilities.map((c, i) => (
-            <Reveal key={c.title} delay={i * 70} className="gd-card why-card">
-              <h3 className="gd-card__title">{c.title}</h3>
-              <p className="gd-card__text">{c.text}</p>
+            <Reveal key={c.title} delay={i * 60} className="dm-card why-card">
+              <div className="dm-card__top">
+                <h3 className="dm-card__title">{c.title}</h3>
+                <span className="dm-card__price">{c.price}</span>
+              </div>
+              <p className="dm-card__text">{c.text}</p>
             </Reveal>
           ))}
         </div>
+
+        <Reveal className="dm-addons" delay={80}>
+          <span className="dm-addons__label">Optional add-ons</span>
+          <div className="dm-addons__list">
+            {addOns.map((a) => (
+              <span className="dm-chip" key={a.name}>
+                {a.name} <b>{a.price}</b>
+              </span>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+      <ScrollBeam />
+
+      {/* ---------- Per-campaign pricing ---------- */}
+      <section className="dm-section dm-section--muted">
+        <Reveal className="dm-section__head">
+          <span className="dm-kicker">No retainer needed</span>
+          <h2 className="dm-h2">Per-campaign pricing</h2>
+          <p className="dm-lead">
+            For a festival sale, a product launch, or a single event — pay per campaign instead.
+          </p>
+        </Reveal>
+        <Reveal className="dm-table-wrap">
+          <table className="dm-table">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>What's included</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {campaignPricing.map((row) => (
+                <tr key={row.name}>
+                  <td data-label="Service">{row.name}</td>
+                  <td data-label="What's included">{row.includes}</td>
+                  <td data-label="Price" className="dm-table-price">
+                    {row.price}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Reveal>
+        <p className="dm-footnote">
+          Covers strategy, setup & launch only. Add ongoing optimization at ₹999/week — running longer
+          than 3 weeks works out more cost-effective on a monthly plan.
+        </p>
       </section>
       <ScrollBeam />
 
       {/* ---------- Testimonials ---------- */}
-      <section className="gd-section gd-section--muted">
-        <Reveal className="gd-section__head">
-          <span className="gd-kicker">Client feedback</span>
-          <h2 className="gd-h2">What it's like working with the studio</h2>
+      <section className="dm-section">
+        <Reveal className="dm-section__head">
+          <span className="dm-kicker">Client feedback</span>
+          <h2 className="dm-h2">What it's like working with the studio</h2>
         </Reveal>
-        <div className="gd-grid gd-grid--2">
+        <div className="dm-grid dm-grid--2">
           {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={i * 100} className="gd-quote why-card">
-              <p className="gd-quote__text">"{t.quote}"</p>
-              <div className="gd-quote__author">
-                <span className="gd-quote__name">{t.name}</span>
-                <span className="gd-quote__role">{t.role}</span>
+            <Reveal key={t.name} delay={i * 100} className="dm-quote why-card">
+              <p className="dm-quote__text">"{t.quote}"</p>
+              <div className="dm-quote__author">
+                <span className="dm-quote__name">{t.name}</span>
+                <span className="dm-quote__role">{t.role}</span>
               </div>
             </Reveal>
           ))}
@@ -304,27 +408,21 @@ export default function GraphicDesignPage() {
       <ScrollBeam />
 
       {/* ---------- Final CTA ---------- */}
-      <section className="gd-cta" id="contact">
-        <Reveal className="gd-cta__inner">
-          <h2 className="gd-cta__title">
-            Have something that needs designing?
-          </h2>
-          <p className="gd-cta__text">
-            Tell us what it is — we'll reply with next steps within a day.
+      <section className="dm-cta" id="contact">
+        <Reveal className="dm-cta__inner">
+          <h2 className="dm-cta__title">Let's put your channels to work together.</h2>
+          <p className="dm-cta__text">
+            {CONTACT.phone} · {CONTACT.email} · {CONTACT.website}
+            <br />
+            {CONTACT.address}
           </p>
-          <div className="gd-hero__cta-row">
-            <button
-              onClick={() => navigate("/request-quote")}
-              className="gd-btn gd-btn--dark"
-            >
+          <div className="dm-hero__cta-row">
+            <button onClick={() => navigate("/request-quote")} className="dm-btn dm-btn--dark">
               Start a project
             </button>
-            <button
-              onClick={() => navigate("/blog")}
-              className="gd-btn gd-btn--ghost-light"
-            >
-              View portfolio
-            </button>
+            <a href={CONTACT.phoneHref} className="dm-btn dm-btn--ghost-light">
+              Call / WhatsApp
+            </a>
           </div>
         </Reveal>
       </section>

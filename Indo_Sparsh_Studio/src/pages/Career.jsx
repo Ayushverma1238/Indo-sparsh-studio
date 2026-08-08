@@ -10,6 +10,7 @@ import {
   FaUpload,
 } from "react-icons/fa6";
 import Contact from "./Contact.jsx";
+import "./Services.css"
 
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import ScrollBeam from "./ScrollBeam";

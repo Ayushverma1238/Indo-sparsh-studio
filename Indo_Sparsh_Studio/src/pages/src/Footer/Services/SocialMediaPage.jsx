@@ -25,6 +25,7 @@ import {
 import "./SocialMediaPage.css";
 import ScrollBeam from "../../../ScrollBeam";
 import { Link } from "react-router-dom";
+import "../../../Services.css"
 
 /**
  * Lightweight replacement for framer-motion's `whileInView`.
@@ -210,7 +211,7 @@ export default function SocialMediaManagement() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="feature-card-sm hover-lift-scale-sm reveal-up-sm"
+              className="feature-card-sm hover-lift-scale-sm reveal-up-sm why-card"
               style={{ "--stagger-delay": `${index * 0.1}s` }}
             >
               <div className="feature-icon-sm">
@@ -276,7 +277,7 @@ export default function SocialMediaManagement() {
                 ))}
               </ul>
 
-              <Link to={plan.message} target="_blank" className="plan-btn-sm">
+              <Link to={`https://wa.me/918005351770?text=${plan.message}`} target="_blank" className="plan-btn-sm">
                 {plan.button}
               </Link>
             </div>
@@ -357,7 +358,7 @@ export default function SocialMediaManagement() {
           {process.map((item, index) => (
             <div
               key={index}
-              className="timeline-card-sm reveal-up-sm"
+              className="timeline-card-sm reveal-up-sm why-card"
               style={{ "--stagger-delay": `${index * 0.15}s` }}
             >
               <div className="timeline-number-sm">{item.step}</div>
@@ -388,7 +389,7 @@ export default function SocialMediaManagement() {
           {whyChooseUs.map((item, index) => (
             <div
               key={index}
-              className="why-card-sm hover-lift-sm reveal-scale-sm"
+              className="why-card-sm hover-lift-sm reveal-scale-sm why-card"
               style={{ "--stagger-delay": `${index * 0.1}s` }}
             >
               <div className="why-icon-sm">⭐</div>
