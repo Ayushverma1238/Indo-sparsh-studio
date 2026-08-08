@@ -837,60 +837,76 @@ body.light-mode .copyright p {
   color: var(--text-dim);
 }
 
-
-
+body.light-mode .time-card {
+  background-color: #ece6e6;
+}
 
 .time-card {
-  display: flex;
-  align-items: center;
-  gap: 18px;
   width: fit-content;
-  padding: 18px 24px;
-  background:var(--bg-time);
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  border: 1px solid #575758;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 16px 22px;
+  background: var(--bg-time);
+  border-left: 3px solid #2563eb;
+  border-radius: 0 12px 12px 0;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .time-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 35px rgba(107, 106, 106, 0.2);
+  border-color: #1d4ed8;
 }
 
-.time-icon {
- 
-  color: #2563eb;
-  border-radius: 50%;
+.time-label-row {
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 40px;
+  gap: 8px;
+  margin-bottom: 6px;
 }
 
-.time-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.time-label {
-  margin: 0;
-  font-size: 12px;
-  font-weight: 600;
-  color: #6b7280;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.time-globe {
+  font-size: 15px;
+  line-height: 1;
 }
 
 .time-value {
-  margin: 5px 0;
-  font-size: 25px;
+  margin: 0;
+  font-size: 28px;
   font-weight: 700;
-  color: var(--text-body);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
+
+  background: linear-gradient(
+    90deg,
+    var(--text-body) 0%,
+    #2563eb 25%,
+    #60a5fa 50%,
+    #2563eb 75%,
+    var(--text-body) 100%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  animation: time-sweep 3s linear infinite;
 }
 
-.time-zone {
-  margin: 0;
-  font-size: 14px;
-  color: #6b7280;
+@keyframes time-sweep {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
+
+.time-value {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-body);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
+}
+

@@ -154,12 +154,12 @@ export default function Footer() {
             </div>
           </div>
           <div className="time-card">
-            <div className="time-icon">🕒</div>
-
             <div className="time-content">
-              <p className="time-label">Local Time</p>
+              <div className="time-label-row">
+                <span className="time-globe">🌐</span>
+                <p className="time-zone">India (IST)</p>
+              </div>
               <h2 className="time-value">{time}</h2>
-              <p className="time-zone">India (IST)</p>
             </div>
           </div>
           <div className="social-links">
@@ -206,27 +206,18 @@ export default function Footer() {
                   {item.name}
                 </Link>
               ))}
-              {/* <div className="policy-icons" >
-                <Link to='#'><FaFacebookF/></Link>
-                <Link to='#'><IoLogoInstagram/></Link>
-                <Link to='#'><IoLogoWhatsapp/></Link>
-              </div> */}
             </div>
           </div>
         </div>
-
-        {/* <p>
-          Copyright {new Date().getFullYear()} <span>Indo Sparsh Studio</span>.
-          All rights reserved.
-        </p> */}
       </div>
 
       <div className="copyright">
         <p>
           Copyright {new Date().getFullYear()} <span>Indo Sparsh Studio</span>.
-          All rights reserved. MSME:
-          <span className="msme"> UDYAM-UP-50-0287639</span>
-          
+          All rights reserved.
+          <span className="msme">
+            MSME Registered (GOI) | URN: UDYAM-UP-50-0287639
+          </span>
         </p>
       </div>
     </footer>

@@ -19,7 +19,6 @@ import ScrollBeam from "../ScrollBeam";
 const HomeServices = () => {
   const navigate = useNavigate();
 
-
   return (
     <>
       <section className="services-section">
@@ -52,7 +51,11 @@ const HomeServices = () => {
               </div>
             </div>
             <h3>Business Profile Creation</h3>
-            <p>
+            <p
+              style={{
+                marginBottom: "20px",
+              }}
+            >
               Google Business Profile, Social Media Pages, WhatsApp Business
               Account, Professional Business Mail, Other Digital Solutions with
               Integration & Automation.
@@ -88,7 +91,13 @@ const HomeServices = () => {
               </div>
             </div>
             <h3>Web Development</h3>
-            <p>Static Website, Dynamic Website, Landing Page, Portfolio etc.</p>
+            <p
+              style={{
+                marginBottom: "20px",
+              }}
+            >
+              Static Website, Dynamic Website, Landing Page, Portfolio etc.
+            </p>
             <button
               className="main-service-btn-primary"
               style={{
@@ -120,7 +129,13 @@ const HomeServices = () => {
               </div>
             </div>
             <h3>App Development</h3>
-            <p>Android Apps, iOS Apps, Cross-Platform Solutions etc.</p>
+            <p
+              style={{
+                marginBottom: "20px",
+              }}
+            >
+              Android Apps, iOS Apps, Cross-Platform Solutions etc.
+            </p>
             <button
               className="main-btn-primary"
               style={{
@@ -152,7 +167,11 @@ const HomeServices = () => {
               </div>
             </div>
             <h3>Digital Marketing Services</h3>
-            <p>
+            <p
+              style={{
+                marginBottom: "20px",
+              }}
+            >
               WhatsApp Marketing, SMS Marketing, Google Ads, Meta Ads, Telegram
               Ads, SEO etc.
             </p>
@@ -187,7 +206,11 @@ const HomeServices = () => {
               </div>
             </div>
             <h3>Social Media Management</h3>
-            <p>
+            <p
+              style={{
+                marginBottom: "20px",
+              }}
+            >
               Content Planning, Post Design, Scheduling, Engagement Growth etc.
             </p>
             <button
@@ -221,7 +244,11 @@ const HomeServices = () => {
               </div>
             </div>
             <h3>UI/UX Design</h3>
-            <p>
+            <p
+              style={{
+                marginBottom: "20px",
+              }}
+            >
               User-Centric Design, Wireframes & Prototypes, Conversion-Optimized
               Interfaces etc.
             </p>
@@ -256,7 +283,11 @@ const HomeServices = () => {
               </div>
             </div>
             <h3>Graphics Design Services</h3>
-            <p>
+            <p
+              style={{
+                marginBottom: "20px",
+              }}
+            >
               Logo Design, Posters & Banners, Social Media Creatives, Business
               Branding Materials etc.
             </p>
@@ -291,7 +322,11 @@ const HomeServices = () => {
               </div>
             </div>
             <h3>Branding & Marketing</h3>
-            <p>
+            <p
+              style={{
+                marginBottom: "20px",
+              }}
+            >
               Brand Strategy, Brand Identity, Online & Offline Marketing etc.
             </p>
             <button
@@ -325,7 +360,13 @@ const HomeServices = () => {
               </div>
             </div>
             <h3>Row Calling Data</h3>
-            <p>Verified Business Leads, Industry-Specific Data etc.</p>
+            <p
+              style={{
+                marginBottom: "20px",
+              }}
+            >
+              Verified Business Leads, Industry-Specific Data etc.
+            </p>
             <button
               className="main-btn-primary"
               style={{
@@ -357,7 +398,13 @@ const HomeServices = () => {
               </div>
             </div>
             <h3>Content Creation & Video Editing Services</h3>
-            <p>Promotional Videos, Reels & Shorts, Corporate Videos etc.</p>
+            <p
+              style={{
+                marginBottom: "20px",
+              }}
+            >
+              Promotional Videos, Reels & Shorts, Corporate Videos etc.
+            </p>
             <button
               className="main-btn-primary"
               style={{
@@ -389,7 +436,11 @@ const HomeServices = () => {
               </div>
             </div>
             <h3>Business Consultancy</h3>
-            <p>
+            <p
+              style={{
+                marginBottom: "20px",
+              }}
+            >
               Business Growth Planning, Digital Transformation Strategy etc.
             </p>
 
