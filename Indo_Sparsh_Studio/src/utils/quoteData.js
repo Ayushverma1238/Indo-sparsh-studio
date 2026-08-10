@@ -236,7 +236,7 @@ export const footerServices = [
   { name: "Mobile App Development", path: "/services/app-development" },
   { name: "Web Application Development", path: "/services/web-application" },
   { name: "UI/UX Design", path: "/services/ui-ux-design" },
-  { name: "Digital Marketing Services", path: "/services/digital-marketing" },
+  { name: "Digital Marketing", path: "/services/digital-marketing" },
   { name: "Graphic Designing", path: "/services/graphic-design" },
   { name: "Content Creation & Video Editing", path: "/services/content-hub" },
   { name: "Social Media Management", path: "/services/social-media" },

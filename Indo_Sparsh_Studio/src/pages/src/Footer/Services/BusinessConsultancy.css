@@ -66,9 +66,20 @@ body.dark-mode {
 }
 
 .container-bc {
-  max-width: 1180px;
+  max-width: 1500px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 100px;
+}
+@media (max-width:700px) {
+  .wrap{
+
+    padding: 0 50px;
+  }
+}
+@media (max-width:450) {
+  .wrap{
+    padding: 0 20px;
+  }
 }
 
 .business-consultancy-page-bc section {
@@ -516,14 +527,14 @@ body.dark-mode {
   right: 20px;
   background: linear-gradient(120deg, var(--bc-accent), var(--bc-accent-2));
   color: #fff;
-  font-family: var(--bc-font-mono);
+  font-family: var(--bc-font-body);
   font-size: 0.64rem;
   letter-spacing: 0.05em;
   padding: 6px 12px;
   border-radius: 999px;
 }
 .pricing-label-bc {
-  font-family: var(--bc-font-mono);
+  font-family: var(--bc-font-body);
   font-size: 0.68rem;
   letter-spacing: 0.1em;
   color: var(--bc-muted);
@@ -590,7 +601,7 @@ body.dark-mode {
   flex-wrap: wrap;
 }
 .consultation-content-bc span {
-  font-family: var(--bc-font-mono);
+  font-family: var(--bc-font-body);
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.85);

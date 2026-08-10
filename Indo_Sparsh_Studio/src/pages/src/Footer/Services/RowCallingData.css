@@ -72,10 +72,22 @@ body.dark-mode {
 }
 .dp-accent { color: var(--dp-text); }
 
-.dp-section { max-width: 1180px; margin: 0 auto; padding: 90px 6vw; }
+.dp-section { max-width: 1500px; margin: 0 auto; padding: 90px 100px; }
 .dp-section--muted { max-width: none; background: var(--dp-bg-2); }
-.dp-section--muted > * { max-width: 1180px; margin-left: auto; margin-right: auto; }
+.dp-section--muted > * { max-width: 1500px; margin-left: auto; margin-right: auto; }
 .dp-section__head { margin-bottom: 44px; }
+
+@media (max-width:700px) {
+  .dp-section{
+
+    padding: 0 50px;
+  }
+}
+@media (max-width:450) {
+  .dp-section{
+    padding: 0 20px;
+  }
+}
 
 .dp-btn {
   display: inline-block;

@@ -30,7 +30,28 @@
   line-height: 1.55;
   overflow-x: clip;
   transition: background 0.4s ease, color 0.4s ease;
+
 }
+
+.wa > section{
+  margin: 0 auto;
+  max-width: 1500px;
+  padding: 0 100px;
+}
+
+@media (max-width:700px) {
+  .wa > section{
+
+    padding: 0 50px;
+  }
+}
+@media (max-width:450) {
+  .wa > section{
+    padding: 0 20px;
+  }
+}
+
+
 
 .wa * {
   box-sizing: border-box;

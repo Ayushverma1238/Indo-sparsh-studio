@@ -68,9 +68,21 @@ main#main {
 }
 
 .wrap {
-  max-width: 1120px;
+  max-width: 1500px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 100px;
+}
+
+@media (max-width:700px) {
+  .wrap{
+
+    padding: 0 50px;
+  }
+}
+@media (max-width:450) {
+  .wrap{
+    padding: 0 20px;
+  }
 }
 
 .skip-link {

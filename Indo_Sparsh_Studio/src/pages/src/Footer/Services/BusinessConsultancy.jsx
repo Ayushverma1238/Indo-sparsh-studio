@@ -709,7 +709,7 @@ export default function BusinessConsultancy() {
                 target="_blank"
                 className="pricing-button-bc"
               >
-                Get Started
+                Starts Business Discovery Call
               </Link>
             </RevealBC>
 
@@ -746,7 +746,7 @@ export default function BusinessConsultancy() {
                 target="_blank"
                 className="pricing-button-bc"
               >
-                Book Consultation
+                Starts Revenue Growth Audit
                 <FaArrowRight />
               </Link>
             </RevealBC>
@@ -776,7 +776,7 @@ export default function BusinessConsultancy() {
                 target="_blank"
                 className="pricing-button-bc"
               >
-                Get Started
+                Starts Starter Advisory
               </Link>
             </RevealBC>
 
@@ -806,7 +806,7 @@ export default function BusinessConsultancy() {
                 target="_blank"
                 className="pricing-button-bc"
               >
-                Contact Us
+                Starts Growth Advisory
               </Link>
             </RevealBC>
 
@@ -835,7 +835,7 @@ export default function BusinessConsultancy() {
                 target="_blank"
                 className="pricing-button-bc"
               >
-                Book A Call
+                Starts On-Demand Consulting Call
               </Link>
             </RevealBC>
           </div>

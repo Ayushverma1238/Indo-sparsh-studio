@@ -74,16 +74,28 @@ body.dark-mode {
 }
 
 .adh-section {
-  max-width: 1180px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 96px 6vw;
 }
+@media (max-width:700px) {
+  .adh-section{
+
+    padding: 0 50px;
+  }
+}
+@media (max-width:450) {
+  .adh-section{
+    padding: 0 20px;
+  }
+}
+
 .adh-section--tight { padding-top: 56px; padding-bottom: 56px; }
 .adh-section--muted {
   max-width: none;
   background: var(--adh-bg-2);
 }
-.adh-section--muted > * { max-width: 1180px; margin-left: auto; margin-right: auto; }
+.adh-section--muted > * { max-width: 1500px; margin-left: auto; margin-right: auto; }
 .adh-section__head { margin-bottom: 48px; }
 
 .appdev-btn {
@@ -126,7 +138,7 @@ body.dark-mode {
 }
 .appdev-hero__inner {
   position: relative; z-index: 1;
-  max-width: 1180px; margin: 0 auto;
+  max-width: 1500px; margin: 0 auto;
   display: grid; grid-template-columns: 1.05fr 0.95fr;
   gap: 64px; align-items: center;
 }

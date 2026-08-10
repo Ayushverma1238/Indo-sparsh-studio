@@ -214,7 +214,7 @@ export default function Footer() {
       <div className="copyright">
         <p>
           Copyright {new Date().getFullYear()} <span>Indo Sparsh Studio</span>.
-          All rights reserved. &nbsp;&nbsp; MSME Registered (GOI) | URN:{" "}
+          All rights reserved. MSME Registered (GOI) | URN:{" "}
           <span className="msme">
              UDYAM-UP-50-0287639
           </span>

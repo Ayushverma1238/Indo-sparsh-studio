@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import "./GraphicDesign.css";
 import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
-import "../../../Services.css"
+import "../../../Services.css";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -28,7 +28,7 @@ function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
   return (
     <Tag
       ref={ref}
-      className={`dm-reveal ${visible ? "is-visible" : ""} ${className}`}
+      className={`gd-reveal ${visible ? "is-visible" : ""} ${className}`}
       style={{ "--delay": `${delay}ms` }}
     >
       {children}
@@ -60,7 +60,28 @@ function MoonIcon(props) {
   );
 }
 
-/* ---------- data (sourced from the Digital Marketing service sheet) ---------- */
+/* ---------- registration-mark signature glyph ---------- */
+function RegMark(props) {
+  return (
+    <svg
+      viewBox="0 0 40 40"
+      width="22"
+      height="22"
+      fill="none"
+      aria-hidden="true"
+      {...props}
+    >
+      <circle cx="20" cy="20" r="12" stroke="currentColor" strokeWidth="1.4" />
+      <path
+        d="M20 2v10M20 28v10M2 20h10M28 20h10"
+        stroke="currentColor"
+        strokeWidth="1.4"
+      />
+    </svg>
+  );
+}
+
+/* ---------- data (sourced from the Graphic Design rate card) ---------- */
 const CONTACT = {
   phone: "+91-8005351770",
   phoneHref: "tel:+918005351770",
@@ -71,176 +92,476 @@ const CONTACT = {
     "Incuspaze, 11th Floor Rohtas Summit, Vibhuti Khand, Gomtinagar, Lucknow, Uttar Pradesh – 226010",
 };
 
-const channels = [
-  "SEO",
-  "Meta Ads",
-  "Google Ads",
-  "WhatsApp Marketing",
-  "SMS Marketing",
-  "Email Marketing",
-  "Telegram Ads",
-  "Performance Marketing",
-  "UGC Ads",
-  "Local SEO",
+const tags = [
+  "#GRAPHICDESIGN",
+  "#BRANDING",
+  "#PRINTDESIGN",
+  "#SOCIALMEDIADESIGN",
+  "#BUSINESSGROWTH",
+  "#MSME",
+  "#LEADGENERATION",
 ];
 
-/* Bundled plans, shown as the masonry "portfolio" grid */
-const plans = [
+/* Rate-card categories, shown as a tabbed table */
+const categories = [
   {
-    title: "Basic",
-    category: "Digital Foundation",
-    price: "9,999",
-    size: "short",
-    gradient: "linear-gradient(160deg,#2F5CFF,#16161A)",
-    features: [
-      "SEO — up to 5 keywords + local SEO",
-      "1 email campaign/month",
-      "WhatsApp — up to 1,000 msgs/month",
-      "SMS — up to 1,000/month",
+    id: "branding",
+    label: "Branding & Identity",
+    mark: "01",
+    items: [
+      {
+        type: "Logo Design",
+        includes: "3 concepts, 2 revisions, print + web files",
+        price: "₹2,999",
+      },
+      {
+        type: "Branding Design / Branding Kit",
+        includes: "Logo + brand colors, fonts & usage guidelines",
+        price: "₹7,999",
+      },
+      {
+        type: "Letter Head Design",
+        includes: "Print-ready, on-brand",
+        price: "₹499",
+      },
+      {
+        type: "Envelope Design",
+        includes: "Print-ready, on-brand",
+        price: "₹399",
+      },
+      {
+        type: "Visiting Card / Business Card Design",
+        includes: "Double-sided, print-ready (CMYK), source file",
+        price: "₹799",
+      },
+      {
+        type: "Bill-Book Design",
+        includes: "Invoice/bill book layout, print-ready",
+        price: "₹799",
+      },
+      {
+        type: "Referral Pad Design",
+        includes: "For clinics & professional referrals",
+        price: "₹599",
+      },
+      {
+        type: "Folder Design",
+        includes: "Presentation/file folder, print-ready",
+        price: "₹999",
+      },
+      {
+        type: "Email Signature Design",
+        includes: "HTML/image signature, on-brand",
+        price: "₹399",
+      },
     ],
   },
   {
-    title: "Growth",
-    category: "Performance Starter",
-    price: "19,999",
-    size: "tall",
-    recommended: true,
-    gradient: "linear-gradient(160deg,#FF4B3E,#FFC738)",
-    features: [
-      "Everything in Basic",
-      "SEO expanded to 10 keywords",
-      "Meta Ads — 2 campaign setups/month",
-      "Google Ads — 2 campaign setups/month",
-      "Bi-weekly strategy call",
+    id: "signage",
+    label: "Signage & Large Format",
+    mark: "02",
+    items: [
+      {
+        type: "Banner / Standee Design",
+        includes: "Roll-up banner, indoor display",
+        price: "₹999",
+      },
+      {
+        type: "Flex Design",
+        includes: "Outdoor vinyl flex banner, print-ready",
+        price: "₹1,499",
+      },
+      {
+        type: "Hoarding / Billboard Design",
+        includes: "Large-format outdoor design",
+        price: "₹2,999",
+      },
+      {
+        type: "Glow Sign Design",
+        includes: "Illuminated signboard, print-ready",
+        price: "₹1,999",
+      },
+      {
+        type: "Signage / Nameboard Design",
+        includes: "Non-illuminated shop signage",
+        price: "₹1,499",
+      },
+      {
+        type: "Yard Sign Design",
+        includes: "Small outdoor sign",
+        price: "₹799",
+      },
     ],
   },
   {
-    title: "Premium",
-    category: "Full-Funnel Performance Marketing",
-    price: "34,999",
-    size: "medium",
-    gradient: "linear-gradient(160deg,#16161A,#2F5CFF)",
-    features: [
-      "Everything in Growth",
-      "SEO — up to 20 keywords + authority links",
-      "UGC Ads — 2 creatives/month",
-      "Dedicated account manager",
-      "Weekly optimization + reporting",
+    id: "print",
+    label: "Print & Direct Mail",
+    mark: "03",
+    items: [
+      {
+        type: "Flyer Design",
+        includes: "Single-page flyer, print + digital ready",
+        price: "₹999",
+      },
+      {
+        type: "Poster Design",
+        includes: "Single-page poster, print + digital ready",
+        price: "₹999",
+      },
+      {
+        type: "Pamphlet / Leaflet Design",
+        includes: "Bi-fold or tri-fold, print-ready",
+        price: "₹1,499",
+      },
+      {
+        type: "Brochure Design",
+        includes: "Multi-panel brochure, front + back",
+        price: "₹1,999",
+      },
+      {
+        type: "Rack Card Design",
+        includes: "Compact display card, print-ready",
+        price: "₹599",
+      },
+      { type: "Door Hanger Design", includes: "Print-ready", price: "₹599" },
+      { type: "Postcard Design", includes: "Print-ready", price: "₹599" },
+      {
+        type: "Mailer / EDDM Design",
+        includes: "Direct-mail piece, print-ready",
+        price: "₹999",
+      },
+      {
+        type: "Newspaper Ad Design",
+        includes: "Print-ready, size to spec",
+        price: "₹1,499",
+      },
+      {
+        type: "Advertisement Design (Print/Digital)",
+        includes: "Single ad creative",
+        price: "₹999",
+      },
+      {
+        type: "Sticker Design",
+        includes: "Die-cut or standard, print-ready",
+        price: "₹399",
+      },
+      {
+        type: "Calendar Design",
+        includes: "12-month calendar, print-ready",
+        price: "₹1,499",
+      },
+    ],
+  },
+  {
+    id: "corporate",
+    label: "Business & Corporate",
+    mark: "04",
+    items: [
+      {
+        type: "Company Business Profile",
+        includes: "8–12 page corporate profile PDF, print + digital",
+        price: "₹4,999",
+      },
+      {
+        type: "Rate Card / Price List Design",
+        includes: "Single-page pricing sheet, on-brand",
+        price: "₹999",
+      },
+      {
+        type: "Menu Card Design",
+        includes: "Restaurant/cafe menu, single or multi-page",
+        price: "₹1,999",
+      },
+      {
+        type: "Booklet / Book Design",
+        includes: "Multi-page layout (up to 16 pages)",
+        price: "₹2,999",
+      },
+      {
+        type: "Catalog Design",
+        includes: "Product catalog, multi-page",
+        price: "₹2,999",
+      },
+      {
+        type: "Magazine Design",
+        includes: "Multi-page magazine layout",
+        price: "₹3,999",
+      },
+      {
+        type: "Cover Design",
+        includes: "Book/magazine/report cover only",
+        price: "₹799",
+      },
+      {
+        type: "Report Card Design",
+        includes: "For schools & coaching institutes",
+        price: "₹999",
+      },
+      {
+        type: "Infographic Design",
+        includes: "Single-page data/process visual",
+        price: "₹999",
+      },
+    ],
+  },
+  {
+    id: "digital",
+    label: "Digital & E-Publications",
+    mark: "05",
+    items: [
+      {
+        type: "Social Media Post (Single)",
+        includes: "1 static post design, on-brand, 1 revision",
+        price: "₹299/post",
+      },
+      {
+        type: "Social Media Post Pack (10)",
+        includes: "10 static post designs, on-brand templates",
+        price: "₹2,499",
+      },
+      {
+        type: "YouTube Thumbnail Design",
+        includes: "Single thumbnail, on-brand",
+        price: "₹399",
+      },
+      {
+        type: "Wallpaper Design",
+        includes: "Branded digital wallpaper",
+        price: "₹799",
+      },
+      {
+        type: "E-Card Design",
+        includes: "Digital greeting/invitation card",
+        price: "₹499",
+      },
+      {
+        type: "E-Book Design",
+        includes: "Digital-only layout, cover + interior",
+        price: "₹2,999",
+      },
+      {
+        type: "E-Brochure Design",
+        includes: "Digital-only brochure (no print prep)",
+        price: "₹1,499",
+      },
+    ],
+  },
+  {
+    id: "product",
+    label: "Product & Packaging",
+    mark: "06",
+    items: [
+      {
+        type: "Packaging Design",
+        includes: "Product box/pouch design, print-ready",
+        price: "₹2,999",
+      },
+      {
+        type: "Labelling Design",
+        includes: "Product label, print-ready",
+        price: "₹999",
+      },
+      {
+        type: "Shirt / T-Shirt Design",
+        includes: "Print-ready artwork",
+        price: "₹799",
+      },
+    ],
+  },
+  {
+    id: "special",
+    label: "Publications & Special",
+    mark: "07",
+    items: [
+      {
+        type: "Resume / CV Design",
+        includes: "1–2 page resume, print + digital",
+        price: "₹499",
+      },
+      {
+        type: "Invitation Design",
+        includes: "Event/wedding invitation, print + digital",
+        price: "₹799",
+      },
+      {
+        type: "Book Cover Design",
+        includes: "Front + back cover, print-ready",
+        price: "₹1,499",
+      },
+      {
+        type: "Concept Art / Illustration",
+        includes: "Custom illustration, 1 revision",
+        price: "₹1,999",
+      },
+      {
+        type: "Wedding Album Design",
+        includes: "Starting price (final quote depends on spreads)",
+        price: "From ₹2,999",
+      },
+      {
+        type: "Beauty & Salon Business Pack",
+        includes: "Card + rate card + 5 posts + highlight covers",
+        price: "₹2,999",
+      },
+    ],
+  },
+  {
+    id: "ai",
+    label: "AI-Assisted Design",
+    mark: "08",
+    items: [
+      {
+        type: "AI-Generated Custom Image",
+        includes: "1 custom AI-generated image, on-brand",
+        price: "₹299/image",
+      },
+      {
+        type: "AI Stock Photo Pack",
+        includes: "10 curated AI stock images for your business",
+        price: "₹499",
+      },
     ],
   },
 ];
 
-const planFootnote =
-  "Meta/Google ad spend, WhatsApp/SMS/Telegram message credits, and 18% GST are billed at actual — paid directly to the platform, never marked up. A minimum 3-month engagement is recommended, especially for SEO.";
-
-/* Standalone services, shown in the capabilities grid */
-const capabilities = [
-  { title: "SEO Services", text: "On-page + local SEO, keyword research, monthly report.", price: "From ₹6,999/mo" },
-  { title: "Email Marketing", text: "4 campaigns/month, list segmentation, performance report.", price: "₹2,999/mo" },
-  { title: "WhatsApp Marketing", text: "Broadcast setup & campaign management.", price: "₹2,499/mo" },
-  { title: "SMS Marketing", text: "Campaign setup & scheduling.", price: "₹1,999/mo" },
-  { title: "Meta Ads Management", text: "Facebook + Instagram setup, creative guidance, optimization.", price: "₹5,999/mo" },
-  { title: "Google Ads Management", text: "Search campaign setup, keyword research, conversion tracking.", price: "₹7,999/mo" },
-  { title: "Telegram Ads", text: "Channel/ad setup & promotion strategy.", price: "₹3,999/mo" },
-  { title: "UGC Ads", text: "4 scripted UGC-style ad creatives/month.", price: "₹7,999/mo" },
-  { title: "Performance Marketing", text: "CRO, landing page testing, full-funnel attribution.", price: "₹9,999/mo" },
-];
-
-/* Three ways to work with the studio — reuses the "process" rhythm */
-const process = [
+/* Printing — billed at actual, separate from design */
+const printingRates = [
   {
-    step: "01",
-    title: "Bundled plan",
-    text: "Basic, Growth, or Premium — every channel run as one coordinated system, from ₹9,999/month.",
+    category: "Large Format",
+    note: "Flex, Banner, Standee, Hoarding, Glow Sign, Billboard",
+    range: "₹8 – ₹80",
+    unit: "sq ft",
+    basis: "Varies by material — flex, star flex, vinyl, backlit",
   },
   {
-    step: "02",
-    title: "Standalone service",
-    text: "Prefer just one channel? Every service is available on its own, no bundle required.",
+    category: "Small Cards",
+    note: "Business Cards, Postcards, Rack Cards",
+    range: "₹2 – ₹8",
+    unit: "piece",
+    basis: "Varies by paper GSM & quantity",
   },
   {
-    step: "03",
-    title: "Per-campaign",
-    text: "One-off promotion, no retainer — a single Meta or Google campaign from ₹1,999.",
+    category: "Flyers & Stickers",
+    note: "Flyers, Leaflets, Posters, Stickers, Door Hangers",
+    range: "₹3 – ₹15",
+    unit: "piece",
+    basis: "Varies by paper & quantity",
   },
   {
-    step: "04",
-    title: "Add-ons",
-    text: "SEO audits, landing pages, and extra ad platforms layer onto any plan when you need them.",
-  },
-];
-
-/* Per-campaign, one-off pricing table */
-const campaignPricing = [
-  { name: "Meta Ads", includes: "Strategy, 1 ad creative set, setup & launch", price: "₹1,999" },
-  { name: "Google Ads", includes: "Strategy, keyword research, setup & launch", price: "₹2,499" },
-  { name: "Telegram Ads", includes: "Channel/ad setup, one promotional push", price: "₹1,499" },
-  { name: "WhatsApp Marketing", includes: "Broadcast setup & send, one campaign", price: "₹1,499" },
-  { name: "SMS Marketing", includes: "Campaign setup & send, one blast", price: "₹999" },
-  { name: "Email Marketing", includes: "Copy, design & send, one campaign", price: "₹999" },
-];
-
-const addOns = [
-  { name: "One-Time SEO Audit & Strategy Report", price: "₹4,999" },
-  { name: "Extra Ad Platform (LinkedIn Ads)", price: "₹4,999/mo" },
-  { name: "Additional UGC Ad Creative", price: "₹2,499/video" },
-  { name: "Landing Page Design", price: "₹4,999" },
-];
-
-/* Testimonials — illustrative, not drawn from the sheet */
-const testimonials = [
-  {
-    quote:
-      "Every channel finally reported to one dashboard — we could see exactly which rupee was working.",
-    name: "Ananya Kapoor",
-    role: "Founder, Kapoor Home Décor",
+    category: "Brochures & Books",
+    note: "Brochures, Booklets, Catalogs, Menu Cards, Magazines",
+    range: "₹10 – ₹40",
+    unit: "piece",
+    basis: "Varies by page count & binding",
   },
   {
-    quote:
-      "We started with just Google Ads, added SEO two months in, and the compounding was obvious by month three.",
-    name: "Rahul Mehta",
-    role: "Operations Head, Mehta Auto Care",
+    category: "Stationery",
+    note: "Letterheads, Envelopes, Bill Books",
+    range: "₹3 – ₹10",
+    unit: "piece",
+    basis: "Varies by paper & quantity",
+  },
+  {
+    category: "Calendars",
+    note: "12-month wall or desk calendars",
+    range: "₹25 – ₹80",
+    unit: "piece",
+    basis: "Varies by size & binding",
+  },
+  {
+    category: "Apparel",
+    note: "Shirts / T-Shirts",
+    range: "₹150 – ₹400",
+    unit: "piece",
+    basis: "Varies by fabric, print type & quantity",
   },
 ];
 
-export default function DigitalMarketingPage() {
+const retainerFeatures = [
+  "Up to 15 designs/month, mixed freely across any category",
+  "Average 2-day turnaround per design",
+  "Consistent, on-brand templates across every piece",
+  "Priority queue over one-off requests",
+];
+
+const whyChoose = [
+  {
+    title: "One design team",
+    text: "Social posts, print, and corporate documents — all on-brand, from a single team.",
+  },
+  {
+    title: "Print-ready, always",
+    text: "Files handed over print-ready every time — no back-and-forth with your printer over formats.",
+  },
+  {
+    title: "Fast turnaround",
+    text: "Most single designs are delivered within 24–48 hours.",
+  },
+  {
+    title: "Directly integrated",
+    text: "Built from your logo, brand colors & social accounts — nothing looks disconnected.",
+  },
+  {
+    title: "Transparent pricing",
+    text: "Design and printing are always shown separately, so you know exactly what you're paying for.",
+  },
+];
+
+export default function GraphicDesignPage() {
   const navigate = useNavigate();
+  const [theme, setTheme] = useState("light");
+  const [activeCat, setActiveCat] = useState(0);
 
   useEffect(() => {
-    document.title = "Digital Marketing | Indo Sparsh Studio";
+    document.title = "Graphic Design Services | Indo Sparsh Studio";
   }, []);
 
- 
+  const activeCategory = useMemo(() => categories[activeCat], [activeCat]);
 
   return (
-    <div className="dm">
-     
+    <div className="gd">
+      {/* ---------- Theme toggle ---------- */}
 
       {/* ---------- Hero ---------- */}
-      <section className="dm-hero">
-        <span className="dm-shape dm-shape--circle" aria-hidden="true" />
-        <span className="dm-shape dm-shape--square" aria-hidden="true" />
-        <span className="dm-shape dm-shape--triangle" aria-hidden="true" />
+      <section className="gd-hero">
+        <span className="gd-crop gd-crop--tl" aria-hidden="true" />
+        <span className="gd-crop gd-crop--tr" aria-hidden="true" />
+        <span className="gd-crop gd-crop--bl" aria-hidden="true" />
+        <span className="gd-crop gd-crop--br" aria-hidden="true" />
+        <span className="gd-halftone" aria-hidden="true" />
+        <span className="gd-swatch gd-swatch--c" aria-hidden="true" />
+        <span className="gd-swatch gd-swatch--m" aria-hidden="true" />
+        <span className="gd-swatch gd-swatch--y" aria-hidden="true" />
 
-        <div className="dm-hero__inner">
-          <span className="dm-eyebrow">Digital Marketing</span>
-          <h1 className="dm-hero__headline">
-            <span className="dm-word dm-word--a">Every</span>
-            <span className="dm-word dm-word--b">channel.</span>
+        <div className="gd-hero__inner">
+          <span className="gd-eyebrow">
+            <RegMark /> Graphic Design Services
+          </span>
+          <h1 className="gd-hero__headline">
+            <span className="gd-word gd-word--b">Every design</span>
+            <span className="gd-word gd-word--a">your</span>
+             
             <br />
-            <span className="dm-word dm-word--c">One</span>
-            <span className="dm-word dm-word--d">strategy.</span>
+            <span className="gd-word gd-word--d">business will</span>
+            <span className="gd-word gd-word--c">ever need.</span>
+
+             {/* <span className="gd-headline-accent gd-word gd-word--d"></span> */}
           </h1>
-          <p className="dm-hero__subtext">
-            Scattered marketing — a boosted post here, a random SMS blast there — doesn't compound.
-            We run your SEO, ads, and messaging as one coordinated system, so every channel feeds
-            the next and every rupee spent is tracked back to a result.
+          <p className="gd-hero__subtext">
+            From the poster on your shop wall to the menu on your customer's
+            table, every piece of design either builds trust in your business or
+            quietly undermines it. We design everything you put in front of a
+            customer — print or digital — on-brand, print-ready, and delivered
+            fast.
           </p>
-          <div className="dm-hero__cta-row">
-            <a href="#plans" className="dm-btn dm-btn--primary">
-              View plans
+          <p className="gd-hero__tagline">
+            One design team. Every format. No "we don't do that" ever.
+          </p>
+          <div className="gd-hero__cta-row">
+            <a href="#ratecard" className="gd-btn gd-btn--primary">
+              View rate card
             </a>
-            <a href={CONTACT.phoneHref} className="dm-btn dm-btn--ghost">
+            <a href={CONTACT.phoneHref} className="gd-btn gd-btn--ghost">
               Talk to us
             </a>
           </div>
@@ -248,11 +569,11 @@ export default function DigitalMarketingPage() {
       </section>
       <ScrollBeam />
 
-      {/* ---------- Channels marquee ---------- */}
-      <div className="dm-marquee">
-        <div className="dm-marquee__track">
-          {[...channels, ...channels].map((t, i) => (
-            <span className="dm-marquee__item" key={i}>
+      {/* ---------- Tags marquee ---------- */}
+      <div className="gd-marquee">
+        <div className="gd-marquee__track">
+          {[...tags, ...tags].map((t, i) => (
+            <span className="gd-marquee__item" key={i}>
               {t}
             </span>
           ))}
@@ -260,147 +581,167 @@ export default function DigitalMarketingPage() {
       </div>
       <ScrollBeam />
 
-      {/* ---------- Plans masonry ---------- */}
-      <section className="dm-section" id="plans">
-        <Reveal className="dm-section__head">
-          <span className="dm-kicker">Choose your plan</span>
-          <h2 className="dm-h2">Bundled packages, built to compound</h2>
-          <p className="dm-lead">
-            Not more noise. More pipeline. Every plan runs SEO, ads, and messaging together.
+      {/* ---------- Rate card ---------- */}
+      <section className="gd-section" id="ratecard">
+        <Reveal className="gd-section__head">
+          <span className="gd-kicker">Design rate card</span>
+          <h2 className="gd-h2">
+            Design charges only — printing billed separately
+          </h2>
+          <p className="gd-lead">
+            Pick a category, see exactly what's included, know the price
+            upfront.
           </p>
         </Reveal>
 
-        <div className="dm-masonry">
-          {plans.map((plan, i) => (
-            <Reveal
-              key={plan.title}
-              delay={i * 70}
-              className={`dm-piece dm-piece--${plan.size} ${plan.recommended ? "dm-piece--recommended" : ""}`}
+        <Reveal className="gd-tabs" delay={60}>
+          {categories.map((c, i) => (
+            <button
+              key={c.id}
+              type="button"
+              className={`gd-tab ${activeCat === i ? "is-active" : ""}`}
+              onClick={() => setActiveCat(i)}
             >
-              {plan.recommended && <span className="dm-piece__badge">Most Recommended</span>}
-              <div className="dm-piece__media" style={{ background: plan.gradient }}>
-                <span className="dm-piece__category">{plan.category}</span>
-                <span className="dm-piece__price">
-                  ₹{plan.price}
-                  <small>/month</small>
-                </span>
-              </div>
-              <h3 className="dm-piece__title">{plan.title}</h3>
-              <ul className="dm-piece__features">
-                {plan.features.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
-              </ul>
-            </Reveal>
+              <span className="gd-tab__mark">{c.mark}</span>
+              {c.label}
+            </button>
           ))}
-        </div>
-        <p className="dm-footnote">{planFootnote}</p>
-      </section>
-      <ScrollBeam />
-
-      {/* ---------- How to work with us ---------- */}
-      <section className="dm-section dm-section--muted">
-        <Reveal className="dm-section__head">
-          <span className="dm-kicker">How it works</span>
-          <h2 className="dm-h2">Four ways to get started</h2>
         </Reveal>
-        <div className="dm-process">
-          <div className="dm-process__line" aria-hidden="true" />
-          {process.map((p, i) => (
-            <Reveal key={p.step} delay={i * 100} className="dm-process__item">
-              <span className="dm-process__step">{p.step}</span>
-              <h3 className="dm-process__title">{p.title}</h3>
-              <p className="dm-process__text">{p.text}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-      <ScrollBeam />
 
-      {/* ---------- Standalone services ---------- */}
-      <section className="dm-section" id="services">
-        <Reveal className="dm-section__head">
-          <span className="dm-kicker">Prefer just one service?</span>
-          <h2 className="dm-h2">Every channel, available on its own</h2>
-          <p className="dm-lead">No bundle required — pick exactly what you need.</p>
-        </Reveal>
-        <div className="dm-grid">
-          {capabilities.map((c, i) => (
-            <Reveal key={c.title} delay={i * 60} className="dm-card why-card">
-              <div className="dm-card__top">
-                <h3 className="dm-card__title">{c.title}</h3>
-                <span className="dm-card__price">{c.price}</span>
-              </div>
-              <p className="dm-card__text">{c.text}</p>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal className="dm-addons" delay={80}>
-          <span className="dm-addons__label">Optional add-ons</span>
-          <div className="dm-addons__list">
-            {addOns.map((a) => (
-              <span className="dm-chip" key={a.name}>
-                {a.name} <b>{a.price}</b>
-              </span>
-            ))}
-          </div>
-        </Reveal>
-      </section>
-      <ScrollBeam />
-
-      {/* ---------- Per-campaign pricing ---------- */}
-      <section className="dm-section dm-section--muted">
-        <Reveal className="dm-section__head">
-          <span className="dm-kicker">No retainer needed</span>
-          <h2 className="dm-h2">Per-campaign pricing</h2>
-          <p className="dm-lead">
-            For a festival sale, a product launch, or a single event — pay per campaign instead.
-          </p>
-        </Reveal>
-        <Reveal className="dm-table-wrap">
-          <table className="dm-table">
+        <div
+          className="gd-table-wrap gd-table-wrap--anim"
+          key={activeCategory.id}
+        >
+          <table className="gd-table">
             <thead>
               <tr>
-                <th>Service</th>
-                <th>What's included</th>
-                <th>Price</th>
+                <th>Design Type</th>
+                <th>What's Included</th>
+                <th>Design Price</th>
               </tr>
             </thead>
             <tbody>
-              {campaignPricing.map((row) => (
-                <tr key={row.name}>
-                  <td data-label="Service">{row.name}</td>
-                  <td data-label="What's included">{row.includes}</td>
-                  <td data-label="Price" className="dm-table-price">
+              {activeCategory.items.map((row, i) => (
+                <tr key={row.type} style={{ "--row-delay": `${i * 35}ms` }}>
+                  <td data-label="Design Type">{row.type}</td>
+                  <td data-label="What's Included">{row.includes}</td>
+                  <td data-label="Design Price" className="gd-table-price">
                     {row.price}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
+
+        <Reveal className="gd-callout" delay={80}>
+          Don't see what you need — exhibition stalls, custom packaging inserts,
+          specialty stationery? If it's a static design, we can make it.{" "}
+          <a href={CONTACT.phoneHref}>Ask for a custom quote →</a>
         </Reveal>
-        <p className="dm-footnote">
-          Covers strategy, setup & launch only. Add ongoing optimization at ₹999/week — running longer
-          than 3 weeks works out more cost-effective on a monthly plan.
+      </section>
+      <ScrollBeam />
+
+      {/* ---------- Printing charges ---------- */}
+      <section className="gd-section gd-section--muted">
+        <Reveal className="gd-section__head">
+          <span className="gd-kicker">Printing — billed separately</span>
+          <h2 className="gd-h2">Printing charges, at actual</h2>
+          <p className="gd-lead">
+            Printing depends on quantity, material, size & finish, so it's
+            quoted at actual — keeping your design cost honest whether you print
+            50 pieces or 5,000.
+          </p>
+        </Reveal>
+        <Reveal className="gd-table-wrap" delay={60}>
+          <table className="gd-table gd-table--print">
+            <thead>
+              <tr>
+                <th>Print Category</th>
+                <th>Typical Range</th>
+                <th>Priced By</th>
+              </tr>
+            </thead>
+            <tbody>
+              {printingRates.map((row) => (
+                <tr key={row.category}>
+                  <td data-label="Print Category">
+                    <span className="gd-table-title">{row.category}</span>
+                    <span className="gd-table-note">{row.note}</span>
+                  </td>
+                  <td data-label="Typical Range" className="gd-table-price">
+                    {row.range}/{row.unit}
+                  </td>
+                  <td data-label="Priced By" className="gd-table-note">
+                    {row.basis}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Reveal>
+        <p className="gd-footnote">
+          We'll confirm exact printing cost once quantity, material & finish are
+          decided — either as part of your order, or you're welcome to take
+          print-ready files to any printer of your choice.
         </p>
       </section>
       <ScrollBeam />
 
-      {/* ---------- Testimonials ---------- */}
-      <section className="dm-section">
-        <Reveal className="dm-section__head">
-          <span className="dm-kicker">Client feedback</span>
-          <h2 className="dm-h2">What it's like working with the studio</h2>
+      {/* ---------- Monthly retainer ---------- */}
+      <section className="gd-section" id="retainer">
+        <Reveal className="gd-retainer why-card">
+          <span className="gd-crop gd-crop--tl" aria-hidden="true" />
+          <span className="gd-crop gd-crop--br" aria-hidden="true" />
+          <div className="gd-retainer__head">
+            <span className="gd-kicker gd-kicker--light">
+              Prefer predictable monthly support?
+            </span>
+            <h2 className="gd-h2 gd-h2--light">
+              Monthly Design Retainer{" "}
+              <span className="gd-headline-accent">₹6,999/mo</span>
+            </h2>
+            <p className="gd-lead gd-lead--light">
+              For businesses with ongoing design needs — no per-item invoices,
+              no waiting on quotes.
+            </p>
+          </div>
+          <ul className="gd-retainer__list">
+            {retainerFeatures.map((f) => (
+              <li key={f}>{f}</li>
+            ))}
+          </ul>
+          <p className="gd-retainer__footnote">
+            Unused designs don't roll over month to month — sized for businesses
+            that post, print, or promote regularly. Printing, where needed, is
+            always billed separately.
+          </p>
+          <button
+            onClick={() => navigate("/request-quote")}
+            className="gd-btn gd-btn--light"
+          >
+            Start the retainer
+          </button>
         </Reveal>
-        <div className="dm-grid dm-grid--2">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={i * 100} className="dm-quote why-card">
-              <p className="dm-quote__text">"{t.quote}"</p>
-              <div className="dm-quote__author">
-                <span className="dm-quote__name">{t.name}</span>
-                <span className="dm-quote__role">{t.role}</span>
-              </div>
+      </section>
+      <ScrollBeam />
+
+      {/* ---------- Why choose us ---------- */}
+      <section className="gd-section gd-section--muted">
+        <Reveal className="gd-section__head">
+          <span className="gd-kicker">Why Indo Sparsh Studio</span>
+          <h2 className="gd-h2">
+            Design that's built to be used, not just admired
+          </h2>
+        </Reveal>
+        <div className="gd-grid">
+          {whyChoose.map((w, i) => (
+            <Reveal key={w.title} delay={i * 60} className="gd-card why-card">
+              <span className="gd-card__mark">
+                <RegMark />
+              </span>
+              <h3 className="gd-card__title">{w.title}</h3>
+              <p className="gd-card__text">{w.text}</p>
             </Reveal>
           ))}
         </div>
@@ -408,19 +749,24 @@ export default function DigitalMarketingPage() {
       <ScrollBeam />
 
       {/* ---------- Final CTA ---------- */}
-      <section className="dm-cta" id="contact">
-        <Reveal className="dm-cta__inner">
-          <h2 className="dm-cta__title">Let's put your channels to work together.</h2>
-          <p className="dm-cta__text">
+      <section className="gd-cta" id="contact">
+        <Reveal className="gd-cta__inner">
+          <h2 className="gd-cta__title">
+            Let's design everything your business puts in front of a customer.
+          </h2>
+          <p className="gd-cta__text">
             {CONTACT.phone} · {CONTACT.email} · {CONTACT.website}
             <br />
             {CONTACT.address}
           </p>
-          <div className="dm-hero__cta-row">
-            <button onClick={() => navigate("/request-quote")} className="dm-btn dm-btn--dark">
+          <div className="gd-hero__cta-row">
+            <button
+              onClick={() => navigate("/request-quote")}
+              className="gd-btn gd-btn--dark"
+            >
               Start a project
             </button>
-            <a href={CONTACT.phoneHref} className="dm-btn dm-btn--ghost-light">
+            <a href={CONTACT.phoneHref} className="gd-btn gd-btn--ghost-light">
               Call / WhatsApp
             </a>
           </div>
