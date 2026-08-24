@@ -156,7 +156,7 @@
   .scroll-arrow {
     width: 46px;
     height: 46px;
-    right: 30px;
+    right: 34px;
     bottom: 120px;
   }
 
@@ -170,11 +170,11 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .scroll-arrow {
     width: 46px;
     height: 46px;
-    right: 24px;
+    right: 22px;
     bottom: 120px;
   }
 
@@ -188,3 +188,12 @@
   }
 }
 
+.chatbot-open{
+  display: inline-block;
+}
+
+@media (max-width:550px) {
+  .chatbot-open{
+    display: none;
+  }
+}

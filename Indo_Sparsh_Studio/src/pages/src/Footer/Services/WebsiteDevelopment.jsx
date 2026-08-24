@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import "./WebsiteDevelopment.css";
 import ScrollBeam from "../../../ScrollBeam";
+import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 
 /* ---------------------------------------------------------
    Small hook: reveals an element with a class once it enters
@@ -484,20 +485,7 @@ const WebsiteDevelopment = () => {
         </section>
         <ScrollBeam />
 
-        <section className="cta-banner">
-          <div className="wrap cta-inner">
-            <Reveal as="div">
-              <h2>Have a site in mind? Let's put it on paper.</h2>
-              <p>
-                Send a few details and we'll reply with a first sketch of your
-                sitemap within two business days.
-              </p>
-            </Reveal>
-            <Reveal as="a" href="/request-quote" className="btn btn-primary btn-lg" delay={120}>
-              Request a quote
-            </Reveal>
-          </div>
-        </section>
+        <ProjectDiscuss/>
       </main>
     </>
   );

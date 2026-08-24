@@ -30,7 +30,6 @@ const TEAM = [
     study: "B.Tech CSE(AI), BBD University, Lucknow",
     bio: "Crafts responsive websites and high-performance mobile apps, turning ideas into seamless digital experiences.",
     focus: ["React", "Performance", "Accessibility", "Full Stack Website"],
-  
   },
   {
     image: "/images/neeraj.jpeg",
@@ -47,9 +46,8 @@ const TRACK = [...TEAM, ...TEAM, ...TEAM, ...TEAM];
 export default function TeamMarquee() {
   return (
     <section className="tm">
-      <h2 className="tm-label">The people on the sheet</h2>
-      <h1 className="tm-heading">My team</h1>
-
+      <h2 className="tm-label">Our Team</h2>
+      <h1 className="tm-heading">The people behind the work</h1>
       <div className="tm-marquee">
         <div className="tm-track">
           {TRACK.map((member, i) => (

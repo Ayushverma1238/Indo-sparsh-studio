@@ -20,9 +20,9 @@ body.dark-mode {
   --dp-text: #edeef2;
   --dp-text-muted: #9aa0ac;
   /* --dp-accent: #060336; */
-  --dp-accent:#ff7a29;
+  --dp-accent:#f829ff;
   --dp-cold: #6c7bff;
-  --dp-warm: #ff8a3d;
+  --dp-warm: #ff3de5;
   --dp-hot: #ff5c57;
   --db-text--contact:#2df106;
   --dp-border: rgba(229, 232, 247, 0.1);

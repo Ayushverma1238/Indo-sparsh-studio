@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./UiUxPage.css";
 import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
+import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 
 const UiUxService = () => {
   useEffect(() => {
@@ -187,18 +188,7 @@ const UiUxService = () => {
       <ScrollBeam />
 
       {/* CTA Bottom Banner */}
-      <section className="footer-cta-section">
-        <div className="container cta-box">
-          <h2>Ready to transform your vision?</h2>
-          <p>Let's collaborate to build an experience your users will love.</p>
-          <button
-            onClick={() => navigate("/contact")}
-            className="btn btn-primary white-btn"
-          >
-            Get In Touch
-          </button>
-        </div>
-      </section>
+      <ProjectDiscuss/>
     </div>
   );
 };

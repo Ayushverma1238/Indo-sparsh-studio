@@ -116,3 +116,14 @@
     font-size: 28px;
   }
 }
+
+
+.chatbot-call{
+  display: inline-block;
+}
+
+@media (max-width:550px) {
+  .chatbot-call{
+    display: none;
+  }
+}

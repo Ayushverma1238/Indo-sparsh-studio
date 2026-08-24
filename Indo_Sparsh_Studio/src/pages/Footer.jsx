@@ -153,17 +153,19 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="time-card">
-            <div className="time-content">
-              <div className="time-label-row">
-                <span className="time-globe">🌐</span>
-                <p className="time-zone">India (IST)</p>
+          <div className="more-detail-sd">
+            <div className="time-card">
+              <div className="time-content">
+                <div className="time-label-row">
+                  <span className="time-globe">🌐</span>
+                  <p className="time-zone">India (IST)</p>
+                </div>
+                <h2 className="time-value">{time}</h2>
               </div>
-              <h2 className="time-value">{time}</h2>
             </div>
-          </div>
-          <div className="social-links">
-            <SocialLinks />
+            <div className="social-links">
+              <SocialLinks />
+            </div>
           </div>
         </div>
 
@@ -212,12 +214,24 @@ export default function Footer() {
       </div>
 
       <div className="copyright">
+        <div className="more-detail-sd copy-right-time">
+          <div className="time-card">
+            <div className="time-content">
+              <div className="time-label-row">
+                <span className="time-globe">🌐</span>
+                <p className="time-zone">India (IST)</p>
+              </div>
+              <h2 className="time-value">{time}</h2>
+            </div>
+          </div>
+          <div className="social-links">
+            <SocialLinks />
+          </div>
+        </div>
         <p>
           Copyright {new Date().getFullYear()} <span>Indo Sparsh Studio</span>.
           All rights reserved. MSME Registered (GOI) | URN:{" "}
-          <span className="msme">
-             UDYAM-UP-50-0287639
-          </span>
+          <span className="msme">UDYAM-UP-50-0287639</span>
         </p>
       </div>
     </footer>

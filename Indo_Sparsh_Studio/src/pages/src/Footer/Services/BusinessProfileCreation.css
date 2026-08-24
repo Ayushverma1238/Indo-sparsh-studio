@@ -41,7 +41,7 @@ body.dark-mode {
   --isp-muted: #8D84A8;
   --isp-border: rgba(255, 255, 255, 0.1);
   --isp-shadow: rgba(0, 0, 0, 0.55);
-  --isp-accent: #D0455B;
+  --isp-accent: #e94fcf;
   --isp-gold: #D4AF37;
   color-scheme: dark;
   background: var(--isp-bg);

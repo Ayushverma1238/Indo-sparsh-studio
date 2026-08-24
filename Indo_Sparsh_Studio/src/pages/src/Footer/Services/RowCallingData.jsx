@@ -47,8 +47,9 @@ const plans = [
       "Cost-effective outreach",
       "Ideal for mass campaigns",
     ],
-    message: encodeURIComponent(`Hi! I'm interested in the Cold Data package (₹499/1000 records) for a mass outreach campaign.
-      Can you share how I can get started?`)
+    message:
+      encodeURIComponent(`Hi! I'm interested in the Cold Data package (₹499/1000 records) for a mass outreach campaign.
+      Can you share how I can get started?`),
   },
   {
     name: "Warm Data",
@@ -62,8 +63,9 @@ const plans = [
       "Better conversion rate",
       "Ideal for telecalling",
     ],
-    message: encodeURIComponent(`Hi! I saw the Warm Data plan (₹999/1000 records) for telecalling with better conversion.
-       Can you tell me more about the targeting and how soon I can get the data?`)
+    message:
+      encodeURIComponent(`Hi! I saw the Warm Data plan (₹999/1000 records) for telecalling with better conversion.
+       Can you tell me more about the targeting and how soon I can get the data?`),
   },
   {
     name: "Hot Data",
@@ -76,8 +78,9 @@ const plans = [
       "Daily / weekly refresh",
       "High-intent decision makers",
     ],
-    message: encodeURIComponent(`Hi! I need high-intent, decision-maker leads for quick sales closure — interested in the Hot Data plan (₹9,999/1000 records).
-      Can you share more details and how fast I can get access?`)
+    message:
+      encodeURIComponent(`Hi! I need high-intent, decision-maker leads for quick sales closure — interested in the Hot Data plan (₹9,999/1000 records).
+      Can you share more details and how fast I can get access?`),
   },
 ];
 
@@ -110,7 +113,7 @@ const reasons = [
 
 export default function RowCallingData() {
   useEffect(() => {
-    document.title = "Row Calling Data | Indo Sparsh Studio";
+    document.title = "Database (B2B & B2C) | Indo Sparsh Studio";
   }, []);
   return (
     <div className="dp">
@@ -228,43 +231,17 @@ export default function RowCallingData() {
                   </li>
                 ))}
               </ul>
-              <Link target="_blank" to={`https://wa.me/918005351770?text=${plan.message}`} className="dp-btn dp-btn--block">
+              <Link
+                target="_blank"
+                to={`https://wa.me/918005351770?text=${plan.message}`}
+                className="dp-btn dp-btn--block"
+              >
                 Request this data
               </Link>
             </Reveal>
           ))}
         </div>
-
-        <Reveal className="dp-bulk">
-          <div className="dp-bulk__text">
-            <span className="dp-kicker dp-kicker--light">
-              Bulk &amp; custom plan
-            </span>
-            <h3 className="dp-bulk__title">
-              For 10,000+ leads — custom pricing on request
-            </h3>
-            <ul className="dp-bulk__list">
-              <li>
-                <span className="dp-check">✓</span>Priority support
-              </li>
-              <li>
-                <span className="dp-check">✓</span>Bulk discount
-              </li>
-              <li>
-                <span className="dp-check">✓</span>Customized targeting
-              </li>
-              <li>
-                <span className="dp-check">✓</span>Dedicated manager
-              </li>
-            </ul>
-          </div>
-          <Link target="_blank" to={`https://wa.me/918005351770?text=${"Hi! I need 10,000+ leads with custom targeting. Can we discuss a bulk/custom plan and pricing?"}`} className="dp-btn dp-btn--light">
-            Request custom quote
-          </Link>
-        </Reveal>
       </section>
-
-    
     </div>
   );
 }

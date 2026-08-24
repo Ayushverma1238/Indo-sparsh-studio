@@ -259,7 +259,7 @@ export const companies = [
   { name: "About", path: "/about" },
   { name: "Portfolio", path: "/portfolio" },
   { name: "Services", path: "/services" },
-  { name: "Blogs", path: "/blogs" },
+  { name: "Blogs", path: "/blog" },
   { name: "Contact", path: "/contact" },
   { name: "Career", path: "/career" },
 ];

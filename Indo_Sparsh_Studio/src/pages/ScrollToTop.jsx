@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { FaArrowUp } from "react-icons/fa6";
 import "./ScrollToTop.css";
+import { useChat } from "../context/ChatContext";
 
 export default function ScrollToTop() {
   const [show, setShow] = useState(false);
   const { pathname } = useLocation(); // ⭐ important
+  const {open} = useChat();
 
   // Show arrow on scroll
   useEffect(() => {
@@ -29,7 +31,7 @@ export default function ScrollToTop() {
 
   return (
     <button
-      className={`scroll-arrow ${show ? "show" : ""}`}
+      className={`scroll-arrow ${show ? "show" : ""} ${open && "chatbot-open"}`}
       onClick={goTop}
       aria-label="Scroll to top"
     >

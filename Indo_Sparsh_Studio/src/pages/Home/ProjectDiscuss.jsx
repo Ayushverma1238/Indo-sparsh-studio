@@ -12,7 +12,7 @@ const ProjectDiscuss = () => {
         <a href="https://wa.me/918005351770">Start a Discussion</a>
       </div>
     </section>
-    <ScrollBeam/>
+    {/* <ScrollBeam/> */}
     </>
 
   );

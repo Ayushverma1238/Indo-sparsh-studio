@@ -11,6 +11,7 @@ import CallButton from "../pages/CallButton";
 import ScrollToTop from "../pages/ScrollToTop";
 // import AIHackerCursor from "../pages/AIHackerCursor";
 import PageLoader from "../pages/PageLoader";
+import { ChatProvider } from "../context/ChatContext";
 
 export default function Layout() {
   const [open, setOpen] = useState(false);
@@ -131,127 +132,128 @@ export default function Layout() {
   );
   return (
     <>
+      <ChatProvider>
+        <PageLoader show={loading} />
 
-      <PageLoader show={loading} />
-
-      {/* 🔥 Custom Scrollbar */}
-      <div className="cyber-scrollbar">
-        <div className="cyber-thumb"></div>
-      </div>
-
-      {/* ================= TOP WRAPPER (FIXED) ================= */}
-      <div className="top-wrapper">
-        {/* 🔥 PROMO BAR */}
-        <div className="promo-bar">
-          <div className="promo-content">
-            Grow Your Brand in 2026 📈 - Limited Period Offer 🎯
-            <NavLink
-              to={`https://wa.me/918005351770?text=${message}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="promo-btn"
-            >
-              Claim Now
-            </NavLink>
-          </div>
+        {/* 🔥 Custom Scrollbar */}
+        <div className="cyber-scrollbar">
+          <div className="cyber-thumb"></div>
         </div>
 
-        {/* 🔥 HEADER */}
-        <header className="cyber-header">
-          <div className="cyber-logo">Indo Sparsh Studio</div>
+        {/* ================= TOP WRAPPER (FIXED) ================= */}
+        <div className="top-wrapper">
+          {/* 🔥 PROMO BAR */}
+          <div className="promo-bar">
+            <div className="promo-content">
+              Grow Your Brand in 2026 📈 - Limited Period Offer 🎯
+              <NavLink
+                to={`https://wa.me/918005351770?text=${message}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="promo-btn"
+              >
+                Claim Now
+              </NavLink>
+            </div>
+          </div>
 
-          <nav className={`cyber-nav ${open ? "active" : ""}`}>
-            <NavLink to="/" onClick={() => setOpen(false)}>
-              Home
-            </NavLink>
+          {/* 🔥 HEADER */}
+          <header className="cyber-header">
+            <div className="cyber-logo">Indo Sparsh Studio</div>
 
-            <NavLink to="/about" onClick={() => setOpen(false)}>
-              About
-            </NavLink>
+            <nav className={`cyber-nav ${open ? "active" : ""}`}>
+              <NavLink to="/" onClick={() => setOpen(false)}>
+                Home
+              </NavLink>
 
-            <NavLink to="/services" onClick={() => setOpen(false)}>
-              Services
-            </NavLink>
+              <NavLink to="/about" onClick={() => setOpen(false)}>
+                About
+              </NavLink>
 
-            <NavLink to="/blog" onClick={() => setOpen(false)}>
-              Blog
-            </NavLink>
+              <NavLink to="/services" onClick={() => setOpen(false)}>
+                Services
+              </NavLink>
 
-            <NavLink to="/portfolio" onClick={() => setOpen(false)}>
-              Portfolio
-            </NavLink>
+              <NavLink to="/blog" onClick={() => setOpen(false)}>
+                Blog
+              </NavLink>
 
-            <NavLink to="/contact" onClick={() => setOpen(false)}>
-              Contact
-            </NavLink>
+              <NavLink to="/portfolio" onClick={() => setOpen(false)}>
+                Portfolio
+              </NavLink>
 
-            {/* 🔥 Quote Button */}
-            <NavLink to="/request-quote" className="quote-btn">
-              <span className="quote-text">Request A Quote</span>
-            </NavLink>
+              <NavLink to="/contact" onClick={() => setOpen(false)}>
+                Contact
+              </NavLink>
 
-            {/* 🔥 Theme Toggle */}
-            <div
-              className={`theme-switch ${darkMode ? "dark" : "light"}`}
-              onClick={() => setDarkMode((prev) => !prev)}
-            >
-              <div className="switch-track">
-                {/* ⭐ Stars in Dark Mode */}
-                {darkMode && (
-                  <>
-                    <IoStarSharp className="star s1" />
-                    <IoStarSharp className="star s2" />
-                    <IoStarSharp className="star s3" />
-                  </>
-                )}
+              {/* 🔥 Quote Button */}
+              <NavLink to="/request-quote" className="quote-btn">
+                <span className="quote-text">Request A Quote</span>
+              </NavLink>
 
-                {/* ☀ Suns in Light Mode */}
-                {!darkMode && (
-                  <>
-                    <FiSun className="sun s1" size={10} />
-                    <FiSun className="sun s2" size={8} />
-                    <FiSun className="sun s3" size={6} />
-                  </>
-                )}
+              {/* 🔥 Theme Toggle */}
+              <div
+                className={`theme-switch ${darkMode ? "dark" : "light"}`}
+                onClick={() => setDarkMode((prev) => !prev)}
+              >
+                <div className="switch-track">
+                  {/* ⭐ Stars in Dark Mode */}
+                  {darkMode && (
+                    <>
+                      <IoStarSharp className="star s1" />
+                      <IoStarSharp className="star s2" />
+                      <IoStarSharp className="star s3" />
+                    </>
+                  )}
 
-                <div className="switch-thumb">
-                  {darkMode ? <FiMoon size={14} /> : <FiSun size={14} />}
+                  {/* ☀ Suns in Light Mode */}
+                  {!darkMode && (
+                    <>
+                      <FiSun className="sun s1" size={10} />
+                      <FiSun className="sun s2" size={8} />
+                      <FiSun className="sun s3" size={6} />
+                    </>
+                  )}
+
+                  <div className="switch-thumb">
+                    {darkMode ? <FiMoon size={14} /> : <FiSun size={14} />}
+                  </div>
                 </div>
               </div>
+            </nav>
+
+            {/* 🔥 Hamburger */}
+            <div
+              className={`cyber-hamburger ${open ? "active" : ""}`}
+              onClick={() => setOpen(!open)}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
-          </nav>
+          </header>
+        </div>
 
-          {/* 🔥 Hamburger */}
-          <div
-            className={`cyber-hamburger ${open ? "active" : ""}`}
-            onClick={() => setOpen(!open)}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </header>
-      </div>
-
-      {/* <div className="cookie-float">
+        {/* <div className="cookie-float">
         <div className="cookie-pulse"></div>
         <div className="cookie-circle">
           <BiSolidCookie className="cookie-icon" />
         </div>
       </div> */}
 
-      {/* ================= MAIN CONTENT ================= */}
-      <main className="cyber-main">
-        <Outlet />
-      </main>
+        {/* ================= MAIN CONTENT ================= */}
+        <main className="cyber-main">
+          <Outlet />
+        </main>
 
-      {/* ================= GLOBAL COMPONENTS ================= */}
-      {/* <AIHackerCursor /> */}
-      <ScrollToTop />
-      <AIChatWidget />
-      <Footer />
-      <CallButton />
-      <WhatsAppButton />
+        {/* ================= GLOBAL COMPONENTS ================= */}
+        {/* <AIHackerCursor /> */}
+        <ScrollToTop />
+        <AIChatWidget />
+        <Footer />
+        <CallButton />
+        <WhatsAppButton />
+      </ChatProvider>
     </>
   );
 }

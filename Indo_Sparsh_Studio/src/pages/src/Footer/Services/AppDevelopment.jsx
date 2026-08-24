@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./AppDevelopment.css";
 import { useNavigate } from "react-router-dom";
 import ScrollBeam from '../../../ScrollBeam'
+import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -358,29 +359,7 @@ export default function AppDevPage() {
 
 
       {/* ---------- Final CTA ---------- */}
-      <section className="adh-cta">
-        <Reveal className="adh-cta__inner">
-          <h2 className="adh-cta__title">Have an app in mind?</h2>
-          <p className="adh-cta__text">
-            Tell us what you're building. We'll reply with a scoped timeline
-            within two business days.
-          </p>
-          <div className="appdev-hero__cta-row">
-            <button
-              onClick={() => navigate("/request-quote")}
-              className="appdev-btn appdev-btn--primary"
-            >
-              Start a project
-            </button>
-            <button
-              onClick={() => navigate("/contact")}
-              className="appdev-btn appdev-btn--ghost"
-            >
-              Book a call
-            </button>
-          </div>
-        </Reveal>
-      </section>
+      <ProjectDiscuss/>
     </div>
   );
 }

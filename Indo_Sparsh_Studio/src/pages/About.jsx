@@ -10,6 +10,7 @@ import {
   FaRocket,
 } from "react-icons/fa6";
 import TeamMarquee from "./src/About/Teams/TeamDetails";
+import ProjectDiscuss from "./Home/ProjectDiscuss";
 
 export default function About() {
   useEffect(() => {
@@ -181,23 +182,7 @@ export default function About() {
       <TeamMarquee/>
       <ScrollBeam />
       {/* ================= LET'S GET IN TOUCH ================= */}
-      <section className="about-cta">
-        <div className="cta-glass">
-          <h1>
-            Let’s <span>Get In Touch</span>
-          </h1>
-
-          <p>
-            Ready to transform your idea into a powerful digital experience?
-            Let’s collaborate and build something extraordinary together.
-          </p>
-
-          <a href="https://wa.me/918005351770" className="cta-btn">
-            Join Us
-            <span className="cta-glow"></span>
-          </a>
-        </div>
-      </section>
+      <ProjectDiscuss/>
     </>
   );
 }

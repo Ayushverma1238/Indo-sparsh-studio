@@ -105,7 +105,7 @@ const plans = [
     price: "19,999",
     size: "tall",
     recommended: true,
-    gradient: "linear-gradient(160deg,#FF4B3E,#FFC738)",
+    gradient: "linear-gradient(160deg,#a30573,#ed4abb)",
     features: [
       "Everything in Basic",
       "SEO expanded to 10 keywords",
@@ -385,27 +385,6 @@ export default function DigitalMarketingPage() {
           than 3 weeks works out more cost-effective on a monthly plan.
         </p>
       </section>
-      <ScrollBeam />
-
-      {/* ---------- Testimonials ---------- */}
-      <section className="dm-section">
-        <Reveal className="dm-section__head">
-          <span className="dm-kicker">Client feedback</span>
-          <h2 className="dm-h2">What it's like working with the studio</h2>
-        </Reveal>
-        <div className="dm-grid dm-grid--2">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={i * 100} className="dm-quote why-card">
-              <p className="dm-quote__text">"{t.quote}"</p>
-              <div className="dm-quote__author">
-                <span className="dm-quote__name">{t.name}</span>
-                <span className="dm-quote__role">{t.role}</span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-     
     </div>
   );
 }

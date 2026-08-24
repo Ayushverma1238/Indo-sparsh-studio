@@ -25,6 +25,7 @@ import {
 } from "react-icons/hi2";
 import { motion, useInView } from "framer-motion";
 import ScrollBeam from "../../../ScrollBeam";
+import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 
 /* ==========================================================
    REVEAL COMPONENT
@@ -859,106 +860,7 @@ export default function BusinessConsultancy() {
       </section>
       <ScrollBeam />
 
-      {/* ==================================================
-          CALL TO ACTION
-      ================================================== */}
-
-      <section className="consultation-banner-bc">
-        <div className="container-bc">
-          <RevealBC className="consultation-box-bc">
-            <div className="consultation-content-bc">
-              <span>FREE CONSULTATION</span>
-
-              <h2>Let's Build Your Next Growth Strategy</h2>
-
-              <p>
-                Discuss your business goals with our experts and receive
-                practical recommendations tailored specifically for your
-                business.
-              </p>
-            </div>
-
-            <Link
-              to={`https://wa.me/918005351770?text=${message}`}
-              target="_blank"
-              className="primary-button-bc"
-            >
-              Schedule Consultation
-              <FaArrowRight />
-            </Link>
-          </RevealBC>
-        </div>
-      </section>
-      <ScrollBeam />
-
-      {/* ==================================================
-          TESTIMONIALS SECTION
-      ================================================== */}
-
-      <section className="testimonials-section-bc">
-        <div className="container-bc">
-          <RevealBC className="section-header-bc">
-            <span className="section-tag-bc">CLIENT TESTIMONIALS</span>
-
-            <h2 className="section-title-bc">
-              What Our
-              <span> Clients Say</span>
-            </h2>
-
-            <p className="section-description-bc">
-              We believe long-term partnerships create the biggest impact.
-              Here's what our clients say about working with us.
-            </p>
-          </RevealBC>
-
-          <div className="testimonial-grid-bc">
-            {[
-              {
-                name: "Rahul Sharma",
-                company: "Retail Business",
-                review:
-                  "Their business strategy completely transformed our sales process. We experienced consistent growth within just a few months.",
-              },
-              {
-                name: "Priya Gupta",
-                company: "Startup Founder",
-                review:
-                  "Professional, practical and easy to work with. Every recommendation was actionable and delivered measurable results.",
-              },
-              {
-                name: "Amit Verma",
-                company: "Manufacturing",
-                review:
-                  "Their consulting helped us optimize operations and improve profitability while reducing unnecessary costs.",
-              },
-            ].map((item, index) => (
-              <RevealBC
-                key={index}
-                delay={index * 120}
-                className="testimonial-card-bc  why-card"
-              >
-                <div className="stars-bc">★★★★★</div>
-
-                <p className="testimonial-review-bc">"{item.review}"</p>
-
-                <div className="testimonial-footer-bc">
-                  <div className="testimonial-avatar-bc">
-                    {item.name.charAt(0)}
-                  </div>
-
-                  <div>
-                    <h4>{item.name}</h4>
-
-                    <span>{item.company}</span>
-                  </div>
-                </div>
-              </RevealBC>
-            ))}
-          </div>
-        </div>
-      </section>
-      <ScrollBeam />
-
+     
       {/* ==================================================
           FAQ SECTION
       ================================================== */}
@@ -1009,70 +911,7 @@ export default function BusinessConsultancy() {
           (left as-is per instructions — no contact detail changes)
       ================================================== */}
 
-      <section className="contact-section-bc">
-        <div className="container-bc">
-          <div className="contact-grid-bc">
-            <RevealBC className="contact-content-bc">
-              <span className="section-tag-bc">CONTACT US</span>
-
-              <h2 className="section-title-bc">
-                Let's Discuss
-                <span> Your Business</span>
-              </h2>
-
-              <p className="section-description-bc">
-                Whether you're launching a startup or growing an established
-                company, we're here to help you achieve measurable business
-                success.
-              </p>
-
-              <div className="contact-list-bc">
-                <div className="contact-item-bc">
-                  <FaPhone />
-
-                  <span>+91 80053 51770</span>
-                </div>
-
-                <div className="contact-item-bc">
-                  <FaEnvelope />
-
-                  <span>info@indosparshstudio.com</span>
-                </div>
-
-                <div className="contact-item-bc">
-                  <FaGlobe />
-
-                  <span>www.indosparshstudio.com</span>
-                </div>
-
-                <div className="contact-item-bc">
-                  <FaLocationDot />
-
-                  <span>Lucknow, Uttar Pradesh, India</span>
-                </div>
-              </div>
-            </RevealBC>
-
-            <RevealBC delay={200} className="contact-card-bc">
-              <h3>Ready To Grow?</h3>
-
-              <p>
-                Book your first consultation and receive a customized roadmap
-                designed specifically for your business goals.
-              </p>
-
-              <Link
-                to={`https://wa.me/918005351770?text=${message}`}
-                target="_blank"
-                className="primary-button-bc"
-              >
-                Book Consultation
-                <FaArrowRight />
-              </Link>
-            </RevealBC>
-          </div>
-        </div>
-      </section>
+      <ProjectDiscuss/>
 
       {/* ==================================================
           FOOTER TAGS

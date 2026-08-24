@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./BrandingAndMarketing.css";
 import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
+import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -317,30 +318,7 @@ export default function BrandingMarketingPage() {
       <ScrollBeam />
 
       {/* ---------- Final CTA ---------- */}
-      <section className="bm-cta" id="contact">
-        <Reveal className="bm-cta__inner">
-          <h2 className="bm-cta__title">
-            Ready to build a brand people remember?
-          </h2>
-          <p className="bm-cta__text">
-            Tell us where the brand is today, and where you want it in a year.
-          </p>
-          <div className="bm-hero__cta-row">
-            <button
-              onClick={() => navigate("/request-quote")}
-              className="bm-btn bm-btn--primary"
-            >
-              Start a project
-            </button>
-            <button
-              className="bm-btn bm-btn--ghost-light"
-              onClick={() => navigate("/contact")}
-            >
-              Book a call
-            </button>
-          </div>
-        </Reveal>
-      </section>
+      <ProjectDiscuss />
     </div>
   );
 }

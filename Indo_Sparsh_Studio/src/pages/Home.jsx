@@ -12,6 +12,7 @@ const HomeTechStack = lazy(() => import("./Home/TechSection.jsx"));
 import LazySection from "./Home/LazySection.jsx";
 import WebServe from "./Home/WebServe.jsx";
 import OrbitSection from "./Home/OrbitSection.jsx";
+import ScrollBeam from "./ScrollBeam.jsx";
 
 const scrollToSection = (id) => {
   const element = document.getElementById(id);
@@ -105,6 +106,7 @@ export default function Home() {
           <ProjectDiscuss />
         </Suspense>
       </LazySection>
+      <ScrollBeam/>
 
       {/* ================= TESTIMONIALS ================= */}
       <LazySection>

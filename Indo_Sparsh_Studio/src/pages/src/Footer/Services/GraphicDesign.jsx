@@ -3,6 +3,7 @@ import "./GraphicDesign.css";
 import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
 import "../../../Services.css";
+import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -749,29 +750,7 @@ export default function GraphicDesignPage() {
       <ScrollBeam />
 
       {/* ---------- Final CTA ---------- */}
-      <section className="gd-cta" id="contact">
-        <Reveal className="gd-cta__inner">
-          <h2 className="gd-cta__title">
-            Let's design everything your business puts in front of a customer.
-          </h2>
-          <p className="gd-cta__text">
-            {CONTACT.phone} · {CONTACT.email} · {CONTACT.website}
-            <br />
-            {CONTACT.address}
-          </p>
-          <div className="gd-hero__cta-row">
-            <button
-              onClick={() => navigate("/request-quote")}
-              className="gd-btn gd-btn--dark"
-            >
-              Start a project
-            </button>
-            <a href={CONTACT.phoneHref} className="gd-btn gd-btn--ghost-light">
-              Call / WhatsApp
-            </a>
-          </div>
-        </Reveal>
-      </section>
+      <ProjectDiscuss/>
     </div>
   );
 }
