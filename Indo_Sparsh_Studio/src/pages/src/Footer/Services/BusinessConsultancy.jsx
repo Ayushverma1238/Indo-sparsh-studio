@@ -25,7 +25,6 @@ import {
 } from "react-icons/hi2";
 import { motion, useInView } from "framer-motion";
 import ScrollBeam from "../../../ScrollBeam";
-import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 
 /* ==========================================================
    REVEAL COMPONENT
@@ -906,12 +905,7 @@ export default function BusinessConsultancy() {
       </section>
       <ScrollBeam />
 
-      {/* ==================================================
-          CONTACT SECTION
-          (left as-is per instructions — no contact detail changes)
-      ================================================== */}
-
-      <ProjectDiscuss/>
+      
 
       {/* ==================================================
           FOOTER TAGS

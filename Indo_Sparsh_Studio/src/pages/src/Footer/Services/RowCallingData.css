@@ -1,4 +1,6 @@
 /* ============ Theme tokens ============ */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
+
 body.light-mode {
   --dp-bg: #e0e6f8;
   --dp-bg-2: #eef0f4;
@@ -30,9 +32,12 @@ body.dark-mode {
 }
 
 .dp {
+   --font-display: "Sora", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
   background: var(--dp-bg);
   color: var(--dp-text);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: var(--font-body);
   transition: background 0.4s ease, color 0.4s ease;
 }
 
@@ -40,7 +45,7 @@ body.dark-mode {
 /* ============ Shared ============ */
 .dp-kicker {
   display: inline-block;
-  font-family: "Sora", "Inter", sans-serif;
+  font-family: var(--font-display);
   font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.12em;
@@ -50,7 +55,7 @@ body.dark-mode {
 }
 .dp-kicker--light { color: var(--dp-accent); opacity: 0.85; }
 .dp-h2 {
-  font-family: "Sora", "Inter", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(24px, 3vw, 36px);
   letter-spacing: -0.01em;
@@ -59,7 +64,7 @@ body.dark-mode {
 .dp-lead { color: var(--dp-text-muted); font-size: 15.5px; line-height: 1.6; max-width: 56ch; margin: 0; }
 .dp-eyebrow {
   display: inline-block;
-  font-family: "Sora", sans-serif;
+  font-family: var(--font-display);
   font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.12em;
@@ -134,7 +139,7 @@ body.dark-mode {
 }
 .dp-hero__inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
 .dp-hero__headline {
-  font-family: "Sora", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(30px, 4.4vw, 50px);
   line-height: 1.15;
@@ -157,7 +162,7 @@ body.dark-mode {
   animation: dp-rise 0.7s 0.28s ease both;
 }
 .dp-tag {
-  font-family: "Sora", sans-serif;
+  font-family: var(--font-display);
   font-size: 12px; font-weight: 600;
   color: var(--dp-text-muted);
   border: 1px solid var(--dp-border);
@@ -205,14 +210,14 @@ body.dark-mode {
   border-radius: 999px;
   animation: dp-pulse 2s ease-in-out infinite;
 }
-.dp-plan__name { font-family: "Sora", sans-serif; font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+.dp-plan__name { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin: 0 0 10px; }
 .dp-plan__price {
-  font-family: "Sora", sans-serif;
+  font-family: var(--font-display);
   font-size: 34px; font-weight: 700;
   color: var(--dp-plan-color);
   margin-bottom: 18px;
 }
-.dp-plan__unit { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 500; color: var(--dp-text-muted); }
+.dp-plan__unit { font-family: var(--font-body); font-size: 13px; font-weight: 500; color: var(--dp-text-muted); }
 .dp-plan__features { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 14px; }
 .dp-plan__features li { display: flex; align-items: center; color: var(--dp-text-muted); }
 
@@ -228,7 +233,7 @@ body.dark-mode {
   flex-wrap: wrap;
   color: #fff;
 }
-.dp-bulk__title { font-family: "Sora", sans-serif; font-size: 22px; font-weight: 700; margin: 0 0 16px; max-width: 44ch; }
+.dp-bulk__title { font-family: var(--font-display); font-size: 22px; font-weight: 700; margin: 0 0 16px; max-width: 44ch; }
 .dp-bulk__list { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; padding: 0; margin: 0; font-size: 13.5px; }
 .dp-bulk__list .dp-check { color: #fff; }
 
@@ -275,7 +280,7 @@ body.dark-mode {
   padding: 90px 6vw;
 }
 .dp-contact__inner { max-width: 1000px; margin: 0 auto; }
-.dp-contact__title { font-family: "Sora", sans-serif; font-weight: 700; font-size: clamp(26px, 3.4vw, 38px); color: var(--db-text); margin: 0 0 12px; }
+.dp-contact__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 3.4vw, 38px); color: var(--db-text); margin: 0 0 12px; }
 .dp-contact__text { color: var(--dp-text-muted); font-size: 15.5px; margin: 0 0 36px; }
 .dp-contact__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 @media (max-width: 900px) { .dp-contact__grid { grid-template-columns: repeat(2, 1fr); } }

@@ -160,7 +160,6 @@ const WebsiteDevelopment = () => {
         Skip to content
       </a>
 
-      <ThemeToggle theme={theme} onToggle={toggleTheme} />
 
       <main id="main">
         <section className="hero">

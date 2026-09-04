@@ -7,7 +7,7 @@
 .business-consultancy-page-bc {
   --bc-font-display: "Sora", "Segoe UI", sans-serif;
   --bc-font-body: "Inter", "Segoe UI", sans-serif;
-  --bc-font-mono: "JetBrains Mono", "Courier New", monospace;
+  --bc-font-body: "JetBrains Mono", "Courier New", monospace;
 
   --bc-accent: #0F766E;
   --bc-accent-2: #C08A1E;
@@ -173,7 +173,7 @@ body.dark-mode {
 
 .hero-badge-bc {
   display: inline-block;
-  font-family: var(--bc-font-mono);
+  font-family: var(--bc-font-body);
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   color: var(--bc-accent);
@@ -251,7 +251,7 @@ body.dark-mode {
 .mini-stat-bc span {
   font-size: 0.78rem;
   color: var(--bc-muted);
-  font-family: var(--bc-font-mono);
+  font-family: var(--bc-font-body);
 }
 
 .hero-tags-bc {
@@ -260,7 +260,7 @@ body.dark-mode {
   gap: 8px;
 }
 .tag-bc {
-  font-family: var(--bc-font-mono);
+  font-family: var(--bc-font-body);
   font-size: 0.68rem;
   color: var(--bc-ink-soft);
   background: var(--bc-bg-alt);
@@ -279,7 +279,7 @@ body.dark-mode {
 }
 .analytics-badge-bc {
   display: inline-block;
-  font-family: var(--bc-font-mono);
+  font-family: var(--bc-font-body);
   font-size: 0.68rem;
   color: var(--bc-accent);
   background: var(--bc-bg-alt);
@@ -344,7 +344,7 @@ body.dark-mode {
 }
 .section-tag-bc {
   display: inline-block;
-  font-family: var(--bc-font-mono);
+  font-family: var(--bc-font-body);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   color: var(--bc-accent);

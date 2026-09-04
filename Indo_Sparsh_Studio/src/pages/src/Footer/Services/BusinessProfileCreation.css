@@ -24,7 +24,7 @@ body.light-mode {
   --isp-ink-soft: #5B4E3A;
   --isp-muted: #8A7D66;
   --isp-accent: #8B1E3F;
-  --isp-gold: #A9812F;
+  --isp-gold: #2b52df;
   --isp-border: rgba(36, 27, 18, 0.16);
   --isp-shadow: rgba(36, 27, 18, 0.16);
   color-scheme: light;
@@ -42,7 +42,7 @@ body.dark-mode {
   --isp-border: rgba(255, 255, 255, 0.1);
   --isp-shadow: rgba(0, 0, 0, 0.55);
   --isp-accent: #e94fcf;
-  --isp-gold: #D4AF37;
+  --isp-gold: #2f5cff;
   color-scheme: dark;
   background: var(--isp-bg);
   color: var(--isp-ink);

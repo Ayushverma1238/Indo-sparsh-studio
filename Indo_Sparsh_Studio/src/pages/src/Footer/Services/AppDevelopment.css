@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
+
 /* ============ Theme tokens (scoped once, inherited by every section) ============ */
 body.light-mode {
   --adh-bg: #f7f5f1;
@@ -10,6 +12,7 @@ body.light-mode {
   --adh-border: rgba(20, 23, 31, 0.1);
   --adh-shadow: rgba(20, 23, 31, 0.12);
 }
+
 body.dark-mode {
   --adh-bg: #120D1F;
   --adh-bg-2: #1A1430;
@@ -23,9 +26,12 @@ body.dark-mode {
 }
 
 .appdev-page {
+  --font-display: "Sora", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
   background: var(--adh-bg);
   color: var(--adh-text);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: var(--font-body);
   transition: background 0.4s ease, color 0.4s ease;
 }
 
@@ -51,7 +57,7 @@ body.dark-mode {
 /* ============ Shared bits ============ */
 .adh-kicker {
   display: inline-block;
-  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-family: var(--font-display);
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;

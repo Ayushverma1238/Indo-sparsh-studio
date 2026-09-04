@@ -59,7 +59,7 @@ body.dark-mode {
 /* ============ Shared ============ */
 .bm-kicker {
   display: inline-block;
-  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.12em;
@@ -68,7 +68,7 @@ body.dark-mode {
   margin-bottom: 12px;
 }
 .bm-h2 {
-  font-family: "Fraunces", "Inter", serif;
+  font-family: "Inter", serif;
   font-weight: 600;
   font-size: clamp(24px, 3.2vw, 38px);
   letter-spacing: -0.01em;
@@ -83,7 +83,7 @@ body.dark-mode {
 }
 .bm-eyebrow {
   display: inline-block;
-  font-family: "Space Grotesk", sans-serif;
+  font-family:  sans-serif;
   font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.12em;
@@ -245,7 +245,7 @@ body.dark-mode {
   margin: 0 auto;
 }
 .bm-hero__headline {
-  font-family: "Fraunces", serif;
+  font-family: "Inter", serif;
   font-weight: 600;
   font-size: clamp(32px, 5vw, 56px);
   line-height: 1.12;
@@ -283,7 +283,7 @@ body.dark-mode {
   animation: bm-scroll 20s linear infinite;
 }
 .bm-marquee__item {
-  font-family: "Fraunces", serif;
+  font-family: "Inter", serif;
   font-size: 20px;
   color: var(--bm-text-muted);
   white-space: nowrap;
@@ -303,7 +303,7 @@ body.dark-mode {
   margin-bottom: 44px;
 }
 .bm-filter {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 13px;
   font-weight: 600;
   padding: 9px 18px;

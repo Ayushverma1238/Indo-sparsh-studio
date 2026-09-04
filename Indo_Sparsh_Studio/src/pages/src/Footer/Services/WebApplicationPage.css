@@ -105,7 +105,7 @@ body.light-mode .wa {
 --------------------------------------------------------------- */
 .wa-eyebrow {
   display: inline-block;
-  font-family: var(--mono);
+  font-family: var(--display);
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -272,7 +272,7 @@ body.light-mode .wa {
 }
 
 .wa-meta-label {
-  font-family: var(--mono);
+  font-family: var(--display);
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -280,7 +280,7 @@ body.light-mode .wa {
 }
 
 .wa-meta-value {
-  font-family: var(--mono);
+  font-family: var(--display);
   font-size: 14px;
   color: var(--ink);
 }
@@ -330,7 +330,7 @@ body.light-mode .wa {
 }
 .wa-scrollcue em {
   font-style: normal;
-  font-family: var(--mono);
+  font-family: var(--display);
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -434,7 +434,7 @@ body.light-mode .wa {
 
 .wa-stage-n {
   display: block;
-  font-family: var(--mono);
+  font-family: var(--display);
   font-size: 13px;
   color: var(--accent);
   letter-spacing: 0.06em;
@@ -492,7 +492,7 @@ body.light-mode .wa {
 }
 
 .wa-spec-row dt {
-  font-family: var(--mono);
+  font-family: var(--display);
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -568,7 +568,7 @@ body.light-mode .wa {
   align-items: center;
   justify-content: center;
   color: var(--accent);
-  font-family: var(--mono);
+  font-family: var(--display);
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;

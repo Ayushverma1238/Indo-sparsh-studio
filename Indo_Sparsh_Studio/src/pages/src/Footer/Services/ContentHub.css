@@ -2,6 +2,8 @@
    1. DYNAMIC THEMATIC TOKENS & LIFECYCLES
    ========================================================================== */
 /* Default Light Palette (Triggered when body has .light-mode) */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
+
 body.light-mode {
   --hub-bg: #f8fafc;
   --hub-surface: #ffffff;
@@ -40,13 +42,16 @@ body.dark-mode {
   --hub-accent: #6366f1;
   --transition-elastic: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --font-display: "Sora", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
 }
 
 /* Container Structural Layer */
 .content-hub-container {
   background-color: var(--hub-bg);
   color: var(--hub-txt-main);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-display);
   min-height: 100vh;
   padding: 40px 60px;
   box-sizing: border-box;
@@ -295,7 +300,7 @@ body.dark-mode {
   color: #ffffff;
   padding: 3px 8px;
   border-radius: 4px;
-  font-family: monospace;
+  font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 600;
 }
