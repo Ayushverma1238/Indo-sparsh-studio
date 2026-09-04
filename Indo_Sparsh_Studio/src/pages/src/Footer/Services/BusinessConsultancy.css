@@ -5,7 +5,7 @@
    Navy + teal (growth) + gold (premium) palette.
 =========================================================== */
 .business-consultancy-page-bc {
-  --bc-font-display: "Sora", "Segoe UI", sans-serif;
+  --bc-font-display: "Sora", "Segoe UI", sans-serif, "JetBrains Mono";
   --bc-font-body: "Inter", "Segoe UI", sans-serif;
   --bc-font-body: "JetBrains Mono", "Courier New", monospace;
 
