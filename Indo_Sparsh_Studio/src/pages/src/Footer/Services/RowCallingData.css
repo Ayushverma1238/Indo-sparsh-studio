@@ -476,11 +476,6 @@ body.dark-mode {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* .dp-plans {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  } */
-
   .dp-plan:nth-child(4) {
     grid-column: auto;
 
