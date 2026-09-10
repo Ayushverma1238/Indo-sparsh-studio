@@ -1,6 +1,4 @@
-import React from "react";
 import "./TechSection.css";
-import ScrollBeam from "../ScrollBeam";
 const HomeTechStack = () => {
   return (
     <>

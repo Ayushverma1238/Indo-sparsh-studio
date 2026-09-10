@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./AppDevelopment.css";
 import { useNavigate } from "react-router-dom";
-import ScrollBeam from '../../../ScrollBeam'
+import ScrollBeam from "../../../ScrollBeam";
 import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 
 /* ---------- scroll-reveal wrapper ---------- */
@@ -183,12 +183,12 @@ export default function AppDevPage() {
         <div className="appdev-hero__inner">
           <div className="appdev-hero__content">
             <span className="appdev-hero__eyebrow">App Development</span>
-            <h1 className="appdev-hero__headline">
-              We turn ideas into
-              <span className="appdev-hero__headline-accent">
-                {" "}
-                apps that ship.
-              </span>
+
+            <h1 className="adh-hero__headline">
+              <span className="adh-word adh-word--a">We</span>{" "}
+              <span className="adh-word adh-word--b">turn ideas</span>{" "}
+              <span className="adh-word adh-word--c">into</span>{" "}
+              <span className="adh-word adh-word--d">apps that ship.</span>
             </h1>
             <p className="appdev-hero__subtext">
               From first sketch to app-store release, we design, build and scale
@@ -291,7 +291,7 @@ export default function AppDevPage() {
           ))}
         </div>
       </section>
-      
+
       <ScrollBeam />
 
       {/* ---------- Process ---------- */}
@@ -355,11 +355,10 @@ export default function AppDevPage() {
           ))}
         </div>
       </section> */}
-            <ScrollBeam />
-
+      <ScrollBeam />
 
       {/* ---------- Final CTA ---------- */}
-      <ProjectDiscuss/>
+      <ProjectDiscuss />
     </div>
   );
 }

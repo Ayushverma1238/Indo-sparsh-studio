@@ -1,41 +1,45 @@
 /* ==========================================================================
-   1. VARIABLES & THEME SETUP
+   1. VARIABLES & THEME SETUP — aliased onto shared studio design system
    ========================================================================== */
+@import "./_theme.css";
+
 :root {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  --border-radius-lg: 16px;
-  --border-radius-sm: 8px;
+  --font-sans: var(--font-body);
+  --border-radius-lg: var(--radius-md);
+  --border-radius-sm: var(--radius-sm);
+  --coral: var(--color-accent);
+  --yellow: var(--color-accent-2);
+  --blue: var(--color-primary);
 }
 
-/* Dark Mode Palette (Default) */
+/* Dark Mode Palette */
 body.dark-mode {
-  --bg-main: #120D1F;
-  --bg-surface: #1C1530;
-  --bg-surface-hover: #1c1c21;
-  --text-primary: #F5F1FF;
-  --text-secondary: #C9C0E0;
-  --primary-accent: #6366f1;
-  --secondary-accent: #2f5cff;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --glass-bg: rgba(20, 20, 23, 0.7);
+  --bg-main: var(--color-bg);
+  --bg-surface: var(--color-surface);
+  --bg-surface-hover: var(--color-bg-alt);
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-text-muted);
+  --primary-accent: var(--color-primary);
+  --secondary-accent: var(--color-accent);
+  --border-color: var(--color-border);
+  --glass-bg: rgba(28, 21, 48, 0.7);
   --glass-border: rgba(255, 255, 255, 0.05);
-  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-color: var(--color-shadow);
 }
 
 /* Light Mode Palette */
 body.light-mode {
-  --bg-main: #f8fafc;
-  --bg-surface: #ffffff;
-  --bg-surface-hover: #f1f5f9;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --primary-accent: #4f46e5;
-  --secondary-accent: #9333ea;
-  --border-color: rgba(15, 23, 42, 0.08);
+  --bg-main: var(--color-bg);
+  --bg-surface: var(--color-surface);
+  --bg-surface-hover: var(--color-bg-alt);
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-text-muted);
+  --primary-accent: var(--color-primary);
+  --secondary-accent: var(--color-accent);
+  --border-color: var(--color-border);
   --glass-bg: rgba(255, 255, 255, 0.75);
   --glass-border: rgba(15, 23, 42, 0.05);
-  --shadow-color: rgba(15, 23, 42, 0.05);
+  --shadow-color: var(--color-shadow);
 }
 
 /* ==========================================================================
@@ -143,21 +147,6 @@ body.light-mode {
   animation: fadeIn 1s ease forwards;
 }
 
-.hero-title {
-  font-size: 4rem;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin-bottom: 24px;
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .hero-subtitle {
   font-size: 1.25rem;
   color: var(--text-secondary);
@@ -182,16 +171,14 @@ body.light-mode {
   transition: var(--transition-smooth);
 }
 
-.btn-primary {
-  background: var(--primary-accent);
-  color: #ffffff;
-  border: none;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.25);
-}
 
+.btn-primary {
+  background: linear-gradient(120deg, var(--primary-accent), var(--secondary-accent));
+  color: #fff;
+}
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(99, 102, 241, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px var(--shadow);
 }
 
 .btn-secondary {
@@ -478,11 +465,11 @@ body.light-mode {
 
 .white-btn {
   background: #ffffff;
-  color: #0f172a;
+  color: var(--ink-solid);
 }
 
 .white-btn:hover {
-  background: #f1f5f9;
+  background: var(--color-bg-alt);
   box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25);
 }
 
@@ -556,5 +543,62 @@ body.light-mode {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+  }
+}
+
+.ui-hero__headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.ui-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: ui-word-in 0.7s var(--ease) forwards;
+}
+.ui-word + .ui-word {
+  margin-left: 0.28em;
+}
+.ui-word--a {
+  animation-delay: 0.1s;
+}
+.ui-word--b {
+  animation-delay: 0.2s;
+  background: linear-gradient(100deg, var(--blue), var(--coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ui-word--c {
+  animation-delay: 0.3s;
+}
+.ui-word--d {
+  animation-delay: 0.4s;
+  background: linear-gradient(100deg, var(--coral), var(--yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@keyframes ui-word-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes ui-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ui-word, .ui-eyebrow {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }

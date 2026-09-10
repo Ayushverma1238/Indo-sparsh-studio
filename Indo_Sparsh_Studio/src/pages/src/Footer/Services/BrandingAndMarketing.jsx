@@ -180,10 +180,17 @@ export default function BrandingMarketingPage() {
 
         <div className="bm-hero__inner">
           <span className="bm-eyebrow">Branding &amp; Marketing</span>
-          <h1 className="bm-hero__headline">
+          {/* <h1 className="bm-hero__headline">
             Brands people remember.
             <br />
             <span className="bm-accent">Campaigns people act on.</span>
+          </h1> */}
+          <h1 className="bm-hero__headline">
+            <span className="bm-word bm-word--b">Brands people</span>
+            <span className="bm-word bm-word--a">remember.</span>
+            <br />
+            <span className="bm-word bm-word--d">Campaigns people</span>
+            <span className="bm-word bm-word--c">act on.</span>
           </h1>
           <p className="bm-hero__subtext">
             Identity, positioning, and campaigns built from the same strategy —

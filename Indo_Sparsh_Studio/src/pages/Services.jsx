@@ -18,6 +18,9 @@ import {
 } from "react-icons/fa6";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import HomeTechStack from "./Home/TechSection";
+import ProjectDiscuss from "./Home/ProjectDiscuss";
+// import "./HomePage/TechSection.css"
 
 export default function Services() {
   useEffect(() => {
@@ -441,9 +444,11 @@ export default function Services() {
               </div>
             </div>
             <h3>Business Consultancy</h3>
-            <p style={{
-              marginBottom:"20px"
-            }}>
+            <p
+              style={{
+                marginBottom: "20px",
+              }}
+            >
               Business Growth Planning, Digital Transformation Strategy etc.
             </p>
             <button
@@ -466,109 +471,7 @@ export default function Services() {
       <ScrollBeam />
 
       {/* ================= TECHNOLOGY WE USED ================= */}
-      <section className="tech-section">
-        <div className="tech-hero">
-          <h1>
-            Technology <span>We Used</span>
-          </h1>
-          <p>
-            We work with modern, powerful, and scalable technologies to build
-            high-performance digital products.
-          </p>
-        </div>
-
-        {/* ===== AUTO SCROLL TECHNOLOGY LOGOS ===== */}
-        <div className="clients-marquee">
-          <div className="marquee-track">
-            <div className="marquee-item ">
-              <img src="/tech/html.webp" alt="HTML" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/css.png" alt="CSS" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/bootstrap.png" alt="Bootstrap" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/javascript.png" alt="JavaScript" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/nodejs.png" alt="NodeJS" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/expressjs.png" alt="ExpressJS" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/git.png" alt="Git" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/github.png" alt="GitHub" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/mongodb.png" alt="MongoDB" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/mysql.png" alt="MySQL" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/postman.png" alt="Postman" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/aws.png" alt="AWS" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/redis.png" alt="Redis" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/react.png" alt="React" />
-            </div>
-
-            {/* duplicate for smooth infinite loop */}
-            <div className="marquee-item ">
-              <img src="/tech/html.webp" alt="HTML" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/css.png" alt="CSS" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/bootstrap.png" alt="Bootstrap" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/javascript.png" alt="JavaScript" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/nodejs.png" alt="NodeJS" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/expressjs.png" alt="ExpressJS" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/git.png" alt="Git" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/github.png" alt="GitHub" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/mongodb.png" alt="MongoDB" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/mysql.png" alt="MySQL" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/postman.png" alt="Postman" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/aws.png" alt="AWS" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/redis.png" alt="Redis" />
-            </div>
-            <div className="marquee-item ">
-              <img src="/tech/react.png" alt="React" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <HomeTechStack />
 
       <ScrollBeam />
 
@@ -628,13 +531,7 @@ export default function Services() {
       <ScrollBeam />
 
       {/* ================= PROJECTS WE DISCUSS ================= */}
-      <section className="projects-discuss">
-        <div className="pd-cta">
-          <h2>Have a project in mind?</h2>
-          <p>Let’s discuss it and transform your idea into reality.</p>
-          <a href="https://wa.me/918005351770">Start a Discussion</a>
-        </div>
-      </section>
+      <ProjectDiscuss />
     </>
   );
 }

@@ -1,38 +1,44 @@
-/* ============ Theme tokens ============ */
+/* ============ Theme tokens (shared design system) ============ */
+@import "./_theme.css";
+
 body.light-mode {
-  --bm-bg: #fafafc;
-  --bm-bg-2: #f1f0f6;
-  --bm-surface: #ffffff;
-  --bm-text: #17171f;
-  --bm-text-muted: #63636f;
-  --bm-accent: #7c3aed;
-  --bm-accent-2: #ec4899;
-  --bm-accent-3: #f59e0b;
-  --bm-border: rgba(23, 23, 31, 0.09);
-  --bm-shadow: rgba(23, 23, 31, 0.14);
+  --bm-bg: var(--color-bg);
+  --bm-bg-2: var(--color-bg-alt);
+  --bm-surface: var(--color-surface);
+  --bm-text: var(--color-text);
+  --bm-text-muted: var(--color-text-muted);
+  --bm-accent: var(--color-primary);
+  --bm-accent-2: var(--color-accent);
+  --bm-accent-3: var(--color-accent-2);
+  --bm-border: var(--color-border);
+  --bm-shadow: var(--color-shadow);
 }
 body.dark-mode {
-  --bm-bg: #120D1F;
-  --bm-bg-2: #1A1430;
-  --bm-surface: #1C1530;
-  --bm-text: #f1f1f5;
-  --bm-text-muted: #9797a6;
-  --bm-accent: #9573fc;
-  --bm-accent-2: #f54591;
-  --bm-text-contact: #141313;
-  --bm-accent-3: #fbbf24;
-  --bm-border: rgba(241, 241, 245, 0.1);
-  --bm-shadow: rgba(0, 0, 0, 0.5);
+  --bm-bg: var(--color-bg);
+  --bm-bg-2: var(--color-bg-alt);
+  --bm-surface: var(--color-surface);
+  --bm-text: var(--color-text);
+  --bm-text-muted: var(--color-text-muted);
+  --bm-accent: var(--color-primary);
+  --bm-accent-2: var(--color-accent);
+  --bm-text-contact: var(--ink-solid);
+  --bm-accent-3: var(--color-accent-2);
+  --bm-border: var(--color-border);
+  --bm-shadow: var(--color-shadow);
 }
 
 .bm {
   background: var(--bm-bg);
   color: var(--bm-text);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: var(--font-body);
   transition:
-    background 0.4s ease,
-    color 0.4s ease;
+    background 0.4s var(--ease),
+    color 0.4s var(--ease);
   overflow-x: hidden;
+
+  --coral: var(--color-accent);
+  --yellow: var(--color-accent-2);
+  --blue: var(--color-primary);
 }
 
 .bm__theme-toggle {
@@ -59,7 +65,7 @@ body.dark-mode {
 /* ============ Shared ============ */
 .bm-kicker {
   display: inline-block;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.12em;
@@ -68,7 +74,7 @@ body.dark-mode {
   margin-bottom: 12px;
 }
 .bm-h2 {
-  font-family: "Inter", serif;
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: clamp(24px, 3.2vw, 38px);
   letter-spacing: -0.01em;
@@ -83,7 +89,7 @@ body.dark-mode {
 }
 .bm-eyebrow {
   display: inline-block;
-  font-family:  sans-serif;
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.12em;
@@ -139,14 +145,19 @@ body.dark-mode {
     box-shadow 0.15s ease,
     background 0.2s ease;
 }
+
 .bm-btn--primary {
-  background: var(--bm-surface);
-  color: var(--bm-text);
+  background: linear-gradient(120deg, var(--blue), var(--coral));
+  color: #fff;
+}
+.bm-btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px var(--bm-shadow);
 }
 .bm-btn--ghost {
 
   background: transparent;
-  border: 2px solid #9797a6;
+  border: 2px solid var(--bm-text-muted);
   color: var(--bm-text);
 }
 .bm-btn--ghost-light {
@@ -245,7 +256,7 @@ body.dark-mode {
   margin: 0 auto;
 }
 .bm-hero__headline {
-  font-family: "Inter", serif;
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: clamp(32px, 5vw, 56px);
   line-height: 1.12;
@@ -283,7 +294,7 @@ body.dark-mode {
   animation: bm-scroll 20s linear infinite;
 }
 .bm-marquee__item {
-  font-family: "Inter", serif;
+  font-family: var(--font-body);
   font-size: 20px;
   color: var(--bm-text-muted);
   white-space: nowrap;
@@ -303,7 +314,7 @@ body.dark-mode {
   margin-bottom: 44px;
 }
 .bm-filter {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-body);
   font-size: 13px;
   font-weight: 600;
   padding: 9px 18px;
@@ -384,7 +395,7 @@ body.dark-mode {
 }
 .bm-flip__category {
   align-self: flex-start;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-display);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -398,7 +409,7 @@ body.dark-mode {
   color: var(--bm-accent);
 }
 .bm-flip__name {
-  font-family: "Fraunces", serif;
+  font-family: var(--font-display);
   font-size: 26px;
   font-weight: 600;
   margin: 0;
@@ -410,7 +421,7 @@ body.dark-mode {
   margin: 10px 0;
 }
 .bm-flip__result {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 14px;
   color: var(--bm-accent-2);
@@ -445,7 +456,7 @@ body.dark-mode {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: "Space Grotesk", monospace;
+  font-family: var(--font-mono);
   font-size: 13px;
   color: var(--bm-accent);
   background: var(--bm-surface);
@@ -458,7 +469,7 @@ body.dark-mode {
   z-index: 1;
 }
 .bm-process__title {
-  font-family: "Fraunces", serif;
+  font-family: var(--font-display);
   font-size: 17px;
   font-weight: 600;
   margin: 0 0 6px;
@@ -485,7 +496,7 @@ body.dark-mode {
   gap: 6px;
 }
 .bm-stats__number {
-  font-family: "Fraunces", serif;
+  font-family: var(--font-display);
   font-weight: 600;
   font-size: 42px;
   background: linear-gradient(135deg, var(--bm-accent), var(--bm-accent-2));
@@ -510,7 +521,7 @@ body.dark-mode {
   margin: 0 auto;
 }
 .bm-cta__title {
-  font-family: "Fraunces", serif;
+  font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(26px, 3.6vw, 40px);
   color: var(--bm-text);
@@ -588,5 +599,62 @@ body.dark-mode {
   }
   .bm-flip {
     opacity: 1;
+  }
+}
+
+
+.bm-hero__headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.bm-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: bm-word-in 0.7s var(--ease) forwards;
+}
+
+.bm-word--a {
+  animation-delay: 0.1s;
+}
+.bm-word--b {
+  animation-delay: 0.2s;
+  background: linear-gradient(100deg, var(--blue), var(--coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.bm-word--c {
+  animation-delay: 0.3s;
+}
+.bm-word--d {
+  animation-delay: 0.4s;
+  background: linear-gradient(100deg, var(--coral), var(--yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@keyframes bm-word-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bm-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bm-word, .bm-eyebrow {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }

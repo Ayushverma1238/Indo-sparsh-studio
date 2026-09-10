@@ -1,38 +1,40 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
+@import "./_theme.css";
 
-/* ============ Theme tokens (scoped once, inherited by every section) ============ */
+/* ============ Theme tokens (scoped once, inherited by every section) ============
+   Aliased onto the shared design system in _theme.css so this page shares the
+   exact same colours/fonts as every other Services page. */
 body.light-mode {
-  --adh-bg: #f7f5f1;
-  --adh-bg-2: #efece4;
-  --adh-text: #14171f;
-  --adh-text-muted: #5b5f6b;
-  --adh-accent: #6e7dad;
-  --adh-accent-2: #a8dbeb;
-  --adh-surface: #ffffff;
-  --adh-border: rgba(20, 23, 31, 0.1);
-  --adh-shadow: rgba(20, 23, 31, 0.12);
+  --adh-bg: var(--color-bg);
+  --adh-bg-2: var(--color-bg-alt);
+  --adh-text: var(--color-text);
+  --adh-text-muted: var(--color-text-muted);
+  --adh-accent: var(--color-primary);
+  --adh-accent-2: var(--color-accent);
+  --adh-surface: var(--color-surface);
+  --adh-border: var(--color-border);
+  --adh-shadow: var(--color-shadow);
 }
 
 body.dark-mode {
-  --adh-bg: #120D1F;
-  --adh-bg-2: #1A1430;
-  --adh-text: #F5F1FF;
-  --adh-text-muted: #8D84A8;
-  --adh-accent: #f042f0;
-  --adh-accent-2: #080106;
-  --adh-surface: #1C1530;
-  --adh-border: rgba(255, 255, 255, 0.1);
-  --adh-shadow: rgba(0, 0, 0, 0.55);
+  --adh-bg: var(--color-bg);
+  --adh-bg-2: var(--color-bg-alt);
+  --adh-text: var(--color-text);
+  --adh-text-muted: var(--color-text-muted);
+  --adh-accent: var(--color-primary);
+  --adh-accent-2: var(--color-accent);
+  --adh-surface: var(--color-surface);
+  --adh-border: var(--color-border);
+  --adh-shadow: var(--color-shadow);
 }
 
 .appdev-page {
-  --font-display: "Sora", "Segoe UI", sans-serif;
-  --font-body: "Inter", "Segoe UI", sans-serif;
-  --font-mono: "JetBrains Mono", "Courier New", monospace;
   background: var(--adh-bg);
   color: var(--adh-text);
   font-family: var(--font-body);
-  transition: background 0.4s ease, color 0.4s ease;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+  --coral: var(--color-accent);
+  --yellow: var(--color-accent-2);
+  --blue: var(--color-primary);
 }
 
 .appdev-page__theme-toggle {
@@ -65,7 +67,7 @@ body.dark-mode {
   margin-bottom: 14px;
 }
 .adh-h2 {
-  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(26px, 3.2vw, 38px);
   letter-spacing: -0.01em;
@@ -114,7 +116,14 @@ body.dark-mode {
   border: 1px solid transparent;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
 }
-.appdev-btn--primary { background: var(--adh-accent); color: #b9b2b2; }
+.appdev-btn--primary {
+  background: linear-gradient(120deg, var(--adh-accent), var(--adh-accent-2));
+  color: #fff;
+}
+.appdev-btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px var(--adh-shadow);
+}
 .appdev-btn--ghost { background: transparent; border-color: var(--adh-border); color: var(--adh-text); }
 .appdev-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px var(--adh-shadow); }
 .appdev-hero__cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -161,13 +170,7 @@ body.dark-mode {
   padding: 6px 12px; border-radius: 999px; margin-bottom: 20px;
   animation: adh-rise 0.7s ease both;
 }
-.appdev-hero__headline {
-  font-family: "Space Grotesk", "Inter", sans-serif;
-  font-weight: 700; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.08;
-  letter-spacing: -0.01em; margin: 0 0 20px;
-  animation: adh-rise 0.7s 0.08s ease both;
-}
-.appdev-hero__headline-accent { color: var(--adh-text); }
+
 .appdev-hero__subtext {
   font-size: 17px; line-height: 1.6; color: var(--adh-text-muted);
   max-width: 46ch; margin: 0 0 32px;
@@ -175,7 +178,7 @@ body.dark-mode {
 }
 .appdev-hero__cta-row { margin-bottom: 44px; animation: adh-rise 0.7s 0.24s ease both; }
 .appdev-hero__stats { display: flex; gap: 36px; margin: 0; animation: adh-rise 0.7s 0.32s ease both; }
-.appdev-hero__stat dt { font-family: "Space Grotesk", sans-serif; font-size: 22px; font-weight: 700; color: var(--adh-text); }
+.appdev-hero__stat dt { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--adh-text); }
 .appdev-hero__stat dd { margin: 2px 0 0; font-size: 13px; color: var(--adh-text-muted); }
 
 .appdev-hero__visual { position: relative; height: 420px; }
@@ -233,7 +236,7 @@ body.dark-mode {
   width: 40px; height: 40px; color: var(--adh-text);
   margin-bottom: 16px;
 }
-.adh-card__title { font-family: "Space Grotesk", sans-serif; font-size: 17px; font-weight: 700; margin: 0 0 8px; }
+.adh-card__title { font-family: var(--font-display); font-size: 17px; font-weight: 700; margin: 0 0 8px; }
 .adh-card__text { font-size: 14px; line-height: 1.6; color: var(--adh-text-muted); margin: 0; }
 
 /* ============ Process timeline ============ */
@@ -264,7 +267,7 @@ body.dark-mode {
   margin-bottom: 14px;
   position: relative; z-index: 1;
 }
-.adh-process__title { font-family: "Space Grotesk", sans-serif; font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+.adh-process__title { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin: 0 0 6px; }
 .adh-process__text { font-size: 13.5px; line-height: 1.6; color: var(--adh-text-muted); margin: 0; }
 
 /* ============ Tech marquee ============ */
@@ -305,7 +308,7 @@ body.dark-mode {
 }
 .adh-cta__inner { max-width: 640px; margin: 0 auto; text-align: center; }
 .adh-cta__title {
-  font-family: "Space Grotesk", sans-serif; font-weight: 700;
+  font-family: var(--font-display); font-weight: 700;
   font-size: clamp(26px, 3.4vw, 40px); color: #fff; margin: 0 0 14px;
 }
 .adh-cta__text { color: rgba(255,255,255,0.9); font-size: 16px; line-height: 1.6; margin: 0 0 30px; }
@@ -325,4 +328,62 @@ body.dark-mode {
 
 @media (prefers-reduced-motion: reduce) {
   .appdev-hero *, .appdev-editor__line, .appdev-phone { animation: none !important; }
+}
+
+
+.adh-hero__headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.adh-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: adh-word-in 0.7s var(--ease) forwards;
+}
+/* .adh-word + .adh-word {
+  margin-left: 0.28em;
+} */
+.adh-word--a {
+  animation-delay: 0.1s;
+}
+.adh-word--b {
+  animation-delay: 0.2s;
+  background: linear-gradient(100deg, var(--blue), var(--coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.adh-word--c {
+  animation-delay: 0.3s;
+}
+.adh-word--d {
+  animation-delay: 0.4s;
+  background: linear-gradient(100deg, var(--coral), var(--yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@keyframes adh-word-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes adh-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .adh-word, .adh-eyebrow {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }

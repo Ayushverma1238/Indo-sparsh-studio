@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./BusinessConsultancy.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -9,21 +9,14 @@ import {
   FaRocket,
   FaPlay,
   FaCircleCheck,
-  FaPhone,
-  FaEnvelope,
-  FaLocationDot,
-  FaGlobe,
-  FaMoon,
-  FaSun,
 } from "react-icons/fa6";
 import {
   HiOutlineLightBulb,
   HiOutlineArrowTrendingUp,
   HiOutlineClipboardDocumentList,
   HiOutlineCog8Tooth,
-  HiOutlineChartBar,
 } from "react-icons/hi2";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import ScrollBeam from "../../../ScrollBeam";
 
 /* ==========================================================
@@ -238,20 +231,20 @@ export default function BusinessConsultancy() {
   );
 
   const price1card = encodeURIComponent(
-    `Hi! I'd like to book the Business Discovery Call (₹999) to discuss my business challenges and goals. When can we schedule the session?`
-  )
+    `Hi! I'd like to book the Business Discovery Call (₹999) to discuss my business challenges and goals. When can we schedule the session?`,
+  );
   const price2card = encodeURIComponent(
-    `Hi! I'm interested in the Revenue Growth Audit (₹4,999). I want a complete diagnostic of my business with a clear growth roadmap. Can we book the strategy call?`
-  )
+    `Hi! I'm interested in the Revenue Growth Audit (₹4,999). I want a complete diagnostic of my business with a clear growth roadmap. Can we book the strategy call?`,
+  );
   const price3card = encodeURIComponent(
-    `Hi! I'd like to know more about the Starter Advisory retainer (₹7,999/month) — the 2 strategy calls and ongoing support. Can you share how we get started?`
-  )
+    `Hi! I'd like to know more about the Starter Advisory retainer (₹7,999/month) — the 2 strategy calls and ongoing support. Can you share how we get started?`,
+  );
   const price4card = encodeURIComponent(
-    `Hi! I'm looking for continuous, priority-level support for my business — interested in the Growth Advisory plan (₹14,999/month). Can we discuss the KPI tracking and onboarding process?`
-  )
+    `Hi! I'm looking for continuous, priority-level support for my business — interested in the Growth Advisory plan (₹14,999/month). Can we discuss the KPI tracking and onboarding process?`,
+  );
   const price5card = encodeURIComponent(
-    `Hi! I need a second opinion on a specific business decision. Can I book a single On-Demand Consulting Call (₹1,499/hour) directly on WhatsApp?`
-  )
+    `Hi! I need a second opinion on a specific business decision. Can I book a single On-Demand Consulting Call (₹1,499/hour) directly on WhatsApp?`,
+  );
 
   return (
     <div className="business-consultancy-page-bc">
@@ -271,8 +264,11 @@ export default function BusinessConsultancy() {
             <RevealBC className="hero-content-bc">
               <span className="hero-badge-bc">BUSINESS CONSULTANCY</span>
 
-              <h1 className="hero-title-bc">
-                Transform Your Business Into A<span> Growth Machine.</span>
+              <h1 className="bc-hero__headline">
+                <span className="bc-word bc-word--a">Transform</span>{" "}
+                <span className="bc-word bc-word--b">Your Business</span>{" "}
+                <span className="bc-word bc-word--c">Into A</span>{" "}
+                <span className="bc-word bc-word--d">Growth Machine.</span>{" "}
               </h1>
 
               <p className="hero-tagline-bc">
@@ -684,159 +680,174 @@ export default function BusinessConsultancy() {
 
           <div className="pricing-grid-bc">
             <RevealBC className="pricing-card-bc">
-              <span className="pricing-label-bc">STARTER</span>
+              <div className="plan-top-bc plan-top-bc__a">
+                <span className="pricing-label-bc">STARTER</span>
 
-              <h3>Business Discovery Call</h3>
+                <h3>BUSINESS DISCOVERY CALL</h3>
 
-              <h1>₹999</h1>
+                <h1>₹999</h1>
+              </div>
+              <div className="plan-bottom-bc">
+                <p className="pricing-desc-bc">
+                  A low-risk way to start — understand your business, challenges
+                  & goals in one focused session.
+                </p>
 
-              <p className="pricing-desc-bc">
-                A low-risk way to start — understand your business, challenges &
-                goals in one focused session.
-              </p>
+                <ul className="pricing-list-bc">
+                  <li>✔ 45-minute one-on-one video/phone consultation</li>
+                  <li>✔ Written summary of key observations</li>
+                  <li>
+                    ✔ 2–3 quick-win recommendations you can act on immediately
+                  </li>
+                  <li>✔ No package or commitment required</li>
+                </ul>
 
-              <ul className="pricing-list-bc">
-                <li>✔ 45-minute one-on-one video/phone consultation</li>
-                <li>✔ Written summary of key observations</li>
-                <li>
-                  ✔ 2–3 quick-win recommendations you can act on immediately
-                </li>
-                <li>✔ No package or commitment required</li>
-              </ul>
-
-              <Link
-                to={`https://wa.me/918005351770?text=${price1card}`}
-                target="_blank"
-                className="pricing-button-bc"
-              >
-                Starts Business Discovery Call
-              </Link>
+                <Link
+                  to={`https://wa.me/918005351770?text=${price1card}`}
+                  target="_blank"
+                  className="pricing-button-bc"
+                >
+                  Starts Business Discovery Call
+                </Link>
+              </div>
             </RevealBC>
 
             <RevealBC
               delay={120}
               className="pricing-card-bc featured-pricing-card-bc"
             >
-              <div className="popular-badge-bc">MOST RECOMMENDED</div>
+              <div className="plan-top-bc plan-top-bc__b">
+                <div className="popular-badge-bc">MOST RECOMMENDED</div>
 
-              <span className="pricing-label-bc">PROFESSIONAL</span>
+                <span className="pricing-label-bc">PROFESSIONAL</span>
 
-              <h3>Revenue Growth Audit</h3>
+                <h3>REVENUE GROWTH AUDIT</h3>
 
-              <h1>₹4,999</h1>
+                <h1>₹4,999</h1>
+              </div>
+              <div className="plan-bottom-bc">
+                <p className="pricing-desc-bc">
+                  A complete diagnostic of your business, delivered as a written
+                  action plan.
+                </p>
 
-              <p className="pricing-desc-bc">
-                A complete diagnostic of your business, delivered as a written
-                action plan.
-              </p>
+                <ul className="pricing-list-bc">
+                  <li>
+                    ✔ In-depth audit: sales funnel, pricing, marketing channels,
+                    competitor positioning, digital presence
+                  </li>
+                  <li>✔ Identification of revenue leaks</li>
+                  <li>✔ 3–5 prioritized growth opportunities</li>
+                  <li>✔ Written 90-day action roadmap</li>
+                  <li>✔ 1-hour strategy walkthrough call</li>
+                </ul>
 
-              <ul className="pricing-list-bc">
-                <li>
-                  ✔ In-depth audit: sales funnel, pricing, marketing channels,
-                  competitor positioning, digital presence
-                </li>
-                <li>✔ Identification of revenue leaks</li>
-                <li>✔ 3–5 prioritized growth opportunities</li>
-                <li>✔ Written 90-day action roadmap</li>
-                <li>✔ 1-hour strategy walkthrough call</li>
-              </ul>
-
-              <Link
-                to={`https://wa.me/918005351770?text=${price2card}`}
-                target="_blank"
-                className="pricing-button-bc"
-              >
-                Starts Revenue Growth Audit
-                <FaArrowRight />
-              </Link>
+                <Link
+                  to={`https://wa.me/918005351770?text=${price2card}`}
+                  target="_blank"
+                  className="pricing-button-bc popular-btn-bc"
+                >
+                  Starts Revenue Growth Audit
+                  <FaArrowRight />
+                </Link>
+              </div>
             </RevealBC>
 
             <RevealBC delay={240} className="pricing-card-bc">
-              <span className="pricing-label-bc">RETAINER</span>
+              <div className="plan-top-bc plan-top-bc__c">
+                <span className="pricing-label-bc">RETAINER</span>
 
-              <h3>Starter Advisory</h3>
+                <h3>STARTER ADVISORY</h3>
 
-              <h1>
-                ₹7,999<small>/month</small>
-              </h1>
+                <h1>
+                  ₹7,999<small>/month</small>
+                </h1>
+              </div>
+              <div className="plan-bottom-bc">
+                <p className="pricing-desc-bc">
+                  Ongoing, hands-on guidance to keep your business moving in the
+                  right direction.
+                </p>
 
-              <p className="pricing-desc-bc">
-                Ongoing, hands-on guidance to keep your business moving in the
-                right direction.
-              </p>
+                <ul className="pricing-list-bc">
+                  <li>✔ 2 strategy calls/month</li>
+                  <li>✔ WhatsApp support</li>
+                  <li>✔ Monthly progress review</li>
+                </ul>
 
-              <ul className="pricing-list-bc">
-                <li>✔ 2 strategy calls/month</li>
-                <li>✔ WhatsApp support</li>
-                <li>✔ Monthly progress review</li>
-              </ul>
-
-              <Link
-                to={`https://wa.me/918005351770?text=${price3card}`}
-                target="_blank"
-                className="pricing-button-bc"
-              >
-                Starts Starter Advisory
-              </Link>
+                <Link
+                  to={`https://wa.me/918005351770?text=${price3card}`}
+                  target="_blank"
+                  className="pricing-button-bc"
+                >
+                  Starts Starter Advisory
+                </Link>
+              </div>
             </RevealBC>
 
             <RevealBC delay={320} className="pricing-card-bc">
-              <span className="pricing-label-bc">RETAINER</span>
+              <div className="plan-top-bc plan-top-bc__d">
+                <span className="pricing-label-bc">RETAINER</span>
 
-              <h3>Growth Advisory</h3>
+                <h3>GROWTH ADVISORY</h3>
 
-              <h1>
-                ₹14,999<small>/month</small>
-              </h1>
+                <h1>
+                  ₹14,999<small>/month</small>
+                </h1>
+              </div>
+              <div className="plan-bottom-bc">
+                <p className="pricing-desc-bc">
+                  For businesses that want continuous, priority-level support
+                  and tracking.
+                </p>
 
-              <p className="pricing-desc-bc">
-                For businesses that want continuous, priority-level support and
-                tracking.
-              </p>
+                <ul className="pricing-list-bc">
+                  <li>✔ 4 strategy calls/month</li>
+                  <li>✔ KPI tracking dashboard</li>
+                  <li>✔ Priority WhatsApp support</li>
+                  <li>✔ Quarterly deep-dive review</li>
+                </ul>
 
-              <ul className="pricing-list-bc">
-                <li>✔ 4 strategy calls/month</li>
-                <li>✔ KPI tracking dashboard</li>
-                <li>✔ Priority WhatsApp support</li>
-                <li>✔ Quarterly deep-dive review</li>
-              </ul>
-
-              <Link
-                to={`https://wa.me/918005351770?text=${price4card}`}
-                target="_blank"
-                className="pricing-button-bc"
-              >
-                Starts Growth Advisory
-              </Link>
+                <Link
+                  to={`https://wa.me/918005351770?text=${price4card}`}
+                  target="_blank"
+                  className="pricing-button-bc"
+                >
+                  Starts Growth Advisory
+                </Link>
+              </div>
             </RevealBC>
 
             <RevealBC delay={400} className="pricing-card-bc">
-              <span className="pricing-label-bc">ON-DEMAND</span>
+              <div className="plan-top-bc plan-top-bc__e">
+                <span className="pricing-label-bc">ON-DEMAND</span>
 
-              <h3>On-Demand Consulting Call</h3>
+                <h3>ON-DEMAND CONSULTING CALL</h3>
 
-              <h1>
-                ₹1,499<small>/hour</small>
-              </h1>
+                <h1>
+                  ₹1,499<small>/hour</small>
+                </h1>
+              </div>
+              <div className="plan-bottom-bc">
+                <p className="pricing-desc-bc">
+                  Need a second opinion on one specific decision — a price
+                  change, a new product, an ad budget, a hire?
+                </p>
 
-              <p className="pricing-desc-bc">
-                Need a second opinion on one specific decision — a price change,
-                a new product, an ad budget, a hire?
-              </p>
+                <ul className="pricing-list-bc">
+                  <li>✔ Single-call booking, no package required</li>
+                  <li>✔ Focused on one specific decision</li>
+                  <li>✔ Book directly via WhatsApp</li>
+                </ul>
 
-              <ul className="pricing-list-bc">
-                <li>✔ Single-call booking, no package required</li>
-                <li>✔ Focused on one specific decision</li>
-                <li>✔ Book directly via WhatsApp</li>
-              </ul>
-
-              <Link
-                to={`https://wa.me/918005351770?text=${price5card}`}
-                target="_blank"
-                className="pricing-button-bc"
-              >
-                Starts On-Demand Consulting Call
-              </Link>
+                <Link
+                  to={`https://wa.me/918005351770?text=${price5card}`}
+                  target="_blank"
+                  className="pricing-button-bc"
+                >
+                  Starts On-Demand Consulting Call
+                </Link>
+              </div>
             </RevealBC>
           </div>
 
@@ -859,7 +870,6 @@ export default function BusinessConsultancy() {
       </section>
       <ScrollBeam />
 
-     
       {/* ==================================================
           FAQ SECTION
       ================================================== */}
@@ -904,8 +914,6 @@ export default function BusinessConsultancy() {
         </div>
       </section>
       <ScrollBeam />
-
-      
 
       {/* ==================================================
           FOOTER TAGS

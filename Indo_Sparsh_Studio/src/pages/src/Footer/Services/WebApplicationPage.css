@@ -1,26 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
+@import "./_theme.css";
 
 /* ---------------------------------------------------------------
-   Tokens
+   Tokens — aliased onto shared studio design system
 --------------------------------------------------------------- */
 .wa {
-  --bg: #0e1420;
-  --bg-elevated: #131b2b;
-  --grid-line: rgba(90, 169, 230, 0.1);
-  --ink: #edeff2;
-  --ink-muted: #8b96ab;
-  --ink-faint: #59647c;
-  --accent: #f2a93b;
-  --accent-soft: rgba(242, 169, 59, 0.14);
-  --blue: #5aa9e6;
-  --blue-soft: rgba(90, 169, 230, 0.14);
-  --border: 1px solid rgba(139, 150, 171, 0.22);
-  --border-strong: 1px solid rgba(139, 150, 171, 0.4);
-  --stage-line: rgba(139, 150, 171, 0.22);
-  --stage-hover: #182236;
-  --display: "Sora", "Segoe UI", sans-serif;
-  --body: "Inter", "Segoe UI", sans-serif;
-  --mono: "JetBrains Mono", "Courier New", monospace;
+  --bg: var(--color-bg);
+  --bg-elevated: var(--color-bg-alt);
+  --grid-line: rgba(47, 92, 255, 0.1);
+  --ink: var(--color-text);
+  --ink-muted: var(--color-text-muted);
+  --ink-faint: var(--color-text-muted);
+  --accent: var(--color-accent);
+  --accent-soft: rgba(255, 75, 62, 0.14);
+  --blue: var(--color-primary);
+  --blue-soft: rgba(47, 92, 255, 0.14);
+  --border: 1px solid var(--color-border);
+  --border-strong: 1px solid var(--color-border);
+  --stage-line: var(--color-border);
+  --stage-hover: var(--color-bg-alt);
+  --display: var(--font-display);
+  --body: var(--font-body);
+  --mono: var(--font-mono);
   --unit: 8px;
 
   position: relative;
@@ -29,15 +29,19 @@
   font-family: var(--body);
   line-height: 1.55;
   overflow-x: clip;
-  transition: background 0.4s ease, color 0.4s ease;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+
+  --coral: var(--color-accent);
+  --yellow: var(--color-accent-2);
 
 }
 
 .wa > section{
   margin: 0 auto;
   max-width: 1500px;
-  padding: 0 100px;
+  padding: clamp(20px, 5vw, 50px) clamp(20px, 8vw, 100px);
 }
+
 
 @media (max-width:700px) {
   .wa > section{
@@ -45,7 +49,7 @@
     padding: 0 50px;
   }
 }
-@media (max-width:450) {
+@media (max-width: 450px) {
   .wa > section{
     padding: 0 20px;
   }
@@ -67,37 +71,37 @@
    body.light-mode classes.
 --------------------------------------------------------------- */
 body.dark-mode .wa {
-  --bg: #120D1F;
-  --bg-elevated: #1A1430;
-  --grid-line: rgba(90, 169, 230, 0.1);
-  --ink: #F5F1FF;
-  --ink-muted: #8D84A8;
-  --ink-faint: #59647c;
-  --accent: #f23bda;
-  --accent-soft: rgba(242, 169, 59, 0.14);
-  --blue: #5aa9e6;
-  --blue-soft: rgba(90, 169, 230, 0.14);
-  --border: 1px solid rgba(139, 150, 171, 0.22);
-  --border-strong: 1px solid rgba(139, 150, 171, 0.4);
-  --stage-line: rgba(139, 150, 171, 0.22);
-  --stage-hover: #182236;
+  --bg: var(--color-bg);
+  --bg-elevated: var(--color-bg-alt);
+  --grid-line: rgba(47, 92, 255, 0.1);
+  --ink: var(--color-text);
+  --ink-muted: var(--color-text-muted);
+  --ink-faint: var(--color-text-muted);
+  --accent: var(--color-accent);
+  --accent-soft: rgba(255, 75, 62, 0.14);
+  --blue: var(--color-primary);
+  --blue-soft: rgba(47, 92, 255, 0.14);
+  --border: 1px solid var(--color-border);
+  --border-strong: 1px solid var(--color-border);
+  --stage-line: var(--color-border);
+  --stage-hover: var(--color-bg-alt);
 }
 
 body.light-mode .wa {
-  --bg: #f5f7fa;
-  --bg-elevated: #eaeef4;
-  --grid-line: rgba(22, 46, 79, 0.09);
-  --ink: #16202e;
-  --ink-muted: #4b5a70;
-  --ink-faint: #7c8aa0;
-  --accent: #c97a1b;
-  --accent-soft: rgba(201, 122, 27, 0.14);
-  --blue: #2e6fb5;
-  --blue-soft: rgba(46, 111, 181, 0.12);
-  --border: 1px solid rgba(22, 46, 79, 0.16);
-  --border-strong: 1px solid rgba(22, 46, 79, 0.3);
-  --stage-line: rgba(22, 46, 79, 0.16);
-  --stage-hover: #e3e9f1;
+  --bg: var(--color-bg);
+  --bg-elevated: var(--color-bg-alt);
+  --grid-line: rgba(47, 92, 255, 0.09);
+  --ink: var(--color-text);
+  --ink-muted: var(--color-text-muted);
+  --ink-faint: var(--color-text-muted);
+  --accent: var(--color-accent);
+  --accent-soft: rgba(255, 75, 62, 0.14);
+  --blue: var(--color-primary);
+  --blue-soft: rgba(47, 92, 255, 0.12);
+  --border: 1px solid var(--color-border);
+  --border-strong: 1px solid var(--color-border);
+  --stage-line: var(--color-border);
+  --stage-hover: var(--color-bg-alt);
 }
 
 /* ---------------------------------------------------------------
@@ -218,35 +222,7 @@ body.light-mode .wa {
   animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
 }
 
-.wa-title {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(40px, 7.2vw, 92px);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  margin: 0 0 calc(var(--unit) * 3);
-  max-width: 16ch;
-}
 
-.wa-word {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(0.6em);
-  animation: wordIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  margin-right: 0.22em;
-}
-
-.wa-title .wa-word:nth-child(5),
-.wa-title .wa-word:nth-child(6) {
-  color: var(--accent);
-}
-
-@keyframes wordIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .wa-subtitle {
   max-width: 48ch;
@@ -649,5 +625,60 @@ body.light-mode .wa {
   .wa-word {
     opacity: 1;
     transform: none;
+  }
+}
+
+.wa-hero__headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.wa-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: wa-word-in 0.7s var(--ease) forwards;
+}
+
+.wa-word--a {
+  animation-delay: 0.1s;
+}
+.wa-word--b {
+  animation-delay: 0.2s;
+  background: linear-gradient(100deg, var(--blue), var(--coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.wa-word--c {
+  animation-delay: 0.3s;
+}
+.wa-word--d {
+  animation-delay: 0.4s;
+  background: linear-gradient(100deg, var(--coral), var(--yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@keyframes wa-word-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes wa-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-word, .wa-eyebrow {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }

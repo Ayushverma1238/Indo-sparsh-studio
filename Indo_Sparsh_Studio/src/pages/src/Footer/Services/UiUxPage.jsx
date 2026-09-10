@@ -63,9 +63,13 @@ const UiUxService = () => {
         <div className="hero-bg-glow"></div>
         <div className="container">
           <span className="badge-fade-in">Our Expertise</span>
-          <h1 className="hero-title animate-pop-up">
-            Elevating Products Through <br />
-            <span className="gradient-text">UI/UX Design</span>
+          
+          <h1 className="ui-hero__headline">
+            <span className="ui-word ui-word--a">Elevating</span>{" "}
+            <span className="ui-word ui-word--b">Products Through</span>
+            <br />
+            <span className="ui-word ui-word--c">UI/UX</span>{" "}
+            <span className="ui-word ui-word--d">Design</span>
           </h1>
           <p className="hero-subtitle animate-fade-in-up">
             We bridge the gap between human emotion and digital interfaces. Our
@@ -75,7 +79,7 @@ const UiUxService = () => {
           <div className="hero-cta-group animate-fade-in-up">
             <button
               onClick={() => navigate("/request-quote")}
-              className="btn btn-primary project-card-btn"
+              className="btn btn-primary"
             >
               Start a Project
             </button>

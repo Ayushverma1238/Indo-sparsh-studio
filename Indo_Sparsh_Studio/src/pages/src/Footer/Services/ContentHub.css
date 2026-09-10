@@ -1,50 +1,51 @@
 /* ==========================================================================
-   1. DYNAMIC THEMATIC TOKENS & LIFECYCLES
+   1. THEMATIC TOKENS — aliased onto the shared studio design system
    ========================================================================== */
-/* Default Light Palette (Triggered when body has .light-mode) */
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
+@import "./_theme.css";
 
 body.light-mode {
-  --hub-bg: #f8fafc;
-  --hub-surface: #ffffff;
-  --hub-surface-alt: #f1f5f9;
-  --hub-border: rgba(15, 23, 42, 0.08);
-  --hub-txt-main: #0f172a;
-  --hub-txt-muted: #64748b;
-  --card-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
-  --card-shadow-hover: 0 20px 35px -5px rgba(99, 102, 241, 0.15);
-  
-  --status-editing: #0284c7;
-  --status-rendering: #d97706;
-  --status-completed: #16a34a;
-  --status-ingest: #7c3aed;
+  --hub-bg: var(--color-bg);
+  --hub-surface: var(--color-surface);
+  --hub-surface-alt: var(--color-bg-alt);
+  --hub-border: var(--color-border);
+  --hub-txt-main: var(--color-text);
+  --hub-txt-muted: var(--color-text-muted);
+  --card-shadow: 0 10px 25px -5px var(--color-shadow);
+  --card-shadow-hover: 0 20px 35px -5px rgba(47, 92, 255, 0.18);
+
+  --status-editing: var(--color-info);
+  --status-rendering: var(--color-pending);
+  --status-completed: var(--color-success);
+  --status-ingest: var(--color-accent);
 }
 
-/* Premium Dark Palette (Triggered when body has .dark-mode) */
+/* Dark Palette (Triggered when body has .dark-mode) */
 body.dark-mode {
-  --hub-bg: #120D1F;
-  --hub-surface: #1A1430;
-  --hub-surface-alt: #1C1530;
-  --hub-border: rgba(255, 255, 255, 0.06);
-  --hub-txt-main: #f8fafc;
-  --hub-txt-muted: #94a3b8;
-  --card-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.6);
-  --card-shadow-hover: 0 25px 40px -10px rgba(99, 102, 241, 0.3);
-  
-  --status-editing: #38bdf8;
-  --status-rendering: #fbbf24;
-  --status-completed: #10b981;
-  --status-ingest: #a855f7;
+  --hub-bg: var(--color-bg);
+  --hub-surface: var(--color-surface);
+  --hub-surface-alt: var(--color-bg-alt);
+  --hub-border: var(--color-border);
+  --hub-txt-main: var(--color-text);
+  --hub-txt-muted: var(--color-text-muted);
+  --card-shadow: 0 15px 30px -10px var(--color-shadow);
+  --card-shadow-hover: 0 25px 40px -10px rgba(108, 140, 255, 0.3);
+
+  --status-editing: var(--color-info);
+  --status-rendering: var(--color-pending);
+  --status-completed: var(--color-success);
+  --status-ingest: var(--color-accent);
 }
 
 /* Core System Constants */
 :root {
-  --hub-accent: #6366f1;
+  --hub-accent: var(--color-primary);
   --transition-elastic: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  --font-display: "Sora", "Segoe UI", sans-serif;
-  --font-body: "Inter", "Segoe UI", sans-serif;
-  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --transition-smooth: all 0.3s var(--ease);
+
+  --coral: var(--color-accent);
+  --yellow: var(--color-accent-2);
+  --blue: var(--color-primary);
+
 }
 
 /* Container Structural Layer */
@@ -393,7 +394,7 @@ body.dark-mode {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(to right, var(--hub-accent), #a855f7);
+  background: linear-gradient(to right, var(--hub-accent), var(--color-accent));
   border-radius: 10px;
   width: 0%; /* Populates cleanly on render */
   transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -538,4 +539,62 @@ body.dark-mode {
 @media (max-width: 640px) {
   .production-grid { grid-template-columns: 1fr; }
   .hub-stats-panel { flex-direction: column; }
+}
+
+
+
+.hub-hero__headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 4vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.hub-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: hub-word-in 0.7s var(--ease) forwards;
+}
+
+.hub-word--a {
+  animation-delay: 0.1s;
+}
+.hub-word--b {
+  animation-delay: 0.2s;
+  background: linear-gradient(100deg, var(--blue), var(--coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hub-word--c {
+  animation-delay: 0.3s;
+}
+.hub-word--d {
+  animation-delay: 0.4s;
+  background: linear-gradient(100deg, var(--coral), var(--yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@keyframes hub-word-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hub-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hub-word, .hub-eyebrow {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }

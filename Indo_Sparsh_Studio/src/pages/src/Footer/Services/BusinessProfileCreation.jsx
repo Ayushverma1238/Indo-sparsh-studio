@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./BusinessProfileCreation.css";
 import ScrollBeam from "../../../ScrollBeam";
+import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 /* =========================================================================
    INDO SPARSH STUDIO — Business Profile Creation
    Design direction: "Certificate of Incorporation" — the page reads like an
@@ -301,9 +302,11 @@ const BusinessProfileCreation = () => {
           <span className="isp-kicker">Digital Business Solution Agency</span>
           <span className="isp-eyebrow">Business Profile Creation</span>
           <h1 className="isp-headline">
-            Launch your business online
+            <span className="isp-word isp-word--b">Launch your business</span>
+            <span className="isp-word isp-word--a">online</span>
             <br />
-            <em>the right way</em>, from day one.
+            <span className="isp-word isp-word--d">the right way</span>,{" "}
+            <span className="isp-word isp-word--c"> from day one.</span>
           </h1>
           <p className="isp-subtitle">
             Every credible business needs more than an idea — it needs a
@@ -569,6 +572,7 @@ const BusinessProfileCreation = () => {
         </section>
       )}
 
+      <ScrollBeam/>
       {/* ===================== WHY CHOOSE US ===================== */}
       <section
         className={`isp-why ${whyVisible ? "visible" : ""}`}
@@ -584,7 +588,7 @@ const BusinessProfileCreation = () => {
           ))}
         </ul>
       </section>
-
+      <ProjectDiscuss/>
     </div>
   );
 };

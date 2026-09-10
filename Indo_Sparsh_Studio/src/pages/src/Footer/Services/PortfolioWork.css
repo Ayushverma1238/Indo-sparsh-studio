@@ -1,45 +1,46 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
+@import "./_theme.css";
 
 /* ===================================================================
-   THEME TOKENS
-   Driven by body.dark-mode / body.light-mode, set elsewhere in the app.
-   Falls back to light values if neither class is present yet.
+   THEME TOKENS — aliased onto the shared studio design system.
 =================================================================== */
 
 .pf {
-  --paper: #edeee6;
-  --paper-raised: #f7f7f2;
-  --ink: #1b1b18;
-  --ink-soft: #5c5a52;
-  --ink-faint: #8c8a80;
-  --line: rgba(27, 27, 24, 0.14);
-  --line-strong: rgba(27, 27, 24, 0.28);
-  --accent: #c8102e;
-  --accent-ink: #f7f7f2;
-  --shadow: rgba(27, 27, 24, 0.08);
+  --paper: var(--color-bg);
+  --paper-raised: var(--color-surface);
+  --ink: var(--color-text);
+  --ink-soft: var(--color-text-muted);
+  --ink-faint: var(--color-text-muted);
+  --line: var(--color-border);
+  --line-strong: rgba(21, 21, 28, 0.28);
+  --accent: var(--color-accent);
+  --accent-ink: #ffffff;
+  --shadow: var(--color-shadow);
 
-  --font-display: "Sora", "Segoe UI", sans-serif;
-  --font-body: "Inter", "Segoe UI", sans-serif;
-  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 
+  --coral: var(--color-accent);
+  --yellow: var(--color-accent-2);
+  --blue: var(--color-primary);
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
   overflow-x: hidden;
-  transition: background 0.4s ease, color 0.4s ease;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
 }
 
 body.dark-mode .pf {
-  --paper: #070213;
-  --paper-raised: #020b1d;
-  --ink: #edeee6;
-  --ink-soft: #a8a69c;
-  --ink-faint: #6f6d64;
-  --line: rgba(237, 238, 230, 0.14);
-  --line-strong: rgba(237, 238, 230, 0.26);
-  --accent: #ff5c47;
-  --accent-ink: #131412;
-  --shadow: rgba(0, 0, 0, 0.4);
+  --paper: var(--color-bg);
+  --paper-raised: var(--color-surface);
+  --ink: var(--color-text);
+  --ink-soft: var(--color-text-muted);
+  --ink-faint: var(--color-text-muted);
+  --line: var(--color-border);
+  --line-strong: rgba(255, 255, 255, 0.26);
+  --accent: var(--color-accent);
+  --accent-ink: #ffffff;
+  --shadow: var(--color-shadow);
 }
 
 .pf * {
@@ -71,7 +72,7 @@ body.dark-mode .pf {
 
 .pf-label {
   display: inline-block;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -89,7 +90,7 @@ body.dark-mode .pf {
 }
 
 .pf-tags li {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.7rem;
   letter-spacing: 0.03em;
   color: var(--ink-soft);
@@ -115,6 +116,11 @@ body.dark-mode .pf {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .pf-word {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
   }
   .pf-ticker-track {
     animation: none !important;
@@ -145,38 +151,66 @@ body.dark-mode .pf {
 
 .pf-header {
   position: relative;
-  padding: 120px 8vw 90px;
+  padding: 100px 8vw 90px;
   overflow: hidden;
 }
 
-.pf-grid-bg {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(circle at 20% 10%, black, transparent 65%);
-  opacity: 0.6;
-  pointer-events: none;
+.pf-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 34px;
 }
 
-.pf-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 22px;
+.pf-header-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.pf-kicker-mark {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: 0 0 auto;
+}
+
+.pf-header-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 7px 14px 7px 12px;
+}
+
+.pf-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-success);
+  flex: 0 0 auto;
+  box-shadow: 0 0 0 3px rgba(78, 154, 81, 0.18);
 }
 
 .pf-title {
-  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-size: clamp(2.3rem, 6vw, 4.6rem);
   font-weight: 500;
-  line-height: 0.98;
+  line-height: 1.06;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.28em;
-  margin-bottom: 30px;
+  gap: 0.26em;
+  max-width: 900px;
+  margin-bottom: 46px;
 }
 
 .pf-word {
@@ -193,43 +227,106 @@ body.dark-mode .pf {
   }
 }
 
-.pf-subtitle {
+.pf-header-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.pf-header-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   max-width: 480px;
-  font-size: 1.05rem;
-  margin-bottom: 14px;
+  padding-top: 6px;
+}
+
+.pf-subtitle {
+  font-size: 1.08rem;
+  color: var(--ink);
 }
 
 .pf-page-note {
-  max-width: 520px;
-  font-size: 0.92rem;
-  padding-left: 16px;
-  border-left: 2px solid var(--accent);
+  font-size: 0.94rem;
 }
 
-.pf-stamp {
-  position: absolute;
-  top: 110px;
-  right: 8vw;
+.pf-header-ticket {
+  position: relative;
+  justify-self: end;
+  width: 100%;
+  max-width: 280px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 22px 22px 30px;
+  transform: rotate(1.4deg);
+  box-shadow: 0 14px 30px var(--shadow);
+}
+
+.pf-ticket-row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  width: 108px;
-  padding: 14px 8px;
-  border: 2px solid var(--accent);
-  border-radius: 50%;
-  color: var(--accent);
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-align: center;
-  transform: rotate(12deg);
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--line);
+  font-family: var(--font-display);
 }
 
-@media (max-width: 780px) {
-  .pf-stamp {
-    display: none;
+.pf-ticket-row:first-child {
+  padding-top: 0;
+}
+
+.pf-ticket-row:last-of-type {
+  border-bottom: none;
+}
+
+.pf-ticket-row span {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+.pf-ticket-row strong {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: right;
+}
+
+.pf-ticket-stamp {
+  position: absolute;
+  bottom: -14px;
+  right: 18px;
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: var(--paper);
+  border: 1.5px solid var(--accent);
+  border-radius: 3px;
+  padding: 5px 10px;
+  transform: rotate(-3deg);
+}
+
+@media (max-width: 860px) {
+  .pf-header-grid {
+    grid-template-columns: 1fr;
+  }
+  .pf-header-ticket {
+    justify-self: start;
+    max-width: 320px;
+    margin-top: 6px;
+  }
+}
+
+@media (max-width: 560px) {
+  .pf-header {
+    padding: 84px 6vw 70px;
+  }
+  .pf-header-top {
+    align-items: flex-start;
   }
 }
 
@@ -279,7 +376,7 @@ body.dark-mode .pf {
 }
 
 .pf-stat-block-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.68rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -324,7 +421,7 @@ body.dark-mode .pf {
 }
 
 .pf-process-n {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.85rem;
   color: var(--accent);
 }
@@ -385,7 +482,7 @@ body.dark-mode .pf {
 .pf-card-top {
   display: flex;
   justify-content: space-between;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.72rem;
   color: var(--ink-faint);
   margin-bottom: 18px;
@@ -414,7 +511,7 @@ body.dark-mode .pf {
 }
 
 .pf-card-category {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -458,7 +555,7 @@ body.dark-mode .pf {
 }
 
 .pf-stat-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.62rem;
   color: var(--ink-faint);
   text-transform: uppercase;
@@ -468,7 +565,7 @@ body.dark-mode .pf {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.78rem;
   color: var(--ink);
 }
@@ -537,7 +634,7 @@ body.dark-mode .pf {
   border-radius: 50%;
   background: var(--ink);
   color: var(--paper);
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.9rem;
   letter-spacing: 0.03em;
   margin-bottom: 20px;
@@ -561,7 +658,7 @@ body.dark-mode .pf {
 }
 
 .pf-team-study {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.72rem;
   color: var(--accent);
   margin-bottom: 14px;
@@ -610,7 +707,7 @@ body.dark-mode .pf {
   background: var(--accent);
   color: var(--accent-ink);
   border-radius: 100px;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.82rem;
   letter-spacing: 0.03em;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -697,7 +794,7 @@ body.dark-mode .pf {
 
 .pf-ticker-pill {
   flex: 0 0 auto;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.78rem;
   letter-spacing: 0.02em;
   color: var(--ink-soft);
@@ -736,7 +833,7 @@ body.dark-mode .pf {
 }
 
 .pf-services-active {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.78rem;
   color: var(--ink-faint);
 }
@@ -799,7 +896,7 @@ body.dark-mode .pf {
   position: absolute;
   left: 12px;
   bottom: 12px;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.62rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -825,7 +922,7 @@ body.dark-mode .pf {
 
 .pf-work-card-date {
   flex: 0 0 auto;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 0.68rem;
   color: var(--ink-faint);
   white-space: nowrap;
@@ -845,5 +942,60 @@ body.dark-mode .pf {
     align-items: flex-start;
     flex-direction: column;
     gap: 12px;
+  }
+}
+
+.pf-hero__headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.pf-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: pf-word-in 0.7s var(--ease) forwards;
+}
+
+.pf-word--a {
+  animation-delay: 0.1s;
+}
+.pf-word--b {
+  animation-delay: 0.2s;
+  background: linear-gradient(100deg, var(--blue), var(--coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.pf-word--c {
+  animation-delay: 0.3s;
+}
+.pf-word--d {
+  animation-delay: 0.4s;
+  background: linear-gradient(100deg, var(--coral), var(--yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@keyframes pf-word-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pf-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-word, .pf-eyebrow {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }

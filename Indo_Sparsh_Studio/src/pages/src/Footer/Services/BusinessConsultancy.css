@@ -1,48 +1,51 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
+@import "./_theme.css";
 
 /* ===========================================================
    TOKENS — scoped to .business-consultancy-page-bc
-   Navy + teal (growth) + gold (premium) palette.
+   Aliased onto the shared design system palette/fonts.
 =========================================================== */
 .business-consultancy-page-bc {
-  --bc-font-display: "Sora", "Segoe UI", sans-serif, "JetBrains Mono";
-  --bc-font-body: "Inter", "Segoe UI", sans-serif;
-  --bc-font-body: "JetBrains Mono", "Courier New", monospace;
+  --bc-font-display: var(--font-display);
+  --bc-font-body: var(--font-body);
 
-  --bc-accent: #0F766E;
-  --bc-accent-2: #C08A1E;
+  --bc-accent: var(--color-primary);
+  --bc-accent-2: var(--color-accent-2);
 
   position: relative;
   font-family: var(--bc-font-body);
   overflow-x: clip;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+
+  --coral: var(--color-accent);
+  --yellow: var(--color-accent-2);
+  --blue: var(--color-primary);
 }
 
 body.light-mode {
-  --bc-bg: #F7F9FA;
-  --bc-bg-alt: #ECF1F3;
-  --bc-surface: #FFFFFF;
-  --bc-ink: #0F2338;
-  --bc-ink-soft: #445468;
-  --bc-muted: #7C8B9B;
-  --bc-border: rgba(15, 35, 56, 0.1);
-  --bc-shadow: rgba(15, 35, 56, 0.12);
+  --bc-bg: var(--color-bg);
+  --bc-bg-alt: var(--color-bg-alt);
+  --bc-surface: var(--color-surface);
+  --bc-ink: var(--color-text);
+  --bc-ink-soft: var(--color-text-muted);
+  --bc-muted: var(--color-text-muted);
+  --bc-border: var(--color-border);
+  --bc-shadow: var(--color-shadow);
   color-scheme: light;
   background: var(--bc-bg);
   color: var(--bc-ink);
 }
 
 body.dark-mode {
-  --bc-bg: #120D1F;
-  --bc-bg-alt: #1A1430;
-  --bc-surface: #1C1530;
-  --bc-ink: #EAF2F7;
-  --bc-ink-soft: #B7C7D6;
-  --bc-muted: #7E93A8;
-  --bc-accent: #2DD4BF;
-  --bc-accent-2: #FBBF24;
-  --bc-border: rgba(255, 255, 255, 0.1);
-  --bc-shadow: rgba(0, 0, 0, 0.55);
+  --bc-bg: var(--color-bg);
+  --bc-bg-alt: var(--color-bg-alt);
+  --bc-surface: var(--color-surface);
+  --bc-ink: var(--color-text);
+  --bc-ink-soft: var(--color-text-muted);
+  --bc-muted: var(--color-text-muted);
+  --bc-accent: var(--color-primary);
+  --bc-accent-2: var(--color-accent-2);
+  --bc-border: var(--color-border);
+  --bc-shadow: var(--color-shadow);
   color-scheme: dark;
   background: var(--bc-bg);
   color: var(--bc-ink);
@@ -183,12 +186,8 @@ body.dark-mode {
   border-radius: 999px;
   margin-bottom: 18px;
 }
-.hero-title-bc {
-  font-size: clamp(2.1rem, 4.4vw, 3.3rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-.hero-title-bc span { color: var(--bc-accent); }
+
+
 .hero-tagline-bc {
   font-weight: 600;
   color: var(--bc-accent-2);
@@ -221,7 +220,7 @@ body.dark-mode {
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.25s ease;
 }
 .primary-button-bc {
-  background: linear-gradient(120deg, var(--bc-accent), var(--bc-accent-2));
+  background: linear-gradient(120deg, var(--blue), var(--coral));
   color: #fff;
 }
 .primary-button-bc:hover {
@@ -511,7 +510,6 @@ body.dark-mode {
   background: var(--bc-surface);
   border: 1px solid var(--bc-border);
   border-radius: 20px;
-  padding: 28px 24px;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
@@ -525,7 +523,7 @@ body.dark-mode {
   position: absolute;
   top: -14px;
   right: 20px;
-  background: linear-gradient(120deg, var(--bc-accent), var(--bc-accent-2));
+  background: linear-gradient(30deg, #000, #3b57f1, #000, #cf0c9f, #000);
   color: #fff;
   font-family: var(--bc-font-body);
   font-size: 0.64rem;
@@ -537,13 +535,13 @@ body.dark-mode {
   font-family: var(--bc-font-body);
   font-size: 0.68rem;
   letter-spacing: 0.1em;
-  color: var(--bc-muted);
+  color: #dad1d1;
 }
-.pricing-card-bc h3 { font-size: 1.05rem; margin: 8px 0 6px; }
+.pricing-card-bc h3 { font-size: 1.05rem; margin: 8px 0 6px; color: #fff; }
 .pricing-card-bc h1 {
   font-size: 2rem;
   font-weight: 800;
-  color: var(--bc-ink);
+  color: #fff;
   margin: 0 0 10px;
   display: flex;
   align-items: baseline;
@@ -566,8 +564,10 @@ body.dark-mode {
 }
 .pricing-button-bc {
   margin-top: auto;
-  background: var(--bc-bg-alt);
+  /* background: var(--bc-bg-alt); */
+  background: transparent;
   color: var(--bc-ink);
+  border-radius: 15px;
   border-color: var(--bc-border);
 }
 .featured-pricing-card-bc .pricing-button-bc,
@@ -724,16 +724,118 @@ body.dark-mode {
 }
 
 .pricing-button-bc {
-  border-radius: 40px;
+  border-radius: 15px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #48e6d8;
-  background: linear-gradient(120deg, #d31dbb, #0fafee);
-  transition: all 3s ease-in;
+  border: 1px solid var(--bc-border);
+  /* background: linear-gradient(120deg, var(--color-primary), var(--color-accent)); */
+  transition: transform 0.3s var(--ease), background 0.3s var(--ease);
 }
 .pricing-button-bc:hover{
-  background: linear-gradient(120deg, #0fafee,#d31dbb);
-  scale: calc(0.8);
+  /* background: linear-gradient(120deg, var(--color-accent), var(--color-primary)); */
+  transform: scale(0.96);
+}
+
+.popular-btn-bc {
+  background: linear-gradient(30deg, #000, #3b57f1, #000, #cf0c9f, #000);
+  color: #fff;
+}
+
+.popular-btn-bc:hover{
+  background: linear-gradient(30deg,  #3b57f1, #000, #cf0c9f, #000, #3b57f1);
+}
+
+
+
+.bc-hero__headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 4vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.bc-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: bc-word-in 0.7s var(--ease) forwards;
+}
+
+.bc-word--a {
+  animation-delay: 0.1s;
+}
+.bc-word--b {
+  animation-delay: 0.2s;
+  background: linear-gradient(100deg, var(--blue), var(--coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.bc-word--c {
+  animation-delay: 0.3s;
+}
+.bc-word--d {
+  animation-delay: 0.4s;
+  background: linear-gradient(100deg, var(--coral), var(--yellow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@keyframes bc-word-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bc-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bc-word, .bc-eyebrow {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+.plan-top-bc{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+  color: white;
+  padding-top: 28px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  
+}
+
+.plan-bottom-bc{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 30px;
+  padding-bottom: 25px;
+}
+
+.plan-top-bc__a{
+  background: linear-gradient(160deg,#2F5CFF,#16161A);
+}
+.plan-top-bc__b{
+  background: linear-gradient(160deg,#a30573,#ed4abb);
+}
+.plan-top-bc__c{
+  background: linear-gradient(160deg,#16161A,#2F5CFF);
+}
+.plan-top-bc__d{
+  background: linear-gradient(160deg,#ed4abb,#a30573);
+}
+.plan-top-bc__e{
+  background: linear-gradient(160deg,#2F5CFF, #16161A);
 }

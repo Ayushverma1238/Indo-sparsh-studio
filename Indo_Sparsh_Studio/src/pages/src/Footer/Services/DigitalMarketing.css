@@ -1,45 +1,41 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
+@import "./_theme.css";
 
 /* ---------------------------------------------------------
-   Tokens
+   Tokens — aliased onto the shared studio design system
 --------------------------------------------------------- */
 .dm {
-  --font-display: "Sora", "Segoe UI", sans-serif;
-  --font-body: "Inter", "Segoe UI", sans-serif;
-  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --coral: #ff4b3e;
-  --yellow: #ffc738;
-  --blue: #2f5cff;
-  --ink-solid: #16161a;
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 26px;
+  --coral: var(--color-accent);
+  --yellow: var(--color-accent-2);
+  --blue: var(--color-primary);
 }
 
 body.light-mode {
-  --bg: #f7f7f5;
-  --bg-elevated: #ffffff;
-  --bg-sunken: #efefec;
-  --ink: #16161a;
-  --ink-soft: #55555c;
-  --ink-faint: #8a8a91;
-  --line: rgba(22, 22, 26, 0.1);
-  --line-strong: rgba(22, 22, 26, 0.18);
-  --shadow: 0 24px 60px -30px rgba(22, 22, 26, 0.35);
+  --bg: var(--color-bg);
+  --bg-elevated: var(--color-surface);
+
+  --bg-sunken: var(--color-bg-alt);
+  --ink: var(--color-text);
+  --ink-soft: var(--color-text-muted);
+  --ink-faint: var(--color-text-muted);
+  --line: var(--color-border);
+  --line-strong: rgba(21, 21, 28, 0.18);
+  --shadow: 0 24px 60px -30px var(--color-shadow);
 }
 
 body.dark-mode {
-  --bg: #120D1F;
-  --bg-elevated: #1A1430;
-  --bg-sunken: #1C1530;
-  --ink: #f3f3f5;
-  --ink-soft: #b3b3ba;
-  --ink-faint: #75757e;
-  --line: rgba(243, 243, 245, 0.1);
-  --line-strong: rgba(243, 243, 245, 0.18);
-  --shadow: 0 24px 70px -26px rgba(0, 0, 0, 0.7);
+  --bg: var(--color-bg);
+  --bg-elevated: var(--color-bg-alt);
+  --bg-sunken: var(--color-surface);
+  --ink: var(--color-text);
+  --ink-soft: var(--color-text-muted);
+  --ink-faint: var(--color-text-muted);
+  --line: var(--color-border);
+  --line-strong: rgba(255, 255, 255, 0.18);
+  --shadow: 0 24px 70px -26px var(--color-shadow);
 }
 
 .dm {
@@ -294,9 +290,15 @@ body.dark-mode {
 .dm-btn:hover {
   transform: translateY(-3px);
 }
+
+
 .dm-btn--primary {
-  background: var(--ink);
-  color: var(--bg);
+  background: linear-gradient(120deg, var(--blue), var(--coral));
+  color: #fff;
+}
+.dm-btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px var(--shadow);
 }
 .dm-btn--ghost {
   background: transparent;
@@ -772,7 +774,7 @@ body.dark-mode {
 --------------------------------------------------------- */
 .dm-cta {
   padding: clamp(56px, 10vw, 110px) clamp(20px, 6vw, 80px);
-  background: var(--bg-sunken);
+  background: linear-gradient(135deg, var(--color-primary), var(--ink-solid));
   color: #f3f3f5;
 }
 .dm-cta__inner {

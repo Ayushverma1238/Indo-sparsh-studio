@@ -25,7 +25,8 @@ import {
 import "./SocialMediaPage.css";
 import ScrollBeam from "../../../ScrollBeam";
 import { Link } from "react-router-dom";
-import "../../../Services.css"
+import "../../../Services.css";
+import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 
 /**
  * Lightweight replacement for framer-motion's `whileInView`.
@@ -96,7 +97,13 @@ export default function SocialMediaManagement() {
       <section className="hero-sm">
         <div className="hero-left-sm reveal-up-sm reveal-onload-sm in-view-sm">
           <span className="hero-badge-sm">{heroData.badge}</span>
-          <h1>{heroData.title}</h1>
+          {/* <h1>.</h1> */}
+          <h1 className="smm-hero__headline">
+            {/* <span className="smm-word smm-word--a">Every</span> */}
+            <span className="smm-word smm-word--b">Social</span>{" "}
+            <span className="smm-word smm-word--c">Media</span>{" "}
+            <span className="smm-word smm-word--d">Management</span>{" "}
+          </h1>
           <h3>{heroData.subtitle}</h3>
           <p>{heroData.description}</p>
 
@@ -255,31 +262,38 @@ export default function SocialMediaManagement() {
               }`}
               style={{ "--stagger-delay": `${index * 0.12}s` }}
             >
-              {plan.badge && (
-                <div className="popular-badge-sm">{plan.badge}</div>
-              )}
+              <div style={{background: plan.gradient}} className="plan-top-sm">
+                {plan.badge && (
+                  <div className="popular-badge-sm">{plan.badge}</div>
+                )}
 
-              <h3>{plan.name}</h3>
+                <h3>{plan.name}</h3>
 
-              <div className="price-sm">
-                <span className="currency-sm">{plan.price}</span>
-                <small>{plan.duration}</small>
+                <div className="price-sm">
+                  <span className="currency-sm">{plan.price}</span>
+                  <small>{plan.duration}</small>
+                </div>
               </div>
+              <div className="plan-bottom-sm">
+                <p className="plan-description-sm">{plan.description}</p>
 
-              <p className="plan-description-sm">{plan.description}</p>
+                <ul className="feature-list-sm">
+                  {plan.features.map((item, i) => (
+                    <li key={i}>
+                      <span className="check-sm">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
 
-              <ul className="feature-list-sm">
-                {plan.features.map((item, i) => (
-                  <li key={i}>
-                    <span className="check-sm">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <Link to={`https://wa.me/918005351770?text=${plan.message}`} target="_blank" className="plan-btn-sm">
-                {plan.button}
-              </Link>
+                <Link
+                  to={`https://wa.me/918005351770?text=${plan.message}`}
+                  target="_blank"
+                  className="plan-btn-sm"
+                >
+                  {plan.button}
+                </Link>
+              </div>
             </div>
           ))}
         </div>
@@ -432,21 +446,7 @@ export default function SocialMediaManagement() {
       <ScrollBeam />
 
       {/* CTA */}
-      <section className="cta-sm-sm">
-        <div
-          ref={ctaRef}
-          className={`cta-sm-box-sm reveal-scale-sm ${
-            ctaInView ? "in-view-sm" : ""
-          }`}
-        >
-          <h2>Ready To Grow Your Business?</h2>
-          <p>
-            Let Indo Sparsh Studio handle your complete social media management
-            while you focus on running your business.
-          </p>
-          <button className="primary-btn-sm">Start Your Project</button>
-        </div>
-      </section>
+      <ProjectDiscuss />
       <ScrollBeam />
 
       {/* FOOTER */}

@@ -37,10 +37,11 @@ function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
 /* ---------- data from the brochure ---------- */
 const plans = [
   {
-    name: "Cold Data",
+    name: "COLD DATA",
     price: "₹499",
     unit: "per 1000 records",
     tag: "cold",
+    gradient: "linear-gradient(160deg,#2F5CFF,#16161A)",
     features: [
       "Basic targeted data",
       "Excel / CSV format",
@@ -52,10 +53,11 @@ const plans = [
       Can you share how I can get started?`),
   },
   {
-    name: "Warm Data",
+    name: "WARM DATA",
     price: "₹999",
     unit: "per 1000 records",
     tag: "warm",
+    gradient: "linear-gradient(160deg,#a30573,#ed4abb)",
     popular: true,
     features: [
       "Intent-based targeting",
@@ -68,15 +70,32 @@ const plans = [
        Can you tell me more about the targeting and how soon I can get the data?`),
   },
   {
-    name: "Hot Data",
+    name: "HOT DATA",
     price: "₹9,999",
     unit: "per 1000 records",
     tag: "hot",
+    gradient: "linear-gradient(160deg,#16161A,#2F5CFF)",
     features: [
       "Fastest sales closure",
       "Premium quality profiles",
       "Daily / weekly refresh",
       "High-intent decision makers",
+    ],
+    message:
+      encodeURIComponent(`Hi! I need high-intent, decision-maker leads for quick sales closure — interested in the Hot Data plan (₹9,999/1000 records).
+      Can you share more details and how fast I can get access?`),
+  },
+  {
+    name: "BULK & CUSTOM PLAN",
+    price: "Custom Pricing on Request",
+    unit: "for 10000+ Leads",
+    tag: "hot",
+    gradient: "linear-gradient(160deg,#ed4abb,#a30573)",
+    features: [
+      "Priority Support",
+      "Bulk Discount",
+      "Customized Targeting",
+      "Dedicated Manager",
     ],
     message:
       encodeURIComponent(`Hi! I need high-intent, decision-maker leads for quick sales closure — interested in the Hot Data plan (₹9,999/1000 records).
@@ -121,9 +140,16 @@ export default function RowCallingData() {
       <section className="dp-hero">
         <div className="dp-hero__inner">
           <span className="dp-eyebrow">B2B &amp; B2C Data Solutions</span>
-          <h1 className="dp-hero__headline">
+          {/* <h1 className="dp-hero__headline">
             Data that turns cold outreach into{" "}
             <span className="dp-accent">closed deals.</span>
+          </h1> */}
+          <h1 className="dp-hero__headline">
+            <span className="dp-word dp-word--a">Data that</span>{" "}
+            <span className="dp-word dp-word--b">turns cold outreach</span>
+            <br />
+            <span className="dp-word dp-word--c">into</span>{" "}
+            <span className="dp-word dp-word--d">closed deals.</span>{" "}
           </h1>
           <p className="dp-hero__subtext">
             Access high-quality B2B data designed to help businesses improve
@@ -213,31 +239,35 @@ export default function RowCallingData() {
             <Reveal
               key={plan.name}
               delay={i * 100}
-              className={`dp-plan  dp-plan--${plan.tag} ${plan.popular ? "dp-plan--popular" : "why-card"}`}
+              className={`dp-plan  ${plan.popular ? "dp-plan--popular" : ""}`}
             >
-              {plan.popular && (
-                <span className="dp-plan__badge">Most Recommended</span>
-              )}
-              <h3 className="dp-plan__name">{plan.name}</h3>
-              <div className="dp-plan__price">
-                {plan.price}
-                <span className="dp-plan__unit">/{plan.unit}</span>
+              <div className="dp-plan-top" style={{background: plan.gradient}}>
+                {plan.popular && (
+                  <span className="dp-plan__badge">Most Recommended</span>
+                )}
+                <h3 className="dp-plan__name">{plan.name}</h3>
+                <div className="dp-plan__price">
+                  {plan.price}
+                  <span className="dp-plan__unit"> /{plan.unit}</span>
+                </div>
               </div>
-              <ul className="dp-plan__features">
-                {plan.features.map((f) => (
-                  <li key={f}>
-                    <span className="dp-check">✓</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                target="_blank"
-                to={`https://wa.me/918005351770?text=${plan.message}`}
-                className="dp-btn dp-btn--block"
-              >
-                Request this data
-              </Link>
+              <div className="dp-plan-bottom">
+                <ul className="dp-plan__features">
+                  {plan.features.map((f) => (
+                    <li key={f}>
+                      <span className="dp-check">✓</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  target="_blank"
+                  to={`https://wa.me/918005351770?text=${plan.message}`}
+                  className="dp-btn dp-btn--block"
+                >
+                  Request this data
+                </Link>
+              </div>
             </Reveal>
           ))}
         </div>

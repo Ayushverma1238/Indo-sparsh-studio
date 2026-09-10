@@ -36,29 +36,6 @@ function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
   );
 }
 
-/* ---------- theme toggle icons ---------- */
-function SunIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" {...props}>
-      <circle cx="12" cy="12" r="4.2" stroke="currentColor" strokeWidth="1.8" />
-      <g stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-        <path d="M12 2.5v2.4M12 19.1v2.4M21.5 12h-2.4M4.9 12H2.5M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7M18.4 18.4l-1.7-1.7M7.3 7.3 5.6 5.6" />
-      </g>
-    </svg>
-  );
-}
-function MoonIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" {...props}>
-      <path
-        d="M20 14.2A8.4 8.4 0 1 1 9.8 4a6.6 6.6 0 0 0 10.2 10.2Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 /* ---------- data (sourced from the Digital Marketing service sheet) ---------- */
 const CONTACT = {
@@ -187,24 +164,8 @@ const addOns = [
   { name: "Landing Page Design", price: "₹4,999" },
 ];
 
-/* Testimonials — illustrative, not drawn from the sheet */
-const testimonials = [
-  {
-    quote:
-      "Every channel finally reported to one dashboard — we could see exactly which rupee was working.",
-    name: "Ananya Kapoor",
-    role: "Founder, Kapoor Home Décor",
-  },
-  {
-    quote:
-      "We started with just Google Ads, added SEO two months in, and the compounding was obvious by month three.",
-    name: "Rahul Mehta",
-    role: "Operations Head, Mehta Auto Care",
-  },
-];
 
 export default function DigitalMarketingPage() {
-  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "Digital Marketing | Indo Sparsh Studio";

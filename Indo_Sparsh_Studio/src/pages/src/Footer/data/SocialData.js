@@ -112,6 +112,7 @@ export const pricingPlans = [
     description:
       "A fully managed, on-brand social presence — done for you, every month.",
     message: price1Card,
+    gradient: "linear-gradient(160deg,#2F5CFF,#16161A)",
     features: [
       "Profile optimization",
       "15 posts/month",
@@ -131,6 +132,7 @@ export const pricingPlans = [
     description:
       "Everything in Basic, plus deeper content volume and audience insight.",
     message: price2Card,
+    gradient: "linear-gradient(160deg,#a30573,#ed4abb)",
     features: [
       "Everything in Basic, plus:",
       "30 posts/month",
@@ -151,6 +153,7 @@ export const pricingPlans = [
     description:
       "Everything in Pro, plus scripted UGC video and hands-on growth planning.",
     message: price3Card,
+    gradient: "linear-gradient(160deg,#16161A,#2F5CFF)",
     features: [
       "Everything in Pro, plus:",
       "4 scripted UGC-style videos/month",

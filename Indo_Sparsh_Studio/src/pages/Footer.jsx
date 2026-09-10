@@ -138,21 +138,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="footer-review">
-            <p>
-              <span>4.7</span> from <span>90+</span> reviews
-            </p>
-            <div className="google-review">
-              <img src="/images/google.svg" alt="" />
-              <div className="review-star">
-                <img src="/images/star.svg" alt="star" />
-                <img src="/images/star.svg" alt="star" />
-                <img src="/images/star.svg" alt="star" />
-                <img src="/images/star.svg" alt="star" />
-                <img src="/images/star.svg" alt="star" />
-              </div>
-            </div>
-          </div>
+         
           <div className="more-detail-sd">
             <div className="time-card">
               <div className="time-content">

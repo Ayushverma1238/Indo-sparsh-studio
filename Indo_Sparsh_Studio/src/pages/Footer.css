@@ -120,6 +120,8 @@
 
 .footer-heading-website img {
   height: 44px;
+  border: 2px solid #4b4b4e;
+  border-radius: 50%;
   width: auto;
 }
 
@@ -285,142 +287,7 @@
   letter-spacing: 0.3px;
 }
 
-.footer-review {
-  display: flex;
-  align-items: center;
-  gap: 22px;
 
-  margin-top: 30px;
-  padding: 18px 24px;
-
-  width: fit-content;
-
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-
-  transition: all .4s ease;
-
-  animation: reviewFloat 4s ease-in-out infinite;
-}
-
-@media (max-width:500px) {
-  .footer-review{
-    flex-direction: column;
-    gap: 8px;
-  }
-}
-
-.footer-review:hover {
-  transform: translateY(-6px) scale(1.02);
-
-  box-shadow:
-    0 15px 35px rgba(34,211,238,.15),
-    0 0 25px rgba(168,85,247,.12);
-}
-
-.footer-review p {
-  color: rgba(255,255,255,.8);
-  font-size: 15px;
-  margin: 0;
-}
-
-.footer-review p span {
-  font-size: 22px;
-  font-weight: 700;
-
-  background: linear-gradient(
-    90deg,
-    #22d3ee,
-    #a855f7,
-    #22d3ee
-  );
-  background-size: 250%;
-
-  /* Standard property */
-  background-clip: text;
-
-  /* WebKit support */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* Fallback */
-  color: transparent;
-
-  animation: gradientMove 3s linear infinite;
-}
-
-.google-review {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.google-review > img {
-  width: 38px;
-  height: 38px;
-
-  transition: transform .4s ease;
-}
-
-.footer-review:hover .google-review > img {
-  transform: rotate(15deg) scale(1.1);
-}
-
-.review-star {
-  display: flex;
-  gap: 6px;
-}
-
-.review-star img {
-  width: 14px;
-  height: 14px;
-
-  animation: starTwinkle 1.8s ease-in-out infinite;
-}
-
-.review-star img:nth-child(1){animation-delay:0s;}
-.review-star img:nth-child(2){animation-delay:.2s;}
-.review-star img:nth-child(3){animation-delay:.4s;}
-.review-star img:nth-child(4){animation-delay:.6s;}
-.review-star img:nth-child(5){animation-delay:.8s;}
-
-@keyframes reviewFloat{
-  0%,100%{
-    transform: translateY(0);
-  }
-  50%{
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes gradientMove{
-  from{
-    background-position:0%;
-  }
-  to{
-    background-position:250%;
-  }
-}
-
-@keyframes starTwinkle{
-  0%,100%{
-    transform: scale(1);
-    opacity:.8;
-    filter: brightness(1);
-  }
-
-  50%{
-    transform: scale(1.25);
-    opacity:1;
-
-    filter:
-      brightness(1.6)
-      drop-shadow(0 0 8px #FFD700)
-      drop-shadow(0 0 15px #FFD700);
-  }
-}
 /* copyright */
 .copyright {
   display: flex;

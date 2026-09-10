@@ -166,17 +166,12 @@ export default function WebAppBuildStory() {
           Process Document — Web Application Build
         </p>
 
-        <h1 className="wa-title" aria-label="How we build a web application">
-          {["How", "we", "build", "a", "web", "app"].map((w, i) => (
-            <span
-              className="wa-word"
-              style={{ animationDelay: `${0.12 + i * 0.08}s` }}
-              key={i}
-            >
-              {w}
-            </span>
-          ))}
-        </h1>
+        <h1 className="wa-hero__headline">
+            <span className="wa-word wa-word--a">How</span>{" "}
+            <span className="wa-word wa-word--b">we build,</span>{" "}
+            <span className="wa-word wa-word--c">a</span>{" "}
+            <span className="wa-word wa-word--d">web app.</span>{" "}
+          </h1>
 
         <p className="wa-subtitle js-reveal">
           Not a UI wrapped around an idea — a system drawn from the data up,

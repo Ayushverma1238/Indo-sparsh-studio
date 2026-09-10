@@ -64,7 +64,12 @@ const ContentHub = () => {
       <header className="hub-header">
         <div className="hub-title-block">
           <span className="hub-badge">Production Deck</span>
-          <h2>Studio Asset Pipeline</h2>
+          <h1 className="hub-hero__headline">
+            {/* <span className="hub-word hub-word--a">Every</span> */}
+            <span className="hub-word hub-word--b">Studio</span>{" "}
+            <span className="hub-word hub-word--c">Asset</span>{" "}
+            <span className="hub-word hub-word--d">Pipeline</span>{" "}
+          </h1>
           <p>Monitor system ingestion, timelines, rendering buffers, and post-production lifecycles.</p>
         </div>
 
