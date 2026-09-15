@@ -10,6 +10,7 @@
   --coral: var(--color-accent);
   --yellow: var(--color-accent-2);
   --blue: var(--color-primary);
+  --unit: 8px;
 }
 
 /* Dark Mode Palette */
@@ -53,11 +54,10 @@ body.light-mode {
   transition: var(--transition-smooth);
   overflow-x: hidden;
   position: relative;
-  padding-bottom: 80px;
 }
 
 .container {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -89,36 +89,16 @@ body.light-mode {
   color: var(--primary-accent);
 }
 
-.theme-toggle-btn {
-  background: transparent;
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition-smooth);
-}
-
-.theme-toggle-btn:hover {
-  background: var(--bg-surface-hover);
-  transform: rotate(15deg);
-}
-
-.theme-toggle-btn svg {
-  width: 20px;
-  height: 20px;
-}
-
 /* ==========================================================================
    4. HERO SECTION WITH BACKGROUND GLOW
    ========================================================================== */
-.hero-section {
+section{
+ padding: calc(var(--unit) * 8) calc(var(--unit) * 8);
+
+}
+ .hero-section {
   position: relative;
-  padding: 120px 0 80px 0;
-  text-align: center;
+  text-align: left;
 }
 
 .hero-bg-glow {
@@ -151,7 +131,7 @@ body.light-mode {
   font-size: 1.25rem;
   color: var(--text-secondary);
   max-width: 680px;
-  margin: 0 auto 40px auto;
+  margin: 0 0 40px 0;
   line-height: 1.6;
 }
 
@@ -159,14 +139,14 @@ body.light-mode {
 .hero-cta-group {
   display: flex;
   gap: 16px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .btn {
   font-size: 1rem;
   font-weight: 600;
   padding: 14px 28px;
-  border-radius: var(--border-radius-sm);
+  border-radius: 10px;
   cursor: pointer;
   transition: var(--transition-smooth);
 }
@@ -195,7 +175,6 @@ body.light-mode {
    5. STATS SECTION
    ========================================================================== */
 .stats-section {
-  padding: 60px 0;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   background: rgba(255, 255, 255, 0.01);
@@ -226,9 +205,6 @@ body.light-mode {
 /* ==========================================================================
    6. INTERACTIVE TABS & PROCESS
    ========================================================================== */
-.tabs-section {
-  padding: 100px 0;
-}
 
 .tabs-header {
   display: flex;
@@ -246,7 +222,7 @@ body.light-mode {
 .tab-buttons {
   background: var(--bg-surface);
   padding: 6px;
-  border-radius: var(--border-radius-sm);
+  border-radius: 10px;
   border: 1px solid var(--border-color);
   display: flex;
 }
@@ -330,7 +306,7 @@ body.light-mode {
 .tool-tag {
   background: var(--bg-main);
   padding: 16px 32px;
-  border-radius: var(--border-radius-sm);
+  border-radius: 10px;
   font-weight: 600;
   border: 1px solid var(--border-color);
   transition: var(--transition-smooth);
@@ -345,9 +321,6 @@ body.light-mode {
 /* ==========================================================================
    7. PORTFOLIO SHOWCASE
    ========================================================================== */
-.portfolio-section {
-  padding: 60px 0 100px 0;
-}
 
 .section-title-area {
   margin-bottom: 48px;
@@ -437,9 +410,7 @@ body.light-mode {
 /* ==========================================================================
    8. FOOTER CTA CALLOUT
    ========================================================================== */
-.footer-cta-section {
-  padding: 40px 0;
-}
+
 
 .cta-box {
   background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
@@ -561,9 +532,7 @@ body.light-mode {
   transform: translateY(40px);
   animation: ui-word-in 0.7s var(--ease) forwards;
 }
-.ui-word + .ui-word {
-  margin-left: 0.28em;
-}
+
 .ui-word--a {
   animation-delay: 0.1s;
 }
@@ -601,4 +570,11 @@ body.light-mode {
     transform: none;
     animation: none;
   }
+}
+
+@media (max-width:700px) {
+    section{
+ padding: calc(var(--unit) * 8) calc(var(--unit) * 3);
+
+}
 }

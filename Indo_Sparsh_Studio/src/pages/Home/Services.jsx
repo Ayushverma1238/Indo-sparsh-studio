@@ -64,7 +64,6 @@ const HomeServices = () => {
               className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
-                color: "white",
                 marginTop: "auto",
               }}
               onClick={() => {
@@ -102,7 +101,6 @@ const HomeServices = () => {
               className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
-                color: "white",
                 marginTop: "auto",
               }}
               onClick={() => {
@@ -137,10 +135,9 @@ const HomeServices = () => {
               Android Apps, iOS Apps, Cross-Platform Solutions etc.
             </p>
             <button
-              className="main-btn-primary"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
-                color: "white",
                 marginTop: "auto",
               }}
               onClick={() => {
@@ -166,7 +163,7 @@ const HomeServices = () => {
                 <span></span>
               </div>
             </div>
-            <h3>Digital Marketing Services</h3>
+            <h3>Digital Marketing</h3>
             <p
               style={{
                 marginBottom: "20px",
@@ -176,10 +173,9 @@ const HomeServices = () => {
               Ads, SEO etc.
             </p>
             <button
-              className="main-btn-primary"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
-                color: "white",
                 marginTop: "auto",
               }}
               onClick={() => {
@@ -214,10 +210,9 @@ const HomeServices = () => {
               Content Planning, Post Design, Scheduling, Engagement Growth etc.
             </p>
             <button
-              className="main-btn-primary"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
-                color: "white",
                 marginTop: "auto",
               }}
               onClick={() => {
@@ -253,10 +248,9 @@ const HomeServices = () => {
               Interfaces etc.
             </p>
             <button
-              className="main-btn-primary"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
-                color: "white",
                 marginTop: "auto",
               }}
               onClick={() => {
@@ -292,10 +286,9 @@ const HomeServices = () => {
               Branding Materials etc.
             </p>
             <button
-              className="main-btn-primary"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
-                color: "white",
                 marginTop: "auto",
               }}
               onClick={() => {
@@ -330,10 +323,9 @@ const HomeServices = () => {
               Brand Strategy, Brand Identity, Online & Offline Marketing etc.
             </p>
             <button
-              className="main-btn-primary"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
-                color: "white",
                 marginTop: "auto",
               }}
               onClick={() => {
@@ -368,10 +360,9 @@ const HomeServices = () => {
               Verified Business Leads, Industry-Specific Data etc.
             </p>
             <button
-              className="main-btn-primary"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
-                color: "white",
                 marginTop: "auto",
               }}
               onClick={() => {
@@ -406,10 +397,9 @@ const HomeServices = () => {
               Promotional Videos, Reels & Shorts, Corporate Videos etc.
             </p>
             <button
-              className="main-btn-primary"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
-                color: "white",
                 marginTop: "auto",
               }}
               onClick={() => {
@@ -445,10 +435,9 @@ const HomeServices = () => {
             </p>
 
             <button
-              className="main-btn-primary"
+              className="main-service-btn-primary"
               style={{
                 padding: "10px 30px",
-                color: "white",
                 marginTop: "auto",
               }}
               onClick={() => {

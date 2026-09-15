@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./TechStack.css";
 import ScrollBeam from "../../../ScrollBeam";
+import SEO from "../../../../utils/seo";
 
 // ---- Your services list ----
 export const services = [
@@ -345,83 +346,90 @@ function ServiceStackCard({ service, data, index }) {
 }
 
 export default function TechStackPage() {
-  useEffect(() => {
-    document.title = "Tech Stack | Indo Sparsh Studio";
-  }, []);
   const [activeService, setActiveService] = useState("All");
 
   const visibleServices = activeService === "All" ? services : [activeService];
 
   return (
-    <div className="tech-root">
-      <div className="tech-glow" aria-hidden="true" />
+    <>
+      <SEO
+        title="Tech Stack | Indo Sparsh Studio"
+        description="Explore the modern technologies and tools used by Indo Sparsh Studio to build high-performance websites, web applications, mobile apps and digital solutions."
+        keywords="Indo Sparsh Studio tech stack, technology stack, web development technologies, web application technologies, mobile app technologies, frontend technologies, backend technologies, modern web technologies"
+      />
+      <div className="tech-root">
+        <div className="tech-glow" aria-hidden="true" />
 
-      <main className="tech-main">
-        <section className="tech-hero">
-          <span className="tech-eyebrow">Our Toolkit</span>
-          <h1 className="tech-title">
-            The tech stack{" "}
-            <span className="tech-title-accent">behind the work.</span>
-          </h1>
-          <p className="tech-subtitle">
-            Every service we offer is backed by tried-and-tested tools — chosen
-            for speed, reliability and long-term maintainability.
-          </p>
-        </section>
-        <ScrollBeam />
+        <main className="tech-main">
+          <section className="tech-hero">
+            <span className="tech-eyebrow">Our Toolkit</span>
+            <h1 className="tech-title">
+              The tech stack{" "}
+              <span className="tech-title-accent">behind the work.</span>
+            </h1>
+            <p className="tech-subtitle">
+              Every service we offer is backed by tried-and-tested tools —
+              chosen for speed, reliability and long-term maintainability.
+            </p>
+          </section>
+          <ScrollBeam />
 
-        <div className="tech-marquee" aria-hidden="true">
-          <div className="tech-marquee-track">
-            {[...marqueeTools, ...marqueeTools].map((tool, i) => (
-              <span className="tech-marquee-item why-card" key={`${tool}-${i}`}>
-                {tool}
-              </span>
-            ))}
+          <div className="tech-marquee" aria-hidden="true">
+            <div className="tech-marquee-track">
+              {[...marqueeTools, ...marqueeTools].map((tool, i) => (
+                <span
+                  className="tech-marquee-item why-card"
+                  key={`${tool}-${i}`}
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <nav className="tech-filter" aria-label="Filter by service">
-          <button
-            className={`tech-filter-btn ${activeService === "All" ? "is-active" : ""}`}
-            onClick={() => setActiveService("All")}
-          >
-            All Services
-          </button>
-          {services.map((s) => (
+          <nav className="tech-filter" aria-label="Filter by service">
             <button
-              key={s}
-              className={`tech-filter-btn why-card ${activeService === s ? "is-active" : ""}`}
-              onClick={() => setActiveService(s)}
+              className={`tech-filter-btn ${activeService === "All" ? "is-active" : ""}`}
+              onClick={() => setActiveService("All")}
             >
-              {s}
+              All Services
             </button>
-          ))}
-        </nav>
+            {services.map((s) => (
+              <button
+                key={s}
+                className={`tech-filter-btn why-card ${activeService === s ? "is-active" : ""}`}
+                onClick={() => setActiveService(s)}
+              >
+                {s}
+              </button>
+            ))}
+          </nav>
 
-        <section className="tech-grid">
-          {visibleServices.map((service, i) => (
-            <ServiceStackCard
-              service={service}
-              data={techStackData[service]}
-              index={i}
-              key={service}
-            />
-          ))}
-        </section>
-        <ScrollBeam />
+          <section className="tech-grid">
+            {visibleServices.map((service, i) => (
+              <ServiceStackCard
+                service={service}
+                data={techStackData[service]}
+                index={i}
+                key={service}
+              />
+            ))}
+          </section>
+          <ScrollBeam />
 
-        <section className="tech-cta why-card">
-          <h2>Don't see a tool you use?</h2>
-          <p>
-            We're always adding new tools to our workflow — ask us what fits
-            your project best.
-          </p>
-          <a className="tech-cta-btn" href="mailto:hello@sparshstudio.com">
-            Talk to us
-            <span className="tech-cta-arrow">→</span>
-          </a>
-        </section>
-      </main>
-    </div>
+          <section className="tech-cta why-card">
+            <h2>Don't see a tool you use?</h2>
+            <p>
+              We're always adding new tools to our workflow — ask us what fits
+              your project best.
+            </p>
+            <a className="tech-cta-btn" href="https://wa.me/918005351770" target="_blank">
+              Talk to us
+              <span className="tech-cta-arrow">→</span>
+            </a>
+          </section>
+        </main>
+      </div>
+    </>
   );
 }

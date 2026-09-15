@@ -143,7 +143,7 @@ export const pricingPlans = [
       "Audience research",
     ],
     button: "Choose Pro",
-    badge: "Most Recommended",
+    badge: "MOST RECOMMENDED",
   },
   {
     id: 3,

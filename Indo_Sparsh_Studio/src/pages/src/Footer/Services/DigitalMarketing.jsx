@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import "./DigitalMarketing.css";
 import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
-import "../../../Services.css"
+import "../../../Services.css";
+import SEO from "../../../../utils/seo";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -35,7 +36,6 @@ function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
     </Tag>
   );
 }
-
 
 /* ---------- data (sourced from the Digital Marketing service sheet) ---------- */
 const CONTACT = {
@@ -112,15 +112,51 @@ const planFootnote =
 
 /* Standalone services, shown in the capabilities grid */
 const capabilities = [
-  { title: "SEO Services", text: "On-page + local SEO, keyword research, monthly report.", price: "From ₹6,999/mo" },
-  { title: "Email Marketing", text: "4 campaigns/month, list segmentation, performance report.", price: "₹2,999/mo" },
-  { title: "WhatsApp Marketing", text: "Broadcast setup & campaign management.", price: "₹2,499/mo" },
-  { title: "SMS Marketing", text: "Campaign setup & scheduling.", price: "₹1,999/mo" },
-  { title: "Meta Ads Management", text: "Facebook + Instagram setup, creative guidance, optimization.", price: "₹5,999/mo" },
-  { title: "Google Ads Management", text: "Search campaign setup, keyword research, conversion tracking.", price: "₹7,999/mo" },
-  { title: "Telegram Ads", text: "Channel/ad setup & promotion strategy.", price: "₹3,999/mo" },
-  { title: "UGC Ads", text: "4 scripted UGC-style ad creatives/month.", price: "₹7,999/mo" },
-  { title: "Performance Marketing", text: "CRO, landing page testing, full-funnel attribution.", price: "₹9,999/mo" },
+  {
+    title: "SEO Services",
+    text: "On-page + local SEO, keyword research, monthly report.",
+    price: "From ₹6,999/mo",
+  },
+  {
+    title: "Email Marketing",
+    text: "4 campaigns/month, list segmentation, performance report.",
+    price: "₹2,999/mo",
+  },
+  {
+    title: "WhatsApp Marketing",
+    text: "Broadcast setup & campaign management.",
+    price: "₹2,499/mo",
+  },
+  {
+    title: "SMS Marketing",
+    text: "Campaign setup & scheduling.",
+    price: "₹1,999/mo",
+  },
+  {
+    title: "Meta Ads Management",
+    text: "Facebook + Instagram setup, creative guidance, optimization.",
+    price: "₹5,999/mo",
+  },
+  {
+    title: "Google Ads Management",
+    text: "Search campaign setup, keyword research, conversion tracking.",
+    price: "₹7,999/mo",
+  },
+  {
+    title: "Telegram Ads",
+    text: "Channel/ad setup & promotion strategy.",
+    price: "₹3,999/mo",
+  },
+  {
+    title: "UGC Ads",
+    text: "4 scripted UGC-style ad creatives/month.",
+    price: "₹7,999/mo",
+  },
+  {
+    title: "Performance Marketing",
+    text: "CRO, landing page testing, full-funnel attribution.",
+    price: "₹9,999/mo",
+  },
 ];
 
 /* Three ways to work with the studio — reuses the "process" rhythm */
@@ -149,12 +185,36 @@ const process = [
 
 /* Per-campaign, one-off pricing table */
 const campaignPricing = [
-  { name: "Meta Ads", includes: "Strategy, 1 ad creative set, setup & launch", price: "₹1,999" },
-  { name: "Google Ads", includes: "Strategy, keyword research, setup & launch", price: "₹2,499" },
-  { name: "Telegram Ads", includes: "Channel/ad setup, one promotional push", price: "₹1,499" },
-  { name: "WhatsApp Marketing", includes: "Broadcast setup & send, one campaign", price: "₹1,499" },
-  { name: "SMS Marketing", includes: "Campaign setup & send, one blast", price: "₹999" },
-  { name: "Email Marketing", includes: "Copy, design & send, one campaign", price: "₹999" },
+  {
+    name: "Meta Ads",
+    includes: "Strategy, 1 ad creative set, setup & launch",
+    price: "₹1,999",
+  },
+  {
+    name: "Google Ads",
+    includes: "Strategy, keyword research, setup & launch",
+    price: "₹2,499",
+  },
+  {
+    name: "Telegram Ads",
+    includes: "Channel/ad setup, one promotional push",
+    price: "₹1,499",
+  },
+  {
+    name: "WhatsApp Marketing",
+    includes: "Broadcast setup & send, one campaign",
+    price: "₹1,499",
+  },
+  {
+    name: "SMS Marketing",
+    includes: "Campaign setup & send, one blast",
+    price: "₹999",
+  },
+  {
+    name: "Email Marketing",
+    includes: "Copy, design & send, one campaign",
+    price: "₹999",
+  },
 ];
 
 const addOns = [
@@ -164,188 +224,196 @@ const addOns = [
   { name: "Landing Page Design", price: "₹4,999" },
 ];
 
-
 export default function DigitalMarketingPage() {
-
-  useEffect(() => {
-    document.title = "Digital Marketing | Indo Sparsh Studio";
-  }, []);
-
- 
-
   return (
-    <div className="dm">
-     
+    <>
+      <SEO
+        title="Digital Marketing Services | Indo Sparsh Studio"
+        description="Grow your business online with Indo Sparsh Studio's digital marketing services, including SEO, social media marketing, online advertising, content marketing and performance-driven digital strategies."
+        keywords="digital marketing services, digital marketing agency, SEO services, social media marketing, online advertising, content marketing, digital strategy, business growth, Indo Sparsh Studio"
+      />
+      <div className="dm">
+        {/* ---------- Hero ---------- */}
+        <section className="dm-hero">
+          <span className="dm-shape dm-shape--circle" aria-hidden="true" />
+          <span className="dm-shape dm-shape--square" aria-hidden="true" />
+          <span className="dm-shape dm-shape--triangle" aria-hidden="true" />
 
-      {/* ---------- Hero ---------- */}
-      <section className="dm-hero">
-        <span className="dm-shape dm-shape--circle" aria-hidden="true" />
-        <span className="dm-shape dm-shape--square" aria-hidden="true" />
-        <span className="dm-shape dm-shape--triangle" aria-hidden="true" />
-
-        <div className="dm-hero__inner">
-          <span className="dm-eyebrow">Digital Marketing</span>
-          <h1 className="dm-hero__headline">
-            <span className="dm-word dm-word--a">Every</span>
-            <span className="dm-word dm-word--b">channel.</span>
-            <br />
-            <span className="dm-word dm-word--c">One</span>
-            <span className="dm-word dm-word--d">strategy.</span>
-          </h1>
-          <p className="dm-hero__subtext">
-            Scattered marketing — a boosted post here, a random SMS blast there — doesn't compound.
-            We run your SEO, ads, and messaging as one coordinated system, so every channel feeds
-            the next and every rupee spent is tracked back to a result.
-          </p>
-          <div className="dm-hero__cta-row">
-            <a href="#plans" className="dm-btn dm-btn--primary">
-              View plans
-            </a>
-            <a href={CONTACT.phoneHref} className="dm-btn dm-btn--ghost">
-              Talk to us
-            </a>
+          <div className="dm-hero__inner">
+            <span className="dm-eyebrow">Digital Marketing</span>
+            <h1 className="dm-hero__headline">
+              <span className="dm-word dm-word--a">Every</span>
+              <span className="dm-word dm-word--b">channel.</span>
+              <br />
+              <span className="dm-word dm-word--c">One</span>
+              <span className="dm-word dm-word--d">strategy.</span>
+            </h1>
+            <p className="dm-hero__subtext">
+              Scattered marketing — a boosted post here, a random SMS blast
+              there — doesn't compound. We run your SEO, ads, and messaging as
+              one coordinated system, so every channel feeds the next and every
+              rupee spent is tracked back to a result.
+            </p>
+            <div className="dm-hero__cta-row">
+              <a href="#plans" className="dm-btn dm-btn--primary">
+                View plans
+              </a>
+              <a href="https://wa.me/918005351770" target="_blank" className="dm-btn dm-btn--ghost">
+                Talk to us
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
-      <ScrollBeam />
+        </section>
+        <ScrollBeam />
 
-      {/* ---------- Channels marquee ---------- */}
-      <div className="dm-marquee">
-        <div className="dm-marquee__track">
-          {[...channels, ...channels].map((t, i) => (
-            <span className="dm-marquee__item" key={i}>
-              {t}
-            </span>
-          ))}
-        </div>
-      </div>
-      <ScrollBeam />
-
-      {/* ---------- Plans masonry ---------- */}
-      <section className="dm-section" id="plans">
-        <Reveal className="dm-section__head">
-          <span className="dm-kicker">Choose your plan</span>
-          <h2 className="dm-h2">Bundled packages, built to compound</h2>
-          <p className="dm-lead">
-            Not more noise. More pipeline. Every plan runs SEO, ads, and messaging together.
-          </p>
-        </Reveal>
-
-        <div className="dm-masonry">
-          {plans.map((plan, i) => (
-            <Reveal
-              key={plan.title}
-              delay={i * 70}
-              className={`dm-piece dm-piece--${plan.size} ${plan.recommended ? "dm-piece--recommended" : ""}`}
-            >
-              {plan.recommended && <span className="dm-piece__badge">Most Recommended</span>}
-              <div className="dm-piece__media" style={{ background: plan.gradient }}>
-                <span className="dm-piece__category">{plan.category}</span>
-                <span className="dm-piece__price">
-                  ₹{plan.price}
-                  <small>/month</small>
-                </span>
-              </div>
-              <h3 className="dm-piece__title">{plan.title}</h3>
-              <ul className="dm-piece__features">
-                {plan.features.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
-              </ul>
-            </Reveal>
-          ))}
-        </div>
-        <p className="dm-footnote">{planFootnote}</p>
-      </section>
-      <ScrollBeam />
-
-      {/* ---------- How to work with us ---------- */}
-      <section className="dm-section dm-section--muted">
-        <Reveal className="dm-section__head">
-          <span className="dm-kicker">How it works</span>
-          <h2 className="dm-h2">Four ways to get started</h2>
-        </Reveal>
-        <div className="dm-process">
-          <div className="dm-process__line" aria-hidden="true" />
-          {process.map((p, i) => (
-            <Reveal key={p.step} delay={i * 100} className="dm-process__item">
-              <span className="dm-process__step">{p.step}</span>
-              <h3 className="dm-process__title">{p.title}</h3>
-              <p className="dm-process__text">{p.text}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-      <ScrollBeam />
-
-      {/* ---------- Standalone services ---------- */}
-      <section className="dm-section" id="services">
-        <Reveal className="dm-section__head">
-          <span className="dm-kicker">Prefer just one service?</span>
-          <h2 className="dm-h2">Every channel, available on its own</h2>
-          <p className="dm-lead">No bundle required — pick exactly what you need.</p>
-        </Reveal>
-        <div className="dm-grid">
-          {capabilities.map((c, i) => (
-            <Reveal key={c.title} delay={i * 60} className="dm-card why-card">
-              <div className="dm-card__top">
-                <h3 className="dm-card__title">{c.title}</h3>
-                <span className="dm-card__price">{c.price}</span>
-              </div>
-              <p className="dm-card__text">{c.text}</p>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal className="dm-addons" delay={80}>
-          <span className="dm-addons__label">Optional add-ons</span>
-          <div className="dm-addons__list">
-            {addOns.map((a) => (
-              <span className="dm-chip" key={a.name}>
-                {a.name} <b>{a.price}</b>
+        {/* ---------- Channels marquee ---------- */}
+        <div className="dm-marquee">
+          <div className="dm-marquee__track">
+            {[...channels, ...channels].map((t, i) => (
+              <span className="dm-marquee__item" key={i}>
+                {t}
               </span>
             ))}
           </div>
-        </Reveal>
-      </section>
-      <ScrollBeam />
+        </div>
+        <ScrollBeam />
 
-      {/* ---------- Per-campaign pricing ---------- */}
-      <section className="dm-section dm-section--muted">
-        <Reveal className="dm-section__head">
-          <span className="dm-kicker">No retainer needed</span>
-          <h2 className="dm-h2">Per-campaign pricing</h2>
-          <p className="dm-lead">
-            For a festival sale, a product launch, or a single event — pay per campaign instead.
-          </p>
-        </Reveal>
-        <Reveal className="dm-table-wrap">
-          <table className="dm-table">
-            <thead>
-              <tr>
-                <th>Service</th>
-                <th>What's included</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              {campaignPricing.map((row) => (
-                <tr key={row.name}>
-                  <td data-label="Service">{row.name}</td>
-                  <td data-label="What's included">{row.includes}</td>
-                  <td data-label="Price" className="dm-table-price">
-                    {row.price}
-                  </td>
-                </tr>
+        {/* ---------- Plans masonry ---------- */}
+        <section className="dm-section" id="plans">
+          <Reveal className="dm-section__head">
+            <span className="dm-kicker">Choose your plan</span>
+            <h2 className="dm-h2">Bundled packages, built to compound</h2>
+            <p className="dm-lead">
+              Not more noise. More pipeline. Every plan runs SEO, ads, and
+              messaging together.
+            </p>
+          </Reveal>
+
+          <div className="dm-masonry">
+            {plans.map((plan, i) => (
+              <Reveal
+                key={plan.title}
+                delay={i * 70}
+                className={`dm-piece dm-piece--${plan.size} ${plan.recommended ? "dm-piece--recommended" : ""}`}
+              >
+                {plan.recommended && (
+                  <span className="dm-piece__badge">MOST RECOMMENDED</span>
+                )}
+                <div
+                  className="dm-piece__media"
+                  style={{ background: plan.gradient }}
+                >
+                  <span className="dm-piece__category">{plan.category}</span>
+                  <span className="dm-piece__price">
+                    ₹{plan.price}
+                    <small>/month</small>
+                  </span>
+                </div>
+                <h3 className="dm-piece__title">{plan.title}</h3>
+                <ul className="dm-piece__features">
+                  {plan.features.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
+          </div>
+          <p className="dm-footnote">{planFootnote}</p>
+        </section>
+        <ScrollBeam />
+
+        {/* ---------- How to work with us ---------- */}
+        <section className="dm-section dm-section--muted">
+          <Reveal className="dm-section__head">
+            <span className="dm-kicker">How it works</span>
+            <h2 className="dm-h2">Four ways to get started</h2>
+          </Reveal>
+          <div className="dm-process">
+            <div className="dm-process__line" aria-hidden="true" />
+            {process.map((p, i) => (
+              <Reveal key={p.step} delay={i * 100} className="dm-process__item">
+                <span className="dm-process__step">{p.step}</span>
+                <h3 className="dm-process__title">{p.title}</h3>
+                <p className="dm-process__text">{p.text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+        <ScrollBeam />
+
+        {/* ---------- Standalone services ---------- */}
+        <section className="dm-section" id="services">
+          <Reveal className="dm-section__head">
+            <span className="dm-kicker">Prefer just one service?</span>
+            <h2 className="dm-h2">Every channel, available on its own</h2>
+            <p className="dm-lead">
+              No bundle required — pick exactly what you need.
+            </p>
+          </Reveal>
+          <div className="dm-grid">
+            {capabilities.map((c, i) => (
+              <Reveal key={c.title} delay={i * 60} className="dm-card why-card">
+                <div className="dm-card__top">
+                  <h3 className="dm-card__title">{c.title}</h3>
+                  <span className="dm-card__price">{c.price}</span>
+                </div>
+                <p className="dm-card__text">{c.text}</p>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="dm-addons" delay={80}>
+            <span className="dm-addons__label">Optional add-ons</span>
+            <div className="dm-addons__list">
+              {addOns.map((a) => (
+                <span className="dm-chip" key={a.name}>
+                  {a.name} <b>{a.price}</b>
+                </span>
               ))}
-            </tbody>
-          </table>
-        </Reveal>
-        <p className="dm-footnote">
-          Covers strategy, setup & launch only. Add ongoing optimization at ₹999/week — running longer
-          than 3 weeks works out more cost-effective on a monthly plan.
-        </p>
-      </section>
-    </div>
+            </div>
+          </Reveal>
+        </section>
+        <ScrollBeam />
+
+        {/* ---------- Per-campaign pricing ---------- */}
+        <section className="dm-section dm-section--muted">
+          <Reveal className="dm-section__head">
+            <span className="dm-kicker">No retainer needed</span>
+            <h2 className="dm-h2">Per-campaign pricing</h2>
+            <p className="dm-lead">
+              For a festival sale, a product launch, or a single event — pay per
+              campaign instead.
+            </p>
+          </Reveal>
+          <Reveal className="dm-table-wrap">
+            <table className="dm-table">
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>What's included</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {campaignPricing.map((row) => (
+                  <tr key={row.name}>
+                    <td data-label="Service">{row.name}</td>
+                    <td data-label="What's included">{row.includes}</td>
+                    <td data-label="Price" className="dm-table-price">
+                      {row.price}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Reveal>
+          <p className="dm-footnote">
+            Covers strategy, setup & launch only. Add ongoing optimization at
+            ₹999/week — running longer than 3 weeks works out more
+            cost-effective on a monthly plan.
+          </p>
+        </section>
+      </div>
+    </>
   );
 }

@@ -111,7 +111,7 @@ body.dark-mode {
   font-size: 15px;
   font-weight: 600;
   padding: 13px 24px;
-  border-radius: 30px;
+  border-radius: 10px;
   cursor: pointer;
   border: 1px solid transparent;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
@@ -119,6 +119,7 @@ body.dark-mode {
 .appdev-btn--primary {
   background: linear-gradient(120deg, var(--adh-accent), var(--adh-accent-2));
   color: #fff;
+  border: 1px solid #ece1e1;
 }
 .appdev-btn--primary:hover {
   transform: translateY(-3px);

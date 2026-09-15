@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./ModernSlaveryActPage.css";
+import SEO from "../../../../utils/seo";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children, id }) {
@@ -16,7 +17,7 @@ function Reveal({ as: Tag = "div", className = "", delay = 0, children, id }) {
           obs.unobserve(el);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -122,10 +123,6 @@ const sections = [
 ];
 
 export default function ModernSlaveryActPage() {
-  useEffect(() => {
-    document.title = "Modern Slavery Act | Indo Sparsh Studio";
-  }, []);
-
   const [activeId, setActiveId] = useState(sections[0].id);
   const [progress, setProgress] = useState(0);
   const [showTop, setShowTop] = useState(false);
@@ -134,7 +131,8 @@ export default function ModernSlaveryActPage() {
   useEffect(() => {
     const onScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
       setShowTop(scrollTop > 500);
     };
@@ -151,7 +149,7 @@ export default function ModernSlaveryActPage() {
           if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
-      { rootMargin: "-20% 0px -70% 0px", threshold: 0 }
+      { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
     );
     sections.forEach((s) => {
       const el = document.getElementById(s.id);
@@ -161,59 +159,76 @@ export default function ModernSlaveryActPage() {
   }, []);
 
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <div className="msa">
-      <div className="msa__progress" style={{ width: `${progress}%` }} />
+    <>
+      <SEO
+        title="Modern Slavery Act | Indo Sparsh Studio"
+        description="Read the Indo Sparsh Studio Modern Slavery Act statement and learn about our commitment to ethical business practices, responsible sourcing, human rights and preventing modern slavery."
+        keywords="Modern Slavery Act, Indo Sparsh Studio, modern slavery statement, ethical business practices, human rights, responsible sourcing, anti-slavery"
+      />
+      <div className="msa">
+        <div className="msa__progress" style={{ width: `${progress}%` }} />
 
-      {/* ---------- Header ---------- */}
-      <header className="msa-header">
-        <span className="msa-eyebrow">Legal</span>
-        <h1 className="msa-header__title">Modern Slavery Act Statement</h1>
-        <p className="msa-header__meta">Last updated: July 18, 2026</p>
-      </header>
+        {/* ---------- Header ---------- */}
+        <header className="msa-header">
+          <span className="msa-eyebrow">Legal</span>
+          <h1 className="msa-header__title">Modern Slavery Act Statement</h1>
+          <p className="msa-header__meta">Last updated: July 18, 2026</p>
+        </header>
 
-      <div className="msa-layout">
-        {/* ---------- TOC ---------- */}
-        <nav className="msa-toc" aria-label="Table of contents">
-          <span className="msa-toc__label">On this page</span>
-          <ul className="msa-toc__list">
-            {sections.map((s) => (
-              <li key={s.id}>
-                <button
-                  className={`msa-toc__link ${activeId === s.id ? "is-active" : ""}`}
-                  onClick={() => scrollTo(s.id)}
-                >
-                  {s.title}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* ---------- Content ---------- */}
-        <main className="msa-content">
-          {sections.map((s, i) => (
-            <Reveal as="section" id={s.id} key={s.id} delay={i * 40} className="msa-section">
-              <h2 className="msa-section__title">{s.title}</h2>
-              {s.body.map((p, j) => (
-                <p className="msa-section__text" key={j}>{p}</p>
+        <div className="msa-layout">
+          {/* ---------- TOC ---------- */}
+          <nav className="msa-toc" aria-label="Table of contents">
+            <span className="msa-toc__label">On this page</span>
+            <ul className="msa-toc__list">
+              {sections.map((s) => (
+                <li key={s.id}>
+                  <button
+                    className={`msa-toc__link ${activeId === s.id ? "is-active" : ""}`}
+                    onClick={() => scrollTo(s.id)}
+                  >
+                    {s.title}
+                  </button>
+                </li>
               ))}
-            </Reveal>
-          ))}
-        </main>
-      </div>
+            </ul>
+          </nav>
 
-      <button
-        type="button"
-        className={`msa__back-top ${showTop ? "is-visible" : ""}`}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        aria-label="Back to top"
-      >
-        ↑
-      </button>
-    </div>
+          {/* ---------- Content ---------- */}
+          <main className="msa-content">
+            {sections.map((s, i) => (
+              <Reveal
+                as="section"
+                id={s.id}
+                key={s.id}
+                delay={i * 40}
+                className="msa-section"
+              >
+                <h2 className="msa-section__title">{s.title}</h2>
+                {s.body.map((p, j) => (
+                  <p className="msa-section__text" key={j}>
+                    {p}
+                  </p>
+                ))}
+              </Reveal>
+            ))}
+          </main>
+        </div>
+
+        <button
+          type="button"
+          className={`msa__back-top ${showTop ? "is-visible" : ""}`}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Back to top"
+        >
+          ↑
+        </button>
+      </div>
+    </>
   );
 }

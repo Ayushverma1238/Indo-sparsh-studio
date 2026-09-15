@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import "./WebsiteDevelopment.css";
 import ScrollBeam from "../../../ScrollBeam";
 import ProjectDiscuss from "../../../Home/ProjectDiscuss";
+import SEO from "../../../../utils/seo";
 
 /* ---------------------------------------------------------
    Small hook: reveals an element with a class once it enters
@@ -165,12 +166,13 @@ const WEBSITE_TYPES = [
 ];
 
 const WebsiteDevelopment = () => {
-  useEffect(() => {
-    document.title = "Website Development | Indo Sparsh Studio";
-  }, []);
-
   return (
     <>
+      <SEO
+        title="Website Development Services | Indo Sparsh Studio"
+        description="Get professional website development services from Indo Sparsh Studio. We build fast, responsive, secure and user-friendly websites tailored to your business goals and brand."
+        keywords="website development, website development services, web development company, responsive website development, custom website development, business website, professional website design, Indo Sparsh Studio"
+      />
       <a className="skip-link" href="#main">
         Skip to content
       </a>
@@ -607,7 +609,7 @@ const WebsiteDevelopment = () => {
               >
                 <div className="plan-top plan-top__sheet-2">
                   <p className="sheet-no">SHEET 02 / 03</p>
-                  <span className="badge">Most Recommended</span>
+                  <span className="badge">MOST RECOMMENDED</span>
                   <h3>GROWTH</h3>
                   <p className="package-price">₹9,999</p>
                 </div>

@@ -1,3 +1,5 @@
+
+
 .services-section {
   min-height: 100vh;
   padding: 100px 8%;
@@ -555,23 +557,59 @@
 }
 
 
+
 .main-service-btn-primary {
-  padding: 14px 38px;
-  background: linear-gradient(135deg, #22d3ee, #a855f7);
-  border: none;
-  border-radius: 40px;
-  color: black;
+  position: relative;
+
+  padding: 13px 30px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  /* --ascent: #050505;
+  --ascent-2: #050505; */
+  background:
+    linear-gradient(#050505) padding-box,
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #9333ea,
+      #ec4899
+    ) border-box;
+
+  color: #fff;
+
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 1px;
+
   cursor: pointer;
-  box-shadow: 0 0 20px #22d3ee;
-  transition: 0.3s ease;
-  /* margin-top: 20px; */
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    all 0.4s ease;
+
+}
+
+
+body.light-mode .main-service-btn-primary{
+  color: #050505;
+
+  background:
+    linear-gradient(#f5f5f5) padding-box,
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #9333ea,
+      #ec4899
+    ) border-box;
+
 }
 
 .main-service-btn-primary:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 40px #22d3ee;
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 20px rgba(37, 99, 235, 0.25),
+    0 0 30px rgba(236, 72, 153, 0.15);
 }
 
 /* .services-btn {

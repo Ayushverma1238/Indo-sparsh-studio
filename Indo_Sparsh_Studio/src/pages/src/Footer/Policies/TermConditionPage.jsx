@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./TermConditionPage.css";
+import SEO from "../../../../utils/seo";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children, id }) {
@@ -16,7 +17,7 @@ function Reveal({ as: Tag = "div", className = "", delay = 0, children, id }) {
           obs.unobserve(el);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -40,7 +41,7 @@ const sections = [
     id: "acceptance",
     title: "Acceptance of Terms",
     body: [
-      "These Terms & Conditions (\"Terms\") govern your access to and use of [Company Name]'s website and services. By accessing our website or using our services, you agree to be bound by these Terms.",
+      'These Terms & Conditions ("Terms") govern your access to and use of [Company Name]\'s website and services. By accessing our website or using our services, you agree to be bound by these Terms.',
       "If you don't agree to these Terms, please don't use our website or services. We may update these Terms from time to time, and continued use after changes means you accept the revised Terms.",
     ],
   },
@@ -124,7 +125,7 @@ const sections = [
     id: "changes",
     title: "Changes to These Terms",
     body: [
-      "We may revise these Terms at any time. Updates will be posted on this page with a revised \"last modified\" date. We encourage you to review these Terms periodically.",
+      'We may revise these Terms at any time. Updates will be posted on this page with a revised "last modified" date. We encourage you to review these Terms periodically.',
     ],
   },
   {
@@ -137,9 +138,6 @@ const sections = [
 ];
 
 export default function TermsConditionsPage() {
-  useEffect(() => {
-    document.title = "Terms & conditions | Indo Sparsh Studio";
-  }, []);
   const [activeId, setActiveId] = useState(sections[0].id);
   const [progress, setProgress] = useState(0);
   const [showTop, setShowTop] = useState(false);
@@ -148,7 +146,8 @@ export default function TermsConditionsPage() {
   useEffect(() => {
     const onScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
       setShowTop(scrollTop > 500);
     };
@@ -165,7 +164,7 @@ export default function TermsConditionsPage() {
           if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
-      { rootMargin: "-20% 0px -70% 0px", threshold: 0 }
+      { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
     );
     sections.forEach((s) => {
       const el = document.getElementById(s.id);
@@ -175,60 +174,77 @@ export default function TermsConditionsPage() {
   }, []);
 
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <div className="tc">
-      <div className="tc__progress" style={{ width: `${progress}%` }} />
+    <>
+      <SEO
+        title="Terms & Conditions | Indo Sparsh Studio"
+        description="Read the Terms & Conditions of Indo Sparsh Studio to understand the rules, responsibilities, service terms, payments, usage policies and conditions governing our website and services."
+        keywords="Indo Sparsh Studio terms and conditions, terms of service, terms and conditions, service terms, website terms, payment terms, user responsibilities"
+      />
 
+      <div className="tc">
+        <div className="tc__progress" style={{ width: `${progress}%` }} />
 
-      {/* ---------- Header ---------- */}
-      <header className="tc-header">
-        <span className="tc-eyebrow">Legal</span>
-        <h1 className="tc-header__title">Terms &amp; Conditions</h1>
-        <p className="tc-header__meta">Last updated: July 18, 2026</p>
-      </header>
+        {/* ---------- Header ---------- */}
+        <header className="tc-header">
+          <span className="tc-eyebrow">Legal</span>
+          <h1 className="tc-header__title">Terms &amp; Conditions</h1>
+          <p className="tc-header__meta">Last updated: July 18, 2026</p>
+        </header>
 
-      <div className="tc-layout">
-        {/* ---------- TOC ---------- */}
-        <nav className="tc-toc" aria-label="Table of contents">
-          <span className="tc-toc__label">On this page</span>
-          <ul className="tc-toc__list">
-            {sections.map((s) => (
-              <li key={s.id}>
-                <button
-                  className={`tc-toc__link ${activeId === s.id ? "is-active" : ""}`}
-                  onClick={() => scrollTo(s.id)}
-                >
-                  {s.title}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* ---------- Content ---------- */}
-        <main className="tc-content">
-          {sections.map((s, i) => (
-            <Reveal as="section" id={s.id} key={s.id} delay={i * 40} className="tc-section">
-              <h2 className="tc-section__title">{s.title}</h2>
-              {s.body.map((p, j) => (
-                <p className="tc-section__text" key={j}>{p}</p>
+        <div className="tc-layout">
+          {/* ---------- TOC ---------- */}
+          <nav className="tc-toc" aria-label="Table of contents">
+            <span className="tc-toc__label">On this page</span>
+            <ul className="tc-toc__list">
+              {sections.map((s) => (
+                <li key={s.id}>
+                  <button
+                    className={`tc-toc__link ${activeId === s.id ? "is-active" : ""}`}
+                    onClick={() => scrollTo(s.id)}
+                  >
+                    {s.title}
+                  </button>
+                </li>
               ))}
-            </Reveal>
-          ))}
-        </main>
-      </div>
+            </ul>
+          </nav>
 
-      <button
-        type="button"
-        className={`tc__back-top ${showTop ? "is-visible" : ""}`}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        aria-label="Back to top"
-      >
-        ↑
-      </button>
-    </div>
+          {/* ---------- Content ---------- */}
+          <main className="tc-content">
+            {sections.map((s, i) => (
+              <Reveal
+                as="section"
+                id={s.id}
+                key={s.id}
+                delay={i * 40}
+                className="tc-section"
+              >
+                <h2 className="tc-section__title">{s.title}</h2>
+                {s.body.map((p, j) => (
+                  <p className="tc-section__text" key={j}>
+                    {p}
+                  </p>
+                ))}
+              </Reveal>
+            ))}
+          </main>
+        </div>
+
+        <button
+          type="button"
+          className={`tc__back-top ${showTop ? "is-visible" : ""}`}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Back to top"
+        >
+          ↑
+        </button>
+      </div>
+    </>
   );
 }

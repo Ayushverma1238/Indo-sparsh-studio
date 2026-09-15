@@ -55,6 +55,20 @@ body.dark-mode {
   box-sizing: border-box;
 }
 
+/* Global safety net: prevent long unbroken words/links/prices from
+   forcing flex/grid children (cards, rows) wider than their tracks. */
+.smm-page-sm p,
+.smm-page-sm h1,
+.smm-page-sm h2,
+.smm-page-sm h3,
+.smm-page-sm li,
+.smm-page-sm span,
+.smm-page-sm strong,
+.smm-page-sm small {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 .smm-page-sm h1,
 .smm-page-sm h2,
 .smm-page-sm h3 {
@@ -84,6 +98,7 @@ body.dark-mode {
   gap: 48px;
   align-items: center;
   padding-top: clamp(64px, 9vw, 110px);
+  min-width: 0;
 }
 
 .hero-badge-sm {
@@ -100,15 +115,9 @@ body.dark-mode {
   margin-bottom: 18px;
 }
 
-/* .hero-left-sm h1 {
-  font-size: clamp(2.1rem, 4.4vw, 3.2rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  background: linear-gradient(100deg, var(--smm-ink) 40%, var(--smm-accent));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-} */
+.hero-left-sm {
+  min-width: 0;
+}
 .hero-left-sm h3 {
   font-size: 1.15rem;
   font-weight: 600;
@@ -132,6 +141,7 @@ body.dark-mode {
   font-weight: 600;
   font-size: 0.92rem;
   padding: 13px 24px;
+  text-decoration: none;
   border-radius: 10px;
   cursor: pointer;
   border: 1px solid transparent;
@@ -187,6 +197,7 @@ body.dark-mode {
 .hero-right-sm {
   display: flex;
   justify-content: center;
+  min-width: 0;
 }
 .hero-card-sm {
   position: relative;
@@ -196,6 +207,7 @@ body.dark-mode {
   background: linear-gradient(160deg, var(--smm-bg-alt), var(--smm-surface));
   border: 1px solid var(--smm-border);
   box-shadow: 0 24px 60px var(--smm-shadow);
+  overflow: hidden;
 }
 .center-circle-sm {
   position: absolute;
@@ -212,6 +224,8 @@ body.dark-mode {
   justify-content: center;
   color: #fff;
   box-shadow: 0 20px 50px var(--smm-shadow);
+  padding: 12px;
+  text-align: center;
 }
 .center-circle-sm h2 {
   color: #fff;
@@ -276,6 +290,7 @@ body.dark-mode {
   border-radius: 16px;
   padding: 26px 20px;
   text-align: center;
+  min-width: 0;
   transition:
     box-shadow 0.25s ease,
     transform 0.25s ease;
@@ -351,6 +366,7 @@ body.dark-mode {
   border: 1px solid var(--smm-border);
   border-radius: 16px;
   padding: 26px;
+  min-width: 0;
   transition:
     box-shadow 0.25s ease,
     border-color 0.25s ease,
@@ -388,9 +404,10 @@ body.dark-mode {
   background: var(--smm-surface);
   border: 1px solid var(--smm-border);
   border-radius: 20px;
-  /* padding: 30px 26px; */
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  /* overflow: hidden; */
   transition:
     box-shadow 0.3s ease,
     border-color 0.3s ease,
@@ -408,7 +425,19 @@ body.dark-mode {
   position: absolute;
   top: -14px;
   right: 24px;
-  background: linear-gradient(30deg, #000, #3b57f1, #000, #cf0c9f, #000);
+  /* border: 1px solid rgba(59, 130, 246, 0.55); */
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(59, 87, 241, 0.35),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(207, 12, 159, 0.35),
+      transparent 45%
+    ),
+    #000;
   color: #fff;
   font-family: var(--smm-font-display);
   font-size: 0.68rem;
@@ -416,12 +445,17 @@ body.dark-mode {
   letter-spacing: 0.06em;
   padding: 6px 14px;
   border-radius: 999px;
+  max-width: calc(100% - 48px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .price-sm {
   display: flex;
   align-items: baseline;
   gap: 6px;
   margin: 10px 0 6px;
+  flex-wrap: wrap;
 }
 .price-card-sm h3 {
   color: #fff;
@@ -453,10 +487,12 @@ body.dark-mode {
   display: flex;
   align-items: flex-start;
   gap: 8px;
+  min-width: 0;
 }
 .check-sm {
   color: var(--smm-accent-2);
   font-weight: 700;
+  flex-shrink: 0;
 }
 .plan-btn-sm {
   margin-top: auto;
@@ -466,17 +502,66 @@ body.dark-mode {
   color: var(--smm-ink);
   border-color: var(--smm-border);
 }
+
+
 .price-card-sm.active-sm .plan-btn-sm {
-  background: linear-gradient(30deg, #000, #3b57f1, #000, #cf0c9f, #000);
+  padding: 13px 30px;
+
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background: linear-gradient(
+    120deg,
+    #2563eb,
+    #7c3aed,
+    #db2777,
+    #2563eb
+  );
+
+  background-size: 300% 300%;
+
   color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 22px rgba(37, 99, 235, 0.25);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  animation: gradientMove 5s ease infinite;
 }
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .price-card-sm.active-sm .plan-btn-sm:hover {
-  background: linear-gradient(30deg, #3b57f1, #000, #cf0c9f, #000, #3b57f1);
+  transform: translateY(-3px) scale(1.01);
+
+  box-shadow:
+    0 12px 30px rgba(37, 99, 235, 0.35),
+    0 8px 25px rgba(219, 39, 119, 0.2);
 }
-.plan-btn-sm:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 26px var(--smm-shadow);
+
+.price-card-sm.active-sm .plan-btn-sm:active {
+  transform: scale(0.98);
 }
+
+
 
 /* ===========================================================
    ADDONS
@@ -492,6 +577,9 @@ body.dark-mode {
 .addon-row-sm {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px 16px;
   padding: 16px 22px;
 }
 .addon-head-sm {
@@ -511,6 +599,19 @@ body.dark-mode {
 }
 .addon-row-sm strong {
   color: var(--smm-accent);
+}
+/* Let each column shrink instead of forcing overflow, but keep the
+   price/value on the right from wrapping mid-number where avoidable. */
+.addon-head-sm > *,
+.addon-row-sm > * {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.addon-head-sm > *:last-child,
+.addon-row-sm > *:last-child {
+  flex: 0 1 auto;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .pricing-note-sm {
@@ -538,6 +639,7 @@ body.dark-mode {
   border-radius: 16px;
   padding: 24px;
   position: relative;
+  min-width: 0;
 }
 .timeline-number-sm {
   font-family: var(--smm-font-display);
@@ -569,6 +671,7 @@ body.dark-mode {
   border-radius: 16px;
   padding: 24px;
   text-align: center;
+  min-width: 0;
   transition:
     box-shadow 0.25s ease,
     transform 0.25s ease;
@@ -693,6 +796,16 @@ body.dark-mode {
   .theme-toggle-sm {
     top: 12px;
     right: 12px;
+  }
+  .addon-head-sm,
+  .addon-row-sm {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .addon-head-sm > *:last-child,
+  .addon-row-sm > *:last-child {
+    text-align: left;
+    white-space: normal;
   }
 }
 
@@ -943,6 +1056,7 @@ body.dark-mode {
   border-top-right-radius: 20px;
   padding: 20px;
   color: white;
+  min-width: 0;
 }
 
 .plan-bottom-sm {
@@ -950,4 +1064,10 @@ body.dark-mode {
   flex-direction: column;
   gap: 6px;
   padding: 20px 26px;
+  min-width: 0;
+}
+@media (max-width: 600px) {
+  .smm-page-sm {
+    padding: 0 35px;
+  }
 }

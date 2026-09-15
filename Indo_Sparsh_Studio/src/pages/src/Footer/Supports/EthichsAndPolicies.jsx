@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import './EthicsAndPolicies.css'
+import "./EthicsAndPolicies.css";
 import { useNavigate } from "react-router-dom";
+import SEO from "../../../../utils/seo";
 // ---- Edit this content to match your real practices before publishing ----
 const policyData = [
   {
@@ -135,7 +136,10 @@ const policyData = [
 
 function PolicyItem({ h, p, index }) {
   return (
-    <div className="policy-item why-card" style={{ animationDelay: `${index * 60}ms` }}>
+    <div
+      className="policy-item why-card"
+      style={{ animationDelay: `${index * 60}ms` }}
+    >
       <h3 className="policy-item-title">{h}</h3>
       <p className="policy-item-text">{p}</p>
     </div>
@@ -143,78 +147,83 @@ function PolicyItem({ h, p, index }) {
 }
 
 export default function EthicsPolicyPage() {
-  useEffect(() => {
-    document.title = "Ethics and Policy | Indo Sparsh Studio";
-  }, []);
-  const [theme, setTheme] = useState("dark");
   const [activeTab, setActiveTab] = useState(policyData[0].id);
 
-
   const activeGroup = policyData.find((g) => g.id === activeTab);
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
-    <div className="policy-root" data-theme={theme}>
-    
-      <div className="policy-glow" aria-hidden="true" />
+    <>
+      <SEO
+        title="Ethics & Policy | Indo Sparsh Studio"
+        description="Learn about Indo Sparsh Studio's ethics and policies, including our commitment to responsible business practices, transparency, integrity, compliance and professional standards."
+        keywords="Indo Sparsh Studio ethics, ethics policy, company ethics, business ethics, ethical business practices, corporate policies, transparency, compliance, professional standards"
+      />
+      <div className="policy-root" data-theme={theme}>
+        <div className="policy-glow" aria-hidden="true" />
 
-      <main className="policy-main">
-       
+        <main className="policy-main">
+          <section className="policy-hero">
+            <span className="policy-eyebrow">Trust & Transparency</span>
+            <h1 className="policy-title">
+              Ethics <span className="policy-title-accent">& Policies</span>
+            </h1>
+            <p className="policy-subtitle">
+              How we work, how we handle your data, and what you can expect from
+              Sparsh Studio at every stage of a project.
+            </p>
+            <p className="policy-updated">Last updated: July 16, 2026</p>
+          </section>
 
-        <section className="policy-hero">
-          <span className="policy-eyebrow">Trust & Transparency</span>
-          <h1 className="policy-title">
-            Ethics <span className="policy-title-accent">& Policies</span>
-          </h1>
-          <p className="policy-subtitle">
-            How we work, how we handle your data, and what you can expect
-            from Sparsh Studio at every stage of a project.
-          </p>
-          <p className="policy-updated">Last updated: July 16, 2026</p>
-        </section>
-
-        <nav className="policy-tabs" aria-label="Policy sections">
-          {policyData.map((group) => (
-            <button
-              key={group.id}
-              className={`policy-tab ${
-                activeTab === group.id ? "is-active" : ""
-              }`}
-              onClick={() => setActiveTab(group.id)}
-            >
-              {group.label}
-            </button>
-          ))}
-        </nav>
-
-        <section className="policy-panel" key={activeTab}>
-          <p className="policy-panel-intro">{activeGroup.intro}</p>
-          <div className="policy-list">
-            {activeGroup.items.map((item, i) => (
-              <PolicyItem key={item.h} h={item.h} p={item.p} index={i} />
+          <nav className="policy-tabs" aria-label="Policy sections">
+            {policyData.map((group) => (
+              <button
+                key={group.id}
+                className={`policy-tab ${
+                  activeTab === group.id ? "is-active" : ""
+                }`}
+                onClick={() => setActiveTab(group.id)}
+              >
+                {group.label}
+              </button>
             ))}
-          </div>
-        </section>
+          </nav>
 
-        <section className="policy-disclaimer">
-          <span className="policy-disclaimer-icon" aria-hidden="true">!</span>
-          <p>
-            This page is a general starting template, not legal advice.
-            Before publishing it on your live site, have it reviewed by a
-            legal professional so it accurately reflects your business and
-            complies with the laws that apply to you (e.g. India's IT Act
-            and DPDP Act, or GDPR if you serve EU clients).
-          </p>
-        </section>
+          <section className="policy-panel" key={activeTab}>
+            <p className="policy-panel-intro">{activeGroup.intro}</p>
+            <div className="policy-list">
+              {activeGroup.items.map((item, i) => (
+                <PolicyItem key={item.h} h={item.h} p={item.p} index={i} />
+              ))}
+            </div>
+          </section>
 
-        <section className="policy-cta why-card">
-          <h2>Questions about any of this?</h2>
-          <p>Reach out and we'll walk you through it in plain language.</p>
-          <a onClick={()=> navigate('/contact')} className="policy-cta-btn" href="mailto:contact@indosparsh.com">
-            Contact us
-            <span className="policy-cta-arrow">→</span>
-          </a>
-        </section>
-      </main>
-    </div>
+          <section className="policy-disclaimer">
+            <span className="policy-disclaimer-icon" aria-hidden="true">
+              !
+            </span>
+            <p>
+              This page is a general starting template, not legal advice. Before
+              publishing it on your live site, have it reviewed by a legal
+              professional so it accurately reflects your business and complies
+              with the laws that apply to you (e.g. India's IT Act and DPDP Act,
+              or GDPR if you serve EU clients).
+            </p>
+          </section>
+
+          <section className="policy-cta why-card">
+            <h2>Questions about any of this?</h2>
+            <p>Reach out and we'll walk you through it in plain language.</p>
+            <a
+              onClick={() => navigate("/contact")}
+              className="policy-cta-btn"
+              href="mailto:contact@indosparsh.com"
+            >
+              Contact us
+              <span className="policy-cta-arrow">→</span>
+            </a>
+          </section>
+        </main>
+      </div>
+    </>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./RecruitmentPolicyPage.css";
+import SEO from "../../../../utils/seo";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children, id }) {
@@ -16,7 +17,7 @@ function Reveal({ as: Tag = "div", className = "", delay = 0, children, id }) {
           obs.unobserve(el);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -118,7 +119,7 @@ const sections = [
     id: "policy-review",
     title: "Policy Review",
     body: [
-      "This policy is reviewed periodically to ensure it remains consistent with employment law and reflects our current recruitment practices. Updates will be posted on this page with a revised \"last modified\" date.",
+      'This policy is reviewed periodically to ensure it remains consistent with employment law and reflects our current recruitment practices. Updates will be posted on this page with a revised "last modified" date.',
     ],
   },
   {
@@ -131,9 +132,6 @@ const sections = [
 ];
 
 export default function RecruitmentPolicyPage() {
-  useEffect(() => {
-    document.title = "Recruitment Policy | Indo Sparsh Studio";
-  }, []);
   const [activeId, setActiveId] = useState(sections[0].id);
   const [progress, setProgress] = useState(0);
   const [showTop, setShowTop] = useState(false);
@@ -142,7 +140,8 @@ export default function RecruitmentPolicyPage() {
   useEffect(() => {
     const onScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
       setShowTop(scrollTop > 500);
     };
@@ -159,7 +158,7 @@ export default function RecruitmentPolicyPage() {
           if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
-      { rootMargin: "-20% 0px -70% 0px", threshold: 0 }
+      { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
     );
     sections.forEach((s) => {
       const el = document.getElementById(s.id);
@@ -169,60 +168,76 @@ export default function RecruitmentPolicyPage() {
   }, []);
 
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <div className="rcp" >
-      <div className="rcp__progress" style={{ width: `${progress}%` }} />
+    <>
+      <SEO
+        title="Recruitment Policy | Indo Sparsh Studio"
+        description="Read the Recruitment Policy of Indo Sparsh Studio and learn about our approach to fair, transparent and professional recruitment, hiring and employment opportunities."
+        keywords="Indo Sparsh Studio recruitment policy, recruitment policy, hiring policy, careers, employment opportunities, recruitment process, hiring process"
+      />
+      <div className="rcp">
+        <div className="rcp__progress" style={{ width: `${progress}%` }} />
 
-   
-      {/* ---------- Header ---------- */}
-      <header className="rcp-header">
-        <span className="rcp-eyebrow">Legal</span>
-        <h1 className="rcp-header__title">Recruitment Policy</h1>
-        <p className="rcp-header__meta">Last updated: July 18, 2026</p>
-      </header>
+        {/* ---------- Header ---------- */}
+        <header className="rcp-header">
+          <span className="rcp-eyebrow">Legal</span>
+          <h1 className="rcp-header__title">Recruitment Policy</h1>
+          <p className="rcp-header__meta">Last updated: July 18, 2026</p>
+        </header>
 
-      <div className="rcp-layout">
-        {/* ---------- TOC ---------- */}
-        <nav className="rcp-toc" aria-label="Table of contents">
-          <span className="rcp-toc__label">On this page</span>
-          <ul className="rcp-toc__list">
-            {sections.map((s) => (
-              <li key={s.id}>
-                <button
-                  className={`rcp-toc__link ${activeId === s.id ? "is-active" : ""}`}
-                  onClick={() => scrollTo(s.id)}
-                >
-                  {s.title}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* ---------- Content ---------- */}
-        <main className="rcp-content">
-          {sections.map((s, i) => (
-            <Reveal as="section" id={s.id} key={s.id} delay={i * 40} className="rcp-section">
-              <h2 className="rcp-section__title">{s.title}</h2>
-              {s.body.map((p, j) => (
-                <p className="rcp-section__text" key={j}>{p}</p>
+        <div className="rcp-layout">
+          {/* ---------- TOC ---------- */}
+          <nav className="rcp-toc" aria-label="Table of contents">
+            <span className="rcp-toc__label">On this page</span>
+            <ul className="rcp-toc__list">
+              {sections.map((s) => (
+                <li key={s.id}>
+                  <button
+                    className={`rcp-toc__link ${activeId === s.id ? "is-active" : ""}`}
+                    onClick={() => scrollTo(s.id)}
+                  >
+                    {s.title}
+                  </button>
+                </li>
               ))}
-            </Reveal>
-          ))}
-        </main>
-      </div>
+            </ul>
+          </nav>
 
-      <button
-        type="button"
-        className={`rcp__back-top ${showTop ? "is-visible" : ""}`}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        aria-label="Back to top"
-      >
-        ↑
-      </button>
-    </div>
+          {/* ---------- Content ---------- */}
+          <main className="rcp-content">
+            {sections.map((s, i) => (
+              <Reveal
+                as="section"
+                id={s.id}
+                key={s.id}
+                delay={i * 40}
+                className="rcp-section"
+              >
+                <h2 className="rcp-section__title">{s.title}</h2>
+                {s.body.map((p, j) => (
+                  <p className="rcp-section__text" key={j}>
+                    {p}
+                  </p>
+                ))}
+              </Reveal>
+            ))}
+          </main>
+        </div>
+
+        <button
+          type="button"
+          className={`rcp__back-top ${showTop ? "is-visible" : ""}`}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Back to top"
+        >
+          ↑
+        </button>
+      </div>
+    </>
   );
 }

@@ -11,13 +11,16 @@ import {
 } from "react-icons/fa6";
 import TeamMarquee from "./src/About/Teams/TeamDetails";
 import ProjectDiscuss from "./Home/ProjectDiscuss";
+import SEO from "../utils/seo";
 
 export default function About() {
-  useEffect(() => {
-    document.title = "About | Indo Sparsh Studio";
-  }, []);
   return (
     <>
+      <SEO
+        title="About Us | Indo Sparsh Studio"
+        description="Learn about Indo Sparsh Studio and our mission to provide web development, digital marketing, branding, design and business solutions."
+        keywords="about Indo Sparsh Studio, web development company, digital marketing, branding, business solutions"
+      />
       <section className="about2">
         {/* HERO SPLIT */}
         <div className="about2-hero">
@@ -179,10 +182,10 @@ export default function About() {
       </section>
 
       <ScrollBeam />
-      <TeamMarquee/>
+      <TeamMarquee />
       <ScrollBeam />
       {/* ================= LET'S GET IN TOUCH ================= */}
-      <ProjectDiscuss/>
+      <ProjectDiscuss />
     </>
   );
 }

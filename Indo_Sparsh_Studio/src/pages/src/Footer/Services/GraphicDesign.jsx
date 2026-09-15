@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
 import "../../../Services.css";
 import ProjectDiscuss from "../../../Home/ProjectDiscuss";
+import SEO from "../../../../utils/seo";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -513,244 +514,247 @@ export default function GraphicDesignPage() {
   const [theme, setTheme] = useState("light");
   const [activeCat, setActiveCat] = useState(0);
 
-  useEffect(() => {
-    document.title = "Graphic Design Services | Indo Sparsh Studio";
-  }, []);
-
   const activeCategory = useMemo(() => categories[activeCat], [activeCat]);
 
   return (
-    <div className="gd">
-      {/* ---------- Theme toggle ---------- */}
+    <>
+      <SEO
+        title="Graphic Design Services | Indo Sparsh Studio"
+        description="Get professional graphic design services from Indo Sparsh Studio, including logos, social media graphics, marketing materials, brand visuals, posters, banners and creative designs for your business."
+        keywords="graphic design services, graphic design company, logo design, social media graphics, marketing design, poster design, banner design, brand design, creative design, Indo Sparsh Studio"
+      />
+      <div className="gd">
+        {/* ---------- Theme toggle ---------- */}
 
-      {/* ---------- Hero ---------- */}
-      <section className="gd-hero">
-        <span className="gd-crop gd-crop--tl" aria-hidden="true" />
-        <span className="gd-crop gd-crop--tr" aria-hidden="true" />
-        <span className="gd-crop gd-crop--bl" aria-hidden="true" />
-        <span className="gd-crop gd-crop--br" aria-hidden="true" />
-        <span className="gd-halftone" aria-hidden="true" />
-        <span className="gd-swatch gd-swatch--c" aria-hidden="true" />
-        <span className="gd-swatch gd-swatch--m" aria-hidden="true" />
-        <span className="gd-swatch gd-swatch--y" aria-hidden="true" />
-
-        <div className="gd-hero__inner">
-          <span className="gd-eyebrow">
-            <RegMark /> Graphic Design Services
-          </span>
-          <h1 className="gd-hero__headline">
-            <span className="gd-word gd-word--b">Every design</span>
-            <span className="gd-word gd-word--a">your</span>
-             
-            <br />
-            <span className="gd-word gd-word--d">business will</span>
-            <span className="gd-word gd-word--c">ever need.</span>
-
-             {/* <span className="gd-headline-accent gd-word gd-word--d"></span> */}
-          </h1>
-          <p className="gd-hero__subtext">
-            From the poster on your shop wall to the menu on your customer's
-            table, every piece of design either builds trust in your business or
-            quietly undermines it. We design everything you put in front of a
-            customer — print or digital — on-brand, print-ready, and delivered
-            fast.
-          </p>
-          <p className="gd-hero__tagline">
-            One design team. Every format. No "we don't do that" ever.
-          </p>
-          <div className="gd-hero__cta-row">
-            <a href="#ratecard" className="gd-btn gd-btn--primary">
-              View rate card
-            </a>
-            <a href={CONTACT.phoneHref} className="gd-btn gd-btn--ghost">
-              Talk to us
-            </a>
-          </div>
-        </div>
-      </section>
-      <ScrollBeam />
-
-      {/* ---------- Tags marquee ---------- */}
-      <div className="gd-marquee">
-        <div className="gd-marquee__track">
-          {[...tags, ...tags].map((t, i) => (
-            <span className="gd-marquee__item" key={i}>
-              {t}
-            </span>
-          ))}
-        </div>
-      </div>
-      <ScrollBeam />
-
-      {/* ---------- Rate card ---------- */}
-      <section className="gd-section" id="ratecard">
-        <Reveal className="gd-section__head">
-          <span className="gd-kicker">Design rate card</span>
-          <h2 className="gd-h2">
-            Design charges only — printing billed separately
-          </h2>
-          <p className="gd-lead">
-            Pick a category, see exactly what's included, know the price
-            upfront.
-          </p>
-        </Reveal>
-
-        <Reveal className="gd-tabs" delay={60}>
-          {categories.map((c, i) => (
-            <button
-              key={c.id}
-              type="button"
-              className={`gd-tab ${activeCat === i ? "is-active" : ""}`}
-              onClick={() => setActiveCat(i)}
-            >
-              <span className="gd-tab__mark">{c.mark}</span>
-              {c.label}
-            </button>
-          ))}
-        </Reveal>
-
-        <div
-          className="gd-table-wrap gd-table-wrap--anim"
-          key={activeCategory.id}
-        >
-          <table className="gd-table">
-            <thead>
-              <tr>
-                <th>Design Type</th>
-                <th>What's Included</th>
-                <th>Design Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              {activeCategory.items.map((row, i) => (
-                <tr key={row.type} style={{ "--row-delay": `${i * 35}ms` }}>
-                  <td data-label="Design Type">{row.type}</td>
-                  <td data-label="What's Included">{row.includes}</td>
-                  <td data-label="Design Price" className="gd-table-price">
-                    {row.price}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <Reveal className="gd-callout" delay={80}>
-          Don't see what you need — exhibition stalls, custom packaging inserts,
-          specialty stationery? If it's a static design, we can make it.{" "}
-          <a href={CONTACT.phoneHref}>Ask for a custom quote →</a>
-        </Reveal>
-      </section>
-      <ScrollBeam />
-
-      {/* ---------- Printing charges ---------- */}
-      <section className="gd-section gd-section--muted">
-        <Reveal className="gd-section__head">
-          <span className="gd-kicker">Printing — billed separately</span>
-          <h2 className="gd-h2">Printing charges, at actual</h2>
-          <p className="gd-lead">
-            Printing depends on quantity, material, size & finish, so it's
-            quoted at actual — keeping your design cost honest whether you print
-            50 pieces or 5,000.
-          </p>
-        </Reveal>
-        <Reveal className="gd-table-wrap" delay={60}>
-          <table className="gd-table gd-table--print">
-            <thead>
-              <tr>
-                <th>Print Category</th>
-                <th>Typical Range</th>
-                <th>Priced By</th>
-              </tr>
-            </thead>
-            <tbody>
-              {printingRates.map((row) => (
-                <tr key={row.category}>
-                  <td data-label="Print Category">
-                    <span className="gd-table-title">{row.category}</span>
-                    <span className="gd-table-note">{row.note}</span>
-                  </td>
-                  <td data-label="Typical Range" className="gd-table-price">
-                    {row.range}/{row.unit}
-                  </td>
-                  <td data-label="Priced By" className="gd-table-note">
-                    {row.basis}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </Reveal>
-        <p className="gd-footnote">
-          We'll confirm exact printing cost once quantity, material & finish are
-          decided — either as part of your order, or you're welcome to take
-          print-ready files to any printer of your choice.
-        </p>
-      </section>
-      <ScrollBeam />
-
-      {/* ---------- Monthly retainer ---------- */}
-      <section className="gd-section" id="retainer">
-        <Reveal className="gd-retainer why-card">
+        {/* ---------- Hero ---------- */}
+        <section className="gd-hero">
           <span className="gd-crop gd-crop--tl" aria-hidden="true" />
+          <span className="gd-crop gd-crop--tr" aria-hidden="true" />
+          <span className="gd-crop gd-crop--bl" aria-hidden="true" />
           <span className="gd-crop gd-crop--br" aria-hidden="true" />
-          <div className="gd-retainer__head">
-            <span className="gd-kicker gd-kicker--light">
-              Prefer predictable monthly support?
+          <span className="gd-halftone" aria-hidden="true" />
+          <span className="gd-swatch gd-swatch--c" aria-hidden="true" />
+          <span className="gd-swatch gd-swatch--m" aria-hidden="true" />
+          <span className="gd-swatch gd-swatch--y" aria-hidden="true" />
+
+          <div className="gd-hero__inner">
+            <span className="gd-eyebrow">
+              <RegMark /> Graphic Design Services
             </span>
-            <h2 className="gd-h2 gd-h2--light">
-              Monthly Design Retainer{" "}
-              <span className="gd-headline-accent">₹6,999/mo</span>
-            </h2>
-            <p className="gd-lead gd-lead--light">
-              For businesses with ongoing design needs — no per-item invoices,
-              no waiting on quotes.
+            <h1 className="gd-hero__headline">
+              <span className="gd-word gd-word--b">Every design</span>
+              <span className="gd-word gd-word--a">your</span>
+
+              <br />
+              <span className="gd-word gd-word--d">business will</span>
+              <span className="gd-word gd-word--c">ever need.</span>
+
+              {/* <span className="gd-headline-accent gd-word gd-word--d"></span> */}
+            </h1>
+            <p className="gd-hero__subtext">
+              From the poster on your shop wall to the menu on your customer's
+              table, every piece of design either builds trust in your business
+              or quietly undermines it. We design everything you put in front of
+              a customer — print or digital — on-brand, print-ready, and
+              delivered fast.
             </p>
+            <p className="gd-hero__tagline">
+              One design team. Every format. No "we don't do that" ever.
+            </p>
+            <div className="gd-hero__cta-row">
+              <a href="#ratecard" className="gd-btn gd-btn--primary">
+                View rate card
+              </a>
+              <a href="https://wa.me/918005351770" target="_blank" className="gd-btn gd-btn--ghost">
+                Talk to us
+              </a>
+            </div>
           </div>
-          <ul className="gd-retainer__list">
-            {retainerFeatures.map((f) => (
-              <li key={f}>{f}</li>
-            ))}
-          </ul>
-          <p className="gd-retainer__footnote">
-            Unused designs don't roll over month to month — sized for businesses
-            that post, print, or promote regularly. Printing, where needed, is
-            always billed separately.
-          </p>
-          <button
-            onClick={() => navigate("/request-quote")}
-            className="gd-btn gd-btn--light"
-          >
-            Start the retainer
-          </button>
-        </Reveal>
-      </section>
-      <ScrollBeam />
+        </section>
+        <ScrollBeam />
 
-      {/* ---------- Why choose us ---------- */}
-      <section className="gd-section gd-section--muted">
-        <Reveal className="gd-section__head">
-          <span className="gd-kicker">Why Indo Sparsh Studio</span>
-          <h2 className="gd-h2">
-            Design that's built to be used, not just admired
-          </h2>
-        </Reveal>
-        <div className="gd-grid">
-          {whyChoose.map((w, i) => (
-            <Reveal key={w.title} delay={i * 60} className="gd-card why-card">
-              <span className="gd-card__mark">
-                <RegMark />
+        {/* ---------- Tags marquee ---------- */}
+        <div className="gd-marquee">
+          <div className="gd-marquee__track">
+            {[...tags, ...tags].map((t, i) => (
+              <span className="gd-marquee__item" key={i}>
+                {t}
               </span>
-              <h3 className="gd-card__title">{w.title}</h3>
-              <p className="gd-card__text">{w.text}</p>
-            </Reveal>
-          ))}
+            ))}
+          </div>
         </div>
-      </section>
-      <ScrollBeam />
+        <ScrollBeam />
 
-      {/* ---------- Final CTA ---------- */}
-      <ProjectDiscuss/>
-    </div>
+        {/* ---------- Rate card ---------- */}
+        <section className="gd-section" id="ratecard">
+          <Reveal className="gd-section__head">
+            <span className="gd-kicker">Design rate card</span>
+            <h2 className="gd-h2">
+              Design charges only — printing billed separately
+            </h2>
+            <p className="gd-lead">
+              Pick a category, see exactly what's included, know the price
+              upfront.
+            </p>
+          </Reveal>
+
+          <Reveal className="gd-tabs" delay={60}>
+            {categories.map((c, i) => (
+              <button
+                key={c.id}
+                type="button"
+                className={`gd-tab ${activeCat === i ? "is-active" : ""}`}
+                onClick={() => setActiveCat(i)}
+              >
+                <span className="gd-tab__mark">{c.mark}</span>
+                {c.label}
+              </button>
+            ))}
+          </Reveal>
+
+          <div
+            className="gd-table-wrap gd-table-wrap--anim"
+            key={activeCategory.id}
+          >
+            <table className="gd-table">
+              <thead>
+                <tr>
+                  <th>Design Type</th>
+                  <th>What's Included</th>
+                  <th>Design Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {activeCategory.items.map((row, i) => (
+                  <tr key={row.type} style={{ "--row-delay": `${i * 35}ms` }}>
+                    <td data-label="Design Type">{row.type}</td>
+                    <td data-label="What's Included">{row.includes}</td>
+                    <td data-label="Design Price" className="gd-table-price">
+                      {row.price}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <Reveal className="gd-callout" delay={80}>
+            Don't see what you need — exhibition stalls, custom packaging
+            inserts, specialty stationery? If it's a static design, we can make
+            it. <a href={CONTACT.phoneHref}>Ask for a custom quote →</a>
+          </Reveal>
+        </section>
+        <ScrollBeam />
+
+        {/* ---------- Printing charges ---------- */}
+        <section className="gd-section gd-section--muted">
+          <Reveal className="gd-section__head">
+            <span className="gd-kicker">Printing — billed separately</span>
+            <h2 className="gd-h2">Printing charges, at actual</h2>
+            <p className="gd-lead">
+              Printing depends on quantity, material, size & finish, so it's
+              quoted at actual — keeping your design cost honest whether you
+              print 50 pieces or 5,000.
+            </p>
+          </Reveal>
+          <Reveal className="gd-table-wrap" delay={60}>
+            <table className="gd-table gd-table--print">
+              <thead>
+                <tr>
+                  <th>Print Category</th>
+                  <th>Typical Range</th>
+                  <th>Priced By</th>
+                </tr>
+              </thead>
+              <tbody>
+                {printingRates.map((row) => (
+                  <tr key={row.category}>
+                    <td data-label="Print Category">
+                      <span className="gd-table-title">{row.category}</span>
+                      <span className="gd-table-note">{row.note}</span>
+                    </td>
+                    <td data-label="Typical Range" className="gd-table-price">
+                      {row.range}/{row.unit}
+                    </td>
+                    <td data-label="Priced By" className="gd-table-note">
+                      {row.basis}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Reveal>
+          <p className="gd-footnote">
+            We'll confirm exact printing cost once quantity, material & finish
+            are decided — either as part of your order, or you're welcome to
+            take print-ready files to any printer of your choice.
+          </p>
+        </section>
+        <ScrollBeam />
+
+        {/* ---------- Monthly retainer ---------- */}
+        <section className="gd-section" id="retainer">
+          <Reveal className="gd-retainer why-card">
+            <span className="gd-crop gd-crop--tl" aria-hidden="true" />
+            <span className="gd-crop gd-crop--br" aria-hidden="true" />
+            <div className="gd-retainer__head">
+              <span className="gd-kicker gd-kicker--light">
+                Prefer predictable monthly support?
+              </span>
+              <h2 className="gd-h2 gd-h2--light">
+                Monthly Design Retainer{" "}
+                <span className="gd-headline-accent">₹6,999/mo</span>
+              </h2>
+              <p className="gd-lead gd-lead--light">
+                For businesses with ongoing design needs — no per-item invoices,
+                no waiting on quotes.
+              </p>
+            </div>
+            <ul className="gd-retainer__list">
+              {retainerFeatures.map((f) => (
+                <li key={f}>{f}</li>
+              ))}
+            </ul>
+            <p className="gd-retainer__footnote">
+              Unused designs don't roll over month to month — sized for
+              businesses that post, print, or promote regularly. Printing, where
+              needed, is always billed separately.
+            </p>
+            <button
+              onClick={() => navigate("/request-quote")}
+              className="gd-btn gd-btn--light"
+            >
+              Start the retainer
+            </button>
+          </Reveal>
+        </section>
+        <ScrollBeam />
+
+        {/* ---------- Why choose us ---------- */}
+        <section className="gd-section gd-section--muted">
+          <Reveal className="gd-section__head">
+            <span className="gd-kicker">Why Indo Sparsh Studio</span>
+            <h2 className="gd-h2">
+              Design that's built to be used, not just admired
+            </h2>
+          </Reveal>
+          <div className="gd-grid">
+            {whyChoose.map((w, i) => (
+              <Reveal key={w.title} delay={i * 60} className="gd-card why-card">
+                <span className="gd-card__mark">
+                  <RegMark />
+                </span>
+                <h3 className="gd-card__title">{w.title}</h3>
+                <p className="gd-card__text">{w.text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+        <ScrollBeam />
+
+        {/* ---------- Final CTA ---------- */}
+        <ProjectDiscuss />
+      </div>
+    </>
   );
 }

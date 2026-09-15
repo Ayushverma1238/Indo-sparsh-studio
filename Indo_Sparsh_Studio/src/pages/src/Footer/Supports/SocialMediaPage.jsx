@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./SocialMediaPage.css";
 import ScrollBeam from "../../../ScrollBeam";
+import SEO from "../../../../utils/seo";
 
 /**
  * SocialMediaHandlingPage
@@ -294,186 +295,190 @@ const DATA_POINTS = [
 /* ------------------------------------ page ------------------------------------ */
 
 export default function SocialMediaHandlingPage() {
-  useEffect(() => {
-    document.title = "Social Media Management | Indo Sparsh Studio";
-  }, []);
   return (
-    <div className="smp-page">
-      {/* ---------- hero ---------- */}
-      <section className="smp-hero">
-        <SignalBars className="smp-hero__signal" />
-        <div className="smp-hero__content">
-          <p className="smp-eyebrow">How we handle social media</p>
-          <h1 className="smp-hero__title">
-            One signal,
-            <br />
-            every channel.
-          </h1>
-          <p className="smp-hero__sub">
-            Every post we publish — announcement, reply, or correction — moves
-            through the same pipeline before it goes live. This page is that
-            pipeline, in plain terms.
-          </p>
-          <div className="smp-status-row">
-            <span className="smp-pill smp-pill--live">
-              <span className="smp-pill__dot" /> LIVE
-            </span>
-            <span className="smp-pill smp-pill--scheduled">
-              <span className="smp-pill__dot" /> SCHEDULED
-            </span>
-            <span className="smp-pill smp-pill--archived">
-              <span className="smp-pill__dot" /> ARCHIVED
-            </span>
-          </div>
-        </div>
-      </section>
-      <ScrollBeam />
-
-      {/* ---------- pipeline ---------- */}
-      <section className="smp-section" id="pipeline">
-        <Reveal as="div" className="smp-section__head">
-          <p className="smp-eyebrow">The pipeline</p>
-          <h2 className="smp-section__title">
-            From draft to archive, six steps.
-          </h2>
-        </Reveal>
-
-        <div className="smp-pipeline">
-          {PIPELINE.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <Reveal
-                as="article"
-                className="smp-card why-card"
-                delay={i * 70}
-                key={step.ch}
-              >
-                <div className="smp-card__top">
-                  <span className="smp-card__ch">{step.ch}</span>
-                  <span className="smp-card__icon">
-                    <Icon />
-                  </span>
-                </div>
-                <h3 className="smp-card__title">{step.label}</h3>
-                <p className="smp-card__body">{step.body}</p>
-                <SignalBars count={10} className="smp-card__signal" />
-              </Reveal>
-            );
-          })}
-        </div>
-      </section>
-      <ScrollBeam />
-
-      {/* ---------- principles ---------- */}
-      <section className="smp-section smp-section--muted" id="principles">
-        <Reveal as="div" className="smp-section__head">
-          <p className="smp-eyebrow">Voice &amp; review</p>
-          <h2 className="smp-section__title">
-            What we check before anything ships.
-          </h2>
-        </Reveal>
-
-        <div className="smp-principles">
-          {PRINCIPLES.map((p, i) => (
-            <Reveal
-              as="div"
-              className="smp-principle"
-              delay={i * 60}
-              key={p.title}
-            >
-              <span className="smp-principle__index">
-                {String(i + 1).padStart(2, "0")}
+    <>
+      <SEO
+        title="Social Media Management Services | Indo Sparsh Studio"
+        description="Grow your brand with professional social media management services from Indo Sparsh Studio, including content planning, creative posts, audience engagement and social media marketing."
+        keywords="social media management, social media marketing, social media services, social media agency, Instagram management, Facebook management, content planning, audience engagement, Indo Sparsh Studio"
+      />
+      <div className="smp-page">
+        {/* ---------- hero ---------- */}
+        <section className="smp-hero">
+          <SignalBars className="smp-hero__signal" />
+          <div className="smp-hero__content">
+            <p className="smp-eyebrow">How we handle social media</p>
+            <h1 className="smp-hero__title">
+              One signal,
+              <br />
+              every channel.
+            </h1>
+            <p className="smp-hero__sub">
+              Every post we publish — announcement, reply, or correction — moves
+              through the same pipeline before it goes live. This page is that
+              pipeline, in plain terms.
+            </p>
+            <div className="smp-status-row">
+              <span className="smp-pill smp-pill--live">
+                <span className="smp-pill__dot" /> LIVE
               </span>
-              <div>
-                <h3 className="smp-principle__title">{p.title}</h3>
-                <p className="smp-principle__body">{p.body}</p>
-              </div>
+              <span className="smp-pill smp-pill--scheduled">
+                <span className="smp-pill__dot" /> SCHEDULED
+              </span>
+              <span className="smp-pill smp-pill--archived">
+                <span className="smp-pill__dot" /> ARCHIVED
+              </span>
+            </div>
+          </div>
+        </section>
+        <ScrollBeam />
+
+        {/* ---------- pipeline ---------- */}
+        <section className="smp-section" id="pipeline">
+          <Reveal as="div" className="smp-section__head">
+            <p className="smp-eyebrow">The pipeline</p>
+            <h2 className="smp-section__title">
+              From draft to archive, six steps.
+            </h2>
+          </Reveal>
+
+          <div className="smp-pipeline">
+            {PIPELINE.map((step, i) => {
+              const Icon = step.icon;
+              return (
+                <Reveal
+                  as="article"
+                  className="smp-card why-card"
+                  delay={i * 70}
+                  key={step.ch}
+                >
+                  <div className="smp-card__top">
+                    <span className="smp-card__ch">{step.ch}</span>
+                    <span className="smp-card__icon">
+                      <Icon />
+                    </span>
+                  </div>
+                  <h3 className="smp-card__title">{step.label}</h3>
+                  <p className="smp-card__body">{step.body}</p>
+                  <SignalBars count={10} className="smp-card__signal" />
+                </Reveal>
+              );
+            })}
+          </div>
+        </section>
+        <ScrollBeam />
+
+        {/* ---------- principles ---------- */}
+        <section className="smp-section smp-section--muted" id="principles">
+          <Reveal as="div" className="smp-section__head">
+            <p className="smp-eyebrow">Voice &amp; review</p>
+            <h2 className="smp-section__title">
+              What we check before anything ships.
+            </h2>
+          </Reveal>
+
+          <div className="smp-principles">
+            {PRINCIPLES.map((p, i) => (
+              <Reveal
+                as="div"
+                className="smp-principle"
+                delay={i * 60}
+                key={p.title}
+              >
+                <span className="smp-principle__index">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className="smp-principle__title">{p.title}</h3>
+                  <p className="smp-principle__body">{p.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+        <ScrollBeam />
+
+        {/* ---------- moderation & response ---------- */}
+        <section className="smp-section" id="moderation">
+          <Reveal as="div" className="smp-section__head">
+            <p className="smp-eyebrow">Moderation &amp; response</p>
+            <h2 className="smp-section__title">
+              How fast we answer, and what we remove.
+            </h2>
+          </Reveal>
+
+          <div className="smp-split">
+            <Reveal as="div" className="smp-sla">
+              {RESPONSE_SLA.map((row) => (
+                <div className="smp-sla__row why-card" key={row.tag}>
+                  <span className={`smp-sla__dot smp-sla__dot--${row.tone}`} />
+                  <span className="smp-sla__tag">{row.tag}</span>
+                  <span className="smp-sla__time">{row.time}</span>
+                </div>
+              ))}
             </Reveal>
-          ))}
-        </div>
-      </section>
-      <ScrollBeam />
 
-      {/* ---------- moderation & response ---------- */}
-      <section className="smp-section" id="moderation">
-        <Reveal as="div" className="smp-section__head">
-          <p className="smp-eyebrow">Moderation &amp; response</p>
-          <h2 className="smp-section__title">
-            How fast we answer, and what we remove.
-          </h2>
-        </Reveal>
+            <Reveal as="div" className="smp-remove" delay={90}>
+              <h3 className="smp-remove__title">We remove</h3>
+              <ul className="smp-remove__list">
+                <li>Spam, scams, and impersonation.</li>
+                <li>Hate speech, harassment, or threats.</li>
+                <li>Anyone's private contact or financial details.</li>
+              </ul>
+              <h3 className="smp-remove__title smp-remove__title--keep">
+                We keep
+              </h3>
+              <ul className="smp-remove__list">
+                <li>Criticism of us, even when it's blunt.</li>
+                <li>Questions we haven't answered yet.</li>
+                <li>Disagreement that stays aimed at the topic.</li>
+              </ul>
+            </Reveal>
+          </div>
+        </section>
+        <ScrollBeam />
 
-        <div className="smp-split">
-          <Reveal as="div" className="smp-sla">
-            {RESPONSE_SLA.map((row) => (
-              <div className="smp-sla__row why-card" key={row.tag}>
-                <span className={`smp-sla__dot smp-sla__dot--${row.tone}`} />
-                <span className="smp-sla__tag">{row.tag}</span>
-                <span className="smp-sla__time">{row.time}</span>
-              </div>
+        {/* ---------- data ---------- */}
+        <section className="smp-section smp-section--muted" id="data">
+          <Reveal as="div" className="smp-section__head ">
+            <p className="smp-eyebrow">Data we keep</p>
+            <h2 className="smp-section__title">
+              Nothing beyond what's already public.
+            </h2>
+          </Reveal>
+
+          <Reveal as="ul" className="smp-data-list">
+            {DATA_POINTS.map((d) => (
+              <li className="smp-data-list__item" key={d}>
+                <span className="smp-data-list__mark" />
+                {d}
+              </li>
             ))}
           </Reveal>
+        </section>
+        <ScrollBeam />
 
-          <Reveal as="div" className="smp-remove" delay={90}>
-            <h3 className="smp-remove__title">We remove</h3>
-            <ul className="smp-remove__list">
-              <li>Spam, scams, and impersonation.</li>
-              <li>Hate speech, harassment, or threats.</li>
-              <li>Anyone's private contact or financial details.</li>
-            </ul>
-            <h3 className="smp-remove__title smp-remove__title--keep">
-              We keep
-            </h3>
-            <ul className="smp-remove__list">
-              <li>Criticism of us, even when it's blunt.</li>
-              <li>Questions we haven't answered yet.</li>
-              <li>Disagreement that stays aimed at the topic.</li>
-            </ul>
+        {/* ---------- report ---------- */}
+        <section className="smp-section">
+          <Reveal as="div" className="smp-report why-card">
+            <div>
+              <p className="smp-eyebrow">See something off?</p>
+              <h2 className="smp-report__title">
+                Tell us and we'll look at it directly.
+              </h2>
+            </div>
+            <a className="smp-button" href="mailto:contact@indosparsh.com">
+              <IconFlag />
+              Report a concern
+            </a>
           </Reveal>
-        </div>
-      </section>
-      <ScrollBeam />
+        </section>
+        <ScrollBeam />
 
-      {/* ---------- data ---------- */}
-      <section className="smp-section smp-section--muted" id="data">
-        <Reveal as="div" className="smp-section__head ">
-          <p className="smp-eyebrow">Data we keep</p>
-          <h2 className="smp-section__title">
-            Nothing beyond what's already public.
-          </h2>
-        </Reveal>
-
-        <Reveal as="ul" className="smp-data-list">
-          {DATA_POINTS.map((d) => (
-            <li className="smp-data-list__item" key={d}>
-              <span className="smp-data-list__mark" />
-              {d}
-            </li>
-          ))}
-        </Reveal>
-      </section>
-      <ScrollBeam />
-
-      {/* ---------- report ---------- */}
-      <section className="smp-section">
-        <Reveal as="div" className="smp-report why-card">
-          <div>
-            <p className="smp-eyebrow">See something off?</p>
-            <h2 className="smp-report__title">
-              Tell us and we'll look at it directly.
-            </h2>
-          </div>
-          <a className="smp-button" href="mailto:contact@indosparsh.com">
-            <IconFlag />
-            Report a concern
-          </a>
-        </Reveal>
-      </section>
-      <ScrollBeam />
-
-      <footer className="smp-footer">
-        <span>Last reviewed today · Social Operations team</span>
-      </footer>
-    </div>
+        <footer className="smp-footer">
+          <span>Last reviewed today · Social Operations team</span>
+        </footer>
+      </div>
+    </>
   );
 }

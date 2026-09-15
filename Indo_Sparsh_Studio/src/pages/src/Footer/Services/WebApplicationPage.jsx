@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./WebApplicationPage.css";
 import ScrollBeam from "../../../ScrollBeam";
+import SEO from "../../../../utils/seo";
 
 /**
  * WebAppBuildStory
@@ -150,156 +151,161 @@ function CropMarks() {
 }
 
 export default function WebAppBuildStory() {
-  useEffect(() => {
-    document.title = "Web Application | Indo Sparsh Studio";
-  }, []);
   const rootRef = useReveal();
 
   return (
-    <main className="wa" ref={rootRef}>
-      {/* HERO ------------------------------------------------------ */}
-      <section className="wa-hero">
-        {/* <div className="wa-grid-bg" aria-hidden="true" /> */}
-        <CropMarks />
+    <>
+      <SEO
+        title="Web Application Development Services | Indo Sparsh Studio"
+        description="Build fast, scalable and secure web applications with Indo Sparsh Studio. We develop custom web applications tailored to your business needs, workflows and growth goals."
+        keywords="web application development, web app development, custom web applications, web application development services, scalable web apps, secure web applications, business web applications, Indo Sparsh Studio"
+      />
 
-        <p className="wa-eyebrow js-reveal">
-          Process Document — Web Application Build
-        </p>
+      <main className="wa" ref={rootRef}>
+        {/* HERO ------------------------------------------------------ */}
+        <section className="wa-hero">
+          {/* <div className="wa-grid-bg" aria-hidden="true" /> */}
+          <CropMarks />
 
-        <h1 className="wa-hero__headline">
+          <p className="wa-eyebrow js-reveal">
+            Process Document — Web Application Build
+          </p>
+
+          <h1 className="wa-hero__headline">
             <span className="wa-word wa-word--a">How</span>{" "}
             <span className="wa-word wa-word--b">we build,</span>{" "}
             <span className="wa-word wa-word--c">a</span>{" "}
             <span className="wa-word wa-word--d">web app.</span>{" "}
           </h1>
 
-        <p className="wa-subtitle js-reveal">
-          Not a UI wrapped around an idea — a system drawn from the data up,
-          with the interface as the last layer, not the first.
-        </p>
+          <p className="wa-subtitle js-reveal">
+            Not a UI wrapped around an idea — a system drawn from the data up,
+            with the interface as the last layer, not the first.
+          </p>
 
-        <div className="wa-metarow js-reveal">
-          <div>
-            <span className="wa-meta-label">Scale</span>
-            <span className="wa-meta-value">1:1</span>
-          </div>
-          <div>
-            <span className="wa-meta-label">Sheets</span>
-            <span className="wa-meta-value">01–06</span>
-          </div>
-          <div>
-            <span className="wa-meta-label">Rev</span>
-            <span className="wa-meta-value">03</span>
-          </div>
-          <div>
-            <span className="wa-meta-label">Status</span>
-            <span className="wa-meta-value wa-meta-live">In use</span>
-          </div>
-        </div>
-
-        <div className="wa-scrollcue js-reveal" aria-hidden="true">
-          <span />
-          <em>scroll</em>
-        </div>
-      </section>
-      <ScrollBeam />
-
-      {/* INTRO ------------------------------------------------------ */}
-      <section className="wa-intro">
-        <span className="wa-quote-mark" aria-hidden="true">
-          &ldquo;
-        </span>
-        <p className="js-reveal">
-          Every application we build starts with the same question:{" "}
-          <em>
-            what does this data need to do, before it ever needs to look like
-            anything?
-          </em>{" "}
-          Everything below is the method that answers it.
-        </p>
-      </section>
-      <ScrollBeam />
-
-      {/* PROCESS ------------------------------------------------------ */}
-      <section className="wa-process">
-        <header className="wa-section-head js-reveal">
-          <span className="wa-eyebrow">The Process</span>
-          <h2>Six sheets, in order</h2>
-        </header>
-
-        <div className="wa-stage-grid">
-          {STAGES.map((s, i) => (
-            <article
-              className="wa-stage js-reveal why-card"
-              style={{ transitionDelay: `${(i % 3) * 90}ms` }}
-              key={s.n}
-            >
-              <CropMarks />
-              <span className="wa-stage-n">{s.n}</span>
-              <div className="wa-stage-icon">{s.icon}</div>
-              <h3>{s.title}</h3>
-              <p>{s.copy}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-      <ScrollBeam />
-
-      {/* MATERIALS ------------------------------------------------------ */}
-      <section className="wa-materials">
-        <header className="wa-section-head js-reveal">
-          <span className="wa-eyebrow">Materials</span>
-          <h2>What this application is built with</h2>
-        </header>
-
-        <dl className="wa-spec js-reveal">
-          {MATERIALS.map(([label, value]) => (
-            <div className="wa-spec-row" key={label}>
-              <dt>{label}</dt>
-              <dd>{value}</dd>
+          <div className="wa-metarow js-reveal">
+            <div>
+              <span className="wa-meta-label">Scale</span>
+              <span className="wa-meta-value">1:1</span>
             </div>
-          ))}
-        </dl>
-      </section>
-      <ScrollBeam />
+            <div>
+              <span className="wa-meta-label">Sheets</span>
+              <span className="wa-meta-value">01–06</span>
+            </div>
+            <div>
+              <span className="wa-meta-label">Rev</span>
+              <span className="wa-meta-value">03</span>
+            </div>
+            <div>
+              <span className="wa-meta-label">Status</span>
+              <span className="wa-meta-value wa-meta-live">In use</span>
+            </div>
+          </div>
 
-      {/* NOTES ------------------------------------------------------ */}
-      <section className="wa-notes">
-        <header className="wa-section-head js-reveal">
-          <span className="wa-eyebrow">Field Notes</span>
-          <h2>Rules we keep re-checking</h2>
-        </header>
+          <div className="wa-scrollcue js-reveal" aria-hidden="true">
+            <span />
+            <em>scroll</em>
+          </div>
+        </section>
+        <ScrollBeam />
 
-        <ul className="wa-notes-list">
-          {NOTES.map((n, i) => (
-            <li
-              className="js-reveal"
-              style={{ transitionDelay: `${i * 80}ms` }}
-              key={i}
-            >
-              <span className="wa-check" aria-hidden="true">
-                ✓
-              </span>
-              {n}
-            </li>
-          ))}
-        </ul>
-      </section>
-      <ScrollBeam />
+        {/* INTRO ------------------------------------------------------ */}
+        <section className="wa-intro">
+          <span className="wa-quote-mark" aria-hidden="true">
+            &ldquo;
+          </span>
+          <p className="js-reveal">
+            Every application we build starts with the same question:{" "}
+            <em>
+              what does this data need to do, before it ever needs to look like
+              anything?
+            </em>{" "}
+            Everything below is the method that answers it.
+          </p>
+        </section>
+        <ScrollBeam />
 
-      {/* CTA ------------------------------------------------------ */}
-      <section className="wa-cta">
-        <CropMarks />
-        <div className="wa-stamp js-reveal" aria-hidden="true">
-          <span>Approved</span>
-          <span>For Build</span>
-        </div>
-        <h2 className="js-reveal">Want an application built this way?</h2>
-        <p className="js-reveal">
-          The contact details are down in the footer — sheet 07, if we're
-          keeping count.
-        </p>
-      </section>
-    </main>
+        {/* PROCESS ------------------------------------------------------ */}
+        <section className="wa-process">
+          <header className="wa-section-head js-reveal">
+            <span className="wa-eyebrow">The Process</span>
+            <h2>Six sheets, in order</h2>
+          </header>
+
+          <div className="wa-stage-grid">
+            {STAGES.map((s, i) => (
+              <article
+                className="wa-stage js-reveal why-card"
+                style={{ transitionDelay: `${(i % 3) * 90}ms` }}
+                key={s.n}
+              >
+                <CropMarks />
+                <span className="wa-stage-n">{s.n}</span>
+                <div className="wa-stage-icon">{s.icon}</div>
+                <h3>{s.title}</h3>
+                <p>{s.copy}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <ScrollBeam />
+
+        {/* MATERIALS ------------------------------------------------------ */}
+        <section className="wa-materials">
+          <header className="wa-section-head js-reveal">
+            <span className="wa-eyebrow">Materials</span>
+            <h2>What this application is built with</h2>
+          </header>
+
+          <dl className="wa-spec js-reveal">
+            {MATERIALS.map(([label, value]) => (
+              <div className="wa-spec-row" key={label}>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+        <ScrollBeam />
+
+        {/* NOTES ------------------------------------------------------ */}
+        <section className="wa-notes">
+          <header className="wa-section-head js-reveal">
+            <span className="wa-eyebrow">Field Notes</span>
+            <h2>Rules we keep re-checking</h2>
+          </header>
+
+          <ul className="wa-notes-list">
+            {NOTES.map((n, i) => (
+              <li
+                className="js-reveal"
+                style={{ transitionDelay: `${i * 80}ms` }}
+                key={i}
+              >
+                <span className="wa-check" aria-hidden="true">
+                  ✓
+                </span>
+                {n}
+              </li>
+            ))}
+          </ul>
+        </section>
+        <ScrollBeam />
+
+        {/* CTA ------------------------------------------------------ */}
+        <section className="wa-cta">
+          <CropMarks />
+          <div className="wa-stamp js-reveal" aria-hidden="true">
+            <span>Approved</span>
+            <span>For Build</span>
+          </div>
+          <h2 className="js-reveal">Want an application built this way?</h2>
+          <p className="js-reveal">
+            The contact details are down in the footer — sheet 07, if we're
+            keeping count.
+          </p>
+        </section>
+      </main>
+    </>
   );
 }

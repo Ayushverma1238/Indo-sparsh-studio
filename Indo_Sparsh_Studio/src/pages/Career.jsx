@@ -10,16 +10,13 @@ import {
   FaUpload,
 } from "react-icons/fa6";
 import Contact from "./Contact.jsx";
-import "./Services.css"
+import "./Services.css";
 
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import ScrollBeam from "./ScrollBeam";
+import SEO from "../utils/seo.jsx";
 
 export default function Career() {
-  useEffect(() => {
-    document.title = "Career | Indo Sparsh Studio";
-  }, []);
-  const [success, setSuccess] = useState(false);
   const [jobSuccess, setJobSuccess] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -42,10 +39,6 @@ export default function Career() {
 
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleJobSubmit = async (e) => {
     e.preventDefault();
@@ -106,38 +99,6 @@ export default function Career() {
     setFileName(file?.name);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      const res = await fetch(`/backend-php/api/contact.php`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-
-      if (data.success) {
-        setSuccess(true);
-        setFormData({
-          firstName: "",
-          lastName: "",
-          phone: "",
-          email: "",
-          message: "",
-        });
-
-        setTimeout(() => setSuccess(false), 3000);
-      }
-    } catch (err) {
-      alert("❌ Failed to send message");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const openForm = (title) => {
     setJobTitle(title);
     setShowForm(true);
@@ -148,6 +109,12 @@ export default function Career() {
   };
   return (
     <>
+      <SEO
+        title="Careers | Indo Sparsh Studio"
+        description="Explore career opportunities at Indo Sparsh Studio. Join our team and build your career in web development, app development, digital marketing, design, branding and technology."
+        keywords="Indo Sparsh Studio careers, jobs at Indo Sparsh Studio, web development jobs, digital marketing jobs, UI UX jobs, software jobs, technology careers"
+      />
+
       <section className="career-section">
         {/* HERO */}
         <div className="career-hero">

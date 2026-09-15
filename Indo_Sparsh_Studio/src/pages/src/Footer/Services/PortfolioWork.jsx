@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./PortfolioWork.css";
 import ScrollBeam from "../../../ScrollBeam";
+import SEO from "../../../../utils/seo";
 
 /* Every service the studio offers. Also used to build the filter ticker. */
 const SERVICES = [
@@ -237,9 +238,6 @@ function useReveal() {
 }
 
 export default function PortfolioWork() {
-  useEffect(() => {
-    document.title = "Portfolio Website | Indo Sparsh Studio";
-  }, []);
   const rootRef = useReveal();
 
   const [activeService, setActiveService] = useState("All");
@@ -268,21 +266,27 @@ export default function PortfolioWork() {
   };
 
   return (
-    <main className="pf" ref={rootRef}>
-      {/* HEADER ------------------------------------------------------ */}
-      <section className="pf-header">
-        <div className="pf-header-top js-reveal">
-          <span className="pf-header-kicker">
-            <span className="pf-kicker-mark" aria-hidden="true"></span>
-            Studio index, sheet by sheet
-          </span>
-          <span className="pf-header-status">
-            <span className="pf-status-dot" aria-hidden="true"></span>
-            Open for new briefs
-          </span>
-        </div>
+    <>
+      <SEO
+        title="Portfolio | Indo Sparsh Studio"
+        description="Explore the portfolio of Indo Sparsh Studio and discover our work in web development, app development, digital marketing, UI/UX design, branding, graphic design and creative solutions."
+        keywords="Indo Sparsh Studio portfolio, web development portfolio, app development portfolio, digital marketing portfolio, UI UX design portfolio, graphic design portfolio, branding portfolio, creative agency portfolio"
+      />
+      <main className="pf" ref={rootRef}>
+        {/* HEADER ------------------------------------------------------ */}
+        <section className="pf-header">
+          <div className="pf-header-top js-reveal">
+            <span className="pf-header-kicker">
+              <span className="pf-kicker-mark" aria-hidden="true"></span>
+              Studio index, sheet by sheet
+            </span>
+            <span className="pf-header-status">
+              <span className="pf-status-dot" aria-hidden="true"></span>
+              Open for new briefs
+            </span>
+          </div>
 
-        {/* <h1 className="pf-title">
+          {/* <h1 className="pf-title">
           {["Everything", "we've", "shipped,", "filed", "here."].map(
             (w, i) => (
               <span
@@ -295,115 +299,117 @@ export default function PortfolioWork() {
             ),
           )}
         </h1> */}
-        <h1 className="pf-hero__headline">
-          <span className="pf-word pf-word--a">Everything</span>{" "}
-          <span className="pf-word pf-word--b">we've shipped,</span><br/>
-          <span className="pf-word pf-word--c">filed</span>{" "}
-          <span className="pf-word pf-word--d">here.</span>{" "}
-        </h1>
+          <h1 className="pf-hero__headline">
+            <span className="pf-word pf-word--a">Everything</span>{" "}
+            <span className="pf-word pf-word--b">we've shipped,</span>
+            <br />
+            <span className="pf-word pf-word--c">filed</span>{" "}
+            <span className="pf-word pf-word--d">here.</span>{" "}
+          </h1>
 
-        <div className="pf-header-grid">
-          <div className="pf-header-copy js-reveal">
-            <p className="pf-subtitle">
-              Every project this studio has taken from brief to launch,
-              catalogued by the service that produced it.
+          <div className="pf-header-grid">
+            <div className="pf-header-copy js-reveal">
+              <p className="pf-subtitle">
+                Every project this studio has taken from brief to launch,
+                catalogued by the service that produced it.
+              </p>
+              <p className="pf-page-note">
+                Pick a lane in the index below and see exactly what's shipped
+                there — no case-study padding, just the sheets on file.
+              </p>
+            </div>
+
+            <div className="pf-header-ticket js-reveal">
+              <div className="pf-ticket-row">
+                <span>Sheets on file</span>
+                <strong>{WORK.length}</strong>
+              </div>
+              <div className="pf-ticket-row">
+                <span>Services covered</span>
+                <strong>{SERVICES.length}</strong>
+              </div>
+              <div className="pf-ticket-row">
+                <span>Delivery</span>
+                <strong>Sheet by sheet</strong>
+              </div>
+              <span className="pf-ticket-stamp">Approved for print</span>
+            </div>
+          </div>
+        </section>
+
+        <ScrollBeam />
+
+        {/* BROWSE BY SERVICE ------------------------------------------------------ */}
+        <section className="pf-services" ref={workRef}>
+          <span className="pf-label js-reveal">Browse the work by service</span>
+          <h2 className="pf-services-heading js-reveal">
+            Every service, one ticker. Tap one to filter.
+          </h2>
+
+          <div className="pf-ticker">
+            <div className="pf-ticker-track">
+              {[...SERVICES, ...SERVICES].map((s, i) => (
+                <button
+                  type="button"
+                  key={`${s.name}-${i}`}
+                  className={
+                    "pf-ticker-pill" +
+                    (activeService === s.name ? " is-active" : "")
+                  }
+                  onClick={() => handleServiceClick(s.name)}
+                >
+                  {s.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="pf-services-filterbar js-reveal">
+            <button
+              type="button"
+              className={
+                "pf-ticker-pill pf-ticker-pill-static" +
+                (activeService === "All" ? " is-active" : "")
+              }
+              onClick={() => handleServiceClick("All")}
+            >
+              All work
+            </button>
+            <span className="pf-services-active">
+              Showing: <strong>{activeService}</strong> · {filteredWork.length}{" "}
+              sheet{filteredWork.length === 1 ? "" : "s"}
+            </span>
+          </div>
+
+          {filteredWork.length > 0 ? (
+            <div ref={gridRef} className="pf-work-grid" key={activeService}>
+              {filteredWork.map((w, i) => (
+                <a
+                  className="project-card js-reveal why-card"
+                  style={{ transitionDelay: `${(i % 8) * 70}ms` }}
+                  href={w.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={`${w.title}-${i}`}
+                >
+                  <div className="pf-work-card-image">
+                    <img src={w.image} alt={w.title} loading="lazy" />
+                    <span className="pf-work-card-tag">{w.tag}</span>
+                  </div>
+                  <div className="pf-work-card-body">
+                    <h3>{w.title}</h3>
+                    <span className="pf-work-card-date">{w.date}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p className="pf-services-empty" key={activeService}>
+              No sheets filed under this service yet — check back soon.
             </p>
-            <p className="pf-page-note">
-              Pick a lane in the index below and see exactly what's shipped
-              there — no case-study padding, just the sheets on file.
-            </p>
-          </div>
-
-          <div className="pf-header-ticket js-reveal">
-            <div className="pf-ticket-row">
-              <span>Sheets on file</span>
-              <strong>{WORK.length}</strong>
-            </div>
-            <div className="pf-ticket-row">
-              <span>Services covered</span>
-              <strong>{SERVICES.length}</strong>
-            </div>
-            <div className="pf-ticket-row">
-              <span>Delivery</span>
-              <strong>Sheet by sheet</strong>
-            </div>
-            <span className="pf-ticket-stamp">Approved for print</span>
-          </div>
-        </div>
-      </section>
-
-      <ScrollBeam />
-
-      {/* BROWSE BY SERVICE ------------------------------------------------------ */}
-      <section className="pf-services" ref={workRef}>
-        <span className="pf-label js-reveal">Browse the work by service</span>
-        <h2 className="pf-services-heading js-reveal">
-          Every service, one ticker. Tap one to filter.
-        </h2>
-
-        <div className="pf-ticker">
-          <div className="pf-ticker-track">
-            {[...SERVICES, ...SERVICES].map((s, i) => (
-              <button
-                type="button"
-                key={`${s.name}-${i}`}
-                className={
-                  "pf-ticker-pill" +
-                  (activeService === s.name ? " is-active" : "")
-                }
-                onClick={() => handleServiceClick(s.name)}
-              >
-                {s.name}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="pf-services-filterbar js-reveal">
-          <button
-            type="button"
-            className={
-              "pf-ticker-pill pf-ticker-pill-static" +
-              (activeService === "All" ? " is-active" : "")
-            }
-            onClick={() => handleServiceClick("All")}
-          >
-            All work
-          </button>
-          <span className="pf-services-active">
-            Showing: <strong>{activeService}</strong> · {filteredWork.length}{" "}
-            sheet{filteredWork.length === 1 ? "" : "s"}
-          </span>
-        </div>
-
-        {filteredWork.length > 0 ? (
-          <div ref={gridRef} className="pf-work-grid" key={activeService}>
-            {filteredWork.map((w, i) => (
-              <a
-                className="project-card js-reveal why-card"
-                style={{ transitionDelay: `${(i % 8) * 70}ms` }}
-                href={w.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={`${w.title}-${i}`}
-              >
-                <div className="pf-work-card-image">
-                  <img src={w.image} alt={w.title} loading="lazy" />
-                  <span className="pf-work-card-tag">{w.tag}</span>
-                </div>
-                <div className="pf-work-card-body">
-                  <h3>{w.title}</h3>
-                  <span className="pf-work-card-date">{w.date}</span>
-                </div>
-              </a>
-            ))}
-          </div>
-        ) : (
-          <p className="pf-services-empty" key={activeService}>
-            No sheets filed under this service yet — check back soon.
-          </p>
-        )}
-      </section>
-    </main>
+          )}
+        </section>
+      </main>
+    </>
   );
 }

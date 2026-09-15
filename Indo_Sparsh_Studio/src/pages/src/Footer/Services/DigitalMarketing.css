@@ -281,7 +281,7 @@ body.dark-mode {
   font-size: 0.92rem;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 999px;
+  border-radius: 10px;
   padding: 13px 24px;
   border: 1px solid transparent;
   cursor: pointer;
@@ -420,7 +420,6 @@ body.dark-mode {
   background: var(--bg-elevated);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  overflow: hidden;
   transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 .dm-piece:hover {
@@ -441,7 +440,7 @@ body.dark-mode {
 
 .dm-piece__badge {
   position: absolute;
-  top: 14px;
+  top: -10px;
   right: 14px;
   z-index: 2;
   font-family: var(--font-mono);
@@ -450,14 +449,28 @@ body.dark-mode {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #fff;
-  background: var(--ink-solid);
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(59, 87, 241, 0.35),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(207, 12, 159, 0.35),
+      transparent 45%
+    ),
+    #000;  
   padding: 5px 11px;
+  border: 1px solid #ece6e6;
   border-radius: 999px;
 }
 
 .dm-piece__media {
   padding: 34px 26px;
   display: flex;
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
   flex-direction: column;
   gap: 10px;
   color: #fff;

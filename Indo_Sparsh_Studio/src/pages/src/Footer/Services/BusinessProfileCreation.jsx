@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./BusinessProfileCreation.css";
 import ScrollBeam from "../../../ScrollBeam";
 import ProjectDiscuss from "../../../Home/ProjectDiscuss";
+import SEO from "../../../../utils/seo";
 /* =========================================================================
    INDO SPARSH STUDIO — Business Profile Creation
    Design direction: "Certificate of Incorporation" — the page reads like an
@@ -34,10 +35,6 @@ const useReveal = () => {
 };
 
 const BusinessProfileCreation = () => {
-  useEffect(() => {
-    document.title = "Business Profile Creation | Indo Sparsh Studio";
-  }, []);
-
   const [activeTab, setActiveTab] = useState("core");
 
   const [loaded, setLoaded] = useState(false);
@@ -254,342 +251,361 @@ const BusinessProfileCreation = () => {
   const [addOnsRef, addOnsVisible] = useReveal();
   const [packageRef, packageVisible] = useReveal();
   const [whyRef, whyVisible] = useReveal();
-  const [footerRef, footerVisible] = useReveal();
 
   return (
-    <div className={`isp-root ${loaded ? "is-loaded" : ""}`}>
-      {/* ===================== HERO ===================== */}
-      <section className="isp-hero">
-        <div>
-          <div className="isp-seal-wrap">
-            <div className="isp-seal" aria-hidden="true">
-              <svg viewBox="0 0 160 160" className="isp-seal-svg">
-                <defs>
-                  <path
-                    id="sealCirclePath"
-                    d="M 80,80 m -62,0 a 62,62 0 1,1 124,0 a 62,62 0 1,1 -124,0"
+    <>
+      <SEO
+        title="Business Profile Creation Services | Indo Sparsh Studio"
+        description="Create a professional and engaging business profile with Indo Sparsh Studio. We help businesses build a strong digital presence with optimized profiles that attract customers and build trust."
+        keywords="business profile creation, BUSINESSPROFILE,
+    GOOGLEMYBUSINESS,
+    BRANDING,
+    MSME,
+    DIGITALPRESENCE,
+    NEWBUSINESS,
+    STARTUPINDIA, business profile services, professional business profile, digital business profile, online business presence, business profile optimization, Indo Sparsh Studio"
+      />
+      <div className={`isp-root ${loaded ? "is-loaded" : ""}`}>
+        {/* ===================== HERO ===================== */}
+        <section className="isp-hero">
+          <div>
+            <div className="isp-seal-wrap">
+              <div className="isp-seal" aria-hidden="true">
+                <svg viewBox="0 0 160 160" className="isp-seal-svg">
+                  <defs>
+                    <path
+                      id="sealCirclePath"
+                      d="M 80,80 m -62,0 a 62,62 0 1,1 124,0 a 62,62 0 1,1 -124,0"
+                    />
+                  </defs>
+                  <circle
+                    cx="80"
+                    cy="80"
+                    r="74"
+                    className="isp-seal-ring-outer"
                   />
-                </defs>
-                <circle
-                  cx="80"
-                  cy="80"
-                  r="74"
-                  className="isp-seal-ring-outer"
-                />
-                <circle
-                  cx="80"
-                  cy="80"
-                  r="52"
-                  className="isp-seal-ring-inner"
-                />
-                <text className="isp-seal-text">
-                  <textPath href="#sealCirclePath" startOffset="0%">
-                    ★ VERIFIED BUSINESS IDENTITY ★ INDO SPARSH STUDIO ★
-                  </textPath>
-                </text>
-                <text
-                  x="80"
-                  y="88"
-                  textAnchor="middle"
-                  className="isp-seal-center"
+                  <circle
+                    cx="80"
+                    cy="80"
+                    r="52"
+                    className="isp-seal-ring-inner"
+                  />
+                  <text className="isp-seal-text">
+                    <textPath href="#sealCirclePath" startOffset="0%">
+                      ★ VERIFIED BUSINESS IDENTITY ★ INDO SPARSH STUDIO ★
+                    </textPath>
+                  </text>
+                  <text
+                    x="80"
+                    y="88"
+                    textAnchor="middle"
+                    className="isp-seal-center"
+                  >
+                    EST.
+                  </text>
+                </svg>
+              </div>
+            </div>
+
+            <span className="isp-kicker">Digital Business Solution Agency</span>
+            <span className="isp-eyebrow">Business Profile Creation</span>
+            <h1 className="isp-headline">
+              <span className="isp-word isp-word--b">Launch your business</span>
+              <span className="isp-word isp-word--a">online</span>
+              <br />
+              <span className="isp-word isp-word--d">the right way</span>,{" "}
+              <span className="isp-word isp-word--c"> from day one.</span>
+            </h1>
+            <p className="isp-subtitle">
+              Every credible business needs more than an idea — it needs a
+              professional digital identity that customers can find, trust, and
+              contact instantly. We build your logo, Google visibility, social
+              media, business email, ad-ready accounts, and legal registration —
+              all created, connected, and optimized to work together.
+            </p>
+            <p className="isp-tagline">
+              One studio. One team. One integrated business identity.
+            </p>
+
+            <div className="isp-tags">
+              {tags.map((tag, i) => (
+                <span
+                  key={tag}
+                  className="isp-tag"
+                  style={{ animationDelay: `${0.75 + i * 0.06}s` }}
                 >
-                  EST.
-                </text>
-              </svg>
+                  {tag}
+                </span>
+              ))}
             </div>
-          </div>
 
-          <span className="isp-kicker">Digital Business Solution Agency</span>
-          <span className="isp-eyebrow">Business Profile Creation</span>
-          <h1 className="isp-headline">
-            <span className="isp-word isp-word--b">Launch your business</span>
-            <span className="isp-word isp-word--a">online</span>
-            <br />
-            <span className="isp-word isp-word--d">the right way</span>,{" "}
-            <span className="isp-word isp-word--c"> from day one.</span>
-          </h1>
-          <p className="isp-subtitle">
-            Every credible business needs more than an idea — it needs a
-            professional digital identity that customers can find, trust, and
-            contact instantly. We build your logo, Google visibility, social
-            media, business email, ad-ready accounts, and legal registration —
-            all created, connected, and optimized to work together.
-          </p>
-          <p className="isp-tagline">
-            One studio. One team. One integrated business identity.
-          </p>
-
-          <div className="isp-tags">
-            {tags.map((tag, i) => (
-              <span
-                key={tag}
-                className="isp-tag"
-                style={{ animationDelay: `${0.75 + i * 0.06}s` }}
+            <div className="isp-hero-actions">
+              <a
+                href="#package"
+                className="isp-btn isp-btn-primary"
+                onClick={() => setActiveTab("package")}
               >
-                {tag}
-              </span>
+                Get Started Today
+              </a>
+              <a href="#services" className="isp-btn isp-btn-ghost">
+                View Packages
+              </a>
+            </div>
+          </div>
+
+          <div className="isp-hero-metrics">
+            {heroMetrics.map((m, i) => (
+              <div
+                className="isp-metric-card"
+                key={m.label}
+                style={{ animationDelay: `${0.5 + i * 0.12}s` }}
+              >
+                <h3>{m.value}</h3>
+                <p>{m.label}</p>
+              </div>
             ))}
           </div>
+        </section>
 
-          <div className="isp-hero-actions">
-            <a
-              href="#package"
-              className="isp-btn isp-btn-primary"
-              onClick={() => setActiveTab("package")}
+        {/* ===================== TAB CONTROLS ===================== */}
+        <nav className="isp-tab-rail" id="services">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              className={`isp-tab-btn ${activeTab === tab.id ? "is-active" : ""}`}
+              onClick={() => setActiveTab(tab.id)}
             >
-              Get Started Today
-            </a>
-            <a href="#services" className="isp-btn isp-btn-ghost">
-              View Packages
-            </a>
-          </div>
-        </div>
+              {tab.label}
+            </button>
+          ))}
+          <div
+            className="isp-tab-indicator"
+            style={{ transform: `translateX(${tabIndex * 100}%)` }}
+          />
+        </nav>
 
-        <div className="isp-hero-metrics">
-          {heroMetrics.map((m, i) => (
+        {/* ===================== CORE SERVICES ===================== */}
+        {activeTab === "core" && (
+          <section className="isp-section isp-tab-panel" ref={servicesRef}>
             <div
-              className="isp-metric-card"
-              key={m.label}
-              style={{ animationDelay: `${0.5 + i * 0.12}s` }}
+              className={`isp-section-head ${servicesVisible ? "visible" : ""}`}
             >
-              <h3>{m.value}</h3>
-              <p>{m.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ===================== TAB CONTROLS ===================== */}
-      <nav className="isp-tab-rail" id="services">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            className={`isp-tab-btn ${activeTab === tab.id ? "is-active" : ""}`}
-            onClick={() => setActiveTab(tab.id)}
-          >
-            {tab.label}
-          </button>
-        ))}
-        <div
-          className="isp-tab-indicator"
-          style={{ transform: `translateX(${tabIndex * 100}%)` }}
-        />
-      </nav>
-
-      {/* ===================== CORE SERVICES ===================== */}
-      {activeTab === "core" && (
-        <section className="isp-section isp-tab-panel" ref={servicesRef}>
-          <div
-            className={`isp-section-head ${servicesVisible ? "visible" : ""}`}
-          >
-            <h2>Our Services</h2>
-            <p>
-              Six building blocks, each ready to stand alone or lock into the
-              full launch package.
-            </p>
-          </div>
-
-          <div
-            className={`isp-services-list ${servicesVisible ? "visible" : ""}`}
-          >
-            {coreServices.map((s) => (
-              <article className="isp-service-card why-card" key={s.id}>
-                <div className="isp-service-number isp-mono">{s.id}</div>
-                <div>
-                  <div className="isp-service-title-row">
-                    <h3>
-                      {s.title}
-                      {s.sub && (
-                        <span className="isp-service-sub"> — {s.sub}</span>
-                      )}
-                    </h3>
-                    <span className="isp-service-price">{s.price}</span>
-                  </div>
-                  <p className="isp-service-desc">{s.desc}</p>
-
-                  {s.features && (
-                    <ul className="isp-feature-list">
-                      {s.features.map((f) => (
-                        <li key={f}>{f}</li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {s.platforms && (
-                    <div className="isp-ledger">
-                      <div className="isp-ledger-row isp-ledger-header">
-                        <span>Platform</span>
-                        <span>Setup included</span>
-                        <span>Individual Price</span>
-                      </div>
-                      {s.platforms.map((p) => (
-                        <div className="isp-ledger-row" key={p.name}>
-                          <span>{p.name}</span>
-                          <span>{p.setup}</span>
-                          <span>{p.price}</span>
-                        </div>
-                      ))}
-                      <div className="isp-ledger-row isp-ledger-total">
-                        <span>Bundle price (all 6 platforms)</span>
-                        <span></span>
-                        <span>{s.bundleTotal}</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {s.addons && (
-                    <div className="isp-ledger">
-                      <div className="isp-ledger-row isp-ledger-header">
-                        <span>Optional registration</span>
-                        <span>Our service fee</span>
-                        <span>Govt. fee (paid separately)</span>
-                      </div>
-                      {s.addons.map((a) => (
-                        <div className="isp-ledger-row" key={a.name}>
-                          <span>{a.name}</span>
-                          <span>{a.fee}</span>
-                          <span>{a.govt}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  {s.addonsNote && (
-                    <p className="isp-service-note">{s.addonsNote}</p>
-                  )}
-                  {s.note && <p className="isp-service-note">Note: {s.note}</p>}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ===================== ADD-ON ESSENTIALS ===================== */}
-      {activeTab === "addons" && (
-        <section className="isp-section isp-tab-panel" ref={addOnsRef}>
-          <div className={`isp-section-head ${addOnsVisible ? "visible" : ""}`}>
-            <h2>Add-On Essentials</h2>
-            <p>
-              Things every new business needs, but rarely thinks to ask for.
-            </p>
-          </div>
-
-          <div className="isp-ledger isp-ledger-wide">
-            <div className="isp-ledger-row isp-ledger-header">
-              <span>Add-on</span>
-              <span>What's included</span>
-              <span>Price</span>
-            </div>
-            {addOnEssentials.map((a) => (
-              <div className="isp-ledger-row " key={a.name}>
-                <span>{a.name}</span>
-                <span>{a.desc}</span>
-                <span>{a.price}</span>
-              </div>
-            ))}
-            <div className="isp-ledger-row isp-ledger-total">
-              <span>Add-on subtotal</span>
-              <span></span>
-              <span>₹3,895</span>
-            </div>
-          </div>
-
-          <p className="isp-service-note">
-            Additional Followers Top-Up — ₹1/follower. Want to go beyond the
-            free 100? Extra followers can be added on request at ₹1 per
-            follower, billed per platform and quantity requested (not included
-            in the subtotal above since it scales with your chosen quantity).
-          </p>
-          <p className="isp-service-note">
-            Guaranteed follower counts are typically delivered through paid
-            promotion or bulk-follower services rather than organic growth.
-            Platforms like Meta and Instagram can suppress reach on accounts
-            that show signs of bought/bot followers, so this is best positioned
-            as an optional vanity top-up rather than a growth strategy.
-          </p>
-        </section>
-      )}
-
-      {/* ===================== COMPLETE PACKAGE ===================== */}
-      {activeTab === "package" && (
-        <section
-          className={`isp-section isp-tab-panel ${packageVisible ? "packageVisible" : ""}`}
-          ref={packageRef}
-          id="package"
-        >
-          <div
-            className={`isp-section-head ${packageVisible ? "visible" : ""}`}
-          >
-            <h2>Complete Business Launch Package</h2>
-            <p>Everything above, bundled into one done-for-you launch.</p>
-          </div>
-
-          <div className="isp-ledger isp-ledger-wide">
-            <div className="isp-ledger-row isp-ledger-header">
-              <span>Service</span>
-              <span></span>
-              <span>Price</span>
-            </div>
-            {packageSummary.map((p) => (
-              <div className="isp-ledger-row" key={p.name}>
-                <span>{p.name}</span>
-                <span></span>
-                <span>{p.price}</span>
-              </div>
-            ))}
-            <div className="isp-ledger-row isp-ledger-total">
-              <span>Total package value</span>
-              <span></span>
-              <span>₹18,889</span>
-            </div>
-          </div>
-          <p className="isp-fineprint" style={{ marginTop: 8 }}>
-            Additional Followers Top-Up billed separately at ₹1/follower, as per
-            quantity requested — not included in the total above.
-          </p>
-
-          <div
-            className={`isp-offer-block why-card ${packageVisible ? "packageVisible" : ""}`}
-          >
-            <div>
-              <span className="isp-offer-eyebrow">New Client Launch Offer</span>
-              <div className="isp-offer-prices">
-                <span className="isp-offer-old isp-mono">₹18,889</span>
-                <span className="isp-offer-new">₹9,445</span>
-              </div>
+              <h2>Our Services</h2>
               <p>
-                You save ₹9,444 — every core service plus every add-on
-                essential, fully integrated and automated.
-              </p>
-              <p className="isp-fineprint">
-                Prices exclusive of 18% GST. Third-party/government fees (Google
-                Workspace subscription, trademark government fee, ad spend) are
-                separate and billed at actual.
+                Six building blocks, each ready to stand alone or lock into the
+                full launch package.
               </p>
             </div>
-            <div className="isp-stamp isp-mono">50% OFF</div>
-          </div>
-        </section>
-      )}
 
-      <ScrollBeam/>
-      {/* ===================== WHY CHOOSE US ===================== */}
-      <section
-        className={`isp-why ${whyVisible ? "visible" : ""}`}
-        ref={whyRef}
-      >
-        <h2>Why Choose Indo Sparsh Studio?</h2>
-        <ul className="isp-why-list">
-          {whyChoose.map((point) => (
-            <li key={point}>
-              <span className="isp-why-mark">✓</span>
-              {point}
-            </li>
-          ))}
-        </ul>
-      </section>
-      <ProjectDiscuss/>
-    </div>
+            <div
+              className={`isp-services-list ${servicesVisible ? "visible" : ""}`}
+            >
+              {coreServices.map((s) => (
+                <article className="isp-service-card why-card" key={s.id}>
+                  <div className="isp-service-number isp-mono">{s.id}</div>
+                  <div>
+                    <div className="isp-service-title-row">
+                      <h3>
+                        {s.title}
+                        {s.sub && (
+                          <span className="isp-service-sub"> — {s.sub}</span>
+                        )}
+                      </h3>
+                      <span className="isp-service-price">{s.price}</span>
+                    </div>
+                    <p className="isp-service-desc">{s.desc}</p>
+
+                    {s.features && (
+                      <ul className="isp-feature-list">
+                        {s.features.map((f) => (
+                          <li key={f}>{f}</li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {s.platforms && (
+                      <div className="isp-ledger">
+                        <div className="isp-ledger-row isp-ledger-header">
+                          <span>Platform</span>
+                          <span>Setup included</span>
+                          <span>Individual Price</span>
+                        </div>
+                        {s.platforms.map((p) => (
+                          <div className="isp-ledger-row" key={p.name}>
+                            <span>{p.name}</span>
+                            <span>{p.setup}</span>
+                            <span>{p.price}</span>
+                          </div>
+                        ))}
+                        <div className="isp-ledger-row isp-ledger-total">
+                          <span>Bundle price (all 6 platforms)</span>
+                          <span></span>
+                          <span>{s.bundleTotal}</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {s.addons && (
+                      <div className="isp-ledger">
+                        <div className="isp-ledger-row isp-ledger-header">
+                          <span>Optional registration</span>
+                          <span>Our service fee</span>
+                          <span>Govt. fee (paid separately)</span>
+                        </div>
+                        {s.addons.map((a) => (
+                          <div className="isp-ledger-row" key={a.name}>
+                            <span>{a.name}</span>
+                            <span>{a.fee}</span>
+                            <span>{a.govt}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {s.addonsNote && (
+                      <p className="isp-service-note">{s.addonsNote}</p>
+                    )}
+                    {s.note && (
+                      <p className="isp-service-note">Note: {s.note}</p>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ===================== ADD-ON ESSENTIALS ===================== */}
+        {activeTab === "addons" && (
+          <section className="isp-section isp-tab-panel" ref={addOnsRef}>
+            <div
+              className={`isp-section-head ${addOnsVisible ? "visible" : ""}`}
+            >
+              <h2>Add-On Essentials</h2>
+              <p>
+                Things every new business needs, but rarely thinks to ask for.
+              </p>
+            </div>
+
+            <div className="isp-ledger isp-ledger-wide">
+              <div className="isp-ledger-row isp-ledger-header">
+                <span>Add-on</span>
+                <span>What's included</span>
+                <span>Price</span>
+              </div>
+              {addOnEssentials.map((a) => (
+                <div className="isp-ledger-row " key={a.name}>
+                  <span>{a.name}</span>
+                  <span>{a.desc}</span>
+                  <span>{a.price}</span>
+                </div>
+              ))}
+              <div className="isp-ledger-row isp-ledger-total">
+                <span>Add-on subtotal</span>
+                <span></span>
+                <span>₹3,895</span>
+              </div>
+            </div>
+
+            <p className="isp-service-note">
+              Additional Followers Top-Up — ₹1/follower. Want to go beyond the
+              free 100? Extra followers can be added on request at ₹1 per
+              follower, billed per platform and quantity requested (not included
+              in the subtotal above since it scales with your chosen quantity).
+            </p>
+            <p className="isp-service-note">
+              Guaranteed follower counts are typically delivered through paid
+              promotion or bulk-follower services rather than organic growth.
+              Platforms like Meta and Instagram can suppress reach on accounts
+              that show signs of bought/bot followers, so this is best
+              positioned as an optional vanity top-up rather than a growth
+              strategy.
+            </p>
+          </section>
+        )}
+
+        {/* ===================== COMPLETE PACKAGE ===================== */}
+        {activeTab === "package" && (
+          <section
+            className={`isp-section isp-tab-panel ${packageVisible ? "packageVisible" : ""}`}
+            ref={packageRef}
+            id="package"
+          >
+            <div
+              className={`isp-section-head ${packageVisible ? "visible" : ""}`}
+            >
+              <h2>Complete Business Launch Package</h2>
+              <p>Everything above, bundled into one done-for-you launch.</p>
+            </div>
+
+            <div className="isp-ledger isp-ledger-wide">
+              <div className="isp-ledger-row isp-ledger-header">
+                <span>Service</span>
+                <span></span>
+                <span>Price</span>
+              </div>
+              {packageSummary.map((p) => (
+                <div className="isp-ledger-row" key={p.name}>
+                  <span>{p.name}</span>
+                  <span></span>
+                  <span>{p.price}</span>
+                </div>
+              ))}
+              <div className="isp-ledger-row isp-ledger-total">
+                <span>Total package value</span>
+                <span></span>
+                <span>₹18,889</span>
+              </div>
+            </div>
+            <p className="isp-fineprint" style={{ marginTop: 8 }}>
+              Additional Followers Top-Up billed separately at ₹1/follower, as
+              per quantity requested — not included in the total above.
+            </p>
+
+            <div
+              className={`isp-offer-block why-card ${packageVisible ? "packageVisible" : ""}`}
+            >
+              <div>
+                <span className="isp-offer-eyebrow">
+                  New Client Launch Offer
+                </span>
+                <div className="isp-offer-prices">
+                  <span className="isp-offer-old isp-mono">₹18,889</span>
+                  <span className="isp-offer-new">₹9,445</span>
+                </div>
+                <p>
+                  You save ₹9,444 — every core service plus every add-on
+                  essential, fully integrated and automated.
+                </p>
+                <p className="isp-fineprint">
+                  Prices exclusive of 18% GST. Third-party/government fees
+                  (Google Workspace subscription, trademark government fee, ad
+                  spend) are separate and billed at actual.
+                </p>
+              </div>
+              <div className="isp-stamp isp-mono">50% OFF</div>
+            </div>
+          </section>
+        )}
+
+        <ScrollBeam />
+        {/* ===================== WHY CHOOSE US ===================== */}
+        <section
+          className={`isp-why ${whyVisible ? "visible" : ""}`}
+          ref={whyRef}
+        >
+          <h2>Why Choose Indo Sparsh Studio?</h2>
+          <ul className="isp-why-list">
+            {whyChoose.map((point) => (
+              <li key={point}>
+                <span className="isp-why-mark">✓</span>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </section>
+        <ProjectDiscuss />
+      </div>
+    </>
   );
 };
 

@@ -13,25 +13,23 @@ import LazySection from "./Home/LazySection.jsx";
 import WebServe from "./Home/WebServe.jsx";
 import OrbitSection from "./Home/OrbitSection.jsx";
 import ScrollBeam from "./ScrollBeam.jsx";
+import SEO from "../utils/seo.jsx";
 
-const scrollToSection = (id) => {
-  const element = document.getElementById(id);
-  const header = document.querySelector(".cyber-header"); // your header class
-  const headerHeight = header ? header.offsetHeight : 0;
+// const scrollToSection = (id) => {
+//   const element = document.getElementById(id);
+//   const header = document.querySelector(".cyber-header"); // your header class
+//   const headerHeight = header ? header.offsetHeight : 0;
 
-  const elementPosition = element.getBoundingClientRect().top;
-  const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+//   const elementPosition = element.getBoundingClientRect().top;
+//   const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
 
-  window.scrollTo({
-    top: offsetPosition,
-    behavior: "smooth",
-  });
-};
+//   window.scrollTo({
+//     top: offsetPosition,
+//     behavior: "smooth",
+//   });
+// };
 
 export default function Home() {
-  useEffect(() => {
-    document.title = "Indo Sparsh Studio";
-  }, []);
   const location = useLocation();
   const navigate = useNavigate();
   const scrollToSection = (id) => {
@@ -66,6 +64,10 @@ export default function Home() {
 
   return (
     <>
+      <SEO
+        title="Indo Sparsh Studio | Web Development, Digital Marketing & Business Solutions"
+        description="Indo Sparsh Studio provides web development, app development, digital marketing, UI/UX design, branding, content creation and business solutions."
+      />
       {/* ================= HERO ================= */}
       <WebServe />
 
@@ -106,7 +108,7 @@ export default function Home() {
           <ProjectDiscuss />
         </Suspense>
       </LazySection>
-      <ScrollBeam/>
+      <ScrollBeam />
 
       {/* ================= TESTIMONIALS ================= */}
       <LazySection>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./PrivacyPolicy.css";
+import SEO from "../../../../utils/seo";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children, id }) {
@@ -16,7 +17,7 @@ function Reveal({ as: Tag = "div", className = "", delay = 0, children, id }) {
           obs.unobserve(el);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -40,7 +41,7 @@ const sections = [
     id: "introduction",
     title: "Introduction",
     body: [
-      "[Company Name] (\"we\", \"us\", or \"our\") respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains what information we collect, how we use it, and the choices you have.",
+      '[Company Name] ("we", "us", or "our") respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains what information we collect, how we use it, and the choices you have.',
       "By using our website or services, you agree to the practices described in this policy. If you don't agree, please don't use our website or services.",
     ],
   },
@@ -117,7 +118,7 @@ const sections = [
     id: "changes",
     title: "Changes to This Policy",
     body: [
-      "We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated \"last modified\" date. We encourage you to review this policy periodically.",
+      'We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "last modified" date. We encourage you to review this policy periodically.',
     ],
   },
   {
@@ -130,9 +131,6 @@ const sections = [
 ];
 
 export default function PrivacyPolicyPage() {
-  useEffect(() => {
-    document.title = "Privacy Policy | Indo Sparsh Studio";
-  }, []);
   const [activeId, setActiveId] = useState(sections[0].id);
   const [progress, setProgress] = useState(0);
   const [showTop, setShowTop] = useState(false);
@@ -141,7 +139,8 @@ export default function PrivacyPolicyPage() {
   useEffect(() => {
     const onScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
       setShowTop(scrollTop > 500);
     };
@@ -158,7 +157,7 @@ export default function PrivacyPolicyPage() {
           if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
-      { rootMargin: "-20% 0px -70% 0px", threshold: 0 }
+      { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
     );
     sections.forEach((s) => {
       const el = document.getElementById(s.id);
@@ -168,60 +167,76 @@ export default function PrivacyPolicyPage() {
   }, []);
 
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <div className="pp">
-      <div className="pp__progress" style={{ width: `${progress}%` }} />
+    <>
+      <SEO
+        title="Privacy Policy | Indo Sparsh Studio"
+        description="Read the Privacy Policy of Indo Sparsh Studio to understand how we collect, use, protect and manage your personal information when you use our website and services."
+        keywords="Indo Sparsh Studio privacy policy, privacy policy, data protection, personal information, data security, user privacy"
+      />
+      <div className="pp">
+        <div className="pp__progress" style={{ width: `${progress}%` }} />
 
-    
-      {/* ---------- Header ---------- */}
-      <header className="pp-header">
-        <span className="pp-eyebrow">Legal</span>
-        <h1 className="pp-header__title">Privacy Policy</h1>
-        <p className="pp-header__meta">Last updated: July 18, 2026</p>
-      </header>
+        {/* ---------- Header ---------- */}
+        <header className="pp-header">
+          <span className="pp-eyebrow">Legal</span>
+          <h1 className="pp-header__title">Privacy Policy</h1>
+          <p className="pp-header__meta">Last updated: July 18, 2026</p>
+        </header>
 
-      <div className="pp-layout">
-        {/* ---------- TOC ---------- */}
-        <nav className="pp-toc" aria-label="Table of contents">
-          <span className="pp-toc__label">On this page</span>
-          <ul className="pp-toc__list">
-            {sections.map((s) => (
-              <li key={s.id}>
-                <button
-                  className={`pp-toc__link ${activeId === s.id ? "is-active" : ""}`}
-                  onClick={() => scrollTo(s.id)}
-                >
-                  {s.title}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* ---------- Content ---------- */}
-        <main className="pp-content">
-          {sections.map((s, i) => (
-            <Reveal as="section" id={s.id} key={s.id} delay={i * 40} className="pp-section">
-              <h2 className="pp-section__title">{s.title}</h2>
-              {s.body.map((p, j) => (
-                <p className="pp-section__text" key={j}>{p}</p>
+        <div className="pp-layout">
+          {/* ---------- TOC ---------- */}
+          <nav className="pp-toc" aria-label="Table of contents">
+            <span className="pp-toc__label">On this page</span>
+            <ul className="pp-toc__list">
+              {sections.map((s) => (
+                <li key={s.id}>
+                  <button
+                    className={`pp-toc__link ${activeId === s.id ? "is-active" : ""}`}
+                    onClick={() => scrollTo(s.id)}
+                  >
+                    {s.title}
+                  </button>
+                </li>
               ))}
-            </Reveal>
-          ))}
-        </main>
-      </div>
+            </ul>
+          </nav>
 
-      <button
-        type="button"
-        className={`pp__back-top ${showTop ? "is-visible" : ""}`}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        aria-label="Back to top"
-      >
-        ↑
-      </button>
-    </div>
+          {/* ---------- Content ---------- */}
+          <main className="pp-content">
+            {sections.map((s, i) => (
+              <Reveal
+                as="section"
+                id={s.id}
+                key={s.id}
+                delay={i * 40}
+                className="pp-section"
+              >
+                <h2 className="pp-section__title">{s.title}</h2>
+                {s.body.map((p, j) => (
+                  <p className="pp-section__text" key={j}>
+                    {p}
+                  </p>
+                ))}
+              </Reveal>
+            ))}
+          </main>
+        </div>
+
+        <button
+          type="button"
+          className={`pp__back-top ${showTop ? "is-visible" : ""}`}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Back to top"
+        >
+          ↑
+        </button>
+      </div>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./FaqPage.css";
 import { useNavigate } from "react-router-dom";
+import SEO from "../../../../utils/seo";
 
 // ---- Edit this list to match your real Sparsh Studio FAQs ----
 const faqData = [
@@ -127,7 +128,7 @@ function FAQItem({ q, a, isOpen, onToggle, index }) {
   return (
     <div
       className={`faq-item why-card ${isOpen ? "is-open" : ""}`}
-      style={{ animationDelay: `${index * 60}ms`, padding:"5px 10px" }}
+      style={{ animationDelay: `${index * 60}ms`, padding: "5px 10px" }}
     >
       <button
         className="faq-question"
@@ -148,79 +149,86 @@ function FAQItem({ q, a, isOpen, onToggle, index }) {
 }
 
 export default function FAQPage() {
-  useEffect(() => {
-    document.title = "FAQ's | Indo Sparsh Studio";
-  }, []);
   const [activeCategory, setActiveCategory] = useState(faqData[0].category);
   const [openKey, setOpenKey] = useState(`${faqData[0].category}-0`);
-  const [menuOpen, setMenuOpen] = useState(false);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const activeGroup = faqData.find((g) => g.category === activeCategory);
 
   return (
-    <div className="faq-root">
-      <div className="faq-glow" aria-hidden="true" />
+    <>
+      <SEO
+        title="FAQs | Indo Sparsh Studio"
+        description="Find answers to frequently asked questions about Indo Sparsh Studio's web development, app development, digital marketing, design, branding, business solutions and services."
+        keywords="Indo Sparsh Studio FAQs, frequently asked questions, web development FAQ, app development FAQ, digital marketing FAQ, business services FAQ, website development FAQ"
+      />
+      <div className="faq-root">
+        <div className="faq-glow" aria-hidden="true" />
 
-      <main className="faq-main">
-        <section className="faq-hero">
-          <span className="faq-eyebrow">Help Center</span>
-          <h1 className="faq-title">
-            Questions, <span className="faq-title-accent">answered.</span>
-          </h1>
-          <p className="faq-subtitle">
-            Everything you need to know about working with Sparsh Studio —
-            websites, apps, logos and video, all in one place.
-          </p>
-        </section>
+        <main className="faq-main">
+          <section className="faq-hero">
+            <span className="faq-eyebrow">Help Center</span>
+            <h1 className="faq-title">
+              Questions, <span className="faq-title-accent">answered.</span>
+            </h1>
+            <p className="faq-subtitle">
+              Everything you need to know about working with Sparsh Studio —
+              websites, apps, logos and video, all in one place.
+            </p>
+          </section>
 
-        <div className="faq-layout">
-          <nav className="faq-tabs" aria-label="FAQ categories">
-            {faqData.map((group) => (
-              <button
-                key={group.category}
-                className={`faq-tab why-card ${
-                  activeCategory === group.category ? "is-active" : ""
-                }`}
-                onClick={() => {
-                  setActiveCategory(group.category);
-                  setOpenKey(`${group.category}-0`);
-                }}
-              >
-                {group.category}
-              </button>
-            ))}
-          </nav>
+          <div className="faq-layout">
+            <nav className="faq-tabs" aria-label="FAQ categories">
+              {faqData.map((group) => (
+                <button
+                  key={group.category}
+                  className={`faq-tab why-card ${
+                    activeCategory === group.category ? "is-active" : ""
+                  }`}
+                  onClick={() => {
+                    setActiveCategory(group.category);
+                    setOpenKey(`${group.category}-0`);
+                  }}
+                >
+                  {group.category}
+                </button>
+              ))}
+            </nav>
 
-          <div className="faq-list" key={activeCategory}>
-            {activeGroup.items.map((item, i) => {
-              const key = `${activeCategory}-${i}`;
-              return (
-                <FAQItem
-                  key={key}
-                  q={item.q}
-                  a={item.a}
-                  index={i}
-                  isOpen={openKey === key}
-                  onToggle={() => setOpenKey(openKey === key ? "" : key)}
-                />
-              );
-            })}
+            <div className="faq-list" key={activeCategory}>
+              {activeGroup.items.map((item, i) => {
+                const key = `${activeCategory}-${i}`;
+                return (
+                  <FAQItem
+                    key={key}
+                    q={item.q}
+                    a={item.a}
+                    index={i}
+                    isOpen={openKey === key}
+                    onToggle={() => setOpenKey(openKey === key ? "" : key)}
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        <section className="faq-cta why-card">
-          <h2>Still have a question?</h2>
-          <p>Can't find what you're looking for? Our team is happy to help.</p>
-          <a className="faq-cta-btn" onClick={()=>navigate('/contact')} href="mailto:hello@sparshstudio.com">
-            Contact us
-            <span className="faq-cta-arrow">→</span>
-          </a>
-        </section>
-      </main>
-
-      
-    </div>
+          <section className="faq-cta why-card">
+            <h2>Still have a question?</h2>
+            <p>
+              Can't find what you're looking for? Our team is happy to help.
+            </p>
+            <a
+              className="faq-cta-btn"
+              onClick={() => navigate("/contact")}
+              href="mailto:hello@sparshstudio.com"
+            >
+              Contact us
+              <span className="faq-cta-arrow">→</span>
+            </a>
+          </section>
+        </main>
+      </div>
+    </>
   );
 }

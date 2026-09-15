@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./RefundPolicyPage.css";
+import SEO from "../../../../utils/seo";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children, id }) {
@@ -16,7 +17,7 @@ function Reveal({ as: Tag = "div", className = "", delay = 0, children, id }) {
           obs.unobserve(el);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -109,7 +110,7 @@ const sections = [
     id: "changes",
     title: "Changes to This Policy",
     body: [
-      "We may update this Refund Policy from time to time. Changes will be posted on this page with a revised \"last modified\" date and apply to services purchased after the update.",
+      'We may update this Refund Policy from time to time. Changes will be posted on this page with a revised "last modified" date and apply to services purchased after the update.',
     ],
   },
   {
@@ -122,9 +123,6 @@ const sections = [
 ];
 
 export default function RefundPolicyPage() {
-  useEffect(() => {
-    document.title = "Refund Policy | Indo Sparsh Studio";
-  }, []);
   const [activeId, setActiveId] = useState(sections[0].id);
   const [progress, setProgress] = useState(0);
   const [showTop, setShowTop] = useState(false);
@@ -133,7 +131,8 @@ export default function RefundPolicyPage() {
   useEffect(() => {
     const onScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
       setShowTop(scrollTop > 500);
     };
@@ -150,7 +149,7 @@ export default function RefundPolicyPage() {
           if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
-      { rootMargin: "-20% 0px -70% 0px", threshold: 0 }
+      { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
     );
     sections.forEach((s) => {
       const el = document.getElementById(s.id);
@@ -160,60 +159,76 @@ export default function RefundPolicyPage() {
   }, []);
 
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <div className="rp">
-      <div className="rp__progress" style={{ width: `${progress}%` }} />
+    <>
+      <SEO
+        title="Refund Policy | Indo Sparsh Studio"
+        description="Read the Refund Policy of Indo Sparsh Studio to understand our terms and conditions regarding refunds, cancellations, payments and eligible service refunds."
+        keywords="Indo Sparsh Studio refund policy, refund policy, cancellation policy, payment policy, service refund, refund terms, cancellation terms"
+      />
+      <div className="rp">
+        <div className="rp__progress" style={{ width: `${progress}%` }} />
 
+        {/* ---------- Header ---------- */}
+        <header className="rp-header">
+          <span className="rp-eyebrow">Legal</span>
+          <h1 className="rp-header__title">Refund Policy</h1>
+          <p className="rp-header__meta">Last updated: July 18, 2026</p>
+        </header>
 
-      {/* ---------- Header ---------- */}
-      <header className="rp-header">
-        <span className="rp-eyebrow">Legal</span>
-        <h1 className="rp-header__title">Refund Policy</h1>
-        <p className="rp-header__meta">Last updated: July 18, 2026</p>
-      </header>
-
-      <div className="rp-layout">
-        {/* ---------- TOC ---------- */}
-        <nav className="rp-toc" aria-label="Table of contents">
-          <span className="rp-toc__label">On this page</span>
-          <ul className="rp-toc__list">
-            {sections.map((s) => (
-              <li key={s.id}>
-                <button
-                  className={`rp-toc__link ${activeId === s.id ? "is-active" : ""}`}
-                  onClick={() => scrollTo(s.id)}
-                >
-                  {s.title}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* ---------- Content ---------- */}
-        <main className="rp-content">
-          {sections.map((s, i) => (
-            <Reveal as="section" id={s.id} key={s.id} delay={i * 40} className="rp-section">
-              <h2 className="rp-section__title">{s.title}</h2>
-              {s.body.map((p, j) => (
-                <p className="rp-section__text" key={j}>{p}</p>
+        <div className="rp-layout">
+          {/* ---------- TOC ---------- */}
+          <nav className="rp-toc" aria-label="Table of contents">
+            <span className="rp-toc__label">On this page</span>
+            <ul className="rp-toc__list">
+              {sections.map((s) => (
+                <li key={s.id}>
+                  <button
+                    className={`rp-toc__link ${activeId === s.id ? "is-active" : ""}`}
+                    onClick={() => scrollTo(s.id)}
+                  >
+                    {s.title}
+                  </button>
+                </li>
               ))}
-            </Reveal>
-          ))}
-        </main>
-      </div>
+            </ul>
+          </nav>
 
-      <button
-        type="button"
-        className={`rp__back-top ${showTop ? "is-visible" : ""}`}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        aria-label="Back to top"
-      >
-        ↑
-      </button>
-    </div>
+          {/* ---------- Content ---------- */}
+          <main className="rp-content">
+            {sections.map((s, i) => (
+              <Reveal
+                as="section"
+                id={s.id}
+                key={s.id}
+                delay={i * 40}
+                className="rp-section"
+              >
+                <h2 className="rp-section__title">{s.title}</h2>
+                {s.body.map((p, j) => (
+                  <p className="rp-section__text" key={j}>
+                    {p}
+                  </p>
+                ))}
+              </Reveal>
+            ))}
+          </main>
+        </div>
+
+        <button
+          type="button"
+          className={`rp__back-top ${showTop ? "is-visible" : ""}`}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Back to top"
+        >
+          ↑
+        </button>
+      </div>
+    </>
   );
 }

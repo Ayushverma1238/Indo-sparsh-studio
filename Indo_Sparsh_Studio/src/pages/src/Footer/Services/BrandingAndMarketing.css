@@ -41,26 +41,6 @@ body.dark-mode {
   --blue: var(--color-primary);
 }
 
-.bm__theme-toggle {
-  position: fixed;
-  top: 22px;
-  right: 22px;
-  z-index: 20;
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  border: 1px solid var(--bm-border);
-  background: var(--bm-surface);
-  cursor: pointer;
-  font-size: 16px;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 8px 20px var(--bm-shadow);
-  transition: transform 0.2s ease;
-}
-.bm__theme-toggle:hover {
-  transform: scale(1.08);
-}
 
 /* ============ Shared ============ */
 .bm-kicker {
@@ -135,7 +115,7 @@ body.dark-mode {
   font-size: 15px;
   font-weight: 600;
   padding: 13px 26px;
-  border-radius: 999px;
+  border-radius: 10px;
   cursor: pointer;
   border: 1px solid transparent;
   text-decoration: none;
@@ -196,7 +176,7 @@ body.dark-mode {
   position: relative;
   overflow: hidden;
   padding: 130px 6vw 100px;
-  text-align: center;
+  text-align: left;
 }
 .bm-blob {
   position: absolute;
@@ -253,7 +233,7 @@ body.dark-mode {
   position: relative;
   z-index: 1;
   max-width: 780px;
-  margin: 0 auto;
+  margin: 0;
 }
 .bm-hero__headline {
   font-family: var(--font-body);
@@ -269,13 +249,14 @@ body.dark-mode {
   line-height: 1.65;
   color: var(--bm-text-muted);
   max-width: 52ch;
-  margin: 0 auto 34px;
+  margin: 0 15px 34px;
   animation: bm-rise 0.7s 0.12s ease both;
 }
 .bm-hero__cta-row {
   display: flex;
   gap: 14px;
-  justify-content: center;
+  margin-left: 15px;
+  justify-content: flex-start;
   flex-wrap: wrap;
   animation: bm-rise 0.7s 0.2s ease both;
 }

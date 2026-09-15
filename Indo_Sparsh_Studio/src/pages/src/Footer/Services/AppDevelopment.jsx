@@ -3,6 +3,7 @@ import "./AppDevelopment.css";
 import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
 import ProjectDiscuss from "../../../Home/ProjectDiscuss";
+import SEO from "../../../../utils/seo";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -172,170 +173,182 @@ const testimonials = [
 
 /* ---------- page ---------- */
 export default function AppDevPage() {
-  useEffect(() => {
-    document.title = "App Development | Indo Sparsh Studio";
-  }, []);
   const navigate = useNavigate();
   return (
-    <div className="appdev-page">
-      {/* ---------- Hero ---------- */}
-      <section className="appdev-hero">
-        <div className="appdev-hero__inner">
-          <div className="appdev-hero__content">
-            <span className="appdev-hero__eyebrow">App Development</span>
+    <>
+      <SEO
+        title="App Development Services | Indo Sparsh Studio"
+        description="Build powerful, scalable and user-friendly mobile applications with Indo Sparsh Studio. We provide professional app development solutions tailored to your business needs."
+        keywords="app development, mobile app development, Android app development, iOS app development, custom app development, application development, Indo Sparsh Studio"
+      />
 
-            <h1 className="adh-hero__headline">
-              <span className="adh-word adh-word--a">We</span>{" "}
-              <span className="adh-word adh-word--b">turn ideas</span>{" "}
-              <span className="adh-word adh-word--c">into</span>{" "}
-              <span className="adh-word adh-word--d">apps that ship.</span>
-            </h1>
-            <p className="appdev-hero__subtext">
-              From first sketch to app-store release, we design, build and scale
-              iOS, Android and web apps for teams who'd rather move fast than
-              move slow.
-            </p>
-            <div className="appdev-hero__cta-row">
-              <button
-                onClick={() => navigate("/request-quote")}
-                className="appdev-btn appdev-btn--primary"
+      <div className="appdev-page">
+        {/* ---------- Hero ---------- */}
+        <section className="appdev-hero">
+          <div className="appdev-hero__inner">
+            <div className="appdev-hero__content">
+              <span className="appdev-hero__eyebrow">App Development</span>
+
+              <h1 className="adh-hero__headline">
+                <span className="adh-word adh-word--a">We</span>{" "}
+                <span className="adh-word adh-word--b">turn ideas</span>{" "}
+                <span className="adh-word adh-word--c">into</span>{" "}
+                <span className="adh-word adh-word--d">apps that ship.</span>
+              </h1>
+              <p className="appdev-hero__subtext">
+                From first sketch to app-store release, we design, build and
+                scale iOS, Android and web apps for teams who'd rather move fast
+                than move slow.
+              </p>
+              <div className="appdev-hero__cta-row">
+                <button
+                  onClick={() => navigate("/request-quote")}
+                  className="appdev-btn appdev-btn--primary"
+                >
+                  Start a project
+                </button>
+                <button className="appdev-btn appdev-btn--ghost">
+                  See our work
+                </button>
+              </div>
+              <dl className="appdev-hero__stats">
+                <div className="appdev-hero__stat">
+                  <dt>120+</dt>
+                  <dd>apps shipped</dd>
+                </div>
+                <div className="appdev-hero__stat">
+                  <dt>4.8</dt>
+                  <dd>avg store rating</dd>
+                </div>
+                <div className="appdev-hero__stat">
+                  <dt>9 yrs</dt>
+                  <dd>building for clients</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div className="appdev-hero__visual">
+              <svg
+                className="appdev-hero__connector"
+                viewBox="0 0 400 320"
+                aria-hidden="true"
               >
-                Start a project
-              </button>
-              <button className="appdev-btn appdev-btn--ghost">
-                See our work
-              </button>
-            </div>
-            <dl className="appdev-hero__stats">
-              <div className="appdev-hero__stat">
-                <dt>120+</dt>
-                <dd>apps shipped</dd>
+                <path
+                  d="M40 100 C 140 100, 140 220, 240 220 S 340 260, 360 260"
+                  className="appdev-hero__connector-path"
+                />
+              </svg>
+              <div className="appdev-editor" aria-hidden="true">
+                <div className="appdev-editor__bar">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <div className="appdev-editor__body">
+                  {[
+                    "function launch(idea) {",
+                    "  const app = build(idea);",
+                    "  app.ship();",
+                    "  return app.grow();",
+                    "}",
+                  ].map((line, i) => (
+                    <div
+                      className="appdev-editor__line"
+                      style={{ "--i": i }}
+                      key={i}
+                    >
+                      {line}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="appdev-hero__stat">
-                <dt>4.8</dt>
-                <dd>avg store rating</dd>
-              </div>
-              <div className="appdev-hero__stat">
-                <dt>9 yrs</dt>
-                <dd>building for clients</dd>
-              </div>
-            </dl>
-          </div>
-
-          <div className="appdev-hero__visual">
-            <svg
-              className="appdev-hero__connector"
-              viewBox="0 0 400 320"
-              aria-hidden="true"
-            >
-              <path
-                d="M40 100 C 140 100, 140 220, 240 220 S 340 260, 360 260"
-                className="appdev-hero__connector-path"
-              />
-            </svg>
-            <div className="appdev-editor" aria-hidden="true">
-              <div className="appdev-editor__bar">
-                <span />
-                <span />
-                <span />
-              </div>
-              <div className="appdev-editor__body">
-                {[
-                  "function launch(idea) {",
-                  "  const app = build(idea);",
-                  "  app.ship();",
-                  "  return app.grow();",
-                  "}",
-                ].map((line, i) => (
-                  <div
-                    className="appdev-editor__line"
-                    style={{ "--i": i }}
-                    key={i}
-                  >
-                    {line}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="appdev-phone" aria-hidden="true">
-              <div className="appdev-phone__notch" />
-              <div className="appdev-phone__screen">
-                <div className="appdev-phone__card" />
-                <div className="appdev-phone__row" />
-                <div className="appdev-phone__row appdev-phone__row--short" />
+              <div className="appdev-phone" aria-hidden="true">
+                <div className="appdev-phone__notch" />
+                <div className="appdev-phone__screen">
+                  <div className="appdev-phone__card" />
+                  <div className="appdev-phone__row" />
+                  <div className="appdev-phone__row appdev-phone__row--short" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <ScrollBeam />
+        </section>
+        <ScrollBeam />
 
-      {/* ---------- Services ---------- */}
-      <section className="adh-section">
-        <Reveal className="adh-section__head">
-          <span className="adh-kicker">What we build</span>
-          <h2 className="adh-h2">One team, the whole stack</h2>
-          <p className="adh-lead">
-            Design, mobile, web and backend, working from the same brief instead
-            of handoffs between agencies.
-          </p>
-        </Reveal>
+        {/* ---------- Services ---------- */}
+        <section className="adh-section">
+          <Reveal className="adh-section__head">
+            <span className="adh-kicker">What we build</span>
+            <h2 className="adh-h2">One team, the whole stack</h2>
+            <p className="adh-lead">
+              Design, mobile, web and backend, working from the same brief
+              instead of handoffs between agencies.
+            </p>
+          </Reveal>
 
-        <div className="adh-grid adh-grid--4">
-          {services.map((s, i) => (
-            <Reveal key={s.title} delay={i * 90} className="adh-card why-card">
-              <div className="adh-card__icon">{icons[s.icon]}</div>
-              <h3 className="adh-card__title">{s.title}</h3>
-              <p className="adh-card__text">{s.text}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <ScrollBeam />
-
-      {/* ---------- Process ---------- */}
-      <section className="adh-section adh-section--muted">
-        <Reveal className="adh-section__head">
-          <span className="adh-kicker">How we work</span>
-          <h2 className="adh-h2">Five steps, no surprises</h2>
-          <p className="adh-lead">
-            The same process for a two-person startup and a 200-person team,
-            scaled to fit.
-          </p>
-        </Reveal>
-
-        <div className="adh-process">
-          <div className="adh-process__line" aria-hidden="true" />
-          {process.map((p, i) => (
-            <Reveal key={p.step} delay={i * 100} className="adh-process__item">
-              <span className="adh-process__step">{p.step}</span>
-              <h3 className="adh-process__title">{p.title}</h3>
-              <p className="adh-process__text">{p.text}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-      <ScrollBeam />
-
-      {/* ---------- Tech stack marquee ---------- */}
-      <section className="adh-section adh-section--tight">
-        <Reveal className="adh-section__head">
-          <span className="adh-kicker">Tools we reach for</span>
-          <h2 className="adh-h2">Built on a proven stack</h2>
-        </Reveal>
-
-        <div className="adh-marquee">
-          <div className="adh-marquee__track">
-            {[...stack, ...stack].map((item, i) => (
-              <span className="adh-marquee__item why-card" key={i}>
-                {item}
-              </span>
+          <div className="adh-grid adh-grid--4">
+            {services.map((s, i) => (
+              <Reveal
+                key={s.title}
+                delay={i * 90}
+                className="adh-card why-card"
+              >
+                <div className="adh-card__icon">{icons[s.icon]}</div>
+                <h3 className="adh-card__title">{s.title}</h3>
+                <p className="adh-card__text">{s.text}</p>
+              </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-      {/* 
+        </section>
+
+        <ScrollBeam />
+
+        {/* ---------- Process ---------- */}
+        <section className="adh-section adh-section--muted">
+          <Reveal className="adh-section__head">
+            <span className="adh-kicker">How we work</span>
+            <h2 className="adh-h2">Five steps, no surprises</h2>
+            <p className="adh-lead">
+              The same process for a two-person startup and a 200-person team,
+              scaled to fit.
+            </p>
+          </Reveal>
+
+          <div className="adh-process">
+            <div className="adh-process__line" aria-hidden="true" />
+            {process.map((p, i) => (
+              <Reveal
+                key={p.step}
+                delay={i * 100}
+                className="adh-process__item"
+              >
+                <span className="adh-process__step">{p.step}</span>
+                <h3 className="adh-process__title">{p.title}</h3>
+                <p className="adh-process__text">{p.text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+        <ScrollBeam />
+
+        {/* ---------- Tech stack marquee ---------- */}
+        <section className="adh-section adh-section--tight">
+          <Reveal className="adh-section__head">
+            <span className="adh-kicker">Tools we reach for</span>
+            <h2 className="adh-h2">Built on a proven stack</h2>
+          </Reveal>
+
+          <div className="adh-marquee">
+            <div className="adh-marquee__track">
+              {[...stack, ...stack].map((item, i) => (
+                <span className="adh-marquee__item why-card" key={i}>
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+        {/* 
       ---------- Testimonials ----------
       <section className="adh-section">
         <Reveal className="adh-section__head">
@@ -355,10 +368,11 @@ export default function AppDevPage() {
           ))}
         </div>
       </section> */}
-      <ScrollBeam />
+        <ScrollBeam />
 
-      {/* ---------- Final CTA ---------- */}
-      <ProjectDiscuss />
-    </div>
+        {/* ---------- Final CTA ---------- */}
+        <ProjectDiscuss />
+      </div>
+    </>
   );
 }

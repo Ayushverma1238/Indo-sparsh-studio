@@ -3,11 +3,9 @@ import "./UiUxPage.css";
 import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
 import ProjectDiscuss from "../../../Home/ProjectDiscuss";
+import SEO from "../../../../utils/seo";
 
 const UiUxService = () => {
-  useEffect(() => {
-    document.title = "Ui Ux Design | Indo Sparsh Studio";
-  }, []);
   // Set default theme to dark mode
   const [activeTab, setActiveTab] = useState("process");
   const navigate = useNavigate();
@@ -57,143 +55,150 @@ const UiUxService = () => {
   ];
 
   return (
-    <div className={`service-page-wrapper`}>
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-bg-glow"></div>
-        <div className="container">
-          <span className="badge-fade-in">Our Expertise</span>
-          
-          <h1 className="ui-hero__headline">
-            <span className="ui-word ui-word--a">Elevating</span>{" "}
-            <span className="ui-word ui-word--b">Products Through</span>
-            <br />
-            <span className="ui-word ui-word--c">UI/UX</span>{" "}
-            <span className="ui-word ui-word--d">Design</span>
-          </h1>
-          <p className="hero-subtitle animate-fade-in-up">
-            We bridge the gap between human emotion and digital interfaces. Our
-            designs aren't just beautiful—they are built to perform, convert,
-            and scale.
-          </p>
-          <div className="hero-cta-group animate-fade-in-up">
-            <button
-              onClick={() => navigate("/request-quote")}
-              className="btn btn-primary"
-            >
-              Start a Project
-            </button>
-            <button
-              onClick={() => navigate("/blog")}
-              className="btn btn-secondary"
-            >
-              View Case Studies
-            </button>
-          </div>
-        </div>
-      </section>
-      <ScrollBeam />
+    <>
+      <SEO
+        title="UI/UX Design Services | Indo Sparsh Studio"
+        description="Create engaging, intuitive and user-friendly digital experiences with Indo Sparsh Studio's UI/UX design services for websites, mobile apps and digital products."
+        keywords="UI UX design services, UI design, UX design, website UI UX, mobile app UI UX, user experience design, user interface design, product design, Indo Sparsh Studio"
+      />
+      <div className={`service-page-wrapper`}>
+        {/* Hero Section */}
+        <section className="hero-section">
+          <div className="hero-bg-glow"></div>
+          <div className="container">
+            <span className="badge-fade-in">Our Expertise</span>
 
-      {/* Stats Counter Section */}
-      <section className="stats-section">
-        <div className="container stats-grid">
-          <div className="stat-card">
-            <h3>99%</h3>
-            <p>Client Satisfaction</p>
-          </div>
-          <div className="stat-card">
-            <h3>150+</h3>
-            <p>Interfaces Deployed</p>
-          </div>
-          <div className="stat-card">
-            <h3>40%</h3>
-            <p>Average Conversion Lift</p>
-          </div>
-        </div>
-      </section>
-      <ScrollBeam />
-
-      {/* Workflow Strategy Selector */}
-      <section className="tabs-section">
-        <div className="container">
-          <div className="tabs-header">
-            <h2>How We Build Value</h2>
-            <div className="tab-buttons">
+            <h1 className="ui-hero__headline">
+              <span className="ui-word ui-word--a">Elevating</span>{" "}
+              <span className="ui-word ui-word--b">Products Through</span>
+              <br />
+              <span className="ui-word ui-word--c">UI/UX</span>{" "}
+              <span className="ui-word ui-word--d">Design</span>
+            </h1>
+            <p className="hero-subtitle animate-fade-in-up">
+              We bridge the gap between human emotion and digital interfaces.
+              Our designs aren't just beautiful—they are built to perform,
+              convert, and scale.
+            </p>
+            <div className="hero-cta-group animate-fade-in-up">
               <button
-                className={`tab-btn ${activeTab === "process" ? "active" : ""}`}
-                onClick={() => setActiveTab("process")}
+                onClick={() => navigate("/request-quote")}
+                className="btn btn-primary"
               >
-                Design Process
+                Start a Project
               </button>
               <button
-                className={`tab-btn ${activeTab === "tools" ? "active" : ""}`}
-                onClick={() => setActiveTab("tools")}
+                onClick={() => navigate("/blog")}
+                className="btn btn-secondary"
               >
-                Our Tech Stack
+                View Case Studies
               </button>
             </div>
           </div>
+        </section>
+        <ScrollBeam />
 
-          {activeTab === "process" ? (
-            <div className="process-grid ">
-              {processSteps.map((step, idx) => (
-                <div
-                  className="process-card why-card"
-                  key={idx}
-                  style={{ animationDelay: `${idx * 0.1}s` }}
+        {/* Stats Counter Section */}
+        <section className="stats-section">
+          <div className="container stats-grid">
+            <div className="stat-card">
+              <h3>99%</h3>
+              <p>Client Satisfaction</p>
+            </div>
+            <div className="stat-card">
+              <h3>150+</h3>
+              <p>Interfaces Deployed</p>
+            </div>
+            <div className="stat-card">
+              <h3>40%</h3>
+              <p>Average Conversion Lift</p>
+            </div>
+          </div>
+        </section>
+        <ScrollBeam />
+
+        {/* Workflow Strategy Selector */}
+        <section className="tabs-section">
+          <div className="container">
+            <div className="tabs-header">
+              <h2>How We Build Value</h2>
+              <div className="tab-buttons">
+                <button
+                  className={`tab-btn ${activeTab === "process" ? "active" : ""}`}
+                  onClick={() => setActiveTab("process")}
                 >
-                  <div className="card-num">{step.num}</div>
-                  <h4>{step.title}</h4>
-                  <p>{step.desc}</p>
+                  Design Process
+                </button>
+                <button
+                  className={`tab-btn ${activeTab === "tools" ? "active" : ""}`}
+                  onClick={() => setActiveTab("tools")}
+                >
+                  Our Tech Stack
+                </button>
+              </div>
+            </div>
+
+            {activeTab === "process" ? (
+              <div className="process-grid ">
+                {processSteps.map((step, idx) => (
+                  <div
+                    className="process-card why-card"
+                    key={idx}
+                    style={{ animationDelay: `${idx * 0.1}s` }}
+                  >
+                    <div className="card-num">{step.num}</div>
+                    <h4>{step.title}</h4>
+                    <p>{step.desc}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="tools-view animate-fade-in">
+                <div className="tool-tag why-card">Figma</div>
+                <div className="tool-tag why-card">Adobe CC</div>
+                <div className="tool-tag why-card">Principle</div>
+                <div className="tool-tag why-card">ProtoPie</div>
+                <div className="tool-tag why-card">Webflow</div>
+                <div className="tool-tag why-card">Framer</div>
+              </div>
+            )}
+          </div>
+        </section>
+        <ScrollBeam />
+
+        {/* Portfolio Showcase Grid */}
+        <section className="portfolio-section">
+          <div className="container">
+            <div className="section-title-area">
+              <h2>Recent Frameworks</h2>
+              <p>A glimpse into our visual production outcomes.</p>
+            </div>
+            <div className="portfolio-grid">
+              {portfolioItems.map((item, index) => (
+                <div className="portfolio-card why-card" key={index}>
+                  <div className="portfolio-img-wrapper">
+                    <img src={item.image} alt={item.title} />
+                    <div className="portfolio-hover-overlay">
+                      <span className="view-project-link">
+                        Explore Case Study ↗
+                      </span>
+                    </div>
+                  </div>
+                  <div className="portfolio-info">
+                    <span>{item.category}</span>
+                    <h4>{item.title}</h4>
+                  </div>
                 </div>
               ))}
             </div>
-          ) : (
-            <div className="tools-view animate-fade-in">
-              <div className="tool-tag why-card">Figma</div>
-              <div className="tool-tag why-card">Adobe CC</div>
-              <div className="tool-tag why-card">Principle</div>
-              <div className="tool-tag why-card">ProtoPie</div>
-              <div className="tool-tag why-card">Webflow</div>
-              <div className="tool-tag why-card">Framer</div>
-            </div>
-          )}
-        </div>
-      </section>
-      <ScrollBeam />
-
-      {/* Portfolio Showcase Grid */}
-      <section className="portfolio-section">
-        <div className="container">
-          <div className="section-title-area">
-            <h2>Recent Frameworks</h2>
-            <p>A glimpse into our visual production outcomes.</p>
           </div>
-          <div className="portfolio-grid">
-            {portfolioItems.map((item, index) => (
-              <div className="portfolio-card why-card" key={index}>
-                <div className="portfolio-img-wrapper">
-                  <img src={item.image} alt={item.title} />
-                  <div className="portfolio-hover-overlay">
-                    <span className="view-project-link">
-                      Explore Case Study ↗
-                    </span>
-                  </div>
-                </div>
-                <div className="portfolio-info">
-                  <span>{item.category}</span>
-                  <h4>{item.title}</h4>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <ScrollBeam />
+        </section>
+        <ScrollBeam />
 
-      {/* CTA Bottom Banner */}
-      <ProjectDiscuss/>
-    </div>
+        {/* CTA Bottom Banner */}
+        <ProjectDiscuss />
+      </div>
+    </>
   );
 };
 
