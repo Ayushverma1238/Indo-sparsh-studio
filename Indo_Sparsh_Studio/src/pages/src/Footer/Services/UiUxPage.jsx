@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
 import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 import SEO from "../../../../utils/seo";
+import CommonMarquee from "./common/commonMarquee";
 
 const UiUxService = () => {
   // Set default theme to dark mode
@@ -54,6 +55,19 @@ const UiUxService = () => {
     },
   ];
 
+  const tags = [
+    "#UIUXDesign",
+    "#UIDesign",
+    "#UXDesign",
+    "#UserExperience",
+    "#UserInterface",
+    "#WebDesign",
+    "#AppDesign",
+    "#ResponsiveDesign",
+    "#DesignThinking",
+    "#CreativeDesign",
+  ];
+
   return (
     <>
       <SEO
@@ -97,6 +111,8 @@ const UiUxService = () => {
           </div>
         </section>
         <ScrollBeam />
+
+        <CommonMarquee data={tags} />
 
         {/* Stats Counter Section */}
         <section className="stats-section">
@@ -196,8 +212,8 @@ const UiUxService = () => {
         <ScrollBeam />
 
         {/* CTA Bottom Banner */}
-        <ProjectDiscuss />
       </div>
+      <ProjectDiscuss />
     </>
   );
 };

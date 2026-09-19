@@ -7,10 +7,10 @@ body.light-mode {
   --adh-bg: var(--color-bg);
   --adh-bg-2: var(--color-bg-alt);
   --adh-text: var(--color-text);
-  --adh-text-muted: var(--color-text-muted);
   --adh-accent: var(--color-primary);
   --adh-accent-2: var(--color-accent);
   --adh-surface: var(--color-surface);
+  --adh-text-muted: var(--color-text-muted);
   --adh-border: var(--color-border);
   --adh-shadow: var(--color-shadow);
 }
@@ -19,10 +19,10 @@ body.dark-mode {
   --adh-bg: var(--color-bg);
   --adh-bg-2: var(--color-bg-alt);
   --adh-text: var(--color-text);
-  --adh-text-muted: var(--color-text-muted);
   --adh-accent: var(--color-primary);
   --adh-accent-2: var(--color-accent);
   --adh-surface: var(--color-surface);
+  --adh-text-muted: var(--color-text-muted);
   --adh-border: var(--color-border);
   --adh-shadow: var(--color-shadow);
 }
@@ -35,27 +35,14 @@ body.dark-mode {
   --coral: var(--color-accent);
   --yellow: var(--color-accent-2);
   --blue: var(--color-primary);
+  padding: 0 50px;
 }
 
-.appdev-page__theme-toggle {
-  position: fixed;
-  top: 24px;
-  right: 24px;
-  z-index: 20;
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  border: 1px solid var(--adh-border);
-  background: var(--adh-surface);
-  cursor: pointer;
-  font-size: 16px;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 8px 20px var(--adh-shadow);
-  transition: transform 0.2s ease;
+.appdev-page section{
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 72px 24px;
 }
-.appdev-page__theme-toggle:hover { transform: scale(1.08); }
-
 /* ============ Shared bits ============ */
 .adh-kicker {
   display: inline-block;
@@ -101,7 +88,6 @@ body.dark-mode {
 .adh-section--tight { padding-top: 56px; padding-bottom: 56px; }
 .adh-section--muted {
   max-width: none;
-  background: var(--adh-bg-2);
 }
 .adh-section--muted > * { max-width: 1500px; margin-left: auto; margin-right: auto; }
 .adh-section__head { margin-bottom: 48px; }
@@ -142,7 +128,7 @@ body.dark-mode {
 }
 
 /* ============ Hero (unchanged visual language) ============ */
-.appdev-hero { position: relative; overflow: hidden; padding: 96px 6vw 80px; }
+.appdev-hero { position: relative; overflow: hidden;padding: 0 20px; padding-top: clamp(64px, 9vw, 110px); }
 .appdev-hero__bg {
   position: absolute; inset: 0;
   background-image: linear-gradient(var(--adh-border) 1px, transparent 1px),
@@ -271,22 +257,7 @@ body.dark-mode {
 .adh-process__title { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin: 0 0 6px; }
 .adh-process__text { font-size: 13.5px; line-height: 1.6; color: var(--adh-text-muted); margin: 0; }
 
-/* ============ Tech marquee ============ */
-.adh-marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); }
-.adh-marquee__track {
-  display: flex; gap: 14px; width: max-content;
-  animation: adh-scroll 22s linear infinite;
-}
-.adh-marquee__item {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 13px;
-  padding: 10px 18px;
-  border: 1px solid var(--adh-border);
-  border-radius: 999px;
-  color: var(--adh-text-muted);
-  white-space: nowrap;
-}
-@media (prefers-reduced-motion: reduce) { .adh-marquee__track { animation: none; } }
+
 
 /* ============ Testimonials ============ */
 .adh-quote {

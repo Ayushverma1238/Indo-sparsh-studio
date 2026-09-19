@@ -3,6 +3,7 @@ import "./WebsiteDevelopment.css";
 import ScrollBeam from "../../../ScrollBeam";
 import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 import SEO from "../../../../utils/seo";
+import CommonMarquee from "./common/commonMarquee";
 
 /* ---------------------------------------------------------
    Small hook: reveals an element with a class once it enters
@@ -163,6 +164,19 @@ const WEBSITE_TYPES = [
       "Fast image-heavy loading",
     ],
   },
+];
+
+const tags = [
+  "#WebsiteDevelopment",
+  "#WebDevelopment",
+  "#WebDesign",
+  "#CustomWebsite",
+  "#BusinessWebsite",
+  "#ResponsiveWebDesign",
+  "#WebDeveloper",
+  "#DigitalPresence",
+  "#BusinessGrowth",
+  "#Startup",
 ];
 
 const WebsiteDevelopment = () => {
@@ -408,6 +422,8 @@ const WebsiteDevelopment = () => {
           </div>
         </section>
         <ScrollBeam />
+
+        <CommonMarquee data={tags} />
 
         <section className="stages" id="process">
           <div className="wrap">

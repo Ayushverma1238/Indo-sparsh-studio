@@ -155,7 +155,7 @@ body.dark-mode {
   transform: translateY(0);
 }
 .gd-btn--primary {
-  background: linear-gradient(120deg, var(--blue), var(--coral));
+  background: linear-gradient(160deg, var(--blue), var(--coral));
   color: #fff;
 }
 .gd-btn--primary:hover {
@@ -348,37 +348,7 @@ body.dark-mode {
   }
 }
 
-/* =========================================================
-   MARQUEE
-   ========================================================= */
-.gd-marquee {
-  border-top: 1px solid var(--gd-border);
-  border-bottom: 1px solid var(--gd-border);
-  overflow: hidden;
-  background: var(--gd-bg-muted);
-}
-.gd-marquee__track {
-  display: flex;
-  width: max-content;
-  animation: gd-scroll 28s linear infinite;
-}
-.gd-marquee__item {
-  font-family: var(--gd-font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.06em;
-  color: var(--gd-ink-soft);
-  padding: 14px 26px;
-  white-space: nowrap;
-  border-right: 1px solid var(--gd-border);
-}
-@keyframes gd-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
+
 
 /* =========================================================
    SECTION LAYOUT
@@ -386,9 +356,7 @@ body.dark-mode {
 .gd-section {
   padding: clamp(56px, 8vw, 100px) clamp(20px, 6vw, 96px);
 }
-.gd-section--muted {
-  background: var(--gd-bg);
-}
+
 .gd-section__head {
   max-width: 720px;
   margin: 0 auto 36px;

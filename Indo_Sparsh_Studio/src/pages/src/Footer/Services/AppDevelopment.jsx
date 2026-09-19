@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
 import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 import SEO from "../../../../utils/seo";
+import CommonMarquee from "./common/commonMarquee";
+import ToolsUsed from "./common/ToolsUsed";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -171,6 +173,18 @@ const testimonials = [
   },
 ];
 
+const tags = [
+  "#AppDevelopment",
+  "#MobileAppDevelopment",
+  "#CustomAppDevelopment",
+  "#AndroidDevelopment",
+  "#iOSDevelopment",
+  "#AppDesign",
+  "#AppDeveloper",
+  "#BusinessApp",
+  "#TechSolutions",
+  "#DigitalSolutions",
+];
 /* ---------- page ---------- */
 export default function AppDevPage() {
   const navigate = useNavigate();
@@ -275,6 +289,8 @@ export default function AppDevPage() {
         </section>
         <ScrollBeam />
 
+        <CommonMarquee data={tags} />
+
         {/* ---------- Services ---------- */}
         <section className="adh-section">
           <Reveal className="adh-section__head">
@@ -338,41 +354,11 @@ export default function AppDevPage() {
             <h2 className="adh-h2">Built on a proven stack</h2>
           </Reveal>
 
-          <div className="adh-marquee">
-            <div className="adh-marquee__track">
-              {[...stack, ...stack].map((item, i) => (
-                <span className="adh-marquee__item why-card" key={i}>
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
+          <ToolsUsed stack={stack} />
         </section>
-        {/* 
-      ---------- Testimonials ----------
-      <section className="adh-section">
-        <Reveal className="adh-section__head">
-          <span className="adh-kicker">Client feedback</span>
-          <h2 className="adh-h2">What it's like to work with us</h2>
-        </Reveal>
-
-        <div className="adh-grid adh-grid--3">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={i * 90} className="adh-quote why-card">
-              <p className="adh-quote__text">“{t.quote}”</p>
-              <div className="adh-quote__author">
-                <span className="adh-quote__name">{t.name}</span>
-                <span className="adh-quote__role">{t.role}</span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section> */}
         <ScrollBeam />
-
-        {/* ---------- Final CTA ---------- */}
-        <ProjectDiscuss />
       </div>
+      <ProjectDiscuss />
     </>
   );
 }

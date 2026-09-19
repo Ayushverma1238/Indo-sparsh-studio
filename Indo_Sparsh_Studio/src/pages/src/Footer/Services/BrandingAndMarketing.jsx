@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./BrandingAndMarketing.css";
-import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
 import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 import SEO from "../../../../utils/seo";
+import CommonMarquee from "./common/commonMarquee";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -167,6 +167,18 @@ export default function BrandingMarketingPage() {
   const visible =
     filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
+  const marqueeData = [
+    "#BrandingAndMarketing",
+    "#BrandStrategy",
+    "#DigitalMarketing",
+    "#BrandIdentity",
+    "#MarketingStrategy",
+    "#BusinessBranding",
+    "#BrandAwareness",
+    "#SocialMediaMarketing",
+    "#BusinessGrowth",
+    "#DigitalPresence",
+  ];
   return (
     <>
       <SEO
@@ -213,27 +225,7 @@ export default function BrandingMarketingPage() {
         <ScrollBeam />
 
         {/* ---------- Client marquee ---------- */}
-        <div className="bm-marquee">
-          <div className="bm-marquee__track">
-            {[...Array(2)]
-              .flatMap(() => [
-                "Solace",
-                "Fernway",
-                "Loop Studio",
-                "Marlow",
-                "Northline",
-                "Kindred",
-                "Ardent",
-                "Circuit",
-              ])
-              .map((name, i) => (
-                <span className="bm-marquee__item" key={i}>
-                  {name}
-                </span>
-              ))}
-          </div>
-        </div>
-        <ScrollBeam />
+        <CommonMarquee data={marqueeData} />
 
         {/* ---------- Work ---------- */}
         <section className="bm-section" id="work">
@@ -331,8 +323,8 @@ export default function BrandingMarketingPage() {
         <ScrollBeam />
 
         {/* ---------- Final CTA ---------- */}
-        <ProjectDiscuss />
       </div>
+      <ProjectDiscuss />
     </>
   );
 }

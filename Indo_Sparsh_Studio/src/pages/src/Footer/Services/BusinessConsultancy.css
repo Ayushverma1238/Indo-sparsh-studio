@@ -75,7 +75,7 @@ body.dark-mode {
 
 .container-bc {
   width: 100%;
-  padding: 0 100px;
+  padding: 0 50px;
 }
 @media (max-width: 700px) {
   .wrap {
@@ -90,7 +90,9 @@ body.dark-mode {
 
 .business-consultancy-page-bc section {
   position: relative;
-  padding: calc(var(--unit) * 8) calc(var(--unit) * 3);
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 72px 24px;
 }
 
 /* Shared "why-card" utility used across many section types */
@@ -245,7 +247,7 @@ body.dark-mode {
     background-color 0.25s ease;
 }
 .primary-button-bc {
-  background: linear-gradient(120deg, var(--blue), var(--coral));
+  background: linear-gradient(160deg, var(--blue), var(--coral));
   color: #fff;
 }
 .primary-button-bc:hover {
@@ -1075,7 +1077,7 @@ body.dark-mode {
   background: linear-gradient(160deg, #2f5cff, #16161a);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
   .container-bc {
     padding: 0 35px;
   }

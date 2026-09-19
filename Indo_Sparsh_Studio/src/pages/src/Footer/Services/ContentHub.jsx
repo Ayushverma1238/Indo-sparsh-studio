@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./ContentHub.css";
 import SEO from "../../../../utils/seo";
+import CommonMarquee from "./common/commonMarquee";
+import ScrollBeam from "../../../ScrollBeam";
 
 const ContentHub = () => {
   const [filter, setFilter] = useState("All");
@@ -62,6 +64,18 @@ const ContentHub = () => {
       : productionCards.filter(
           (card) => card.type.includes(filter) || card.status === filter,
         );
+  const marqueeData = [
+    "#ContentCreation",
+    "#VideoEditing",
+    "#ContentMarketing",
+    "#VideoContent",
+    "#SocialMediaContent",
+    "#CreativeContent",
+    "#VideoProduction",
+    "#ReelsEditing",
+    "#BrandContent",
+    "#DigitalContent",
+  ];
 
   return (
     <>
@@ -101,6 +115,8 @@ const ContentHub = () => {
             </div>
           </div>
         </header>
+        <ScrollBeam />
+        <CommonMarquee data={marqueeData} />
 
         {/* Filter Matrix Controls */}
         <div className="filter-bar">

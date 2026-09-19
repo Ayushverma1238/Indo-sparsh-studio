@@ -16,7 +16,7 @@ body.light-mode {
   --color-bg-alt: #eef0f8;
   --color-surface: #ffffff;
   --color-text: #15151c;
-  --color-text-muted: #63636f;
+  --color-text-muted: #55555a;
   --color-border: rgba(21, 21, 28, 0.09);
   --color-shadow: rgba(21, 21, 28, 0.12);
 
@@ -39,7 +39,7 @@ body.dark-mode {
   --color-bg-alt: #1a1430;
   --color-surface: #1c1530;
   --color-text: #f5f1ff;
-  --color-text-muted: #a79fc4;
+  --color-text-muted: #b6b0cc;
   --color-border: rgba(255, 255, 255, 0.1);
   --color-shadow: rgba(0, 0, 0, 0.55);
 

@@ -19,6 +19,7 @@ import {
 import { useInView } from "framer-motion";
 import ScrollBeam from "../../../ScrollBeam";
 import SEO from "../../../../utils/seo";
+import CommonMarquee from "./common/commonMarquee";
 
 /* ==========================================================
    REVEAL COMPONENT
@@ -195,12 +196,16 @@ const whyPointsBC = [
 
 // From PDF hero hashtags
 const heroTagsBC = [
-  "#BUSINESSCONSULTING",
-  "#REVENUEGROWTH",
-  "#BUSINESSSTRATEGY",
-  "#SMEGROWTH",
-  "#BUSINESSCOACH",
-  "#GROWTHPARTNER",
+  "#BusinessConsulting",
+  "#RevenueGrowth",
+  "#BusinessStrategy",
+  "#SMEGrowth",
+  "#BusinessCoach",
+  "#GrowthPartner",
+  "#BusinessDevelopment",
+  "#BusinessPlanning",
+  "#GrowthStrategy",
+  "#Entrepreneurship",
 ];
 
 // From PDF footer hashtags
@@ -326,14 +331,6 @@ export default function BusinessConsultancy() {
                     <span>Years</span>
                   </div>
                 </div>
-
-                <div className="hero-tags-bc">
-                  {heroTagsBC.map((tag) => (
-                    <span key={tag} className="tag-bc">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </RevealBC>
 
               {/* RIGHT */}
@@ -383,6 +380,8 @@ export default function BusinessConsultancy() {
           </div>
         </section>
         <ScrollBeam />
+
+        <CommonMarquee data={heroTagsBC} />
 
         {/* ==================================================
           STATS SECTION

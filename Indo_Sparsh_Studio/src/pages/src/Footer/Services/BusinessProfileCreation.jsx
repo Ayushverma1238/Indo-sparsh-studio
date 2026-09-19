@@ -3,6 +3,7 @@ import "./BusinessProfileCreation.css";
 import ScrollBeam from "../../../ScrollBeam";
 import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 import SEO from "../../../../utils/seo";
+import CommonMarquee from "./common/CommonMarquee";
 /* =========================================================================
    INDO SPARSH STUDIO — Business Profile Creation
    Design direction: "Certificate of Incorporation" — the page reads like an
@@ -52,13 +53,13 @@ const BusinessProfileCreation = () => {
   const tabIndex = tabs.findIndex((t) => t.id === activeTab);
 
   const tags = [
-    "#BUSINESSPROFILE",
-    "#GOOGLEMYBUSINESS",
-    "#BRANDING",
+    "#BusinessProfile",
+    "#GoogleMyBusiness",
+    "#Branding",
     "#MSME",
-    "#DIGITALPRESENCE",
-    "#NEWBUSINESS",
-    "#STARTUPINDIA",
+    "#DigitalPresence",
+    "#NewBusiness",
+    "#StartupIndia",
   ];
 
   const heroMetrics = [
@@ -327,18 +328,6 @@ const BusinessProfileCreation = () => {
               One studio. One team. One integrated business identity.
             </p>
 
-            <div className="isp-tags">
-              {tags.map((tag, i) => (
-                <span
-                  key={tag}
-                  className="isp-tag"
-                  style={{ animationDelay: `${0.75 + i * 0.06}s` }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
             <div className="isp-hero-actions">
               <a
                 href="#package"
@@ -366,6 +355,8 @@ const BusinessProfileCreation = () => {
             ))}
           </div>
         </section>
+        <ScrollBeam />
+        <CommonMarquee data={tags} />
 
         {/* ===================== TAB CONTROLS ===================== */}
         <nav className="isp-tab-rail" id="services">
@@ -603,8 +594,9 @@ const BusinessProfileCreation = () => {
             ))}
           </ul>
         </section>
-        <ProjectDiscuss />
+        <ScrollBeam />
       </div>
+      <ProjectDiscuss />
     </>
   );
 };

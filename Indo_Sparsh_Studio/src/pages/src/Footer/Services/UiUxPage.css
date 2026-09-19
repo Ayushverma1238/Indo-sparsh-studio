@@ -92,11 +92,12 @@ body.light-mode {
 /* ==========================================================================
    4. HERO SECTION WITH BACKGROUND GLOW
    ========================================================================== */
-section{
- padding: calc(var(--unit) * 8) calc(var(--unit) * 8);
-
+section {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 72px 24px;
 }
- .hero-section {
+.hero-section {
   position: relative;
   text-align: left;
 }
@@ -108,7 +109,12 @@ section{
   transform: translateX(-50%);
   width: 600px;
   height: 350px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.05) 70%, transparent 100%);
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.15) 0%,
+    rgba(168, 85, 247, 0.05) 70%,
+    transparent 100%
+  );
   filter: blur(60px);
   pointer-events: none;
   z-index: 0;
@@ -151,9 +157,12 @@ section{
   transition: var(--transition-smooth);
 }
 
-
 .btn-primary {
-  background: linear-gradient(120deg, var(--primary-accent), var(--secondary-accent));
+  background: linear-gradient(
+    120deg,
+    var(--primary-accent),
+    var(--secondary-accent)
+  );
   color: #fff;
 }
 .btn-primary:hover {
@@ -191,7 +200,11 @@ section{
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 8px;
-  background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+  background: linear-gradient(
+    135deg,
+    var(--text-primary),
+    var(--text-secondary)
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -343,6 +356,10 @@ section{
 }
 
 .portfolio-card {
+  background-color: rgb(1, 1, 24);
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #969090;
   cursor: pointer;
 }
 
@@ -397,6 +414,7 @@ section{
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  padding: 10px;
   color: var(--primary-accent);
   font-weight: 700;
 }
@@ -411,9 +429,12 @@ section{
    8. FOOTER CTA CALLOUT
    ========================================================================== */
 
-
 .cta-box {
-  background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+  background: linear-gradient(
+    135deg,
+    var(--primary-accent),
+    var(--secondary-accent)
+  );
   padding: 60px;
   border-radius: calc(var(--border-radius-lg) * 1.5);
   text-align: center;
@@ -484,15 +505,20 @@ section{
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* ==========================================================================
    10. RESPONSIVE BREAKPOINTS
    ========================================================================== */
 @media (max-width: 1024px) {
-  .process-grid, .portfolio-grid {
+  .process-grid,
+  .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .hero-title {
@@ -501,7 +527,9 @@ section{
 }
 
 @media (max-width: 640px) {
-  .process-grid, .portfolio-grid, .stats-grid {
+  .process-grid,
+  .portfolio-grid,
+  .stats-grid {
     grid-template-columns: 1fr;
   }
   .hero-title {
@@ -565,16 +593,16 @@ section{
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ui-word, .ui-eyebrow {
+  .ui-word,
+  .ui-eyebrow {
     opacity: 1;
     transform: none;
     animation: none;
   }
 }
 
-@media (max-width:700px) {
-    section{
- padding: calc(var(--unit) * 8) calc(var(--unit) * 3);
-
-}
+@media (max-width: 700px) {
+  section {
+    padding: calc(var(--unit) * 8) calc(var(--unit) * 3);
+  }
 }

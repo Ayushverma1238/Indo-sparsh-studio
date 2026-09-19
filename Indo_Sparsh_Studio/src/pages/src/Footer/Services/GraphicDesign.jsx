@@ -5,6 +5,7 @@ import ScrollBeam from "../../../ScrollBeam";
 import "../../../Services.css";
 import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 import SEO from "../../../../utils/seo";
+import CommonMarquee from "./common/commonMarquee";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -95,13 +96,13 @@ const CONTACT = {
 };
 
 const tags = [
-  "#GRAPHICDESIGN",
-  "#BRANDING",
-  "#PRINTDESIGN",
-  "#SOCIALMEDIADESIGN",
-  "#BUSINESSGROWTH",
+  "#GraphicDesign",
+  "#Branding",
+  "#PrintDesign",
+  "#SocialMediaDesign",
+  "#BusinessGrowth",
   "#MSME",
-  "#LEADGENERATION",
+  "#LeadGeneration",
 ];
 
 /* Rate-card categories, shown as a tabbed table */
@@ -574,16 +575,7 @@ export default function GraphicDesignPage() {
         <ScrollBeam />
 
         {/* ---------- Tags marquee ---------- */}
-        <div className="gd-marquee">
-          <div className="gd-marquee__track">
-            {[...tags, ...tags].map((t, i) => (
-              <span className="gd-marquee__item" key={i}>
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-        <ScrollBeam />
+        <CommonMarquee data={tags}/>
 
         {/* ---------- Rate card ---------- */}
         <section className="gd-section" id="ratecard">

@@ -59,6 +59,10 @@ body.dark-mode {
   box-sizing: border-box;
 }
 
+.isp-root{
+  padding: 0 50px;
+}
+
 .isp-root h1,
 .isp-root h2,
 .isp-root h3,
@@ -93,12 +97,13 @@ body.dark-mode {
 }
 
 /* Enforce consistent section spacing across all child sections */
-.isp-root > section,
-.isp-root > footer {
+.isp-root section,
+.isp-root footer {
   position: relative;
   z-index: 1;
-  width: 100%;
-  padding: 60px 100px;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 72px 24px;
 }
 
 @media (max-width: 700px) {
@@ -121,8 +126,8 @@ body.dark-mode {
    HERO
 =========================================================== */
 .isp-hero {
-  padding-top: clamp(56px, 8vw, 96px);
-  padding-bottom: 60px;
+  padding-top: clamp(64px, 9vw, 110px);
+  /* padding-bottom: 60px; */
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 48px;
@@ -271,7 +276,7 @@ body.dark-mode {
   font-family: var(--isp-font-body);
   font-weight: 600;
   font-size: 0.92rem;
-  padding: 13px 24px;
+  padding: 12px 22px;
   border-radius: 10px;
   border: 1.5px solid var(--isp-ink);
   cursor: pointer;
@@ -285,7 +290,7 @@ body.dark-mode {
     background-color 0.25s ease;
 }
 .isp-btn-primary {
-  background: linear-gradient(120deg, var(--isp-accent), var(--isp-accent-2));
+  background: linear-gradient(160deg, var(--blue), var(--coral));
   color: #fff;
 }
 .isp-btn-primary:hover {
@@ -361,7 +366,7 @@ body.dark-mode {
   background: var(--isp-bg-alt);
   border: 1px solid var(--isp-border);
   border-radius: 999px;
-  padding: 5px 10px;
+  padding: 10px 10px;
   max-width: 620px;
   margin: 0 auto 48px;
   gap: 4px;

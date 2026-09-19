@@ -94,8 +94,9 @@ body.dark-mode {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  border-bottom: 1px solid var(--hub-border);
-  padding-bottom: 32px;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 72px 24px;
   margin-bottom: 32px;
   transition: border-color 0.3s ease;
 }
@@ -180,12 +181,14 @@ body.dark-mode {
 
 /* Filter Module Track Layout */
 .filter-bar {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 15px 8px;
   display: flex;
   gap: 12px;
 
   margin-bottom: 40px;
   overflow-x: auto;
-  padding: 8px;
 }
 
 .filter-btn {
@@ -217,6 +220,9 @@ body.dark-mode {
    4. PIPELINE MEDIA CARD ARCHITECTURE
    ========================================================================== */
 .production-grid {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 72px 24px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: 32px;

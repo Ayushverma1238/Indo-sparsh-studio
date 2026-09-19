@@ -23,13 +23,7 @@ const RecentProjects = () => {
               image: "/tech/project1.jpeg",
               link: "https://hola9.com",
             },
-            {
-              title: "Procareers",
-              date: "Feb 2025",
-              tag: "Website",
-              image: "/tech/project2.jpeg",
-              link: "https://procareers.in/",
-            },
+          
             {
               title: "Laser Eye Institute",
               date: "Jul 2023",
@@ -53,13 +47,7 @@ const RecentProjects = () => {
                 image: "/tech/project1.jpeg",
                 link: "https://hola9.com",
               },
-              {
-                title: "Procareers",
-                date: "Feb 2025",
-                tag: "Website",
-                image: "/tech/project2.jpeg",
-                link: "https://procareers.in/",
-              },
+             
               {
                 title: "Laser Eye Institute",
                 date: "Jul 2023",

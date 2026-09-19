@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
 import "../../../Services.css";
 import SEO from "../../../../utils/seo";
+import CommonMarquee from "./common/commonMarquee";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -49,16 +50,16 @@ const CONTACT = {
 };
 
 const channels = [
-  "SEO",
-  "Meta Ads",
-  "Google Ads",
-  "WhatsApp Marketing",
-  "SMS Marketing",
-  "Email Marketing",
-  "Telegram Ads",
-  "Performance Marketing",
-  "UGC Ads",
-  "Local SEO",
+  "#SEO",
+  "#MetaAds",
+  "#GoogleAds",
+  "#WhatsAppMarketing",
+  "#SMSMarketing",
+  "#EmailMarketing",
+  "#TelegramAds",
+  "#PerformanceMarketing",
+  "#UGCAds",
+  "#LocalSEO",
 ];
 
 /* Bundled plans, shown as the masonry "portfolio" grid */
@@ -267,16 +268,7 @@ export default function DigitalMarketingPage() {
         <ScrollBeam />
 
         {/* ---------- Channels marquee ---------- */}
-        <div className="dm-marquee">
-          <div className="dm-marquee__track">
-            {[...channels, ...channels].map((t, i) => (
-              <span className="dm-marquee__item" key={i}>
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-        <ScrollBeam />
+        <CommonMarquee data={channels}/>
 
         {/* ---------- Plans masonry ---------- */}
         <section className="dm-section" id="plans">

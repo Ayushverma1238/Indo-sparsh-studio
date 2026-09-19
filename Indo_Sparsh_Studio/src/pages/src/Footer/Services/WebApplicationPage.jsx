@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "./WebApplicationPage.css";
 import ScrollBeam from "../../../ScrollBeam";
 import SEO from "../../../../utils/seo";
+import CommonMarquee from "./common/commonMarquee";
 
 /**
  * WebAppBuildStory
@@ -150,6 +151,19 @@ function CropMarks() {
   );
 }
 
+const tags = [
+  "#WebApplicationDevelopment",
+  "#WebDevelopment",
+  "#WebApplication",
+  "#CustomWebApplication",
+  "#FullStackDevelopment",
+  "#FrontendDevelopment",
+  "#BackendDevelopment",
+  "#WebAppDevelopment",
+  "#SoftwareDevelopment",
+  "#DigitalSolutions",
+];
+
 export default function WebAppBuildStory() {
   const rootRef = useReveal();
 
@@ -208,6 +222,8 @@ export default function WebAppBuildStory() {
           </div>
         </section>
         <ScrollBeam />
+
+        <CommonMarquee data={tags} />
 
         {/* INTRO ------------------------------------------------------ */}
         <section className="wa-intro">

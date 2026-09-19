@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import "./RowCallingData.css";
 import { Link } from "react-router-dom";
 import SEO from "../../../../utils/seo";
+import ScrollBeam from "../../../ScrollBeam";
+import CommonMarquee from "./common/commonMarquee";
+import ToolsUsed from "./common/ToolsUsed";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {
@@ -131,6 +134,19 @@ const reasons = [
   "City / state targeting",
 ];
 
+const tags = [
+  "#CallingData",
+  "#EmailData",
+  "#CallingNumbers",
+  "#SMSData",
+  "#ColdEmail",
+  "#LeadGeneration",
+  "#BusinessLeads",
+  "#LeadData",
+  "#B2BData",
+  "#SalesData",
+];
+
 export default function RowCallingData() {
   return (
     <>
@@ -165,25 +181,18 @@ export default function RowCallingData() {
               <a href="#pricing" className="dp-btn dp-btn--primary">
                 See pricing
               </a>
-              <a target="_blank" href="https://wa.me/918005351770" className="dp-btn dp-btn--ghost">
+              <a
+                target="_blank"
+                href="https://wa.me/918005351770"
+                className="dp-btn dp-btn--ghost"
+              >
                 Talk to us
               </a>
             </div>
-            <div className="dp-hero__tags">
-              {[
-                "#LeadGeneration",
-                "#ColdData",
-                "#WarmData",
-                "#HotData",
-                "#BusinessGrowth",
-              ].map((t) => (
-                <span className="dp-tag why-card" key={t}>
-                  {t}
-                </span>
-              ))}
-            </div>
           </div>
         </section>
+        <ScrollBeam />
+        <CommonMarquee data={tags} />
 
         {/* ---------- Categories ---------- */}
         <section className="dp-section dp-section--muted">
@@ -191,19 +200,10 @@ export default function RowCallingData() {
             <span className="dp-kicker">Coverage</span>
             <h2 className="dp-h2">Data categories available</h2>
           </Reveal>
-          <div className="dp-chips">
-            {categories.map((c, i) => (
-              <Reveal
-                as="span"
-                key={c}
-                delay={i * 60}
-                className="dp-chip why-card"
-              >
-                {c}
-              </Reveal>
-            ))}
-          </div>
+          <ToolsUsed stack={categories}/>
         </section>
+
+        <ScrollBeam />
 
         {/* ---------- Why choose us ---------- */}
         <section className="dp-section">
@@ -225,6 +225,7 @@ export default function RowCallingData() {
             ))}
           </div>
         </section>
+        <ScrollBeam />
         {/* ---------- Pricing ---------- */}
         <section className="dp-section" id="pricing">
           <Reveal className="dp-section__head">

@@ -19,12 +19,16 @@ export const heroData = {
 
 // ---- Hero hashtags (from PDF) ----
 export const socialTags = [
-  "#SOCIALMEDIAMANAGEMENT",
-  "#CONTENTMARKETING",
-  "#BRANDGROWTH",
-  "#DIGITALPRESENCE",
+  "#SocialMediaManagement",
+  "#ContentMarketing",
+  "#BrandGrowth",
+  "#DigitalPresence",
   "#SMM",
-  "#BUSINESSGROWTH",
+  "#BusinessGrowth",
+  "#SocialMediaMarketing",
+  "#SocialMediaStrategy",
+  "#ContentCreation",
+  "#OnlineMarketing",
 ];
 
 // ---- Footer hashtags (from PDF) ----

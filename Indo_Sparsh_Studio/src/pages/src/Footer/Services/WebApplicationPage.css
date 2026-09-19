@@ -35,10 +35,20 @@
   --yellow: var(--color-accent-2);
 
 }
+.wa{
+  padding: 0 50px;
+}
+
+@media (max-width:700px) {
+  .wa{
+    padding: 0;
+  }
+}
 
 .wa > section{
-  width: 100%;
-  padding: clamp(20px, 5vw, 50px) clamp(20px, 8vw, 100px);
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 72px 24px;
 }
 
 
@@ -380,7 +390,6 @@ body.light-mode .wa {
 --------------------------------------------------------------- */
 .wa-process {
   padding: calc(var(--unit) * 10) calc(var(--unit) * 6);
-  background: var(--bg-elevated);
   border-top: var(--border);
   border-bottom: var(--border);
 }
@@ -485,7 +494,6 @@ body.light-mode .wa {
 --------------------------------------------------------------- */
 .wa-notes {
   padding: calc(var(--unit) * 10) calc(var(--unit) * 6);
-  background: var(--bg-elevated);
   border-top: var(--border);
   border-bottom: var(--border);
 }

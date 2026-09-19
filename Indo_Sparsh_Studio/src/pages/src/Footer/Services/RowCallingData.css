@@ -96,20 +96,9 @@ body.dark-mode {
   color: var(--dp-text);
 }
 
-.dp-section {
-  max-width: 1500px;
-  margin: 0 auto;
-  padding: 90px 100px;
-}
-.dp-section--muted {
-  max-width: none;
-  background: var(--dp-bg-2);
-}
-.dp-section--muted > * {
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-}
+
+
+
 .dp-section__head {
   margin-bottom: 44px;
 }
@@ -142,7 +131,7 @@ body.dark-mode {
     background 0.2s ease;
 }
 .dp-btn--primary {
-  background: linear-gradient(120deg, var(--blue), var(--coral));
+  background: linear-gradient(160deg, var(--blue), var(--coral));
   color: #fff;
 }
 .dp-btn--primary:hover {
@@ -252,6 +241,16 @@ body.dark-mode {
     transform: none;
     transition: none;
   }
+}
+
+.dp{
+  padding: 0 50px;
+}
+
+.dp section{
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 72px 24px;
 }
 
 /* ============ Hero ============ */
@@ -844,4 +843,16 @@ body.dark-mode {
   flex-direction: column;
   gap: 8px;
   padding: 20px 30px 30px 30px;
+}
+
+@media (max-width:750px) {
+  .dp{
+    padding: 0 25px;
+  }
+}
+
+@media (max-width:500px) {
+  .dp{
+    padding: 0 10px;
+  }
 }

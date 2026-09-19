@@ -41,7 +41,6 @@ body.dark-mode {
   --blue: var(--color-primary);
 }
 
-
 /* ============ Shared ============ */
 .bm-kicker {
   display: inline-block;
@@ -87,15 +86,24 @@ body.dark-mode {
   color: transparent;
 }
 
+.bm {
+  padding: 0 50px;
+}
+
+.bm section {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 72px 24px;
+}
+
+
+
 .bm-section {
   max-width: 1180px;
   margin: 0 auto;
   padding: 90px 6vw;
 }
-.bm-section--muted {
-  max-width: none;
-  background: var(--bm-bg-2);
-}
+
 .bm-section--muted > * {
   max-width: 1180px;
   margin-left: auto;
@@ -114,7 +122,7 @@ body.dark-mode {
   font-family: inherit;
   font-size: 15px;
   font-weight: 600;
-  padding: 13px 26px;
+  padding: 12px 22px;
   border-radius: 10px;
   cursor: pointer;
   border: 1px solid transparent;
@@ -127,7 +135,7 @@ body.dark-mode {
 }
 
 .bm-btn--primary {
-  background: linear-gradient(120deg, var(--blue), var(--coral));
+  background: linear-gradient(160deg, var(--blue), var(--coral));
   color: #fff;
 }
 .bm-btn--primary:hover {
@@ -135,7 +143,6 @@ body.dark-mode {
   box-shadow: 0 14px 28px var(--bm-shadow);
 }
 .bm-btn--ghost {
-
   background: transparent;
   border: 2px solid var(--bm-text-muted);
   color: var(--bm-text);
@@ -259,31 +266,6 @@ body.dark-mode {
   justify-content: flex-start;
   flex-wrap: wrap;
   animation: bm-rise 0.7s 0.2s ease both;
-}
-
-/* ============ Marquee ============ */
-.bm-marquee {
-  overflow: hidden;
-  border-top: 1px solid var(--bm-border);
-  border-bottom: 1px solid var(--bm-border);
-  padding: 22px 0;
-}
-.bm-marquee__track {
-  display: flex;
-  gap: 56px;
-  width: max-content;
-  animation: bm-scroll 20s linear infinite;
-}
-.bm-marquee__item {
-  font-family: var(--font-body);
-  font-size: 20px;
-  color: var(--bm-text-muted);
-  white-space: nowrap;
-}
-@media (prefers-reduced-motion: reduce) {
-  .bm-marquee__track {
-    animation: none;
-  }
 }
 
 /* ============ Filters ============ */
@@ -583,7 +565,6 @@ body.dark-mode {
   }
 }
 
-
 .bm-hero__headline {
   font-family: var(--font-display);
   font-weight: 700;
@@ -633,7 +614,8 @@ body.dark-mode {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .bm-word, .bm-eyebrow {
+  .bm-word,
+  .bm-eyebrow {
     opacity: 1;
     transform: none;
     animation: none;

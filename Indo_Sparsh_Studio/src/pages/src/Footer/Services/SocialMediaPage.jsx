@@ -26,8 +26,8 @@ import "./SocialMediaPage.css";
 import ScrollBeam from "../../../ScrollBeam";
 import { Link } from "react-router-dom";
 import "../../../Services.css";
-import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 import SEO from "../../../../utils/seo";
+import CommonMarquee from "./common/commonMarquee";
 
 /**
  * Lightweight replacement for framer-motion's `whileInView`.
@@ -86,7 +86,6 @@ export default function SocialMediaManagement() {
   const [whyGridRef, whyGridInView] = useInView();
   const [faqHeadRef, faqHeadInView] = useInView();
   const [faqWrapperRef, faqWrapperInView] = useInView();
-  const [ctaRef, ctaInView] = useInView();
 
   return (
     <>
@@ -122,18 +121,6 @@ export default function SocialMediaManagement() {
                 {heroData.secondaryBtn}
               </button>
             </div>
-
-            <div className="hero-tags-sm">
-              {socialTags.map((tag, index) => (
-                <span
-                  key={tag}
-                  className="tag-sm reveal-up-sm reveal-onload-sm in-view-sm"
-                  style={{ "--stagger-delay": `${0.15 + index * 0.08}s` }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
           </div>
 
           <div className="hero-right-sm reveal-right-sm reveal-onload-sm in-view-sm">
@@ -162,6 +149,8 @@ export default function SocialMediaManagement() {
           </div>
         </section>
         <ScrollBeam />
+
+        <CommonMarquee data={socialTags} />
 
         {/* STATS */}
         <section className="stats-sm">
