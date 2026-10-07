@@ -54,6 +54,23 @@ body.dark-mode {
 .smm-page-sm * {
   box-sizing: border-box;
 }
+.smm-page-sm{
+
+  padding: 0 50px;
+}
+
+@media (max-width:900px){
+  .smm-page-sm{
+    padding: 0 30px;
+  }
+
+}
+
+@media (max-width:600px) {
+  .smm-page-sm{
+    padding: 0 12px;
+  }
+}
 
 /* Global safety net: prevent long unbroken words/links/prices from
    forcing flex/grid children (cards, rows) wider than their tracks. */
@@ -86,7 +103,21 @@ body.dark-mode {
 .smm-page-sm section {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 72px 24px;
+  padding: 72px 100px;
+}
+
+@media (max-width:900px) {
+ 
+  .smm-page-sm section{
+    padding: 72px 50px;
+  }
+}
+
+@media (max-width:600px) {
+  
+  .smm-page-sm section{
+    padding: 72px 20px;
+  }
 }
 
 /* ===========================================================

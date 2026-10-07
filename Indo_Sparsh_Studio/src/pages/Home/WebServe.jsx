@@ -1,60 +1,39 @@
-import React, { useState, useEffect, useRef } from "react";
-
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./WebServe.css";
 import ScrollBeam from "../ScrollBeam";
 
+// Full services list — shown as pills, text only.
+const tags = [
+  "Business Profile Creation",
+  "Web Development",
+  "App Development",
+  "Digital Marketing",
+  "Social Media Management",
+  "UI/UX Design",
+  "Graphics Design",
+  "Branding & Marketing",
+  "Row Calling Data",
+  "Content Creation & Video Editing",
+  "Business Consultancy",
+];
+
 const WebServe = () => {
-  const services = [
-    "Business Profile Creation",
-    "Web Development",
-    "App Development",
-    "Digital Marketing Services",
-    "Social Media Management",
-    "UI/UX Design",
-    "Graphics Design Services",
-    "Branding & Marketing",
-    "Row Calling Data",
-    "Content Creation & Video Editing Services",
-    "Business Consultancy",
-  ];
-
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [typedText, setTypedText] = useState("");
-  const [serviceIndex, setServiceIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-
-  useEffect(() => {
-    const current = services[serviceIndex];
-    let typingSpeed = isDeleting ? 40 : 90;
-
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        // typing
-        setTypedText(current.substring(0, charIndex + 1));
-        setCharIndex(charIndex + 1);
-
-        if (charIndex === current.length) {
-          setTimeout(() => setIsDeleting(true), 1200);
-        }
-      } else {
-        // deleting
-        setTypedText(current.substring(0, charIndex - 1));
-        setCharIndex(charIndex - 1);
-
-        if (charIndex === 0) {
-          setIsDeleting(false);
-          setServiceIndex((prev) => (prev + 1) % services.length);
-        }
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, serviceIndex]);
-
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   const videoRef = useRef(null);
+  const navigate = useNavigate();
+
+  // Cycles the "active" (highlighted) pill every second, so the
+  // gradient background appears to float from one pill to the next.
+  const [activeTagIndex, setActiveTagIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTagIndex((prev) => (prev + 1) % tags.length);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if ("requestIdleCallback" in window) {
@@ -63,23 +42,26 @@ const WebServe = () => {
       setTimeout(() => setShouldLoadVideo(true), 1500);
     }
   }, []);
-  const navigate = useNavigate();
 
   return (
     <>
       <section className="home-hero">
+        {/* ===== BACKGROUND (untouched) ===== */}
         <img
           src="/video/hero-poster.webp"
           alt="Hero Background"
-          className={`hero-media hero-poster ${isVideoLoaded ? "fade-out" : "fade-in"}`}
+          className={`hero-media hero-poster ${
+            isVideoLoaded ? "fade-out" : "fade-in"
+          }`}
           fetchPriority="high"
         />
 
-        {/* Video loads conditionally after initial render */}
         {shouldLoadVideo && (
           <video
             ref={videoRef}
-            className={`hero-media hero-video ${isVideoLoaded ? "fade-in" : "fade-out"}`}
+            className={`hero-media hero-video ${
+              isVideoLoaded ? "fade-in" : "fade-out"
+            }`}
             autoPlay
             muted
             loop
@@ -87,7 +69,6 @@ const WebServe = () => {
             preload="metadata"
             onCanPlay={() => setIsVideoLoaded(true)}
           >
-            {/* Serve a lightweight mobile compressed version on small screens */}
             <source
               src="/video/hero-bg.mp4"
               type="video/mp4"
@@ -97,54 +78,44 @@ const WebServe = () => {
           </video>
         )}
 
+        {/* ===== FOREGROUND CONTENT (updated) ===== */}
         <div className="home-container">
           <h1 className="hero-title">
-            <span className="empowering">Empowering</span>
+            <span className="title-line">Empowering</span>
             <br />
-
-            <span className="business">Businesses with</span>
-            <br />
-
-            <span className="digital">Digital Solutions</span>
-            <br />
-
-            <span className="like">like</span>
+            <span className="title-highlight">Your Digital Journey</span>
           </h1>
-
-          <div className="hero-typing-wrapper">
-            <h2 className="hero-service">
-              <span className="typing-text">{typedText}</span>
-              <span className="typing-cursor">|</span>
-            </h2>
+          <p className="hero-bio">
+            We Build, Promote & Grow Your Bussiness Online with Result-Driven
+            Digital Solution.
+          </p>
+          <div className="pill-group">
+            {tags.map((tag, index) => (
+              <span
+                key={tag}
+                className={`pill ${index === activeTagIndex ? "pill--active" : ""}`}
+              >
+                {tag}
+              </span>
+            ))}
           </div>
 
-          <p>
-            We help ambitious startups turn bold ideas into powerful digital
-            experiences. By combining strategy, creativity, and smart
-            technology, we build scalable solutions designed to grow fast and
-            perform even faster.
-          </p>
+          <div className="hero-bottom-row">
+            <div className="home-buttons">
+              <button
+                className="main-btn-primary"
+                onClick={() => navigate("/services")}
+              >
+                Get Started
+              </button>
 
-          <div className="home-buttons">
-            <button
-              className="main-btn-primary"
-              onClick={() =>
-                navigate("/", {
-                  state: {
-                    scrollTo: "we-serve-for",
-                  },
-                })
-              }
-            >
-              Get Started
-            </button>
-
-            <button
-              className="btn-secondary"
-              onClick={() => navigate("/portfolio")}
-            >
-              View Portfolio
-            </button>
+              <button
+                className="btn-secondary"
+                onClick={() => navigate("/portfolio")}
+              >
+                View Portfolio
+              </button>
+            </div>
           </div>
         </div>
       </section>

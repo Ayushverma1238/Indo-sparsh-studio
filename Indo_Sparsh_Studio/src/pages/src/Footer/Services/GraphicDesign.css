@@ -72,6 +72,30 @@ body.dark-mode {
   }
 }
 
+
+.gd section{
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 72px 100px;
+}
+
+@media (max-width:900px) {
+  .gd{
+    padding: 0 30px;
+  }
+  .gd section{
+    padding: 72px 50px;
+  }
+}
+
+@media (max-width:600px) {
+  .gd{
+    padding: 0 12px;
+  }
+  .gd section{
+    padding: 72px 20px;
+  }
+}
 /* =========================================================
    REVEAL ANIMATION
    ========================================================= */

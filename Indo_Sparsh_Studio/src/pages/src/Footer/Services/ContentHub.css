@@ -112,6 +112,33 @@ body.dark-mode {
   position: relative;
 }
 
+.hub-header, .filter-bar, .production-grid {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 72px 100px;
+}
+.content-hub-container{
+  padding: 0 50px;
+}
+
+@media (max-width:900px) {
+  .content-hub-container{
+    padding: 0 30px;
+  }
+  .hub-header, .filter-bar, .production-grid{
+    padding: 72px 50px;
+  }
+}
+
+@media (max-width:600px) {
+  .content-hub-container{
+    padding: 0 12px;
+  }
+  .hub-header, .filter-bar, .production-grid{
+    padding: 72px 20px;
+  }
+}
+
 /* Decorative background pulse glow behind text badge */
 .hub-badge::after {
   content: '';

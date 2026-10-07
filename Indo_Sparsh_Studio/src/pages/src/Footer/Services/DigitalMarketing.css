@@ -44,11 +44,36 @@ body.dark-mode {
   color: var(--ink);
   font-family: var(--font-body);
   overflow-x: hidden;
+  padding: 0 50px;
   transition: background-color 0.5s var(--ease), color 0.5s var(--ease);
 }
 .dm * {
   box-sizing: border-box;
 }
+.dm section{
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 72px 100px;
+}
+
+@media (max-width:900px) {
+  .dm{
+    padding: 0 30px;
+  }
+  .dm section{
+    padding: 72px 50px;
+  }
+}
+
+@media (max-width:600px) {
+  .dm{
+    padding: 0 12px;
+  }
+  .dm section{
+    padding: 72px 20px;
+  }
+}
+
 
 /* ---------------------------------------------------------
    Reveal-on-scroll
@@ -240,7 +265,7 @@ body.dark-mode {
   font-size: 0.92rem;
   font-weight: 600;
   text-decoration: none;
-  border: 1px solid var(--ink);
+  border: 1px solid transparent;
   border-radius: 10px;
   padding: 13px 24px;
   cursor: pointer;
@@ -310,6 +335,8 @@ body.dark-mode {
     animation: none;
   }
 }
+
+
 
 /* ---------------------------------------------------------
    Sections

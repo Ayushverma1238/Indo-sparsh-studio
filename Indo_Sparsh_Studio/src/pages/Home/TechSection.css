@@ -5,7 +5,6 @@
 
 .tech-section {
   padding: 80px 100px;
-  background: radial-gradient(circle at top, #01040c, #050016);
   color: white;
   overflow: hidden;
 }
@@ -47,23 +46,6 @@
   position: relative;
 
   padding: 20px 0;
-
-  /* Fade edges */
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 8%,
-    black 92%,
-    transparent
-  );
-
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 8%,
-    black 92%,
-    transparent
-  );
 }
 
 
@@ -85,17 +67,17 @@
 
 /* ================= TECHNOLOGY ITEM ================= */
 
-.marquee-item {
+.marquee-item-tc {
   flex: 0 0 auto;
 
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 100px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 20px;
+  padding: 10px;
 
   background: rgba(255, 255, 255, 0.04);
 
@@ -113,9 +95,9 @@
 
 /* ================= TECHNOLOGY IMAGE ================= */
 
-.marquee-item img {
-  width: 80px;
-  height: 80px;
+.marquee-item-tc img {
+  width: 70px;
+  height: 60px;
 
   object-fit: contain;
 
@@ -127,19 +109,16 @@
 
 /* ================= TECHNOLOGY HOVER ================= */
 
-.marquee-item:hover {
+.marquee-item-tc:hover {
   transform: translateY(-8px) scale(1.05);
 
   border-color: #22d3ee;
 
   background: rgba(34, 211, 238, 0.06);
 
-  box-shadow:
-    0 0 20px rgba(34, 211, 238, 0.25),
-    0 0 40px rgba(168, 85, 247, 0.15);
 }
 
-.marquee-item:hover img {
+.marquee-item-tc:hover img {
   transform: scale(1.08);
 }
 
@@ -156,401 +135,3 @@
   }
 }
 
-
-/* =========================================================
-   INDUSTRIES SECTION
-   ========================================================= */
-
-.industries-section {
-  padding: 100px 8%;
-
-  background: radial-gradient(
-    circle at top,
-    #020617,
-    #000
-  );
-
-  text-align: center;
-}
-
-
-/* ================= INDUSTRIES HERO ================= */
-
-.industries-hero h1 {
-  font-size: 3rem;
-
-  margin-bottom: 20px;
-
-  color: white;
-}
-
-.industries-hero span {
-  color: #22d3ee;
-}
-
-.industries-hero p {
-  color: #94a3b8;
-
-  max-width: 700px;
-
-  margin: auto;
-
-  margin-bottom: 60px;
-}
-
-
-/* =========================================================
-   INDUSTRIES GRID
-   ========================================================= */
-
-.industries-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(140px, 1fr)
-    );
-
-  gap: 40px;
-
-  justify-items: center;
-}
-
-
-/* ================= INDUSTRY ITEM ================= */
-
-.industry-item {
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: center;
-
-  text-align: center;
-}
-
-
-/* ================= INDUSTRY IMAGE ================= */
-
-.industry-item img {
-  width: 120px;
-  height: 120px;
-
-  object-fit: cover;
-
-  border-radius: 20px;
-
-  transition: 0.3s ease;
-}
-
-
-/* ================= INDUSTRY IMAGE HOVER ================= */
-
-.industry-item:hover img {
-  transform:
-    translateY(-6px)
-    scale(1.05);
-}
-
-
-/* ================= INDUSTRY TEXT ================= */
-
-.industry-item p {
-  margin-top: 12px;
-
-  font-size: 0.9rem;
-
-  color: #94a3b8;
-}
-
-
-/* =========================================================
-   INDUSTRY IMAGE WRAPPER
-   ========================================================= */
-
-.industry-img-wrap {
-  position: relative;
-
-  width: 120px;
-  height: 120px;
-
-  border-radius: 22px;
-
-  padding: 2px;
-
-  margin: 0 auto;
-
-  background:
-    linear-gradient(
-      120deg,
-      #22d3ee,
-      #a855f7,
-      #ec4899,
-      #22d3ee
-    );
-
-  background-size: 300% 300%;
-
-  animation:
-    glowBorderMove
-    6s linear infinite;
-
-  transition: 0.4s ease;
-}
-
-
-/* ================= INNER INDUSTRY IMAGE ================= */
-
-.industry-img-wrap img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  border-radius: 20px;
-
-  display: block;
-}
-
-
-/* ================= EXTRA GLOW ================= */
-
-.industry-img-wrap::before {
-  content: "";
-
-  position: absolute;
-
-  inset: -6px;
-
-  border-radius: 25px;
-
-  background:
-    linear-gradient(
-      120deg,
-      #22d3ee,
-      #a855f7,
-      #ec4899
-    );
-
-  filter: blur(18px);
-
-  opacity: 0.6;
-
-  z-index: -1;
-}
-
-
-/* ================= INDUSTRY HOVER ================= */
-
-.industry-item:hover
-.industry-img-wrap {
-  transform:
-    translateY(-8px)
-    scale(1.08);
-
-  box-shadow:
-    0 0 25px #22d3ee,
-    0 0 45px #a855f7;
-}
-
-
-/* =========================================================
-   INDUSTRY BORDER ANIMATION
-   ========================================================= */
-
-@keyframes glowBorderMove {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  100% {
-    background-position: 300% 50%;
-  }
-}
-
-
-/* =========================================================
-   TECHNOLOGY HERO ANIMATION
-   ========================================================= */
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-
-    transform:
-      translateY(40px);
-  }
-
-  to {
-    opacity: 1;
-
-    transform:
-      translateY(0);
-  }
-}
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-  /* Technology */
-
-  .tech-section {
-    padding: 90px 6% 80px;
-  }
-
-  .tech-hero {
-    margin-bottom: 40px;
-  }
-
-  .tech-hero h1 {
-    letter-spacing: 2px;
-  }
-
-  .marquee-track {
-    gap: 20px;
-
-    animation-duration: 20s;
-  }
-
-  .marquee-item {
-    width: 90px;
-    height: 90px;
-
-    padding: 15px;
-
-    border-radius: 16px;
-  }
-
-  .marquee-item img {
-    width: 60px;
-    height: 60px;
-  }
-
-
-  /* Industries */
-
-  .industries-section {
-    padding: 80px 6%;
-  }
-
-  .industries-hero h1 {
-    font-size: 2.3rem;
-  }
-
-  .industries-grid {
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(120px, 1fr)
-      );
-
-    gap: 30px 20px;
-  }
-
-  .industry-img-wrap {
-    width: 100px;
-    height: 100px;
-  }
-
-  .industry-item img {
-    width: 100px;
-    height: 100px;
-  }
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-  .tech-section {
-    padding: 70px 5% 60px;
-  }
-
-  .tech-hero h1 {
-    font-size: 2rem;
-  }
-
-  .tech-hero p {
-    font-size: 0.95rem;
-
-    line-height: 1.7;
-  }
-
-  .marquee-item {
-    width: 80px;
-    height: 80px;
-
-    padding: 12px;
-  }
-
-  .marquee-item img {
-    width: 55px;
-    height: 55px;
-  }
-
-
-  .industries-section {
-    padding: 70px 5%;
-  }
-
-  .industries-hero h1 {
-    font-size: 2rem;
-  }
-
-  .industries-hero p {
-    font-size: 0.95rem;
-
-    margin-bottom: 40px;
-  }
-
-  .industries-grid {
-    gap: 25px 15px;
-  }
-
-  .industry-img-wrap,
-  .industry-item img {
-    width: 90px;
-    height: 90px;
-  }
-
-  .industry-item p {
-    font-size: 0.8rem;
-  }
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .tech-hero {
-    animation: none;
-  }
-
-  .marquee-track {
-    animation: none;
-  }
-
-  .industry-img-wrap {
-    animation: none;
-  }
-
-  .marquee-item,
-  .marquee-item img,
-  .industry-item img,
-  .industry-img-wrap {
-    transition: none;
-  }
-}

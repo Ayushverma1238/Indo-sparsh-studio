@@ -103,7 +103,7 @@ body.dark-mode {
   z-index: 1;
   max-width: 1500px;
   margin: 0 auto;
-  padding: 72px 24px;
+  padding: 72px 100px;
 }
 
 @media (max-width: 700px) {
@@ -278,7 +278,7 @@ body.dark-mode {
   font-size: 0.92rem;
   padding: 12px 22px;
   border-radius: 10px;
-  border: 1.5px solid var(--isp-ink);
+  border: 1.5px solid transparent;
   cursor: pointer;
   text-decoration: none;
   display: inline-flex;
@@ -290,6 +290,7 @@ body.dark-mode {
     background-color 0.25s ease;
 }
 .isp-btn-primary {
+
   background: linear-gradient(160deg, var(--blue), var(--coral));
   color: #fff;
 }
@@ -300,6 +301,7 @@ body.dark-mode {
 .isp-btn-ghost {
   background: transparent;
   color: var(--isp-ink);
+  border: 1px solid var(--isp-border);
 }
 .isp-btn-ghost:hover {
   background: var(--isp-bg-alt);

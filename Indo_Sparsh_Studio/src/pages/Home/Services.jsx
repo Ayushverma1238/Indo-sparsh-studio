@@ -12,7 +12,6 @@ import {
   FaVideo,
   FaDatabase,
 } from "react-icons/fa6";
-import { MdCampaign } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../ScrollBeam";
 

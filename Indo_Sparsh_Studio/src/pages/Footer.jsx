@@ -99,14 +99,10 @@ export default function Footer() {
         <div className="footer-left">
           <div className="footer-heading-website">
             <img src="/logo.png" alt="logo" />
+            <div className='footer-seperator'/>
             <h1>Indo Sparsh Studio</h1>
           </div>
-          <p>
-            IndoSparsh Studio helps businesses build a strong digital presence
-            through modern websites, creative branding, logo design, video
-            editing, and custom digital solutions. We transform ideas into
-            impactful online experiences.
-          </p>
+         
           <div className="footer-email">
             <input
               onChange={(e) => setEmail(e.target.value)}

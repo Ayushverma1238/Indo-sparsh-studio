@@ -92,11 +92,30 @@ body.light-mode {
 /* ==========================================================================
    4. HERO SECTION WITH BACKGROUND GLOW
    ========================================================================== */
-section {
+.service-page-wrapper section {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 72px 24px;
+  padding: 72px 100px;
 }
+
+@media (max-width:900px) {
+  .service-page-wrapper{
+    padding: 0 30px;
+  }
+  .service-page-wrapper section{
+    padding: 72px 50px;
+  }
+}
+
+@media (max-width:600px) {
+  .service-page-wrapper{
+    padding: 0 12px;
+  }
+  .service-page-wrapper section{
+    padding: 72px 20px;
+  }
+}
+
 .hero-section {
   position: relative;
   text-align: left;
@@ -153,13 +172,14 @@ section {
   font-weight: 600;
   padding: 14px 28px;
   border-radius: 10px;
+  border: 1px solid transparent;
   cursor: pointer;
   transition: var(--transition-smooth);
 }
 
 .btn-primary {
   background: linear-gradient(
-    120deg,
+    160deg,
     var(--primary-accent),
     var(--secondary-accent)
   );

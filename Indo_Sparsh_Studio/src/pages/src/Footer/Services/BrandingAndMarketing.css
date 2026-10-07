@@ -93,8 +93,27 @@ body.dark-mode {
 .bm section {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 72px 24px;
+  padding: 72px 100px;
 }
+
+@media (max-width:900px) {
+  .bm{
+    padding: 0 30px;
+  }
+  .bm section{
+    padding: 72px 50px;
+  }
+}
+
+@media (max-width:600px) {
+  .bm {
+    padding: 0 12px;
+  }
+  .bm section{
+    padding: 72px 20px;
+  }
+}
+
 
 
 
@@ -144,7 +163,7 @@ body.dark-mode {
 }
 .bm-btn--ghost {
   background: transparent;
-  border: 2px solid var(--bm-text-muted);
+  border: 2px solid var(--bm-border);
   color: var(--bm-text);
 }
 .bm-btn--ghost-light {

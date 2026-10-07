@@ -160,10 +160,7 @@ export default function RowCallingData() {
         <section className="dp-hero">
           <div className="dp-hero__inner">
             <span className="dp-eyebrow">B2B &amp; B2C Data Solutions</span>
-            {/* <h1 className="dp-hero__headline">
-            Data that turns cold outreach into{" "}
-            <span className="dp-accent">closed deals.</span>
-          </h1> */}
+   
             <h1 className="dp-hero__headline">
               <span className="dp-word dp-word--a">Data that</span>{" "}
               <span className="dp-word dp-word--b">turns cold outreach</span>

@@ -60,7 +60,7 @@ body {
 }
 
 /* Ambient blueprint grid backdrop */
-main#main {
+main #main {
   position: relative;
 
   background-size: 40px 40px;
@@ -79,7 +79,7 @@ main#main {
     padding: 0 50px;
   }
 }
-@media (max-width: 450) {
+@media (max-width: 450px) {
   .wrap {
     padding: 0 20px;
   }
@@ -154,7 +154,7 @@ p {
   font-family: var(--font-body);
   font-size: 0.9rem;
   text-decoration: none;
-  border: 1.5px solid var(--line);
+  border: 1px solid transparent;
   cursor: pointer;
   transition:
     transform 0.2s ease,
@@ -176,7 +176,6 @@ p {
 
 .package-featured .plan-bottom .btn-block {
   padding: 13px 20px;
-
   border: 1px solid #fff;
   border-radius: 10px;
   background: linear-gradient(120deg, #2563eb, #7c3aed, #db2777, #2563eb);
@@ -226,6 +225,7 @@ p {
 .btn-ghost {
   background: transparent;
   color: var(--ink);
+  border: 1px solid var(--border);
 }
 .btn-block {
   width: 100%;
@@ -235,53 +235,20 @@ p {
   font-size: 1rem;
 }
 
-/* ===========================================================
-   THEME TOGGLE
-=========================================================== */
-.theme-toggle {
-  position: fixed;
-  top: 18px;
-  right: 18px;
-  z-index: 60;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--surface);
-  border: 1.5px solid var(--line);
-  border-radius: 999px;
-  padding: 6px 12px 6px 6px;
-  cursor: pointer;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: var(--ink);
-  box-shadow: 0 4px 14px var(--shadow);
-  transition:
-    background-color 0.3s ease,
-    transform 0.2s ease;
+#main {
+  padding: 0 50px;
 }
-.theme-toggle:hover {
-  transform: translateY(-1px);
+
+@media (max-width: 900px) {
+  #main {
+    padding: 0 30px;
+  }
 }
-.theme-toggle-track {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--bg-alt);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-}
-.theme-toggle-thumb {
-  display: inline-block;
-  transition: transform 0.4s ease;
-}
-[data-theme="dark"] .theme-toggle-thumb {
-  transform: rotate(20deg);
-}
-.theme-toggle-label {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+
+@media (max-width: 600px) {
+  #main {
+    padding: 0 12px;
+  }
 }
 
 /* ===========================================================
@@ -297,7 +264,13 @@ p {
   align-items: center;
 }
 .hero-sub {
-  max-width: 46ch;
+  max-width: 52ch;
+}
+.hero-tagline {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
 }
 .hero-cta {
   display: flex;
@@ -435,54 +408,7 @@ rect.draw-in {
 }
 
 /* ===========================================================
-   PROCESS / STAGES
-=========================================================== */
-.stages {
-  padding: 64px 0;
-}
-.stage-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  counter-reset: none;
-  border-top: 1px solid var(--grid-line);
-}
-.stage-row {
-  display: grid;
-  grid-template-columns: 60px 1fr auto;
-  gap: 20px;
-  align-items: center;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--grid-line);
-  transition: background-color 0.25s ease;
-}
-.stage-row:hover {
-  background: var(--grid-line);
-}
-.stage-num {
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  color: var(--accent-2);
-}
-.stage-body h3 {
-  margin-bottom: 0.2em;
-}
-.stage-body p {
-  margin: 0;
-  max-width: 60ch;
-}
-.stage-artifact {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  color: var(--muted);
-  white-space: nowrap;
-  border: 1px dashed var(--muted);
-  padding: 5px 10px;
-  border-radius: 3px;
-}
-
-/* ===========================================================
-   WEBSITE TYPES
+   WEBSITE TYPES  (reused for the E-commerce cards)
 =========================================================== */
 .website-types {
   padding: 64px 0;
@@ -507,6 +433,9 @@ rect.draw-in {
   transform: translateY(-4px);
   box-shadow: 0 14px 30px var(--shadow);
 }
+.type-card h3 {
+  padding-right: 40px;
+}
 .type-code {
   position: absolute;
   top: 18px;
@@ -522,26 +451,26 @@ rect.draw-in {
   align-items: center;
   justify-content: center;
 }
+.type-price {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0.5em 0 0.3em;
+}
 .type-summary {
-  margin-bottom: 1em;
+  margin-bottom: 0;
 }
-.type-scope {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-body);
-  font-size: 0.78rem;
+.fine-print {
+  font-size: 0.8rem;
+  font-style: italic;
   color: var(--muted);
-  display: grid;
-  gap: 6px;
-}
-.type-scope li::before {
-  content: "— ";
-  color: var(--accent);
+  max-width: 760px;
+  margin: 24px 0 0;
 }
 
 /* ===========================================================
-   CAPABILITIES
+   CAPABILITIES  (Included / Maintenance / Why us)
 =========================================================== */
 .capabilities {
   padding: 64px 0;
@@ -551,9 +480,12 @@ rect.draw-in {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 18px;
 }
+.capability-grid--three {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
 .cap-card {
   background: var(--bg-alt);
-  border-radius: 6px;
+  border-radius: 10px;
   padding: 20px;
   transition:
     transform 0.25s ease,
@@ -575,6 +507,19 @@ rect.draw-in {
   margin: 0;
   font-size: 0.92rem;
 }
+.cap-card .cap-price {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.4em;
+}
+.cap-card .cap-price span {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+}
 
 /* ===========================================================
    PACKAGES / PRICING
@@ -584,9 +529,12 @@ rect.draw-in {
 }
 .package-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 22px;
   align-items: stretch;
+}
+.package-grid--four {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 .package-card {
   background: var(--surface);
@@ -620,11 +568,20 @@ rect.draw-in {
   color: #fff;
   margin-bottom: 0.3em;
 }
+.package-price--range {
+  font-size: 1.45rem;
+  line-height: 1.5;
+}
 .plan-top h3 {
   color: #fff;
 }
 .package-desc {
   min-height: 3.4em;
+}
+.package-lead {
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 0.4em;
 }
 .package-list {
   list-style: none;
@@ -640,10 +597,8 @@ rect.draw-in {
   color: var(--accent-2);
   font-family: var(--font-body);
 }
-.package-note {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-bottom: 1.2em;
+.package-btn {
+  margin-top: auto;
 }
 .package-featured {
   border: 1px solid var(--coral);
@@ -688,7 +643,86 @@ rect.draw-in {
 }
 
 /* ===========================================================
-   CTA BANNER
+   WEBSITE REDESIGN
+=========================================================== */
+.redesign {
+  padding: 64px 0;
+}
+.redesign-card {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  transition: background-color 0.4s ease;
+}
+.redesign-card h2 {
+  margin-bottom: 0.1em;
+}
+.redesign-price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.6em;
+  background: linear-gradient(100deg, var(--blue), var(--coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.redesign-list {
+  margin: 0;
+  gap: 14px;
+  font-size: 0.95rem;
+}
+
+/* ===========================================================
+   ADD-ONS
+=========================================================== */
+.addons {
+  padding: 64px 0;
+}
+.addon-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--grid-line);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  column-gap: 40px;
+}
+.addon-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--grid-line);
+  transition: background-color 0.25s ease;
+}
+.addon-row:hover {
+  background: var(--grid-line);
+}
+.addon-name {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.addon-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.addon-price {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ===========================================================
+   CTA BANNER / CONTACT
 =========================================================== */
 .cta-banner {
   padding: 64px 0 96px;
@@ -712,6 +746,38 @@ rect.draw-in {
   color: var(--bg-alt);
   margin: 0;
 }
+.contact-list {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.contact-list li {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  font-size: 0.95rem;
+}
+.contact-list span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bg-alt);
+  opacity: 0.75;
+}
+.contact-list a {
+  color: var(--bg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.contact-list address {
+  font-style: normal;
+  color: var(--bg);
+  max-width: 46ch;
+  line-height: 1.5;
+}
 
 /* ===========================================================
    RESPONSIVE
@@ -720,20 +786,35 @@ rect.draw-in {
   .hero-inner {
     grid-template-columns: 1fr;
   }
-  .stage-row {
-    grid-template-columns: 40px 1fr;
+  .redesign-card {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 24px;
   }
-  .stage-artifact {
-    grid-column: 2 / 3;
-    justify-self: start;
+  .addon-list {
+    grid-template-columns: 1fr;
   }
   .cta-inner {
     flex-direction: column;
     text-align: center;
   }
+  .contact-list li {
+    grid-template-columns: 1fr;
+    gap: 2px;
+    justify-items: center;
+  }
   .theme-toggle {
     top: 10px;
     right: 10px;
+  }
+}
+
+@media (max-width: 450px) {
+  .hero-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cta-inner {
+    padding: 28px 20px;
   }
 }
 
@@ -780,9 +861,6 @@ rect.draw-in {
   transform: translateY(40px);
   animation: wd-word-in 0.7s var(--ease) forwards;
 }
-/* .wd-word + .wd-word {
-  margin-left: 0.28em;
-} */
 .wd-word--a {
   animation-delay: 0.1s;
 }
@@ -823,6 +901,9 @@ rect.draw-in {
   }
 }
 
+/* ===========================================================
+   PACKAGE CARD HEADERS (gradient sheets)
+=========================================================== */
 .plan-top {
   display: flex;
   flex-direction: column;
@@ -837,6 +918,7 @@ rect.draw-in {
 .plan-bottom {
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 5px;
 
   padding: 20px 26px;
@@ -848,4 +930,8 @@ rect.draw-in {
 
 .plan-top__sheet-3 {
   background: linear-gradient(160deg, #16161a, #2f5cff);
+}
+
+.plan-top__sheet-4 {
+  background: linear-gradient(160deg, #ed4abb, #a30573);
 }

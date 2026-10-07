@@ -41,8 +41,27 @@ body.dark-mode {
 .appdev-page section{
   max-width: 1500px;
   margin: 0 auto;
-  padding: 72px 24px;
+  padding: 72px 100px;
 }
+
+@media (max-width:900px) {
+  .appdev-page{
+    padding: 0 30px;
+  }
+  .appdev-page section{
+    padding: 72px 50px;
+  }
+}
+
+@media (max-width:600px) {
+  .appdev-page{
+    padding: 0 12px;
+  }
+  .appdev-page section{
+    padding: 72px 20px;
+  }
+}
+
 /* ============ Shared bits ============ */
 .adh-kicker {
   display: inline-block;
@@ -105,7 +124,7 @@ body.dark-mode {
 .appdev-btn--primary {
   background: linear-gradient(120deg, var(--adh-accent), var(--adh-accent-2));
   color: #fff;
-  border: 1px solid #ece1e1;
+
 }
 .appdev-btn--primary:hover {
   transform: translateY(-3px);

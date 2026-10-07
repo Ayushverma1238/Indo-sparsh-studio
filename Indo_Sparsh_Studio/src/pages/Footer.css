@@ -16,6 +16,14 @@
   --bg-time: #03010c;
 }
 
+body.dark-mode{
+  --heading: #fff;
+}
+
+body.light-mode {
+  --heading: #000;
+}
+
 .cyber-footer {
   position: relative;
   width: 100%;
@@ -81,49 +89,65 @@
   }
 }
 
+
 .footer-heading-website {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: clamp(6px, 1vw, 10px);
   margin-bottom: 4px;
+  width: 70%;
 }
 
 .footer-heading-website h1 {
-  font-size: 28px;
+  font-size: clamp(20px, 3.25vw, 30px);
+  word-break: keep-all;
   font-weight: 800;
+  color: var(--heading);
   letter-spacing: -0.02em;
   margin: 0;
-
-  background: linear-gradient(
-    90deg,
-    var(--cyan),
-    var(--purple),
-    var(--cyan),
-    var(--blue),
-    var(--cyan)
-  );
-  background-size: 300% auto;
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-
-  filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.35));
-
-  animation: footerGradientMove 6s linear infinite;
+  white-space: nowrap;
 }
 
-@keyframes footerGradientMove {
-  from { background-position: 0% center; }
-  to { background-position: 300% center; }
-}
 
 .footer-heading-website img {
-  height: 44px;
-  border: 2px solid #4b4b4e;
-  border-radius: 50%;
+  height: clamp(45px, 6vw, 80px);
   width: auto;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: contain;
 }
+
+.footer-seperator {
+  height: clamp(40px, 6vw, 60%);
+  width: 2px;
+  margin-right: clamp(5px, 1vw, 10px);
+  background-color: #d2d8e2;
+  flex-shrink: 0;
+}
+
+
+@media (max-width: 600px) {
+  .footer-heading-website {
+    width: 100%;
+    gap: 7px;
+  }
+
+  .footer-heading-website h1 {
+    font-size: clamp(15px, 5vw, 20px);
+  }
+
+  .footer-heading-website img {
+    height: clamp(42px, 13vw, 60px);
+  }
+
+  .footer-seperator {
+    height: 36px;
+    margin-right: 5px;
+  }
+}
+
+
+
 
 .footer-left {
   display: flex;
@@ -132,6 +156,10 @@
   padding: 0;
   max-width: 440px;
 }
+
+
+
+
 
 .footer-left p {
   color: var(--text-dim);
@@ -300,6 +328,7 @@
 .copyright p {
   margin: 0;
   font-size: 0.8rem;
+  line-height: 1.5;
   letter-spacing: 0.6px;
   color: var(--text-dim);
   text-align: center;

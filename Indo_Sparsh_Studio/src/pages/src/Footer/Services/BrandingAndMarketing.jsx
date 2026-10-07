@@ -191,8 +191,8 @@ export default function BrandingMarketingPage() {
         {/* ---------- Hero ---------- */}
         <section className="bm-hero">
           {/* <div className="bm-blob bm-blob--a" aria-hidden="true" /> */}
-          <div className="bm-blob bm-blob--b" aria-hidden="true" />
-          <div className="bm-blob bm-blob--c" aria-hidden="true" />
+          {/* <div className="bm-blob bm-blob--b" aria-hidden="true" /> */}
+          {/* <div className="bm-blob bm-blob--c" aria-hidden="true" /> */}
 
           <div className="bm-hero__inner">
             <span className="bm-eyebrow">Branding &amp; Marketing</span>
