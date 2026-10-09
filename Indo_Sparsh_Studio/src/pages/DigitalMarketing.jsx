@@ -26,7 +26,7 @@ export default function DigitalMarketing() {
         </p>
 
         <p>
-          Here are 10 practical digital marketing tips—no jargon, no fluff. Just
+          Here are 10 practical digital marketing tips-no jargon, no fluff. Just
           honest, field-tested advice.
         </p>
 
@@ -164,7 +164,7 @@ export default function DigitalMarketing() {
 
         <ul>
           <li>Segmentation: Don't send the same email to everyone</li>
-          <li>Value-first: Tips, resources, early access—not just offers</li>
+          <li>Value-first: Tips, resources, early access-not just offers</li>
           <li>Clean design: Mobile-friendly, scannable, one clear CTA</li>
           <li>Consistency: A monthly newsletter random blasts</li>
         </ul>
@@ -215,7 +215,7 @@ export default function DigitalMarketing() {
 
         <p>
           Studies show 95% of website visitors leave without buying. Not because
-          they're not interested—maybe they got busy, wanted to compare prices,
+          they're not interested-maybe they got busy, wanted to compare prices,
           or simply forgot.
         </p>
 
@@ -233,7 +233,7 @@ export default function DigitalMarketing() {
         </p>
 
         <p className="tip">
-          Tip: Segment retargeting audiences—warm leads get different messaging
+          Tip: Segment retargeting audiences-warm leads get different messaging
           than cold visitors.
         </p>
 
@@ -265,14 +265,14 @@ export default function DigitalMarketing() {
         </p>
 
         <p className="tip">
-          Tip: Reply to every Google review—positive or negative. It signals
+          Tip: Reply to every Google review-positive or negative. It signals
           active management to Google.
         </p>
 
         <h2>9. Analytics: Don't Drown in Data</h2>
 
         <p>
-          Google Analytics, Meta Insights, Search Console—there's endless data.
+          Google Analytics, Meta Insights, Search Console-there's endless data.
           But data without action is just noise.
         </p>
 
@@ -322,7 +322,7 @@ export default function DigitalMarketing() {
         <h2>10. Partner with People, Not Just Agencies</h2>
 
         <p>
-          At the end of the day, digital marketing is executed by humans—not
+          At the end of the day, digital marketing is executed by humans-not
           platforms, not tools.
         </p>
 
@@ -351,7 +351,7 @@ export default function DigitalMarketing() {
 
         <p>
           Digital marketing doesn't require magic. It requires patience,
-          discipline, and a willingness to listen— to data, to customers, and to
+          discipline, and a willingness to listen- to data, to customers, and to
           what the market is telling you.
         </p>
 
@@ -370,7 +370,7 @@ export default function DigitalMarketing() {
         <p>
           Need help with your digital marketing? Indo Sparsh offers honest,
           result-driven solutions tailored for Indian businesses. No jargon, no
-          fluff—just practical strategies that work within your budget.
+          fluff-just practical strategies that work within your budget.
         </p>
 
         <div className="blog-cta">

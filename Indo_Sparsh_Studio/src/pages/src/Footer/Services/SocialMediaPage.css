@@ -1,7 +1,7 @@
 @import "./_theme.css";
 
 /* ===========================================================
-   TOKENS — scoped to .smm-page-sm, aliased onto shared theme
+   TOKENS - scoped to .smm-page-sm, aliased onto shared theme
 =========================================================== */
 .smm-page-sm {
   --smm-font-display: var(--font-display);

@@ -26,7 +26,7 @@ const SERVICES = [
 ];
 
 /* Placeholder work log, one to two sheets per service. Swap `image` and
-   `link` with real assets whenever a real case study is ready — the
+   `link` with real assets whenever a real case study is ready - the
    layout and filtering logic handle any count per service. */
 const WORK = [
   {
@@ -86,7 +86,7 @@ const WORK = [
     link: "https://example.com/ledgerly",
   },
   {
-    title: "Aurora Analytics — UI Kit",
+    title: "Aurora Analytics - UI Kit",
     date: "Feb 2025",
     tag: "UI/UX Design",
     image: "https://picsum.photos/seed/aurora-uikit/640/460",
@@ -121,77 +121,77 @@ const WORK = [
     link: "https://example.com/marrow-reels",
   },
   {
-    title: "Foundry Roasters — Launch Film",
+    title: "Foundry Roasters - Launch Film",
     date: "Sep 2024",
     tag: "Content creation & video editing",
     image: "https://picsum.photos/seed/foundry-film/640/460",
     link: "https://example.com/foundry-film",
   },
   {
-    title: "Kavir Interiors — SEO Sprint",
+    title: "Kavir Interiors - SEO Sprint",
     date: "Dec 2024",
     tag: "SEO Optimization",
     image: "https://picsum.photos/seed/kavir-seo/640/460",
     link: "https://example.com/kavir-seo",
   },
   {
-    title: "Hola 9 — Local Search",
+    title: "Hola 9 - Local Search",
     date: "Mar 2025",
     tag: "SEO Optimization",
     image: "https://picsum.photos/seed/hola9-seo/640/460",
     link: "https://example.com/hola9-seo",
   },
   {
-    title: "Basilico Trattoria — Profile",
+    title: "Basilico Trattoria - Profile",
     date: "Jun 2024",
     tag: "Business Profile Creation",
     image: "https://picsum.photos/seed/basilico-profile/640/460",
     link: "https://example.com/basilico-profile",
   },
   {
-    title: "Circuit Summit — Growth Push",
+    title: "Circuit Summit - Growth Push",
     date: "Oct 2024",
     tag: "Digital Marketing Services",
     image: "https://picsum.photos/seed/circuit-growth/640/460",
     link: "https://example.com/circuit-growth",
   },
   {
-    title: "Saffron & Silk — Socials",
+    title: "Saffron & Silk - Socials",
     date: "Apr 2025",
     tag: "Social media management",
     image: "https://picsum.photos/seed/saffron-socials/640/460",
     link: "https://example.com/saffron-socials",
   },
   {
-    title: "Northwind — Care Plan",
+    title: "Northwind - Care Plan",
     date: "Ongoing",
     tag: "Maintenance & Support",
     image: "https://picsum.photos/seed/northwind-care/640/460",
     link: "https://example.com/northwind-care",
   },
   {
-    title: "Bloomsbury — Brand System",
+    title: "Bloomsbury - Brand System",
     date: "Jan 2025",
     tag: "Branding and marketing",
     image: "https://picsum.photos/seed/bloomsbury-brand/640/460",
     link: "https://example.com/bloomsbury-brand",
   },
   {
-    title: "Pinewood Realty — Go-to-Market",
+    title: "Pinewood Realty - Go-to-Market",
     date: "May 2024",
     tag: "Business Consultancy",
     image: "https://picsum.photos/seed/pinewood-consult/640/460",
     link: "https://example.com/pinewood-consult",
   },
   {
-    title: "Harbor & Vine — Menu Art",
+    title: "Harbor & Vine - Menu Art",
     date: "Feb 2024",
     tag: "Graphic Designing",
     image: "https://picsum.photos/seed/harbor-graphics/640/460",
     link: "https://example.com/harbor-graphics",
   },
   {
-    title: "Ledgerly — Data Cleanup",
+    title: "Ledgerly - Data Cleanup",
     date: "Apr 2025",
     tag: "Row Calling data",
     image: "https://picsum.photos/seed/ledgerly-data/640/460",
@@ -302,7 +302,7 @@ export default function PortfolioWork() {
               </p>
               <p className="pf-page-note">
                 Pick a lane in the index below and see exactly what's shipped
-                there — no case-study padding, just the sheets on file.
+                there - no case-study padding, just the sheets on file.
               </p>
             </div>
 
@@ -392,7 +392,7 @@ export default function PortfolioWork() {
             </div>
           ) : (
             <p className="pf-services-empty" key={activeService}>
-              No sheets filed under this service yet — check back soon.
+              No sheets filed under this service yet - check back soon.
             </p>
           )}
         </section>

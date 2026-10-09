@@ -196,7 +196,7 @@ export default function SocialMediaManagement() {
             <h2>Everything You Need To Build A Powerful Social Presence</h2>
             <p>
               From strategy and content creation to audience engagement and
-              monthly reporting—we handle everything so you can focus on growing
+              monthly reporting-we handle everything so you can focus on growing
               your business.
             </p>
           </div>

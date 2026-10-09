@@ -71,10 +71,10 @@ const plans = [
     size: "short",
     gradient: "linear-gradient(160deg,#2F5CFF,#16161A)",
     features: [
-      "SEO — up to 5 keywords + local SEO",
+      "SEO - up to 5 keywords + local SEO",
       "1 email campaign/month",
-      "WhatsApp — up to 1,000 msgs/month",
-      "SMS — up to 1,000/month",
+      "WhatsApp - up to 1,000 msgs/month",
+      "SMS - up to 1,000/month",
     ],
   },
   {
@@ -87,8 +87,8 @@ const plans = [
     features: [
       "Everything in Basic",
       "SEO expanded to 10 keywords",
-      "Meta Ads — 2 campaign setups/month",
-      "Google Ads — 2 campaign setups/month",
+      "Meta Ads - 2 campaign setups/month",
+      "Google Ads - 2 campaign setups/month",
       "Bi-weekly strategy call",
     ],
   },
@@ -100,8 +100,8 @@ const plans = [
     gradient: "linear-gradient(160deg,#16161A,#2F5CFF)",
     features: [
       "Everything in Growth",
-      "SEO — up to 20 keywords + authority links",
-      "UGC Ads — 2 creatives/month",
+      "SEO - up to 20 keywords + authority links",
+      "UGC Ads - 2 creatives/month",
       "Dedicated account manager",
       "Weekly optimization + reporting",
     ],
@@ -109,7 +109,7 @@ const plans = [
 ];
 
 const planFootnote =
-  "Meta/Google ad spend, WhatsApp/SMS/Telegram message credits, and 18% GST are billed at actual — paid directly to the platform, never marked up. A minimum 3-month engagement is recommended, especially for SEO.";
+  "Meta/Google ad spend, WhatsApp/SMS/Telegram message credits, and 18% GST are billed at actual - paid directly to the platform, never marked up. A minimum 3-month engagement is recommended, especially for SEO.";
 
 /* Standalone services, shown in the capabilities grid */
 const capabilities = [
@@ -160,12 +160,12 @@ const capabilities = [
   },
 ];
 
-/* Three ways to work with the studio — reuses the "process" rhythm */
+/* Three ways to work with the studio - reuses the "process" rhythm */
 const process = [
   {
     step: "01",
     title: "Bundled plan",
-    text: "Basic, Growth, or Premium — every channel run as one coordinated system, from ₹9,999/month.",
+    text: "Basic, Growth, or Premium - every channel run as one coordinated system, from ₹9,999/month.",
   },
   {
     step: "02",
@@ -175,7 +175,7 @@ const process = [
   {
     step: "03",
     title: "Per-campaign",
-    text: "One-off promotion, no retainer — a single Meta or Google campaign from ₹1,999.",
+    text: "One-off promotion, no retainer - a single Meta or Google campaign from ₹1,999.",
   },
   {
     step: "04",
@@ -250,17 +250,17 @@ export default function DigitalMarketingPage() {
               <span className="dm-word dm-word--d">strategy.</span>
             </h1>
             <p className="dm-hero__subtext">
-              Scattered marketing — a boosted post here, a random SMS blast
-              there — doesn't compound. We run your SEO, ads, and messaging as
+              Scattered marketing - a boosted post here, a random SMS blast
+              there - doesn't compound. We run your SEO, ads, and messaging as
               one coordinated system, so every channel feeds the next and every
               rupee spent is tracked back to a result.
             </p>
             <div className="dm-hero__cta-row">
               <a href="#plans" className="dm-btn dm-btn--primary">
-                View plans
+                View Plans
               </a>
               <a href="https://wa.me/918005351770" target="_blank" className="dm-btn dm-btn--ghost">
-                Talk to us
+                Talk to Us
               </a>
             </div>
           </div>
@@ -339,7 +339,7 @@ export default function DigitalMarketingPage() {
             <span className="dm-kicker">Prefer just one service?</span>
             <h2 className="dm-h2">Every channel, available on its own</h2>
             <p className="dm-lead">
-              No bundle required — pick exactly what you need.
+              No bundle required - pick exactly what you need.
             </p>
           </Reveal>
           <div className="dm-grid">
@@ -373,7 +373,7 @@ export default function DigitalMarketingPage() {
             <span className="dm-kicker">No retainer needed</span>
             <h2 className="dm-h2">Per-campaign pricing</h2>
             <p className="dm-lead">
-              For a festival sale, a product launch, or a single event — pay per
+              For a festival sale, a product launch, or a single event - pay per
               campaign instead.
             </p>
           </Reveal>
@@ -401,7 +401,7 @@ export default function DigitalMarketingPage() {
           </Reveal>
           <p className="dm-footnote">
             Covers strategy, setup & launch only. Add ongoing optimization at
-            ₹999/week — running longer than 3 weeks works out more
+            ₹999/week - running longer than 3 weeks works out more
             cost-effective on a monthly plan.
           </p>
         </section>

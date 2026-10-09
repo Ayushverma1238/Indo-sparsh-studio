@@ -7,7 +7,7 @@ import CommonMarquee from "./common/commonMarquee";
 /**
  * WebAppBuildStory
  * Drop this component between your existing <Navbar /> and <Footer />.
- * Documents, in "blueprint sheet" form, how a web application gets built —
+ * Documents, in "blueprint sheet" form, how a web application gets built -
  * distinct from the marketing-landing-page and e-commerce versions, this
  * one covers architecture, data, and testing for a general web app.
  *
@@ -35,7 +35,7 @@ const STAGES = [
   {
     n: "02",
     title: "Architecture",
-    copy: "Draw the boundaries — frontend, API, services, database — so each piece can change without breaking the others.",
+    copy: "Draw the boundaries - frontend, API, services, database - so each piece can change without breaking the others.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <rect x="6" y="8" width="14" height="10" />
@@ -48,7 +48,7 @@ const STAGES = [
   {
     n: "03",
     title: "Data & State",
-    copy: "Model the data and auth first, then decide what lives in server state versus local UI state — not the other way round.",
+    copy: "Model the data and auth first, then decide what lives in server state versus local UI state - not the other way round.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <ellipse cx="24" cy="12" rx="14" ry="5" />
@@ -60,7 +60,7 @@ const STAGES = [
   {
     n: "04",
     title: "Build",
-    copy: "Component library first, then screens wired to real endpoints — business logic lives in hooks and services, not JSX.",
+    copy: "Component library first, then screens wired to real endpoints - business logic lives in hooks and services, not JSX.",
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <rect x="8" y="8" width="32" height="8" />
@@ -101,7 +101,7 @@ const MATERIALS = [
   ["Auth", "JWT or OAuth, session handling on the server, not local storage"],
   ["State", "Server cache (React Query) kept separate from local UI state"],
   ["Testing", "Jest for units, Playwright/Cypress for end-to-end flows"],
-  ["CI/CD", "GitHub Actions — lint, test, and preview build on every PR"],
+  ["CI/CD", "GitHub Actions - lint, test, and preview build on every PR"],
   [
     "Styling",
     "CSS custom properties for every token, light + dark from day one",
@@ -109,10 +109,10 @@ const MATERIALS = [
 ];
 
 const NOTES = [
-  "Design the data model before the UI — the screens are just a view onto it.",
+  "Design the data model before the UI - the screens are just a view onto it.",
   "Every async state needs a loading, error, and empty version, not just the happy path.",
   "A feature isn't done until it has a test that would catch you breaking it later.",
-  "Ship behind a flag, not a hope — reversible beats perfect.",
+  "Ship behind a flag, not a hope - reversible beats perfect.",
 ];
 
 function useReveal() {
@@ -182,7 +182,7 @@ export default function WebAppBuildStory() {
           <CropMarks />
 
           <p className="wa-eyebrow js-reveal">
-            Process Document — Web Application Build
+            Process Document - Web Application Build
           </p>
 
           <h1 className="wa-hero__headline">
@@ -193,7 +193,7 @@ export default function WebAppBuildStory() {
           </h1>
 
           <p className="wa-subtitle js-reveal">
-            Not a UI wrapped around an idea — a system drawn from the data up,
+            Not a UI wrapped around an idea - a system drawn from the data up,
             with the interface as the last layer, not the first.
           </p>
 
@@ -317,7 +317,7 @@ export default function WebAppBuildStory() {
           </div>
           <h2 className="js-reveal">Want an application built this way?</h2>
           <p className="js-reveal">
-            The contact details are down in the footer — sheet 07, if we're
+            The contact details are down in the footer - sheet 07, if we're
             keeping count.
           </p>
         </section>

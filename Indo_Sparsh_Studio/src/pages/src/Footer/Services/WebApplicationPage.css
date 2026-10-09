@@ -1,7 +1,7 @@
 @import "./_theme.css";
 
 /* ---------------------------------------------------------------
-   Tokens — aliased onto shared studio design system
+   Tokens - aliased onto shared studio design system
 --------------------------------------------------------------- */
 .wa {
   --bg: var(--color-bg);
@@ -76,7 +76,7 @@
 }
 
 /* ---------------------------------------------------------------
-   Theme switching — keyed off your existing body.dark-mode /
+   Theme switching - keyed off your existing body.dark-mode /
    body.light-mode classes.
 --------------------------------------------------------------- */
 body.dark-mode .wa {

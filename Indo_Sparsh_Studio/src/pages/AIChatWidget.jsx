@@ -25,7 +25,7 @@ function parseMessage(raw) {
       });
     } else {
       // A block with no blank-line separation can still contain a mix
-      // of a lead-in line plus bullet lines (common LLM formatting) —
+      // of a lead-in line plus bullet lines (common LLM formatting) -
       // split those out too.
       const leadLines = [];
       const bulletLines = [];
@@ -323,7 +323,7 @@ export default function AIChatWidget() {
 
       const data = await res.json();
 
-      // 2. Push the AI's reply into the same array — adjust the key
+      // 2. Push the AI's reply into the same array - adjust the key
       //    below (data.reply) to whatever field your backend returns.
       const aiText = data.reply || "Hmm, I didn't get a response for that.";
       setMessages((prev) => [...prev, { from: "ai", text: aiText }]);

@@ -568,7 +568,7 @@ body {
 }
 
 /* =========================================
-   😈 RESPONSIVE CYBER SCROLLBAR — FINAL
+   😈 RESPONSIVE CYBER SCROLLBAR - FINAL
 ========================================= */
 
 .cyber-scrollbar {
@@ -653,7 +653,7 @@ body {
   }
 }
 
-/* Mobile — Hide custom scrollbar */
+/* Mobile - Hide custom scrollbar */
 
 @media (max-width: 768px) {
   .cyber-scrollbar {
@@ -1324,7 +1324,7 @@ body.light-mode .featured-tag {
   box-shadow: none;
 }
 
-/* ================= LIGHT MODE — PROJECTS WE DISCUSS ================= */
+/* ================= LIGHT MODE - PROJECTS WE DISCUSS ================= */
 
 body.light-mode .projects-discuss {
   background: radial-gradient(circle at top, #f8fafc, #ffffff);
@@ -1392,7 +1392,7 @@ body.light-mode .pd-cta a {
   box-shadow: 0 6px 18px rgba(14, 165, 233, 0.2);
 }
 
-/* ================= LIGHT MODE — TESTIMONIALS ================= */
+/* ================= LIGHT MODE - TESTIMONIALS ================= */
 
 body.light-mode .testimonials-section {
   background: radial-gradient(
@@ -1464,7 +1464,7 @@ body.light-mode .testimonial-glow {
   );
 }
 
-/* ================= LIGHT MODE — TECHNOLOGY SECTION ================= */
+/* ================= LIGHT MODE - TECHNOLOGY SECTION ================= */
 
 body.light-mode .tech-section {
   background: radial-gradient(circle at top, #f8fafc, #ffffff);
@@ -1502,7 +1502,7 @@ body.light-mode .tech-section::before {
   pointer-events: none;
 }
 
-/* ================= LIGHT MODE — CLIENT MARQUEE ================= */
+/* ================= LIGHT MODE - CLIENT MARQUEE ================= */
 
 body.light-mode .clients-marquee::before {
   background: linear-gradient(to right, #ffffff, transparent);
@@ -1536,7 +1536,7 @@ body.light-mode .marquee-item img {
   filter: drop-shadow(0 0 4px rgba(14, 165, 233, 0.35));
 }
 
-/* ================= LIGHT MODE — FOOTER ================= */
+/* ================= LIGHT MODE - FOOTER ================= */
 
 body.light-mode .cyber-footer {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), #ffffff);
@@ -1574,7 +1574,7 @@ body.light-mode .footer-tagline {
   color: #64748b;
 }
 
-/* ================= LIGHT MODE — ABOUT PAGE ================= */
+/* ================= LIGHT MODE - ABOUT PAGE ================= */
 
 body.light-mode .about2 {
   background: radial-gradient(circle at top, #f8fafc, #ffffff);
@@ -1679,7 +1679,7 @@ body.light-mode .cta-glass h1 span {
   color: #0ea5e9;
 }
 
-/* ================= LIGHT MODE — CAREER PAGE ================= */
+/* ================= LIGHT MODE - CAREER PAGE ================= */
 
 body.light-mode .career-section {
   background: radial-gradient(circle at top, #f8fafc, #ffffff);
@@ -1777,7 +1777,7 @@ body.light-mode .pipeline-card::after {
   box-shadow: 0 0 6px rgba(14, 165, 233, 0.4);
 }
 
-/* ================= LIGHT MODE — CONTACT PAGE ================= */
+/* ================= LIGHT MODE - CONTACT PAGE ================= */
 
 body.light-mode .contact-section {
   background: radial-gradient(circle at top, #f8fafc, #ffffff);
@@ -1874,7 +1874,7 @@ body.light-mode .map-card iframe {
   filter: none;
 }
 
-/* ================= LIGHT MODE — SOCIAL MINI ================= */
+/* ================= LIGHT MODE - SOCIAL MINI ================= */
 
 body.light-mode .social-mini h3 {
   color: #0ea5e9;
@@ -1897,7 +1897,7 @@ body.light-mode .s-icon:hover {
   box-shadow: 0 0 18px currentColor;
 }
 
-/* ================= LIGHT MODE — BLOG ARTICLE PAGE ================= */
+/* ================= LIGHT MODE - BLOG ARTICLE PAGE ================= */
 
 body.light-mode .blog-article-page {
   background: #ffffff;

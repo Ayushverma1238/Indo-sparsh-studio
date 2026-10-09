@@ -2,7 +2,7 @@
 // Content for the Social Media Management page.
 // Everything marked "from PDF" is taken directly from
 // Social_Media_Management_Services.pdf. Everything marked
-// "EDIT ME" is a reasonable placeholder — swap in your real
+// "EDIT ME" is a reasonable placeholder - swap in your real
 // numbers / copy whenever you have them.
 // ---------------------------------------------------------------
 
@@ -12,7 +12,7 @@ export const heroData = {
   title: "Social Media Management",
   subtitle: "Consistent Presence. Real Engagement. Measurable Growth.",
   description:
-    "Posting randomly isn't a strategy — it's guesswork. We manage your social media accounts end-to-end: planned content, on-time posting, real audience engagement, and monthly reporting that shows what's actually working. No missed weeks, no inconsistent branding, no scrambling for what to post next.",
+    "Posting randomly isn't a strategy - it's guesswork. We manage your social media accounts end-to-end: planned content, on-time posting, real audience engagement, and monthly reporting that shows what's actually working. No missed weeks, no inconsistent branding, no scrambling for what to post next.",
   primaryBtn: "Start Your Project",
   secondaryBtn: "View Pricing",
 };
@@ -41,7 +41,7 @@ export const footerTags = [
   "#MSME",
 ];
 
-// ---- Stats strip — EDIT ME: swap in your real numbers ----
+// ---- Stats strip - EDIT ME: swap in your real numbers ----
 export const stats = [
   { title: "Brands Managed", number: "50+" },
   { title: "Posts Published / Month", number: "500+" },
@@ -49,14 +49,14 @@ export const stats = [
   { title: "Client Retention", number: "90%" },
 ];
 
-// ---- Why social media matters — EDIT ME ----
+// ---- Why social media matters - EDIT ME ----
 export const whySocialMedia = {
   title: "Why Social Media Isn't Optional Anymore",
   description:
-    "Your customers are already scrolling — checking your last post, your reviews, and your activity before they ever call or visit. An inactive or inconsistent profile quietly costs you trust and inquiries every single day. A managed, on-brand presence turns that daily scroll into real engagement and leads.",
+    "Your customers are already scrolling - checking your last post, your reviews, and your activity before they ever call or visit. An inactive or inconsistent profile quietly costs you trust and inquiries every single day. A managed, on-brand presence turns that daily scroll into real engagement and leads.",
 };
 
-// ---- What we do — sourced from the plan features in the PDF ----
+// ---- What we do - sourced from the plan features in the PDF ----
 export const features = [
   {
     icon: "strategy",
@@ -100,10 +100,10 @@ const price1Card = encodeURIComponent(
   `Hi! I'm interested in the SMM Basic plan (₹4,999/month) for managing my social media presence. Can you share how we get started?`,
 );
 const price2Card = encodeURIComponent(
-  `Hi! I'd like to go with the SMM Pro plan (₹11,999/month) — the extra content volume and audience insights look like a good fit. Can we discuss onboarding?`,
+  `Hi! I'd like to go with the SMM Pro plan (₹11,999/month) - the extra content volume and audience insights look like a good fit. Can we discuss onboarding?`,
 );
 const price3Card = encodeURIComponent(
-  `Hi! I'm interested in the SMM Premium + UGC plan (₹22,999/month) — especially the scripted UGC videos and growth planning. Can you walk me through what's included?`,
+  `Hi! I'm interested in the SMM Premium + UGC plan (₹22,999/month) - especially the scripted UGC videos and growth planning. Can you walk me through what's included?`,
 );
 
 // ---- Pricing plans (from PDF, exact prices & feature lists) ----
@@ -114,7 +114,7 @@ export const pricingPlans = [
     price: "₹4,999",
     duration: "/month",
     description:
-      "A fully managed, on-brand social presence — done for you, every month.",
+      "A fully managed, on-brand social presence - done for you, every month.",
     message: price1Card,
     gradient: "linear-gradient(160deg,#2F5CFF,#16161A)",
     features: [
@@ -187,7 +187,7 @@ export const addons = [
   },
 ];
 
-// ---- Process / timeline — EDIT ME ----
+// ---- Process / timeline - EDIT ME ----
 export const process = [
   {
     step: "01",
@@ -226,12 +226,12 @@ export const whyChooseUs = [
   {
     title: "Outcomes Over Vanity Metrics",
     description:
-      'We focus on business outcomes — engagement, inquiries and reach — not follower counts or "like boosting."',
+      'We focus on business outcomes - engagement, inquiries and reach - not follower counts or "like boosting."',
   },
   {
     title: "One Team, Start To Finish",
     description:
-      "The same team that builds your profile also manages it — nothing gets lost in handoff.",
+      "The same team that builds your profile also manages it - nothing gets lost in handoff.",
   },
   {
     title: "Transparent Monthly Reporting",
@@ -241,7 +241,7 @@ export const whyChooseUs = [
   {
     title: "Flexible Plans",
     description:
-      "Upgrade, downgrade, or add platforms anytime — no long lock-ins.",
+      "Upgrade, downgrade, or add platforms anytime - no long lock-ins.",
   },
   {
     title: "One Studio, One Strategy",
@@ -250,7 +250,7 @@ export const whyChooseUs = [
   },
 ];
 
-// ---- FAQs — EDIT ME ----
+// ---- FAQs - EDIT ME ----
 export const faqs = [
   {
     question: "Which platforms do you manage?",
@@ -260,7 +260,7 @@ export const faqs = [
   {
     question: "Why is a 3-month minimum recommended?",
     answer:
-      "Consistent posting and community management compound over time — a single month rarely reflects real growth in reach or engagement.",
+      "Consistent posting and community management compound over time - a single month rarely reflects real growth in reach or engagement.",
   },
   {
     question: "Do you create the content or do we?",
@@ -270,7 +270,7 @@ export const faqs = [
   {
     question: "Can I upgrade my plan later?",
     answer:
-      "Yes — you can move between Basic, Pro and Premium + UGC at any time as your needs grow.",
+      "Yes - you can move between Basic, Pro and Premium + UGC at any time as your needs grow.",
   },
   {
     question: "How often will I see reporting?",
@@ -279,7 +279,7 @@ export const faqs = [
   },
 ];
 
-// ---- Contact info (from PDF) — not rendered as a page/section here,
+// ---- Contact info (from PDF) - not rendered as a page/section here,
 // kept available in case it's needed elsewhere. ----
 export const contactData = {
   phone: "+91-8005351770",

@@ -32,35 +32,30 @@ import SEO from "../utils/seo.jsx";
 export default function Home() {
   const location = useLocation();
   const navigate = useNavigate();
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (!element) return false;
+ 
 
-    const header = document.querySelector(".cyber-header");
-    const headerHeight = header ? header.offsetHeight : 0;
-
-    const offsetPosition =
-      element.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
-
-    return true;
-  };
+  const scrollTarget = location.state?.scrollTo;
 
   useEffect(() => {
-    if (!location.state?.scrollTo) return;
+    if (!scrollTarget) return;
 
-    scrollToSection(location.state.scrollTo);
+    const element = document.getElementById(scrollTarget);
 
-    // Clear the state so it won't run again
+    if (element) {
+      const header = document.querySelector(".cyber-header");
+      const headerHeight = header?.offsetHeight ?? 0;
+
+      const top =
+        element.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+
     navigate(location.pathname, {
       replace: true,
       state: null,
     });
-  }, [location]);
+  }, [scrollTarget, location.pathname, navigate]);
 
   return (
     <>

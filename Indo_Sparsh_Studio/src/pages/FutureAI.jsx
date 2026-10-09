@@ -21,7 +21,7 @@ export default function FutureAI() {
         <p>Those days are over.</p>
 
         <p>
-          In 2026, artificial intelligence is no longer a feature—it's the
+          In 2026, artificial intelligence is no longer a feature-it's the
           engine powering every digital experience. It doesn't announce itself.
           It doesn't ask for attention. It simply works in the background,
           making interactions smoother, faster, and more human .
@@ -52,7 +52,7 @@ export default function FutureAI() {
         <p>What's changing:</p>
 
         <p>
-          This is the year of agentic AI—systems designed to take autonomous
+          This is the year of agentic AI-systems designed to take autonomous
           action across workflows . Unlike traditional chatbots that simply
           answer questions, AI agents can now complete multi-step tasks without
           human intervention.
@@ -78,7 +78,7 @@ export default function FutureAI() {
         <p>The reality check:</p>
 
         <p>
-          We're not quite there yet—at least not fully. Currently, AI agents can
+          We're not quite there yet-at least not fully. Currently, AI agents can
           handle tasks that take a few minutes, but complex 30+ minute workflows
           remain challenging . The technology is improving fast, and 2026 will
           be the proving ground where we perfect model reasoning, memory, and
@@ -93,7 +93,7 @@ export default function FutureAI() {
             automated
           </li>
           <li>
-            Don't wait for perfection—begin with small workflows like lead
+            Don't wait for perfection-begin with small workflows like lead
             follow-up or invoice reminders
           </li>
           <li>Think of AI agents as team members, not just tools</li>
@@ -102,7 +102,7 @@ export default function FutureAI() {
         <p className="tip">
           Tip: At Prosus, one company deployed an AI agent that now handles work
           equivalent to 40 full-time employees. The agent extracts data,
-          compiles reports, and helps account managers prepare for meetings—all
+          compiles reports, and helps account managers prepare for meetings-all
           automatically .
         </p>
 
@@ -123,7 +123,7 @@ export default function FutureAI() {
         <ul>
           <li>
             25% of customers now use AI platforms like ChatGPT as their top
-            research tool—more than brand sites, reviews, or traditional media
+            research tool-more than brand sites, reviews, or traditional media
           </li>
           <li>
             49% would use AI to search for personalised product recommendations
@@ -157,7 +157,7 @@ export default function FutureAI() {
           AI-driven world, salience becomes existential .
         </p>
 
-        <h2>3. AI Becomes Invisible—And That's the Point</h2>
+        <h2>3. AI Becomes Invisible-And That's the Point</h2>
 
         <p>The best AI is the AI you don't notice.</p>
 
@@ -264,7 +264,7 @@ export default function FutureAI() {
         </ul>
 
         <p className="tip">
-          Tip: A Pune-based healthcare startup learned this the hard way—a
+          Tip: A Pune-based healthcare startup learned this the hard way-a
           breach cost them ₹18 lakhs and three months of stalled growth.
           Post-breach, they rebuilt their entire data architecture. Today, they
           market "ISO 27001 certified" as a competitive advantage.
@@ -303,7 +303,7 @@ export default function FutureAI() {
 
         <p>
           Prosus, a global AI investor, predicts that in 2026, a major retailer
-          will report 10% of sales coming from fully agentic checkout—where
+          will report 10% of sales coming from fully agentic checkout-where
           consumers authorise an agent to make purchases on their behalf .
         </p>
 
@@ -316,7 +316,7 @@ export default function FutureAI() {
           </li>
           <li>Your brand must be "findable" by machines, not just people</li>
           <li>
-            Trust becomes your most valuable asset—because agents will be
+            Trust becomes your most valuable asset-because agents will be
             programmed to avoid brands with poor reviews or inconsistent data
           </li>
         </ul>
@@ -350,7 +350,7 @@ export default function FutureAI() {
         <p>
           Trust isn't optional anymore. When AI hallucinates (and it still
           does), when it produces inconsistent reasoning, when it can't explain
-          itself—customers notice. And they leave .
+          itself-customers notice. And they leave .
         </p>
 
         <p>What you should do:</p>
@@ -464,7 +464,7 @@ export default function FutureAI() {
 
         <p className="tip">
           Tip: Gartner predicts agentic AI will reduce operational costs by 30%
-          by 2029—but only if implemented thoughtfully .
+          by 2029-but only if implemented thoughtfully .
         </p>
 
         <h2>9. The Data Infrastructure Gap</h2>
@@ -547,7 +547,7 @@ export default function FutureAI() {
         <p>The bottom line:</p>
 
         <p>
-          AI won't replace human creativity or oversight—it will augment it .
+          AI won't replace human creativity or oversight-it will augment it .
           The winners won't be those with the biggest models or the largest
           budgets. They'll be those who combine technological maturity with
           human insight and high-quality data.

@@ -152,7 +152,7 @@ const process = [
   {
     step: "03",
     title: "Design",
-    text: "Identity, campaign, or site — built to hold up across every channel.",
+    text: "Identity, campaign, or site - built to hold up across every channel.",
   },
   {
     step: "04",
@@ -210,14 +210,14 @@ export default function BrandingMarketingPage() {
             </h1>
             <p className="bm-hero__subtext">
               Identity, positioning, and campaigns built from the same strategy
-              — so every touchpoint sounds like the same brand.
+              - so every touchpoint sounds like the same brand.
             </p>
             <div className="bm-hero__cta-row">
               <a href="#work" className="bm-btn bm-btn--primary">
-                See our work
+                See Our Work
               </a>
               <a href="/request-quote" className="bm-btn bm-btn--ghost">
-                Start a project
+                Start a Project
               </a>
             </div>
           </div>

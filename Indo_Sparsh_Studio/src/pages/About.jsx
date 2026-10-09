@@ -107,7 +107,7 @@ export default function About() {
             The Leading Agency?
           </h1>
           <p>
-            We don’t follow trends — we engineer digital dominance through
+            We don’t follow trends - we engineer digital dominance through
             innovation, precision, and long-term partnerships.
           </p>
         </div>
@@ -120,7 +120,7 @@ export default function About() {
             <h3>Expert-Driven Strategy</h3>
             <p>
               Every project is crafted by experienced IT, design, and growth
-              experts — not templates or shortcuts.
+              experts - not templates or shortcuts.
             </p>
           </div>
 
@@ -130,7 +130,7 @@ export default function About() {
             </div>
             <h3>End-to-End Execution</h3>
             <p>
-              From ideation to deployment, security to scalability — everything
+              From ideation to deployment, security to scalability - everything
               is handled under one roof.
             </p>
           </div>
@@ -163,7 +163,7 @@ export default function About() {
             </div>
             <h3>Result-Oriented Mindset</h3>
             <p>
-              We focus on conversions, growth, automation, and ROI — not just
+              We focus on conversions, growth, automation, and ROI - not just
               visuals.
             </p>
           </div>

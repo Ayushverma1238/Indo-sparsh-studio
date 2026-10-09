@@ -1,5 +1,5 @@
 /* =====================================================================
-   INDO SPARSH STUDIO — SHARED SERVICES DESIGN SYSTEM
+   INDO SPARSH STUDIO - SHARED SERVICES DESIGN SYSTEM
    One font pairing + one 5-colour palette (plus neutrals) for every
    /services/* page. Imported by every page-level CSS file so that
    every page's local (prefixed) tokens can simply point at these.
@@ -21,9 +21,9 @@ body.light-mode {
   --color-shadow: rgba(21, 21, 28, 0.12);
 
   /* ---- brand accents (constant across light & dark) ---- */
-  --color-primary: #2f5cff;   /* blue   — primary CTA / links   */
-  --color-accent: #ff4b3e;    /* coral  — secondary highlight   */
-  --color-accent-2: #ffc738;  /* yellow — tertiary / badges     */
+  --color-primary: #2f5cff;   /* blue   - primary CTA / links   */
+  --color-accent: #ff4b3e;    /* coral  - secondary highlight   */
+  --color-accent-2: #ffc738;  /* yellow - tertiary / badges     */
   --ink-solid: #16161a;       /* near-black text on bright accents */
 
   /* status badges only (kept close to the core hues) */
@@ -72,7 +72,7 @@ body.dark-mode {
 /* ---------------------------------------------------------------------
    Universal reveal-on-scroll animation. Every page's Reveal wrapper
    toggles an "is-visible" class alongside its own prefixed reveal
-   class (e.g. .adh-reveal, .bm-reveal) — this base rule keeps the
+   class (e.g. .adh-reveal, .bm-reveal) - this base rule keeps the
    motion identical everywhere; page files only need to set which
    element it applies to.
 --------------------------------------------------------------------- */

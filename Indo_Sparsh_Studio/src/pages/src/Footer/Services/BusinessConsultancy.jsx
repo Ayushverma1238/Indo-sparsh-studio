@@ -19,7 +19,7 @@ import {
 import { useInView } from "framer-motion";
 import ScrollBeam from "../../../ScrollBeam";
 import SEO from "../../../../utils/seo";
-import CommonMarquee from "./common/commonMarquee";
+import CommonMarquee from "./common/CommonMarquee";
 
 /* ==========================================================
    REVEAL COMPONENT
@@ -143,14 +143,14 @@ const processBC = [
     icon: <HiOutlineClipboardDocumentList />,
     title: "Roadmap",
     description:
-      "You get a practical, prioritized 90-day action plan — in writing.",
+      "You get a practical, prioritized 90-day action plan - in writing.",
   },
   {
     step: "04",
     icon: <HiOutlineCog8Tooth />,
     title: "Implement (optional)",
     description:
-      "Where a fix touches marketing, branding, or digital presence, our own team can execute it — no handoff to a third party.",
+      "Where a fix touches marketing, branding, or digital presence, our own team can execute it - no handoff to a third party.",
   },
   {
     step: "05",
@@ -173,7 +173,7 @@ const whyPointsBC = [
     icon: "📊",
     title: "India-SME-Tested",
     description:
-      "Practical, India-SME-tested recommendations — not textbook theory.",
+      "Practical, India-SME-tested recommendations - not textbook theory.",
   },
   {
     icon: "🎯",
@@ -190,7 +190,7 @@ const whyPointsBC = [
     icon: "🤝",
     title: "One Studio, Start To Finish",
     description:
-      "Strategy and execution — logo, GBP, social, ads & registration — all under one roof.",
+      "Strategy and execution - logo, GBP, social, ads & registration - all under one roof.",
   },
 ];
 
@@ -206,18 +206,11 @@ const heroTagsBC = [
   "#BusinessPlanning",
   "#GrowthStrategy",
   "#Entrepreneurship",
-];
-
-// From PDF footer hashtags
-const footerTagsBC = [
-  "#DATA",
-  "#LEADGENERATION",
   "#BUSINESSCONSULTING",
   "#REVENUEGROWTH",
-  "#MSME",
-  "#BUSINESSGROWTH",
-  "#DIGITALPRESENCE",
 ];
+
+
 
 /* ==========================================================
    MAIN COMPONENT
@@ -240,10 +233,10 @@ export default function BusinessConsultancy() {
     `Hi! I'm interested in the Revenue Growth Audit (₹4,999). I want a complete diagnostic of my business with a clear growth roadmap. Can we book the strategy call?`,
   );
   const price3card = encodeURIComponent(
-    `Hi! I'd like to know more about the Starter Advisory retainer (₹7,999/month) — the 2 strategy calls and ongoing support. Can you share how we get started?`,
+    `Hi! I'd like to know more about the Starter Advisory retainer (₹7,999/month) - the 2 strategy calls and ongoing support. Can you share how we get started?`,
   );
   const price4card = encodeURIComponent(
-    `Hi! I'm looking for continuous, priority-level support for my business — interested in the Growth Advisory plan (₹14,999/month). Can we discuss the KPI tracking and onboarding process?`,
+    `Hi! I'm looking for continuous, priority-level support for my business - interested in the Growth Advisory plan (₹14,999/month). Can we discuss the KPI tracking and onboarding process?`,
   );
   const price5card = encodeURIComponent(
     `Hi! I need a second opinion on a specific business decision. Can I book a single On-Demand Consulting Call (₹1,499/hour) directly on WhatsApp?`,
@@ -269,9 +262,6 @@ export default function BusinessConsultancy() {
       ================================================== */}
 
         <section className="hero-section-bc">
-          <div className="hero-blob-one-bc"></div>
-          <div className="hero-blob-two-bc"></div>
-          <div className="hero-blob-three-bc"></div>
 
           <div className="container-bc">
             <div className="hero-grid-bc">
@@ -532,7 +522,7 @@ export default function BusinessConsultancy() {
               <h2 className="section-title-bc">How We Work</h2>
 
               <p className="section-description-bc">
-                Every engagement follows the same five-step process — diagnose,
+                Every engagement follows the same five-step process - diagnose,
                 strategize, roadmap, implement, track.
               </p>
             </RevealBC>
@@ -701,7 +691,7 @@ export default function BusinessConsultancy() {
                 </div>
                 <div className="plan-bottom-bc">
                   <p className="pricing-desc-bc">
-                    A low-risk way to start — understand your business,
+                    A low-risk way to start - understand your business,
                     challenges & goals in one focused session.
                   </p>
 
@@ -842,7 +832,7 @@ export default function BusinessConsultancy() {
                 </div>
                 <div className="plan-bottom-bc">
                   <p className="pricing-desc-bc">
-                    Need a second opinion on one specific decision — a price
+                    Need a second opinion on one specific decision - a price
                     change, a new product, an ad budget, a hire?
                   </p>
 
@@ -866,7 +856,7 @@ export default function BusinessConsultancy() {
             <RevealBC delay={480} className="pricing-fit-note-bc">
               <p>
                 <strong>Not sure where to start?</strong> Book a free 15-minute
-                Fit Call — we'll tell you honestly whether consulting is what
+                Fit Call - we'll tell you honestly whether consulting is what
                 your business needs right now, before you spend a rupee.
               </p>
               <Link
@@ -931,19 +921,7 @@ export default function BusinessConsultancy() {
         </section>
         <ScrollBeam />
 
-        {/* ==================================================
-          FOOTER TAGS
-      ================================================== */}
-
-        <footer className="footer-bc">
-          <div className="footer-tags-bc">
-            {footerTagsBC.map((tag) => (
-              <span key={tag} className="tag-bc">
-                {tag}
-              </span>
-            ))}
-          </div>
-        </footer>
+       
       </div>
     </>
   );

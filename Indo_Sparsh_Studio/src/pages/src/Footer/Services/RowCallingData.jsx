@@ -86,7 +86,7 @@ const plans = [
       "High-intent decision makers",
     ],
     message:
-      encodeURIComponent(`Hi! I need high-intent, decision-maker leads for quick sales closure — interested in the Hot Data plan (₹9,999/1000 records).
+      encodeURIComponent(`Hi! I need high-intent, decision-maker leads for quick sales closure - interested in the Hot Data plan (₹9,999/1000 records).
       Can you share more details and how fast I can get access?`),
   },
   {
@@ -102,7 +102,7 @@ const plans = [
       "Dedicated Manager",
     ],
     message:
-      encodeURIComponent(`Hi! I need high-intent, decision-maker leads for quick sales closure — interested in the Hot Data plan (₹9,999/1000 records).
+      encodeURIComponent(`Hi! I need high-intent, decision-maker leads for quick sales closure - interested in the Hot Data plan (₹9,999/1000 records).
       Can you share more details and how fast I can get access?`),
   },
 ];
@@ -176,14 +176,14 @@ export default function RowCallingData() {
             </p>
             <div className="dp-hero__cta-row">
               <a href="#pricing" className="dp-btn dp-btn--primary">
-                See pricing
+                See Pricing
               </a>
               <a
                 target="_blank"
                 href="https://wa.me/918005351770"
                 className="dp-btn dp-btn--ghost"
               >
-                Talk to us
+                Talk to Us
               </a>
             </div>
           </div>

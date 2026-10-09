@@ -10,7 +10,7 @@ const faqData = [
     items: [
       {
         q: "What services does Sparsh Studio offer?",
-        a: "We design and build websites, individual webpages, mobile applications, brand logos, and promotional or product videos — everything a business needs to look and feel professional online.",
+        a: "We design and build websites, individual webpages, mobile applications, brand logos, and promotional or product videos - everything a business needs to look and feel professional online.",
       },
       {
         q: "How do I start a project with you?",
@@ -26,7 +26,7 @@ const faqData = [
       },
       {
         q: "Can you help with just one part of a project, like a logo alone?",
-        a: "Yes. You can hire us for a single deliverable — a logo, one webpage, a promo video — or bundle everything together for a full brand and website package.",
+        a: "Yes. You can hire us for a single deliverable - a logo, one webpage, a promo video - or bundle everything together for a full brand and website package.",
       },
     ],
   },
@@ -35,7 +35,7 @@ const faqData = [
     items: [
       {
         q: "How much does a website or app cost?",
-        a: "Pricing depends on scope — a single landing page costs far less than a full e-commerce site or mobile app. Share your requirements and we'll send a clear, itemized quote with no hidden charges.",
+        a: "Pricing depends on scope - a single landing page costs far less than a full e-commerce site or mobile app. Share your requirements and we'll send a clear, itemized quote with no hidden charges.",
       },
       {
         q: "How long does a typical project take?",
@@ -43,7 +43,7 @@ const faqData = [
       },
       {
         q: "Do you offer payment in installments?",
-        a: "Yes — most projects are split into 2–3 milestones: an advance to begin work, a payment at the design/prototype stage, and a final payment on delivery.",
+        a: "Yes - most projects are split into 2–3 milestones: an advance to begin work, a payment at the design/prototype stage, and a final payment on delivery.",
       },
       {
         q: "Is there an extra charge for rush delivery?",
@@ -72,7 +72,7 @@ const faqData = [
       },
       {
         q: "Can you redesign my existing website or app instead of building from scratch?",
-        a: "Yes. We regularly refresh existing sites and apps — improving design, speed and usability while keeping the content and structure you want to retain.",
+        a: "Yes. We regularly refresh existing sites and apps - improving design, speed and usability while keeping the content and structure you want to retain.",
       },
       {
         q: "What if I want changes after the extra revision rounds are used up?",
@@ -89,7 +89,7 @@ const faqData = [
       },
       {
         q: "Will you help me with hosting and domain setup?",
-        a: "Yes, we can set up hosting, connect your domain, and configure email — or guide you through it step by step if you'd rather manage it yourself.",
+        a: "Yes, we can set up hosting, connect your domain, and configure email - or guide you through it step by step if you'd rather manage it yourself.",
       },
       {
         q: "Do you provide the website's source code?",
@@ -114,7 +114,7 @@ const faqData = [
       },
       {
         q: "What happens if something breaks after launch?",
-        a: "Reach out to our support channel and we'll triage the issue — critical bugs on active maintenance plans are typically addressed within 24 hours.",
+        a: "Reach out to our support channel and we'll triage the issue - critical bugs on active maintenance plans are typically addressed within 24 hours.",
       },
       {
         q: "Can you train my team to update the website ourselves?",
@@ -173,7 +173,7 @@ export default function FAQPage() {
               Questions, <span className="faq-title-accent">answered.</span>
             </h1>
             <p className="faq-subtitle">
-              Everything you need to know about working with Sparsh Studio —
+              Everything you need to know about working with Sparsh Studio -
               websites, apps, logos and video, all in one place.
             </p>
           </section>

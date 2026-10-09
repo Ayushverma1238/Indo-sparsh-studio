@@ -11,7 +11,7 @@ const HomeTestomanies = () => {
             What Our <span>Clients Say</span>
           </h1>
           <p>
-            Trusted by startups, founders, and enterprises worldwide — here’s
+            Trusted by startups, founders, and enterprises worldwide - here’s
             what they say about working with us.
           </p>
         </div>

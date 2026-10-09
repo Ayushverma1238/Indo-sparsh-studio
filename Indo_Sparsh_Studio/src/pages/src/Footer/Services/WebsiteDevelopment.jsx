@@ -2,12 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import "./WebsiteDevelopment.css";
 import ScrollBeam from "../../../ScrollBeam";
 import SEO from "../../../../utils/seo";
-import CommonMarquee from "./common/commonMarquee";
+import CommonMarquee from "./common/CommonMarquee";
 
 /* ---------------------------------------------------------
-   Small hook: reveals an element with a class once it enters
-   the viewport. Used everywhere instead of copy-pasted
-   IntersectionObserver boilerplate.
+   Reveal-on-scroll hook
 --------------------------------------------------------- */
 function useReveal(options = {}) {
   const ref = useRef(null);
@@ -34,7 +32,8 @@ function useReveal(options = {}) {
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [options]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return [ref, visible];
 }
@@ -60,37 +59,7 @@ function Reveal({
 }
 
 /* ---------------------------------------------------------
-   Theme toggle — draftsman's switch between "paper" (light)
-   and true blueprint (dark: white ink on blueprint blue).
---------------------------------------------------------- */
-// eslint-disable-next-line no-unused-vars
-function ThemeToggle({ theme, onToggle }) {
-  const isDark = theme === "dark";
-  return (
-    <button
-      type="button"
-      className="theme-toggle"
-      onClick={onToggle}
-      aria-pressed={isDark}
-      aria-label={
-        isDark
-          ? "Switch to paper (light) mode"
-          : "Switch to blueprint (dark) mode"
-      }
-    >
-      <span className="theme-toggle-track">
-        <span className="theme-toggle-thumb">{isDark ? "🖊" : "☀"}</span>
-      </span>
-      <span className="theme-toggle-label">
-        {isDark ? "Blueprint" : "Paper"}
-      </span>
-    </button>
-  );
-}
-
-/* ---------------------------------------------------------
-   DATA — everything below comes from the Website
-   Development Services price sheet.
+   DATA
 --------------------------------------------------------- */
 const tags = [
   "#WebsiteDevelopment",
@@ -98,41 +67,33 @@ const tags = [
   "#Shopify",
   "#Ecommerce",
   "#WebDesign",
-  "#BusinessGrowth",
-  "#LeadGeneration",
-  "#MSME",
-  "#Data",
+  "#NextJs",
+  "#WebsiteRedesign",
+  "#Responsiveness"
+];
+
+const HERO_METRICS = [
+  { value: "₹2,999", label: "Starting at" },
+  { value: "React · Shopify", label: "Platforms" },
+  { value: "Fully responsive", label: "Design" },
+];
+
+/* The strip: all four section names */
+const TABS = [
+  { id: "stores", label: "Online Stores" },
+  { id: "redesign", label: "Website Redesign" },
+  { id: "maintenance", label: "Maintenance & Support" },
+  { id: "addons", label: "Optional Add-ons" },
 ];
 
 const INCLUDED = [
-  {
-    tag: "Responsive design",
-    body: "Modern & professional — looks great on mobile, tablet & desktop.",
-  },
-  {
-    tag: "SEO-friendly",
-    body: "SEO-friendly structure from day one — built to rank, not just to look good.",
-  },
-  {
-    tag: "Fast loading",
-    body: "Optimized images & clean code so pages open quickly.",
-  },
-  {
-    tag: "Secure & up-to-date",
-    body: "SSL-ready and built on the latest web standards.",
-  },
-  {
-    tag: "Maps & social",
-    body: "Google Maps & social media integration included.",
-  },
-  {
-    tag: "Easy to use",
-    body: "A user-friendly, easy-to-navigate layout for your visitors.",
-  },
-  {
-    tag: "On-time delivery",
-    body: "On-time delivery with regular progress updates.",
-  },
+  { tag: "Responsive design", body: "Modern & professional - looks great on mobile, tablet & desktop." },
+  { tag: "SEO-friendly", body: "SEO-friendly structure from day one - built to rank, not just to look good." },
+  { tag: "Fast loading", body: "Optimized images & clean code so pages open quickly." },
+  { tag: "Secure & up-to-date", body: "SSL-ready and built on the latest web standards." },
+  { tag: "Maps & social", body: "Google Maps & social media integration included." },
+  { tag: "Easy to use", body: "A user-friendly, easy-to-navigate layout for your visitors." },
+  { tag: "On-time delivery", body: "On-time delivery with regular progress updates." },
 ];
 
 const PACKAGES = [
@@ -141,7 +102,7 @@ const PACKAGES = [
     name: "LANDING PAGE",
     price: "₹2,999",
     topClass: "",
-    desc: "Perfect for solo professionals, freelancers, or new businesses that just need one sharp, credible page online — fast and affordable.",
+    desc: "Perfect for solo professionals, freelancers, or new businesses that just need one sharp, credible page online - fast and affordable.",
     lead: "",
     list: [
       "Single page",
@@ -182,7 +143,7 @@ const PACKAGES = [
     desc: "",
     lead: "Everything in Starter, plus:",
     list: [
-      "Up to 10 pages, built on React CMS — edit your own content anytime",
+      "Up to 10 pages, built on React CMS - edit your own content anytime",
       "Fully custom design (not a generic template)",
       "Blog / News section setup",
       "Google Analytics + Search Console setup",
@@ -213,59 +174,28 @@ const PACKAGES = [
 ];
 
 const ECOMMERCE = [
-  {
-    code: "A",
-    title: "Shopify Store",
-    price: "₹29,999",
-    summary: "Up to 50 products, theme customization, payment gateway setup.",
-  },
-  {
-    code: "B",
-    title: "WooCommerce (React) Store",
-    price: "₹34,999",
-    summary: "Up to 50 products, theme customization, payment gateway setup.",
-  },
-  {
-    code: "C",
-    title: "Custom E-commerce Platform",
-    price: "From ₹79,999",
-    summary: "Fully custom build, unlimited products, advanced features.",
-  },
+  { code: "A", title: "Shopify Store", price: "₹29,999", summary: "Up to 50 products, theme customization, payment gateway setup." },
+  { code: "B", title: "WooCommerce (React) Store", price: "₹34,999", summary: "Up to 50 products, theme customization, payment gateway setup." },
+  { code: "C", title: "Custom E-commerce Platform", price: "From ₹79,999", summary: "Fully custom build, unlimited products, advanced features." },
 ];
 
 const REDESIGN_POINTS = [
   "Full visual redesign using your existing content",
   "Mobile responsiveness fixed",
   "Speed & SEO audit included",
-  "Final price depends on current site size & platform — confirmed after a free review",
+  "Final price depends on current site size & platform - confirmed after a free review",
 ];
 
 const MAINTENANCE = [
-  {
-    plan: "Basic",
-    price: "₹1,999",
-    body: "Uptime monitoring, backups, plugin & security updates.",
-  },
-  {
-    plan: "Standard",
-    price: "₹3,999",
-    body: "Everything in Basic + up to 4 content updates/month.",
-  },
-  {
-    plan: "Premium",
-    price: "₹6,999",
-    body: "Everything in Standard + priority support, performance checks, monthly report.",
-  },
+  { plan: "Basic", price: "₹1,999", body: "Uptime monitoring, backups, plugin & security updates." },
+  { plan: "Standard", price: "₹3,999", body: "Everything in Basic + up to 4 content updates/month." },
+  { plan: "Premium", price: "₹6,999", body: "Everything in Standard + priority support, performance checks, monthly report." },
 ];
 
 const ADDONS = [
   { name: "Extra Page", price: "₹1,499/page" },
   { name: "Payment Gateway Integration", price: "₹2,999" },
-  {
-    name: "Domain + Hosting Setup (1 year)",
-    price: "₹2,999",
-    note: "+ actual domain/hosting cost",
-  },
+  { name: "Domain + Hosting Setup (1 year)", price: "₹2,999", note: "+ actual domain/hosting cost" },
   { name: "SSL Certificate Setup", price: "₹999" },
   { name: "Speed Optimization (existing site)", price: "₹1,999" },
   { name: "Live Chat / WhatsApp Widget Integration", price: "₹999" },
@@ -273,34 +203,30 @@ const ADDONS = [
 ];
 
 const WHY = [
-  {
-    tag: "Client satisfaction",
-    body: "100% client satisfaction focus — we revise until you're happy, within scope.",
-  },
-  {
-    tag: "On-time delivery",
-    body: "Clear timelines agreed upfront, no indefinite delays.",
-  },
-  {
-    tag: "Reliable support",
-    body: "Real humans, real response times.",
-  },
-  {
-    tag: "Affordable pricing",
-    body: "Professional-quality work at SME-friendly rates.",
-  },
-  {
-    tag: "One studio",
-    body: "Website, hosting, SEO, ads & design — nothing lost in handoff between vendors.",
-  },
+  { tag: "Client satisfaction", body: "100% client satisfaction focus - we revise until you're happy, within scope." },
+  { tag: "On-time delivery", body: "Clear timelines agreed upfront, no indefinite delays." },
+  { tag: "Reliable support", body: "Real humans, real response times." },
+  { tag: "Affordable pricing", body: "Professional-quality work at SME-friendly rates." },
+  { tag: "One studio", body: "Website, hosting, SEO, ads & design - nothing lost in handoff between vendors." },
 ];
 
 const WebsiteDevelopment = () => {
+  const [loaded, setLoaded] = useState(false);
+  const [activeTab, setActiveTab] = useState("stores");
+  const tabIndex = TABS.findIndex((t) => t.id === activeTab);
+
+  useEffect(() => {
+    const t = setTimeout(() => setLoaded(true), 60);
+    return () => clearTimeout(t);
+  }, []);
+
+  const [whyRef, whyVisible] = useReveal();
+
   return (
     <>
       <SEO
         title="Website Development Services | Indo Sparsh Studio"
-        description="Website development services from Indo Sparsh Studio, Lucknow — landing pages from ₹2,999, business websites on React, Shopify & WooCommerce stores, redesigns and maintenance."
+        description="Website development services from Indo Sparsh Studio, Lucknow - landing pages from ₹2,999, business websites on React, Shopify & WooCommerce stores, redesigns and maintenance."
         keywords="website development, website development services, web development company Lucknow, React website, Shopify store development, WooCommerce, ecommerce website, website redesign, website maintenance, Indo Sparsh Studio"
       />
       <a className="skip-link" href="#main">
@@ -309,239 +235,120 @@ const WebsiteDevelopment = () => {
 
       <main id="main">
         {/* ======================= HERO ======================= */}
-        <section className="hero">
-          <div className="wrap hero-inner">
-            <div className="hero-copy">
-              <p className="eyebrow">Service — Website Development</p>
+        <div className={`wd-root ${loaded ? "is-loaded" : ""}`}>
+          <section className="wd-hero">
+            <div>
+              <div className="wd-seal-wrap">
+                <div className="wd-seal" aria-hidden="true">
+                  <svg viewBox="0 0 160 160" className="wd-seal-svg">
+                    <defs>
+                      <path
+                        id="wdSealCirclePath"
+                        d="M 80,80 m -62,0 a 62,62 0 1,1 124,0 a 62,62 0 1,1 -124,0"
+                      />
+                    </defs>
+                    <circle cx="80" cy="80" r="74" className="wd-seal-ring-outer" />
+                    <circle cx="80" cy="80" r="52" className="wd-seal-ring-inner" />
+                    <text className="wd-seal-text">
+                      <textPath href="#wdSealCirclePath" startOffset="0%">
+                        ★ BUILT TO SPEC ★ INDO SPARSH STUDIO ★
+                      </textPath>
+                    </text>
+                    <text x="80" y="88" textAnchor="middle" className="wd-seal-center">
+                      EST.
+                    </text>
+                  </svg>
+                </div>
+              </div>
 
-              <h1 className="wd-hero__headline">
-                <span className="wd-word wd-word--a">We draft</span>{" "}
-                <span className="wd-word wd-word--b">
-                  your site like a set of building
-                </span>{" "}
-                <span className="wd-word wd-word--c">plans, then</span>{" "}
-                <span className="wd-word wd-word--d">build it to spec.</span>
+              <span className="wd-kicker">Digital Business Solution Agency</span>
+              <span className="wd-eyebrow">Service - Website Development</span>
+
+              <h1 className="wd-headline">
+                <span className="wd-word wd-word--b">Websites</span>{" "}
+                <span className="wd-word wd-word--a">built</span>{" "}
+                <span className="wd-word wd-word--d">to convert.</span>
               </h1>
-              <p className="hero-sub">
-                Your business, live online — fast, professional, built to
+
+              <p className="wd-subtitle">
+                Your business, live online - fast, professional, built to
                 convert. A website that loads slowly or breaks on a phone costs
                 you customers before they read a word. We build on React,
-                Shopify, or fully custom — whichever fits your business.
+                Shopify, or fully custom - whichever fits your business.
               </p>
-              <p className="hero-tagline">
+              <p className="wd-tagline">
                 Not just a website. A working sales tool.
               </p>
-              <div className="hero-cta">
-                <a href="#pricing" className="btn btn-primary">
-                  See packages
+
+              <div className="wd-hero-actions">
+                <a href="#pricing" className="wd-btn wd-btn-primary">
+                  See Packages
                 </a>
-                <a href="#included" className="btn btn-ghost">
-                  What's included
+                <a href="#included" className="wd-btn wd-btn-ghost">
+                  What's Included
                 </a>
               </div>
-              <dl className="hero-stats">
-                <div>
-                  <dt>Starting at</dt>
-                  <dd>₹2,999</dd>
-                </div>
-                <div>
-                  <dt>Platforms</dt>
-                  <dd>React · Shopify</dd>
-                </div>
-                <div>
-                  <dt>Design</dt>
-                  <dd>Fully responsive</dd>
-                </div>
-              </dl>
             </div>
 
-            <div
-              className="hero-plan"
-              role="img"
-              aria-label="Blueprint diagram of a website layout with annotated sections"
-            >
-              <svg
-                viewBox="0 0 480 420"
-                className="plan-svg"
-                xmlns="http://www.w3.org/2000/svg"
+            {/* ---------- Right side: site being built + stats ---------- */}
+            <div className="wd-hero-visual">
+              <div
+                className="wd-browser"
+                role="img"
+                aria-label="Illustration of a website layout in a browser window, with a phone version beside it"
               >
-                <path
-                  d="M10 10h20M10 10v20"
-                  className="reg-mark draw-in"
-                  style={{ animationDelay: "0ms" }}
-                />
-                <path
-                  d="M470 10h-20M470 10v20"
-                  className="reg-mark draw-in"
-                  style={{ animationDelay: "60ms" }}
-                />
-                <path
-                  d="M10 410h20M10 410v-20"
-                  className="reg-mark draw-in"
-                  style={{ animationDelay: "120ms" }}
-                />
-                <path
-                  d="M470 410h-20M470 410v-20"
-                  className="reg-mark draw-in"
-                  style={{ animationDelay: "180ms" }}
-                />
+                <div className="wd-browser-bar">
+                  <span className="wd-dot wd-dot--1" />
+                  <span className="wd-dot wd-dot--2" />
+                  <span className="wd-dot wd-dot--3" />
+                  <span className="wd-url">yourbusiness.com</span>
+                </div>
 
-                <rect
-                  x="60"
-                  y="40"
-                  width="360"
-                  height="330"
-                  className="plan-frame draw-in"
-                  style={{ animationDelay: "200ms" }}
-                />
-                <rect
-                  x="60"
-                  y="40"
-                  width="360"
-                  height="46"
-                  className="plan-line draw-in"
-                  style={{ animationDelay: "320ms" }}
-                />
-                <text
-                  x="72"
-                  y="68"
-                  className="plan-label fade-in"
-                  style={{ animationDelay: "700ms" }}
-                >
-                  NAV — 1440 &times; 72
-                </text>
+                <div className="wd-browser-body">
+                  <div className="wd-mock-nav wd-build" style={{ "--i": 0 }}>
+                    <span className="wd-mock-logo" />
+                    <span className="wd-mock-line wd-mock-line--nav" />
+                    <span className="wd-mock-line wd-mock-line--nav" />
+                    <span className="wd-mock-line wd-mock-line--nav" />
+                  </div>
 
-                <rect
-                  x="60"
-                  y="86"
-                  width="360"
-                  height="140"
-                  className="plan-line draw-in"
-                  style={{ animationDelay: "420ms" }}
-                />
-                <text
-                  x="72"
-                  y="106"
-                  className="plan-label fade-in"
-                  style={{ animationDelay: "800ms" }}
-                >
-                  HERO
-                </text>
-                <line
-                  x1="80"
-                  y1="130"
-                  x2="260"
-                  y2="130"
-                  className="plan-dash draw-in"
-                  style={{ animationDelay: "520ms" }}
-                />
-                <line
-                  x1="80"
-                  y1="150"
-                  x2="220"
-                  y2="150"
-                  className="plan-dash draw-in"
-                  style={{ animationDelay: "560ms" }}
-                />
-                <rect
-                  x="80"
-                  y="170"
-                  width="120"
-                  height="30"
-                  className="plan-cta fade-in"
-                  style={{ animationDelay: "900ms" }}
-                />
+                  <div className="wd-mock-hero wd-build" style={{ "--i": 1 }}>
+                    <span className="wd-mock-line wd-mock-line--title" />
+                    <span className="wd-mock-line wd-mock-line--lg" />
+                    <span className="wd-mock-line wd-mock-line--md" />
+                    <span className="wd-mock-cta" />
+                  </div>
 
-                <rect
-                  x="60"
-                  y="226"
-                  width="118"
-                  height="90"
-                  className="plan-line draw-in"
-                  style={{ animationDelay: "600ms" }}
-                />
-                <rect
-                  x="181"
-                  y="226"
-                  width="118"
-                  height="90"
-                  className="plan-line draw-in"
-                  style={{ animationDelay: "640ms" }}
-                />
-                <rect
-                  x="302"
-                  y="226"
-                  width="118"
-                  height="90"
-                  className="plan-line draw-in"
-                  style={{ animationDelay: "680ms" }}
-                />
-                <text
-                  x="72"
-                  y="246"
-                  className="plan-label plan-label-sm fade-in"
-                  style={{ animationDelay: "1000ms" }}
-                >
-                  01
-                </text>
-                <text
-                  x="193"
-                  y="246"
-                  className="plan-label plan-label-sm fade-in"
-                  style={{ animationDelay: "1020ms" }}
-                >
-                  02
-                </text>
-                <text
-                  x="314"
-                  y="246"
-                  className="plan-label plan-label-sm fade-in"
-                  style={{ animationDelay: "1040ms" }}
-                >
-                  03
-                </text>
+                  <div className="wd-mock-cards">
+                    {[2, 3, 4].map((n) => (
+                      <div className="wd-mock-card wd-build" style={{ "--i": n }} key={n}>
+                        <span className="wd-mock-card-bar" />
+                        <span className="wd-mock-line wd-mock-line--sm" />
+                        <span className="wd-mock-line wd-mock-line--xs" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-                <rect
-                  x="60"
-                  y="316"
-                  width="360"
-                  height="54"
-                  className="plan-line draw-in"
-                  style={{ animationDelay: "720ms" }}
-                />
-                <text
-                  x="72"
-                  y="336"
-                  className="plan-label plan-label-sm fade-in"
-                  style={{ animationDelay: "1100ms" }}
-                >
-                  FOOTER
-                </text>
+                <div className="wd-phone wd-build" style={{ "--i": 5 }}>
+                  <span className="wd-phone-notch" />
+                  <span className="wd-mock-line wd-mock-line--title" />
+                  <span className="wd-mock-line wd-mock-line--sm" />
+                  <span className="wd-mock-line wd-mock-line--xs" />
+                  <span className="wd-mock-cta wd-mock-cta--sm" />
+                </div>
 
-                <line
-                  x1="430"
-                  y1="86"
-                  x2="430"
-                  y2="226"
-                  className="dim-line draw-in"
-                  style={{ animationDelay: "760ms" }}
-                />
-                <text
-                  x="436"
-                  y="160"
-                  className="dim-text fade-in"
-                  transform="rotate(90 436 160)"
-                  style={{ animationDelay: "1150ms" }}
-                >
-                  CONTENT HEIGHT
-                </text>
-              </svg>
-              <p className="plan-caption">
-                SHEET 01 — Homepage layout, scale not to size
-              </p>
+                <span className="wd-chip wd-chip--a wd-build" style={{ "--i": 6 }}>
+                  SEO-friendly
+                </span>
+                <span className="wd-chip wd-chip--b wd-build" style={{ "--i": 7 }}>
+                  Fast loading
+                </span>
+              </div>
+
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
         <ScrollBeam />
 
         <CommonMarquee data={tags} />
@@ -549,24 +356,15 @@ const WebsiteDevelopment = () => {
         {/* ================= INCLUDED IN EVERY WEBSITE ================= */}
         <section className="capabilities" id="included">
           <div className="wrap">
-            <Reveal as="p" className="eyebrow">
-              What's included
-            </Reveal>
-            <Reveal as="h2" delay={60}>
-              Included in every website
-            </Reveal>
+            <Reveal as="p" className="eyebrow">What's included</Reveal>
+            <Reveal as="h2" delay={60}>Included in every website</Reveal>
             <Reveal as="p" className="section-sub" delay={100}>
-              Whichever package you pick, these come standard — no hidden
+              Whichever package you pick, these come standard - no hidden
               extras for the basics.
             </Reveal>
             <div className="capability-grid">
               {INCLUDED.map((cap, i) => (
-                <Reveal
-                  as="div"
-                  className="cap-card"
-                  key={cap.tag}
-                  delay={i * 70}
-                >
+                <Reveal as="div" className="cap-card" key={cap.tag} delay={i * 70}>
                   <span className="cap-tag">{cap.tag}</span>
                   <p>{cap.body}</p>
                 </Reveal>
@@ -579,12 +377,8 @@ const WebsiteDevelopment = () => {
         {/* ======================= PACKAGES ======================= */}
         <section className="packages" id="pricing">
           <div className="wrap">
-            <Reveal as="p" className="eyebrow">
-              Packages
-            </Reveal>
-            <Reveal as="h2" delay={60}>
-              Choose your website package
-            </Reveal>
+            <Reveal as="p" className="eyebrow">Packages</Reveal>
+            <Reveal as="h2" delay={60}>Choose your website package</Reveal>
             <Reveal as="p" className="section-sub" delay={100}>
               Four sheets, from a single sharp page to a 20-page advanced
               React build. Each one builds on the one before it.
@@ -600,13 +394,9 @@ const WebsiteDevelopment = () => {
                 >
                   <div className={`plan-top ${pkg.topClass}`.trim()}>
                     <p className="sheet-no">SHEET {pkg.sheet} / 04</p>
-                    {pkg.featured && (
-                      <span className="badge">MOST RECOMMENDED</span>
-                    )}
+                    {pkg.featured && <span className="badge">MOST RECOMMENDED</span>}
                     <h3>{pkg.name}</h3>
-                    <p
-                      className={`package-price ${pkg.priceRange ? "package-price--range" : ""}`.trim()}
-                    >
+                    <p className={`package-price ${pkg.priceRange ? "package-price--range" : ""}`.trim()}>
                       {pkg.price}
                     </p>
                   </div>
@@ -618,10 +408,7 @@ const WebsiteDevelopment = () => {
                         <li key={item}>{item}</li>
                       ))}
                     </ul>
-                    <a
-                      href={pkg.href}
-                      className={`btn ${pkg.btn} btn-block package-btn`}
-                    >
+                    <a href={pkg.href} className={`btn ${pkg.btn} btn-block package-btn`}>
                       {pkg.cta}
                     </a>
                   </div>
@@ -632,160 +419,159 @@ const WebsiteDevelopment = () => {
         </section>
         <ScrollBeam />
 
-        {/* =================== E-COMMERCE & SHOPIFY =================== */}
-        <section className="website-types" id="ecommerce">
+        {/* ===== ONE STRIPE: ONLINE STORES / REDESIGN / MAINTENANCE / ADD-ONS ===== */}
+        <section className="wd-more" id="explore">
           <div className="wrap">
-            <Reveal as="p" className="eyebrow">
-              Online stores
-            </Reveal>
-            <Reveal as="h2" delay={60}>
-              E-commerce &amp; Shopify development
-            </Reveal>
-            <Reveal as="p" className="section-sub" delay={100}>
-              Pick the platform that fits how you sell — from a ready-made
-              Shopify store to a fully custom build.
-            </Reveal>
-
-            <div className="type-grid">
-              {ECOMMERCE.map((item, i) => (
-                <Reveal
-                  as="article"
-                  className="type-card"
-                  key={item.code}
-                  delay={i * 80}
+            <nav className="wd-tab-rail" role="tablist" aria-label="More website services">
+              {TABS.map((tab) => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeTab === tab.id}
+                  className={`wd-tab-btn ${activeTab === tab.id ? "is-active" : ""}`}
+                  onClick={() => setActiveTab(tab.id)}
                 >
-                  <span className="type-code">{item.code}</span>
-                  <h3>{item.title}</h3>
-                  <p className="type-price">{item.price}</p>
-                  <p className="type-summary">{item.summary}</p>
-                </Reveal>
+                  {tab.label}
+                </button>
               ))}
-            </div>
+              <div
+                className="wd-tab-indicator"
+                aria-hidden="true"
+                style={{ transform: `translateX(calc(${tabIndex} * (100% + 4px)))` }}
+              />
+            </nav>
 
-            <Reveal as="p" className="fine-print" delay={200}>
-              Platform subscription costs (Shopify plans start around
-              ₹1,994/month) and payment gateway transaction fees are billed
-              separately by the provider — not marked up by us.
-            </Reveal>
-          </div>
-        </section>
-        <ScrollBeam />
-
-        {/* ===================== WEBSITE REDESIGN ===================== */}
-        <section className="redesign" id="redesign">
-          <div className="wrap">
-            <Reveal as="p" className="eyebrow">
-              Website redesign
-            </Reveal>
-            <Reveal as="div" className="redesign-card" delay={60}>
-              <div className="redesign-copy">
-                <h2>Website Redesign</h2>
-                <p className="redesign-price">From ₹4,999 to ₹9,999</p>
-                <p>
-                  Outdated site losing you customers? We rebuild it on your
-                  existing content — modern look, better performance, same
-                  business.
-                </p>
-                <a href="/contact" className="btn btn-primary">
-                  Get a free review
-                </a>
-              </div>
-              <ul className="package-list redesign-list">
-                {REDESIGN_POINTS.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
-        </section>
-        <ScrollBeam />
-
-        {/* ================= MAINTENANCE & SUPPORT ================= */}
-        <section className="capabilities" id="maintenance">
-          <div className="wrap">
-            <Reveal as="p" className="eyebrow">
-              After launch
-            </Reveal>
-            <Reveal as="h2" delay={60}>
-              Website maintenance &amp; support
-            </Reveal>
-            <Reveal as="p" className="section-sub" delay={100}>
-              Reliable support, always — real response times, not a ticket that
-              disappears into a queue.
-            </Reveal>
-            <div className="capability-grid capability-grid--three">
-              {MAINTENANCE.map((m, i) => (
-                <Reveal
-                  as="div"
-                  className="cap-card"
-                  key={m.plan}
-                  delay={i * 70}
-                >
-                  <span className="cap-tag">{m.plan}</span>
-                  <p className="cap-price">
-                    {m.price}
-                    <span>/month</span>
+            {/* ---------- ONLINE STORES ---------- */}
+            {activeTab === "stores" && (
+              <div className="wd-tab-panel" id="ecommerce" role="tabpanel">
+                <div className="wd-panel-head">
+                  <p className="eyebrow">Online stores</p>
+                  <h2>E-commerce &amp; Shopify development</h2>
+                  <p>
+                    Pick the platform that fits how you sell - from a ready-made
+                    Shopify store to a fully custom build.
                   </p>
-                  <p>{m.body}</p>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-        <ScrollBeam />
+                </div>
 
-        {/* ======================== ADD-ONS ======================== */}
-        <section className="addons" id="addons">
-          <div className="wrap">
-            <Reveal as="p" className="eyebrow">
-              Extras
-            </Reveal>
-            <Reveal as="h2" delay={60}>
-              Optional add-ons
-            </Reveal>
-            <Reveal as="p" className="section-sub" delay={100}>
-              Add only what you need to any package.
-            </Reveal>
-            <Reveal as="ul" className="addon-list" delay={120}>
-              {ADDONS.map((a) => (
-                <li className="addon-row" key={a.name}>
-                  <span className="addon-name">
-                    {a.name}
-                    {a.note && <em className="addon-note"> ({a.note})</em>}
-                  </span>
-                  <span className="addon-price">{a.price}</span>
-                </li>
-              ))}
-            </Reveal>
+                <div className="type-grid">
+                  {ECOMMERCE.map((item) => (
+                    <article className="type-card" key={item.code}>
+                      <span className="type-code">{item.code}</span>
+                      <h3>{item.title}</h3>
+                      <p className="type-price">{item.price}</p>
+                      <p className="type-summary">{item.summary}</p>
+                    </article>
+                  ))}
+                </div>
+
+                <p className="fine-print">
+                  Platform subscription costs (Shopify plans start around
+                  ₹1,994/month) and payment gateway transaction fees are billed
+                  separately by the provider - not marked up by us.
+                </p>
+              </div>
+            )}
+
+            {/* ---------- WEBSITE REDESIGN ---------- */}
+            {activeTab === "redesign" && (
+              <div className="wd-tab-panel" id="redesign" role="tabpanel">
+                <div className="wd-panel-head">
+                  <p className="eyebrow">Website redesign</p>
+                </div>
+                <div className="redesign-card">
+                  <div className="redesign-copy">
+                    <h2>Website Redesign</h2>
+                    <p className="redesign-price">From ₹4,999 to ₹9,999</p>
+                    <p>
+                      Outdated site losing you customers? We rebuild it on your
+                      existing content - modern look, better performance, same
+                      business.
+                    </p>
+                    <a href="/contact" className="wd-btn wd-btn-primary">
+                      Get a free review
+                    </a>
+                  </div>
+                  <ul className="package-list redesign-list">
+                    {REDESIGN_POINTS.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {/* ---------- MAINTENANCE & SUPPORT ---------- */}
+            {activeTab === "maintenance" && (
+              <div className="wd-tab-panel" id="maintenance" role="tabpanel">
+                <div className="wd-panel-head">
+                  <p className="eyebrow">After launch</p>
+                  <h2>Website maintenance &amp; support</h2>
+                  <p>
+                    Reliable support, always - real response times, not a ticket
+                    that disappears into a queue.
+                  </p>
+                </div>
+                <div className="capability-grid capability-grid--three">
+                  {MAINTENANCE.map((m) => (
+                    <div className="cap-card" key={m.plan}>
+                      <span className="cap-tag">{m.plan}</span>
+                      <p className="cap-price">
+                        {m.price}
+                        <span>/month</span>
+                      </p>
+                      <p>{m.body}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* ---------- OPTIONAL ADD-ONS ---------- */}
+            {activeTab === "addons" && (
+              <div className="wd-tab-panel" id="addons" role="tabpanel">
+                <div className="wd-panel-head">
+                  <p className="eyebrow">Extras</p>
+                  <h2>Optional add-ons</h2>
+                  <p>Add only what you need to any package.</p>
+                </div>
+                <ul className="addon-list">
+                  {ADDONS.map((a) => (
+                    <li className="addon-row" key={a.name}>
+                      <span className="addon-name">
+                        {a.name}
+                        {a.note && <em className="addon-note"> ({a.note})</em>}
+                      </span>
+                      <span className="addon-price">{a.price}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </section>
         <ScrollBeam />
 
         {/* ===================== WHY CHOOSE US ===================== */}
-        <section className="capabilities" id="why">
-          <div className="wrap">
-            <Reveal as="p" className="eyebrow">
-              Why us
-            </Reveal>
-            <Reveal as="h2" delay={60}>
-              Why choose Indo Sparsh Studio
-            </Reveal>
-            <div className="capability-grid">
-              {WHY.map((w, i) => (
-                <Reveal
-                  as="div"
-                  className="cap-card"
-                  key={w.tag}
-                  delay={i * 70}
-                >
-                  <span className="cap-tag">{w.tag}</span>
-                  <p>{w.body}</p>
-                </Reveal>
+        <div className="wd-root is-loaded">
+          <section
+            className={`wd-why ${whyVisible ? "visible" : ""}`}
+            ref={whyRef}
+            id="why"
+          >
+            <h2>Why Choose us?</h2>
+            <ul className="wd-why-list">
+              {WHY.map((w) => (
+                <li key={w.tag}>
+                  <span className="wd-why-mark">✓</span>
+                  <span>
+                    <strong>{w.tag}</strong> - {w.body}
+                  </span>
+                </li>
               ))}
-            </div>
-          </div>
-        </section>
-
+            </ul>
+          </section>
+        </div>
       </main>
     </>
   );

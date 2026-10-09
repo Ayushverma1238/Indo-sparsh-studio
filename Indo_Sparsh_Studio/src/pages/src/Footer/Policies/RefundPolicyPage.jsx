@@ -41,7 +41,7 @@ const sections = [
     id: "overview",
     title: "Overview",
     body: [
-      "This Refund Policy explains how [Company Name] handles cancellations and refund requests for our services. It's designed to be fair to both our clients and our team, and applies to all services purchased directly through us.",
+      "This Refund Policy explains how Indo Sparsh Studio handles cancellations and refund requests for our services. It's designed to be fair to both our clients and our team, and applies to all services purchased directly through us.",
       "By engaging our services, you agree to the terms outlined in this policy in addition to our Terms & Conditions.",
     ],
   },
@@ -117,7 +117,7 @@ const sections = [
     id: "contact",
     title: "Contact Us",
     body: [
-      "For questions about this Refund Policy or to request a refund, contact us at [contact@indosparsh.com] or through the contact details listed on our website.",
+      "For questions about this Refund Policy or to request a refund, contact us at contact@indosparsh.com or through the contact details listed on our website.",
     ],
   },
 ];

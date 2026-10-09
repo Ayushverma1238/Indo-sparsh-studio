@@ -8,7 +8,7 @@ import "./TeamDetails.css";
  * are still readable/clickable.
  *
  * Theming is CSS-only, driven by body.dark-mode / body.light-mode set
- * elsewhere in the app — no props needed.
+ * elsewhere in the app - no props needed.
  *
  * Usage:
  *   <TeamMarquee />

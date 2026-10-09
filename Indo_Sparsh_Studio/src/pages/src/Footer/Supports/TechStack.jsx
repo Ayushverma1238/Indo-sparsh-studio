@@ -4,7 +4,7 @@ import ScrollBeam from "../../../ScrollBeam";
 import SEO from "../../../../utils/seo";
 
 // ---- Your services list ----
-export const services = [
+const services = [
   "Website Development",
   "Landing Page",
   "E-commerce Website",
@@ -17,7 +17,7 @@ export const services = [
   "Other",
 ];
 
-export const techIcons = {
+const techIcons = {
   // ===== Frontend =====
   HTML5: "https://cdn.simpleicons.org/html5",
   CSS3: "https://img.icons8.com/?size=100&id=21278&format=png&color=000000",
@@ -273,7 +273,7 @@ const techStackData = {
     ],
   },
   Other: {
-    blurb: "Mobile apps, brand identity and video — the rest of what we build.",
+    blurb: "Mobile apps, brand identity and video - the rest of what we build.",
     stacks: [
       {
         name: "Mobile Apps",
@@ -368,7 +368,7 @@ export default function TechStackPage() {
               <span className="tech-title-accent">behind the work.</span>
             </h1>
             <p className="tech-subtitle">
-              Every service we offer is backed by tried-and-tested tools —
+              Every service we offer is backed by tried-and-tested tools -
               chosen for speed, reliability and long-term maintainability.
             </p>
           </section>
@@ -420,7 +420,7 @@ export default function TechStackPage() {
           <section className="tech-cta why-card">
             <h2>Don't see a tool you use?</h2>
             <p>
-              We're always adding new tools to our workflow — ask us what fits
+              We're always adding new tools to our workflow - ask us what fits
               your project best.
             </p>
             <a className="tech-cta-btn" href="https://wa.me/918005351770" target="_blank">

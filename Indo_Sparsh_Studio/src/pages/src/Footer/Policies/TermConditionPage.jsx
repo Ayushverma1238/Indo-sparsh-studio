@@ -41,7 +41,7 @@ const sections = [
     id: "acceptance",
     title: "Acceptance of Terms",
     body: [
-      'These Terms & Conditions ("Terms") govern your access to and use of [Company Name]\'s website and services. By accessing our website or using our services, you agree to be bound by these Terms.',
+      'These Terms & Conditions govern your access to and use of Indo Sparsh Studio\'s website and services. By accessing our website or using our services, you agree to be bound by these Terms.',
       "If you don't agree to these Terms, please don't use our website or services. We may update these Terms from time to time, and continued use after changes means you accept the revised Terms.",
     ],
   },
@@ -57,7 +57,7 @@ const sections = [
     id: "intellectual-property",
     title: "Intellectual Property",
     body: [
-      "All content on our website — including text, graphics, logos, images, and software — is the property of [Company Name] or its licensors and is protected by copyright, trademark, and other intellectual property laws.",
+      "All content on our website - including text, graphics, logos, images, and software - is the property of Indo Sparsh Studio or its licensors and is protected by copyright, trademark, and other intellectual property laws.",
       "You may not reproduce, distribute, modify, or create derivative works from any content on our site without our prior written permission.",
     ],
   },
@@ -96,7 +96,7 @@ const sections = [
     id: "liability",
     title: "Limitation of Liability",
     body: [
-      "To the fullest extent permitted by law, [Company Name] shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our website or services.",
+      "To the fullest extent permitted by law, Indo Sparsh Studio shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our website or services.",
       "Our total liability for any claim arising from these Terms or our services is limited to the amount you paid us in the twelve months preceding the claim.",
     ],
   },
@@ -104,7 +104,7 @@ const sections = [
     id: "indemnification",
     title: "Indemnification",
     body: [
-      "You agree to indemnify and hold [Company Name] harmless from any claims, damages, losses, or expenses (including legal fees) arising from your violation of these Terms or misuse of our services.",
+      "You agree to indemnify and hold Indo Sparsh Studio harmless from any claims, damages, losses, or expenses (including legal fees) arising from your violation of these Terms or misuse of our services.",
     ],
   },
   {
@@ -132,7 +132,7 @@ const sections = [
     id: "contact",
     title: "Contact Us",
     body: [
-      "If you have questions about these Terms & Conditions, reach out to us at [contact@indosparsh.com] or through the contact details listed on our website.",
+      "If you have questions about these Terms & Conditions, reach out to us at contact@indosparsh.com or through the contact details listed on our website.",
     ],
   },
 ];

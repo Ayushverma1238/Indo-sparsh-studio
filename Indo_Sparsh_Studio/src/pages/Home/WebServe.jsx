@@ -1,9 +1,9 @@
-import React, { useRef, useState, useEffect } from "react";
+
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./WebServe.css";
 import ScrollBeam from "../ScrollBeam";
 
-// Full services list — shown as pills, text only.
 const tags = [
   "Business Profile Creation",
   "Web Development",
@@ -21,41 +21,77 @@ const tags = [
 const WebServe = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const [activeTagIndex, setActiveTagIndex] = useState(0);
+
   const videoRef = useRef(null);
   const navigate = useNavigate();
 
-  // Cycles the "active" (highlighted) pill every second, so the
-  // gradient background appears to float from one pill to the next.
-  const [activeTagIndex, setActiveTagIndex] = useState(0);
-
+  // Defer background video loading until the browser is idle.
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTagIndex((prev) => (prev + 1) % tags.length);
-    }, 1000);
-    return () => clearInterval(interval);
+    let timeoutId;
+    let idleId;
+    let cancelled = false;
+
+    const loadVideo = () => {
+      if (!cancelled) {
+        setShouldLoadVideo(true);
+      }
+    };
+
+    if ("requestIdleCallback" in window) {
+      idleId = window.requestIdleCallback(loadVideo, {
+        timeout: 2500,
+      });
+    } else {
+      timeoutId = window.setTimeout(loadVideo, 1500);
+    }
+
+    return () => {
+      cancelled = true;
+
+      if (idleId !== undefined && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleId);
+      }
+
+      if (timeoutId !== undefined) {
+        window.clearTimeout(timeoutId);
+      }
+    };
   }, []);
 
+  // Preserve the rotating pill effect, with fewer React updates.
   useEffect(() => {
-    if ("requestIdleCallback" in window) {
-      requestIdleCallback(() => setShouldLoadVideo(true));
-    } else {
-      setTimeout(() => setShouldLoadVideo(true), 1500);
-    }
+    const mediaQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    if (mediaQuery.matches) return;
+
+    const intervalId = window.setInterval(() => {
+      setActiveTagIndex((previous) => (previous + 1) % tags.length);
+    }, 2000);
+
+    return () => window.clearInterval(intervalId);
   }, []);
 
   return (
     <>
       <section className="home-hero">
-        {/* ===== BACKGROUND (untouched) ===== */}
+        {/* Eager-loaded poster: important for initial rendering */}
         <img
           src="/video/hero-poster.webp"
-          alt="Hero Background"
+          alt=""
+          aria-hidden="true"
           className={`hero-media hero-poster ${
             isVideoLoaded ? "fade-out" : "fade-in"
           }`}
           fetchPriority="high"
+          decoding="async"
+          width="1920"
+          height="1080"
         />
 
+        {/* Load the background video after the initial render */}
         {shouldLoadVideo && (
           <video
             ref={videoRef}
@@ -66,34 +102,36 @@ const WebServe = () => {
             muted
             loop
             playsInline
-            preload="metadata"
-            onCanPlay={() => setIsVideoLoaded(true)}
+            preload="none"
+            aria-hidden="true"
+            tabIndex={-1}
+            onLoadedData={() => setIsVideoLoaded(true)}
           >
-            <source
-              src="/video/hero-bg.mp4"
-              type="video/mp4"
-              media="(max-width: 768px)"
-            />
             <source src="/video/hero-bg.mp4" type="video/mp4" />
           </video>
         )}
 
-        {/* ===== FOREGROUND CONTENT (updated) ===== */}
         <div className="home-container">
           <h1 className="hero-title">
             <span className="title-line">Empowering</span>
             <br />
-            <span className="title-highlight">Your Digital Journey</span>
+            <span className="title-highlight">
+              Your Digital Journey
+            </span>
           </h1>
+
           <p className="hero-bio">
-            We Build, Promote & Grow Your Bussiness Online with Result-Driven
-            Digital Solution.
+            We Build, Promote &amp; Grow Your Business Online with
+            Result-Driven Digital Solutions.
           </p>
+
           <div className="pill-group">
             {tags.map((tag, index) => (
               <span
                 key={tag}
-                className={`pill ${index === activeTagIndex ? "pill--active" : ""}`}
+                className={`pill ${
+                  index === activeTagIndex ? "pill--active" : ""
+                }`}
               >
                 {tag}
               </span>
@@ -119,6 +157,7 @@ const WebServe = () => {
           </div>
         </div>
       </section>
+
       <ScrollBeam />
     </>
   );

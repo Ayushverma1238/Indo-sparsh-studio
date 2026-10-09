@@ -12,7 +12,7 @@ const policyData = [
     items: [
       {
         h: "Honest scoping and pricing",
-        p: "We quote based on real project scope, communicate costs upfront, and flag any change in scope (and its cost) before doing the extra work — never after.",
+        p: "We quote based on real project scope, communicate costs upfront, and flag any change in scope (and its cost) before doing the extra work - never after.",
       },
       {
         h: "Original work only",
@@ -28,7 +28,7 @@ const policyData = [
       },
       {
         h: "Accessible, inclusive design",
-        p: "Wherever practical, we design and build with accessibility in mind — readable contrast, keyboard navigation, and semantic markup — so your product works for more people.",
+        p: "Wherever practical, we design and build with accessibility in mind - readable contrast, keyboard navigation, and semantic markup - so your product works for more people.",
       },
       {
         h: "Honest timelines",
@@ -48,7 +48,7 @@ const policyData = [
       },
       {
         h: "How we use your information",
-        p: "We use this information to respond to inquiries, prepare proposals, deliver and support your project, send invoices, and — only with your consent — share occasional updates about our work.",
+        p: "We use this information to respond to inquiries, prepare proposals, deliver and support your project, send invoices, and - only with your consent - share occasional updates about our work.",
       },
       {
         h: "Payment information",
@@ -88,7 +88,7 @@ const policyData = [
       },
       {
         h: "Payments",
-        p: "Projects are typically billed in milestones — an advance to begin, a payment at design/prototype stage, and a final payment before full handover of source files.",
+        p: "Projects are typically billed in milestones - an advance to begin, a payment at design/prototype stage, and a final payment before full handover of source files.",
       },
       {
         h: "Intellectual property",

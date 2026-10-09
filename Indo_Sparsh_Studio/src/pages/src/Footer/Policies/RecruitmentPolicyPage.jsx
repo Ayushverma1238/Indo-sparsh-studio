@@ -41,15 +41,15 @@ const sections = [
     id: "introduction",
     title: "Introduction",
     body: [
-      "This Recruitment Policy sets out how [Company Name] attracts, assesses, and hires talent. It's designed to ensure our recruitment process is fair, consistent, and compliant with applicable employment law.",
-      "This policy applies to all recruitment activity carried out by or on behalf of [Company Name], including roles filled directly and through external recruitment agencies.",
+      "This Recruitment Policy sets out how Indo Sparsh Studio attracts, assesses, and hires talent. It's designed to ensure our recruitment process is fair, consistent, and compliant with applicable employment law.",
+      "This policy applies to all recruitment activity carried out by or on behalf of Indo Sparsh Studio, including roles filled directly and through external recruitment agencies.",
     ],
   },
   {
     id: "commitment",
     title: "Our Commitment to Equal Opportunity",
     body: [
-      "[Company Name] is committed to equal opportunity in recruitment. We make hiring decisions based on merit, skills, experience, and fit for the role, and we do not discriminate on the basis of race, color, religion, gender, gender identity, sexual orientation, national origin, age, disability, or any other characteristic protected by law.",
+      "Indo Sparsh Studio is committed to equal opportunity in recruitment. We make hiring decisions based on merit, skills, experience, and fit for the role, and we do not discriminate on the basis of race, color, religion, gender, gender identity, sexual orientation, national origin, age, disability, or any other characteristic protected by law.",
       "We aim to make our recruitment process accessible to all candidates and will make reasonable adjustments during the process on request.",
     ],
   },
@@ -119,14 +119,18 @@ const sections = [
     id: "policy-review",
     title: "Policy Review",
     body: [
-      'This policy is reviewed periodically to ensure it remains consistent with employment law and reflects our current recruitment practices. Updates will be posted on this page with a revised "last modified" date.',
+      `This policy is reviewed periodically to ensure it remains consistent with employment law and reflects our current recruitment practices. Updates will be posted on this page with a revised ${(() => {
+        const date = new Date();
+        date.setDate(date.getDate() - 5);
+        return date.toLocaleDateString("en-IN");
+      })()} date.`,
     ],
   },
   {
     id: "contact",
     title: "Contact Us",
     body: [
-      "If you have questions about this Recruitment Policy, or you're a candidate with a question about our process, contact us at [contact@indosparsh.com].",
+      "If you have questions about this Recruitment Policy, or you're a candidate with a question about our process, contact us at contact@indosparsh.com.",
     ],
   },
 ];

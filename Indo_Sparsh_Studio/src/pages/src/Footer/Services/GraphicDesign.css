@@ -1,7 +1,7 @@
 @import "./_theme.css";
 
 /* =========================================================
-   TOKENS — aliased onto the shared studio design system
+   TOKENS - aliased onto the shared studio design system
    ========================================================= */
 .gd{
   --coral: var(--color-accent);
@@ -264,7 +264,7 @@ body.dark-mode {
   margin: 0 0 30px;
 }
 
-/* registration / crop marks — signature motif */
+/* registration / crop marks - signature motif */
 .gd-crop {
   position: absolute;
   width: 34px;
@@ -662,7 +662,7 @@ body.dark-mode {
 }
 
 /* =========================================================
-   RESPONSIVE — TABLE TO CARD LAYOUT ON SMALL SCREENS
+   RESPONSIVE - TABLE TO CARD LAYOUT ON SMALL SCREENS
    ========================================================= */
 @media (max-width: 640px) {
   .gd-table thead {

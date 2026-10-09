@@ -154,24 +154,7 @@ const stack = [
   "Redis",
 ];
 
-const testimonials = [
-  {
-    quote:
-      "They shipped our MVP in nine weeks and it hasn't needed a rewrite since.",
-    name: "Priya Nair",
-    role: "Founder, Fieldnote",
-  },
-  {
-    quote: "The handoff docs alone saved our in-house team a month of ramp-up.",
-    name: "Marcus Ito",
-    role: "VP Engineering, Lattis",
-  },
-  {
-    quote: "Best communicators we've worked with on a contract build, by far.",
-    name: "Sara Delgado",
-    role: "Product Lead, Overtone",
-  },
-];
+
 
 const tags = [
   "#AppDevelopment",
@@ -219,10 +202,10 @@ export default function AppDevPage() {
                   onClick={() => navigate("/request-quote")}
                   className="appdev-btn appdev-btn--primary"
                 >
-                  Start a project
+                  Start a Project
                 </button>
                 <button className="appdev-btn appdev-btn--ghost">
-                  See our work
+                  See Our Work
                 </button>
               </div>
               <dl className="appdev-hero__stats">

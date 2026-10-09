@@ -1,7 +1,7 @@
 @import "./_theme.css";
 
 /* ===================================================================
-   THEME TOKENS — aliased onto the shared studio design system.
+   THEME TOKENS - aliased onto the shared studio design system.
 =================================================================== */
 
 .pf {
@@ -731,7 +731,7 @@ body.dark-mode .pf {
 }
 
 /* ===================================================================
-   BROWSE BY SERVICE — moving ticker + filtered work grid
+   BROWSE BY SERVICE - moving ticker + filtered work grid
 =================================================================== */
 
 .pf-services {

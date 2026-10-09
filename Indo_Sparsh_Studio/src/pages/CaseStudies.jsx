@@ -73,7 +73,7 @@ export default function CaseStudies() {
           </li>
           <li>
             Researched keywords: Customers weren't searching "ethnic wear
-            Jaipur"—they were searching "hand block print anarkali"
+            Jaipur"-they were searching "hand block print anarkali"
           </li>
           <li>
             Created content: 12 blog posts answering real customer questions
@@ -146,7 +146,7 @@ export default function CaseStudies() {
           steady work. They delivered exactly that."
         </p>
 
-        <p>— Kavita Sharma, Founder</p>
+        <p>- Kavita Sharma, Founder</p>
 
         <h2>Case Study 2: Turning Around a Loss-Making Café</h2>
 
@@ -179,7 +179,7 @@ export default function CaseStudies() {
         <ul>
           <li>70% of revenue came from Saturday-Sunday</li>
           <li>Weekday capacity utilisation: Under 20%</li>
-          <li>Menu was too large—slow kitchen, high wastage</li>
+          <li>Menu was too large-slow kitchen, high wastage</li>
           <li>
             No system for repeat visits: Customers came once, posted a photo,
             never returned
@@ -197,7 +197,7 @@ export default function CaseStudies() {
           </li>
           <li>Partnered with nearby offices for corporate lunch deliveries</li>
           <li>
-            Introduced "Mondays with Moms"—play area, kids' menu, discounted
+            Introduced "Mondays with Moms"-play area, kids' menu, discounted
             chai
           </li>
         </ul>
@@ -267,7 +267,7 @@ export default function CaseStudies() {
           miracle."
         </p>
 
-        <p>— Arjun Mehta, Owner</p>
+        <p>- Arjun Mehta, Owner</p>
 
         <h2>Case Study 3: Data That Finally Worked for Telecallers</h2>
 
@@ -282,7 +282,7 @@ export default function CaseStudies() {
         <h2>The Challenge</h2>
 
         <p>
-          The startup had a good product—affordable test series for government
+          The startup had a good product-affordable test series for government
           exam aspirants. They had a decent website. They had a team of 8
           telecallers sitting idle.
         </p>
@@ -378,7 +378,7 @@ export default function CaseStudies() {
           changed everything."
         </p>
 
-        <p>— Ananya Verma, Product Manager</p>
+        <p>- Ananya Verma, Product Manager</p>
 
         <h2>Case Study 4: Legacy Business, Modern Systems</h2>
 
@@ -476,7 +476,7 @@ export default function CaseStudies() {
 
         <p>
           The owner now takes Sundays off. His son handles client meetings. The
-          business didn't need a tech revolution—it needed simple systems
+          business didn't need a tech revolution-it needed simple systems
           executed well.
         </p>
 
@@ -486,7 +486,7 @@ export default function CaseStudies() {
           skill."*
         </p>
 
-        <p>— Suresh Babu, Owner</p>
+        <p>- Suresh Babu, Owner</p>
 
         <h2>Case Study 5: From Generic Brand to Recognised Identity</h2>
 
@@ -501,7 +501,7 @@ export default function CaseStudies() {
         <h2>The Challenge</h2>
 
         <p>
-          The product was excellent—cold-pressed coconut oil, organic spices,
+          The product was excellent-cold-pressed coconut oil, organic spices,
           traditional pickles made without preservatives.
         </p>
 
@@ -598,7 +598,7 @@ export default function CaseStudies() {
 
         <p>
           The brand now has a face, a voice, and a memory. Customers don't just
-          buy—they remember.
+          buy-they remember.
         </p>
 
         <p>
@@ -606,7 +606,7 @@ export default function CaseStudies() {
           different business."
         </p>
 
-        <p>— Lakshmi Nambiar, Founder</p>
+        <p>- Lakshmi Nambiar, Founder</p>
 
         <h2>Case Study 6: The Pivot That Saved a Travel Business</h2>
 
@@ -628,7 +628,7 @@ export default function CaseStudies() {
         <p>Then the pandemic hit. Then recovery. Then another dip.</p>
 
         <p>
-          By early 2025, leisure travel was back—but competition was brutal.
+          By early 2025, leisure travel was back-but competition was brutal.
           Margins had compressed. OTAs were undercutting everyone. The owner was
           considering shutting down.
         </p>
@@ -709,7 +709,7 @@ export default function CaseStudies() {
         </table>
 
         <p>
-          The business didn't just survive—it found a new identity. Leisure
+          The business didn't just survive-it found a new identity. Leisure
           travel remains, but corporate is now the backbone.
         </p>
 
@@ -718,7 +718,7 @@ export default function CaseStudies() {
           failure. Indo Sparsh gave me permission to change."
         </p>
 
-        <p>— Rajesh Desai, Owner</p>
+        <p>- Rajesh Desai, Owner</p>
 
         <h2>Final Thoughts</h2>
 
@@ -735,8 +735,8 @@ export default function CaseStudies() {
         <p>We just brought clarity, process, and a fresh pair of eyes.</p>
 
         <p>
-          If your business has a story worth telling—or a problem worth
-          solving—we'd like to hear it.
+          If your business has a story worth telling-or a problem worth
+          solving-we'd like to hear it.
         </p>
 
         <h2></h2>

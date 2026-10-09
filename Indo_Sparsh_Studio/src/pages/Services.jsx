@@ -48,7 +48,7 @@ export default function Services() {
             Why <span>Choose Us?</span>
           </h1>
           <p>
-            We don’t just build digital products — we engineer growth,
+            We don’t just build digital products - we engineer growth,
             performance, and long-term success.
           </p>
         </div>

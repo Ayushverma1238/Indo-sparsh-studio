@@ -17,7 +17,7 @@ const OrbitSection = () => {
         </h1>
 
         <p>
-          Three core pillars that power everything we build — aligned,
+          Three core pillars that power everything we build - aligned,
           connected, and constantly in motion.
         </p>
       </div>

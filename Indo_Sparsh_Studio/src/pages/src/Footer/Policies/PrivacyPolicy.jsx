@@ -41,7 +41,7 @@ const sections = [
     id: "introduction",
     title: "Introduction",
     body: [
-      '[Company Name] ("we", "us", or "our") respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains what information we collect, how we use it, and the choices you have.',
+      "Indo Sparsh Studio, we respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains what information we collect, how we use it, and the choices you have.",
       "By using our website or services, you agree to the practices described in this policy. If you don't agree, please don't use our website or services.",
     ],
   },
@@ -73,7 +73,7 @@ const sections = [
     id: "sharing",
     title: "How We Share Your Information",
     body: [
-      "We do not sell your personal information. We may share information with trusted service providers who help us operate our business — such as hosting, analytics, or email delivery — under agreements that require them to protect your data.",
+      "We do not sell your personal information. We may share information with trusted service providers who help us operate our business - such as hosting, analytics, or email delivery - under agreements that require them to protect your data.",
       "We may also disclose information if required by law, to protect our rights, or in connection with a business transfer such as a merger or acquisition.",
     ],
   },
@@ -118,14 +118,18 @@ const sections = [
     id: "changes",
     title: "Changes to This Policy",
     body: [
-      'We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "last modified" date. We encourage you to review this policy periodically.',
+      `We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated ${(() => {
+        const date = new Date();
+        date.setDate(date.getDate() - 5);
+        return date.toLocaleDateString("en-IN");
+      })()} date. We encourage you to review this policy periodically.`,
     ],
   },
   {
     id: "contact",
     title: "Contact Us",
     body: [
-      "If you have questions about this Privacy Policy or how we handle your information, reach out to us at [contact@indosparsh.com] or through the contact details listed on our website.",
+      "If you have questions about this Privacy Policy or how we handle your information, reach out to us at contact@indosparsh.com or through the contact details listed on our website.",
     ],
   },
 ];

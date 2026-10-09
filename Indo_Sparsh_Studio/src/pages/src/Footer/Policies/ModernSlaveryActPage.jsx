@@ -41,7 +41,7 @@ const sections = [
     id: "statement",
     title: "Introduction & Statement",
     body: [
-      "This statement is made pursuant to the Modern Slavery Act and sets out the steps [Company Name] has taken, and continues to take, to ensure that slavery and human trafficking are not taking place within our business or our supply chains.",
+      "This statement is made pursuant to the Modern Slavery Act and sets out the steps Indo Sparsh Studio has taken, and continues to take, to ensure that slavery and human trafficking are not taking place within our business or our supply chains.",
       "We have a zero-tolerance approach to modern slavery in any form and are committed to acting ethically and with integrity in all our business relationships.",
     ],
   },
@@ -49,7 +49,7 @@ const sections = [
     id: "organisation",
     title: "Our Organisation",
     body: [
-      "[Company Name] provides [description of services — e.g. digital, design, consulting, and data services] to clients across [region]. This statement covers [Company Name] and its subsidiaries, and applies to all persons working for us or on our behalf, including employees, contractors, agency workers, and consultants.",
+      "Indo Sparsh Studio provides like website development, website redesign, business profile creation, database(B2B & B2C) etc to clients across all over the world. This statement covers Indo Sparsh Studio and its subsidiaries, and applies to all persons working for us or on our behalf, including employees, contractors, agency workers, and consultants.",
     ],
   },
   {
@@ -109,15 +109,15 @@ const sections = [
     id: "approval",
     title: "Approval & Review",
     body: [
-      "This statement was approved by the board of [Company Name] and will be reviewed and updated annually, or sooner if there are material changes to our business or supply chains.",
-      "This statement relates to the financial year ending [Financial Year End].",
+      "This statement was approved by the board of Indo Sparsh Studio and will be reviewed and updated annually, or sooner if there are material changes to our business or supply chains.",
+      `This statement relates to the financial year ending ${(new Date()).getFullYear()}.`,
     ],
   },
   {
     id: "contact",
     title: "Contact Us",
     body: [
-      "If you have questions about this statement or wish to raise a concern related to modern slavery or human trafficking in our business or supply chains, contact us at [contact@indosparsh.com].",
+      "If you have questions about this statement or wish to raise a concern related to modern slavery or human trafficking in our business or supply chains, contact us at contact@indosparsh.com.",
     ],
   },
 ];

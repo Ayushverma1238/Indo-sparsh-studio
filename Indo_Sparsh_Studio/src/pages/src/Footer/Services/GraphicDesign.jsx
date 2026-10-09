@@ -427,14 +427,14 @@ const categories = [
   },
 ];
 
-/* Printing — billed at actual, separate from design */
+/* Printing - billed at actual, separate from design */
 const printingRates = [
   {
     category: "Large Format",
     note: "Flex, Banner, Standee, Hoarding, Glow Sign, Billboard",
     range: "₹8 – ₹80",
     unit: "sq ft",
-    basis: "Varies by material — flex, star flex, vinyl, backlit",
+    basis: "Varies by material - flex, star flex, vinyl, backlit",
   },
   {
     category: "Small Cards",
@@ -490,11 +490,11 @@ const retainerFeatures = [
 const whyChoose = [
   {
     title: "One design team",
-    text: "Social posts, print, and corporate documents — all on-brand, from a single team.",
+    text: "Social posts, print, and corporate documents - all on-brand, from a single team.",
   },
   {
     title: "Print-ready, always",
-    text: "Files handed over print-ready every time — no back-and-forth with your printer over formats.",
+    text: "Files handed over print-ready every time - no back-and-forth with your printer over formats.",
   },
   {
     title: "Fast turnaround",
@@ -502,7 +502,7 @@ const whyChoose = [
   },
   {
     title: "Directly integrated",
-    text: "Built from your logo, brand colors & social accounts — nothing looks disconnected.",
+    text: "Built from your logo, brand colors & social accounts - nothing looks disconnected.",
   },
   {
     title: "Transparent pricing",
@@ -556,7 +556,7 @@ export default function GraphicDesignPage() {
               From the poster on your shop wall to the menu on your customer's
               table, every piece of design either builds trust in your business
               or quietly undermines it. We design everything you put in front of
-              a customer — print or digital — on-brand, print-ready, and
+              a customer - print or digital - on-brand, print-ready, and
               delivered fast.
             </p>
             <p className="gd-hero__tagline">
@@ -564,10 +564,10 @@ export default function GraphicDesignPage() {
             </p>
             <div className="gd-hero__cta-row">
               <a href="#ratecard" className="gd-btn gd-btn--primary">
-                View rate card
+                View Rate Card
               </a>
               <a href="https://wa.me/918005351770" target="_blank" className="gd-btn gd-btn--ghost">
-                Talk to us
+                Talk to Us
               </a>
             </div>
           </div>
@@ -582,7 +582,7 @@ export default function GraphicDesignPage() {
           <Reveal className="gd-section__head">
             <span className="gd-kicker">Design rate card</span>
             <h2 className="gd-h2">
-              Design charges only — printing billed separately
+              Design charges only - printing billed separately
             </h2>
             <p className="gd-lead">
               Pick a category, see exactly what's included, know the price
@@ -631,7 +631,7 @@ export default function GraphicDesignPage() {
           </div>
 
           <Reveal className="gd-callout" delay={80}>
-            Don't see what you need — exhibition stalls, custom packaging
+            Don't see what you need - exhibition stalls, custom packaging
             inserts, specialty stationery? If it's a static design, we can make
             it. <a href={CONTACT.phoneHref}>Ask for a custom quote →</a>
           </Reveal>
@@ -641,11 +641,11 @@ export default function GraphicDesignPage() {
         {/* ---------- Printing charges ---------- */}
         <section className="gd-section gd-section--muted">
           <Reveal className="gd-section__head">
-            <span className="gd-kicker">Printing — billed separately</span>
+            <span className="gd-kicker">Printing - billed separately</span>
             <h2 className="gd-h2">Printing charges, at actual</h2>
             <p className="gd-lead">
               Printing depends on quantity, material, size & finish, so it's
-              quoted at actual — keeping your design cost honest whether you
+              quoted at actual - keeping your design cost honest whether you
               print 50 pieces or 5,000.
             </p>
           </Reveal>
@@ -678,7 +678,7 @@ export default function GraphicDesignPage() {
           </Reveal>
           <p className="gd-footnote">
             We'll confirm exact printing cost once quantity, material & finish
-            are decided — either as part of your order, or you're welcome to
+            are decided - either as part of your order, or you're welcome to
             take print-ready files to any printer of your choice.
           </p>
         </section>
@@ -698,7 +698,7 @@ export default function GraphicDesignPage() {
                 <span className="gd-headline-accent">₹6,999/mo</span>
               </h2>
               <p className="gd-lead gd-lead--light">
-                For businesses with ongoing design needs — no per-item invoices,
+                For businesses with ongoing design needs - no per-item invoices,
                 no waiting on quotes.
               </p>
             </div>
@@ -708,7 +708,7 @@ export default function GraphicDesignPage() {
               ))}
             </ul>
             <p className="gd-retainer__footnote">
-              Unused designs don't roll over month to month — sized for
+              Unused designs don't roll over month to month - sized for
               businesses that post, print, or promote regularly. Printing, where
               needed, is always billed separately.
             </p>

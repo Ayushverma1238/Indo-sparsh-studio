@@ -15,7 +15,7 @@ export default function ITTrends() {
         <p>
           Technology doesn't wait. Every year brings new tools, new threats, and
           new ways to work smarter. But not every trend deserves your
-          attention—or your budget.
+          attention-or your budget.
         </p>
 
         <p>Some are genuine game-changers. Others are hype.</p>
@@ -28,7 +28,7 @@ export default function ITTrends() {
 
         <p>
           Here are 7 IT trends for 2026 that actually matter for Indian
-          businesses—no buzzwords, just practical insight.
+          businesses-no buzzwords, just practical insight.
         </p>
 
         <h2>1. Agentic AI: From Chatbots to Doers</h2>
@@ -40,7 +40,7 @@ export default function ITTrends() {
         <p>What's changing:</p>
 
         <p>
-          Earlier AI tools gave you answers. Agentic AI takes action—booking
+          Earlier AI tools gave you answers. Agentic AI takes action-booking
           appointments, updating databases, sending follow-up emails, even
           negotiating with vendors.
         </p>
@@ -49,7 +49,7 @@ export default function ITTrends() {
 
         <p>
           A Mumbai-based logistics client deployed an AI agent to handle
-          customer query resolution. It doesn't just reply—it checks inventory,
+          customer query resolution. It doesn't just reply-it checks inventory,
           shares tracking links, and escalates only when stuck. Their support
           team's workload dropped by 40%.
         </p>
@@ -80,7 +80,7 @@ export default function ITTrends() {
 
         <p>
           Multinationals are setting up tech and innovation centres in Tier-2
-          cities—Indore, Coimbatore, Nagpur, Jaipur. Why? Lower costs, better
+          cities-Indore, Coimbatore, Nagpur, Jaipur. Why? Lower costs, better
           retention, and strong engineering talent outside saturated metros.
         </p>
 
@@ -108,7 +108,7 @@ export default function ITTrends() {
 
         <p className="tip">
           Tip: Watch Tier-2 city expansion. The next wave of Indian tech talent
-          won't come from Bengaluru—it's already building in smaller towns.
+          won't come from Bengaluru-it's already building in smaller towns.
         </p>
 
         <h2>3. Cybersecurity: From IT Problem to Business Risk</h2>
@@ -150,7 +150,7 @@ export default function ITTrends() {
 
         <p className="tip">
           Tip: You don't need a fortress. You need locks that work. Start with
-          basics—patch updates, access controls, regular backups.
+          basics-patch updates, access controls, regular backups.
         </p>
 
         <h2>4. Cloud Repatriation: Not Everything Belongs in the Cloud</h2>
@@ -181,7 +181,7 @@ export default function ITTrends() {
 
         <ul>
           <li>Audit your cloud spend: What workloads are predictable?</li>
-          <li>Don't assume cloud is cheaper—test both models</li>
+          <li>Don't assume cloud is cheaper-test both models</li>
           <li>
             Consider hybrid: Keep burst capacity in cloud, steady state
             on-premise
@@ -204,7 +204,7 @@ export default function ITTrends() {
 
         <p>
           Low-code platforms let business teams build applications
-          themselves—dashboards, approval workflows, customer portals—without
+          themselves-dashboards, approval workflows, customer portals-without
           writing a single line of code.
         </p>
 
@@ -248,8 +248,8 @@ export default function ITTrends() {
 
         <p>
           A Bangalore-based hardware reseller started offering refurbished IT
-          equipment with warranty. Their B2B clients—especially MNCs with
-          sustainability goals—now prefer certified pre-owned over new. Margins
+          equipment with warranty. Their B2B clients-especially MNCs with
+          sustainability goals-now prefer certified pre-owned over new. Margins
           are healthier too.
         </p>
 
@@ -281,7 +281,7 @@ export default function ITTrends() {
 
         <p>
           A Delhi-based retail chain wanted AI for demand forecasting. They had
-          12 years of sales data—scattered across Excel sheets, billing
+          12 years of sales data-scattered across Excel sheets, billing
           software, and paper logs. We spent 4 months cleaning, unifying, and
           structuring their data before writing a single line of AI code. The
           model now predicts store-wise inventory needs with 89% accuracy.
@@ -328,7 +328,7 @@ export default function ITTrends() {
         <p>
           Need help navigating IT trends for your business? Indo Sparsh offers
           practical, budget-conscious technology consulting for Indian
-          businesses. No jargon, no hype—just honest advice.
+          businesses. No jargon, no hype-just honest advice.
         </p>
 
         <div className="blog-cta">

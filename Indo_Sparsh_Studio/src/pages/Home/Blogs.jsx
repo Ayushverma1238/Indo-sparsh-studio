@@ -14,7 +14,7 @@ const HomeBlogs = () => {
     },
     {
       title: "IT Trends",
-      desc: "Essential IT trends every business leader needs to know—AI, security, and cloud strategies.",
+      desc: "Essential IT trends every business leader needs to know-AI, security, and cloud strategies.",
       date: "28/02/2026",
       time: "1 min read",
       image: "/tech/blog2.jpeg",
@@ -22,7 +22,7 @@ const HomeBlogs = () => {
     },
     {
       title: "Business Growth Strategies",
-      desc: "From pricing to partnerships—actionable growth strategies for Indian businesses ready to scale.",
+      desc: "From pricing to partnerships-actionable growth strategies for Indian businesses ready to scale.",
       date: "28/02/2026",
       time: "1 min read",
       image: "/tech/blog3.jpeg",
@@ -30,7 +30,7 @@ const HomeBlogs = () => {
     },
     {
       title: "Case Studies",
-      desc: "From loss to profit—inspiring case studies of Indian businesses that transformed with smart strategies.",
+      desc: "From loss to profit-inspiring case studies of Indian businesses that transformed with smart strategies.",
       date: "28/02/2026",
       time: "1 min read",
       image: "/tech/blog4.jpeg",

@@ -1,7 +1,7 @@
 @import "./_theme.css";
 
 /* ---------------------------------------------------------
-   Tokens — aliased onto the shared studio design system
+   Tokens - aliased onto the shared studio design system
 --------------------------------------------------------- */
 .dm {
   --font-display: var(--font-display);

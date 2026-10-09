@@ -238,14 +238,14 @@ try {
         |
         | maxOutputTokens was raised from 500 -> 1500. If this model
         | uses extended "thinking" internally, thinking tokens are
-        | drawn from the SAME budget as the visible reply — so 500
+        | drawn from the SAME budget as the visible reply - so 500
         | was often being spent before the answer even finished
         | writing, cutting replies off mid-sentence or mid-URL.
         |
         | thinkingConfig.thinkingBudget = 0 turns that thinking off
         | entirely for this endpoint, so the full token budget goes
         | to the actual visible answer. If the model/API version
-        | doesn't support this field, Gemini will just ignore it —
+        | doesn't support this field, Gemini will just ignore it -
         | safe either way.
         |
         */

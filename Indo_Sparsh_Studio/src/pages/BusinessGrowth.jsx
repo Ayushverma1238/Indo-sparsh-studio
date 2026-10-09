@@ -23,13 +23,13 @@ export default function BusinessGrowth() {
         <p>
           Over the past year, we've worked with founders, family business
           owners, and CEOs across India. Some grew fast. Some grew slow. Some
-          thought they were growing—until they looked at their bank balance.
+          thought they were growing-until they looked at their bank balance.
         </p>
 
         <p>Here's what we learned.</p>
 
         <p>
-          7 business growth strategies for 2026—no theory, just field-tested
+          7 business growth strategies for 2026-no theory, just field-tested
           truth.
         </p>
 
@@ -52,7 +52,7 @@ export default function BusinessGrowth() {
         <p>
           A Surat-based jewellery retailer was spending ₹2 lakh monthly on
           Instagram ads chasing new buyers. We paused fresh acquisition for 45
-          days and focused entirely on existing customers—WhatsApp updates,
+          days and focused entirely on existing customers-WhatsApp updates,
           exclusive previews, referral rewards. Revenue didn't drop. It actually
           rose 12%.
         </p>
@@ -73,7 +73,7 @@ export default function BusinessGrowth() {
         <h2>2. Pricing Is Strategy, Not Math</h2>
 
         <p>
-          Most Indian businesses underprice. Not because they have to—because
+          Most Indian businesses underprice. Not because they have to-because
           they're scared.
         </p>
 
@@ -89,7 +89,7 @@ export default function BusinessGrowth() {
         <p>
           A Pune-based IT consultancy charged ₹35,000 per project. They were
           busy, tired, and barely profitable. We helped them raise prices to
-          ₹65,000—but added a detailed audit report upfront. They lost 30% of
+          ₹65,000-but added a detailed audit report upfront. They lost 30% of
           inquiries. Revenue increased 40%. Work hours reduced.
         </p>
 
@@ -125,7 +125,7 @@ export default function BusinessGrowth() {
         <p>
           A Jaipur-based FMCG startup spent months perfecting their spice
           blends. Beautiful packaging. Great taste. No sales. We shifted focus
-          from "improve product" to "expand reach"—kirana stores, WhatsApp
+          from "improve product" to "expand reach"-kirana stores, WhatsApp
           groups, corporate gifting. Product stayed same. Revenue tripled in 5
           months.
         </p>
@@ -157,7 +157,7 @@ export default function BusinessGrowth() {
         <p>Indian context:</p>
 
         <p>
-          A Delhi-based D2C brand was doing ₹1.2 crore monthly revenue—and
+          A Delhi-based D2C brand was doing ₹1.2 crore monthly revenue-and
           losing money on every order. High ad spends, thin margins, returns
           piling up. We cut unprofitable products, reduced discount frequency,
           and fired channel partners who didn't deliver. Revenue dropped to ₹75
@@ -190,7 +190,7 @@ export default function BusinessGrowth() {
 
         <p>
           Collaboration beats competition. The businesses growing fastest aren't
-          fighting for the same slice—they're baking a bigger pie together.
+          fighting for the same slice-they're baking a bigger pie together.
         </p>
 
         <p>Indian context:</p>
@@ -263,7 +263,7 @@ export default function BusinessGrowth() {
         <p>
           Reviews, WhatsApp forwards, and Instagram shoutouts now drive more
           decisions than billboards or TV ads. Word of mouth is no longer
-          accidental—it's engineered.
+          accidental-it's engineered.
         </p>
 
         <p>Indian context:</p>
@@ -279,7 +279,7 @@ export default function BusinessGrowth() {
         <p>What you should do:</p>
 
         <ul>
-          <li>Map your customer journey—from discovery to delivery</li>
+          <li>Map your customer journey-from discovery to delivery</li>
           <li>Identify one friction point. Fix it this week.</li>
           <li>Ask every happy customer for a review. Make it easy.</li>
         </ul>
@@ -341,7 +341,7 @@ export default function BusinessGrowth() {
         <p>
           A Kochi-based export house kept buying software to fix their
           operational chaos. Nothing worked. We helped them hire a senior
-          operations manager—someone who had actually run a warehouse before.
+          operations manager-someone who had actually run a warehouse before.
           Within three months, errors halved. No new software. Just the right
           person.
         </p>
@@ -367,7 +367,7 @@ export default function BusinessGrowth() {
 
         <p>
           Markets shift. Customer needs shift. The businesses that survive
-          aren't the strongest—they're the most adaptable.
+          aren't the strongest-they're the most adaptable.
         </p>
 
         <p>Indian context:</p>
@@ -415,7 +415,7 @@ export default function BusinessGrowth() {
 
         <p>
           Need help growing your business? Indo Sparsh offers practical, honest
-          business consultancy for Indian companies. No jargon, no fluff—just
+          business consultancy for Indian companies. No jargon, no fluff-just
           strategies that work within your reality.
         </p>
 
