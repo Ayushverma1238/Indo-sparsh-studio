@@ -5,36 +5,34 @@ import SEO from "../../../../utils/seo";
 
 /* Every service the studio offers. Also used to build the filter ticker. */
 const SERVICES = [
-  { name: "Website Development", path: "/services/website-development" },
-  { name: "App Development", path: "/services/app-development" },
-  { name: "Landing Page", path: "/services/landing-page" },
-  { name: "E-Commerce Website", path: "/services/ecommerce-website" },
-  { name: "Web Application", path: "/services/web-application" },
-  { name: "UI/UX Design", path: "/services/ui-ux-design" },
-  { name: "Website Redesign", path: "/services/website-redesign" },
-  { name: "Content Creation & Video Editing", path: "/services/content-hub" },
-  { name: "SEO Optimization", path: "/services/seo-optimization" },
-  { name: "Business Profile Creation", path: "/services/profile-creation" },
-  { name: "Digital Marketing", path: "/services/digital-marketing" },
-  { name: "Social Media Management", path: "/services/social-media" },
-  { name: "Maintenance & Support", path: "/services/maintenance-support" },
-  { name: "Branding And Marketing", path: "/services/branding-marketing" },
-  { name: "Business Consultancy", path: "/services/business-consultancy" },
-  { name: "Graphic Designing", path: "/services/graphic-design" },
-  { name: "Row Calling Data", path: "/services/row-calling-data" },
+  { name: "Website Development" },
+  { name: "App Development" },
+  { name: "Landing Page" },
+  { name: "E-Commerce Website" },
+  { name: "Web Application" },
+  { name: "UI/UX Design" },
+  { name: "Website Redesign" },
+  { name: "Content Creation & Video Editing" },
+  { name: "SEO Optimization" },
+  { name: "Business Profile Creation" },
+  { name: "Digital Marketing" },
+  { name: "Social Media Management" },
+  { name: "Maintenance & Support" },
+  { name: "Branding And Marketing" },
+  { name: "Business Consultancy" },
+  { name: "Graphic Designing" },
+  { name: "Row Calling Data" },
   { name: "Presentation" },
   { name: "Website" },
 ];
 
-/* Placeholder work log, one to two sheets per service. Swap `image` and
-   `link` with real assets whenever a real case study is ready - the
-   layout and filtering logic handle any count per service. */
 const WORK = [
   {
     title: "Hola 9",
     date: "Feb 2025",
     tag: "Website",
-    image: "https://res.cloudinary.com/ob3nb2li/image/upload/v1789541624/Screenshot_2026-09-16_122319.png",
+    image:
+      "https://res.cloudinary.com/ob3nb2li/image/upload/v1789541624/Screenshot_2026-09-16_122319.png",
     link: "https://hola9.com",
   },
   {
@@ -55,7 +53,8 @@ const WORK = [
     title: "Co-Branding & Advartising Rights",
     date: "March 2026",
     tag: "Presentation",
-    image: "https://res.cloudinary.com/ob3nb2li/image/upload/v1791719620/Viranch_Metro_Advertising_Proposal.png",
+    image:
+      "https://res.cloudinary.com/ob3nb2li/image/upload/v1791719620/Viranch_Metro_Advertising_Proposal.png",
     link: "https://drive.google.com/file/d/1bLglWQo3iIkuuOs_aaK6cwQEmcu5jjKD/view",
   },
   {
