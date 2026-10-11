@@ -22,6 +22,7 @@ const SERVICES = [
   { name: "Business Consultancy", path: "/services/business-consultancy" },
   { name: "Graphic Designing", path: "/services/graphic-design" },
   { name: "Row Calling Data", path: "/services/row-calling-data" },
+  { name: "Presentation" },
   { name: "Website" },
 ];
 
@@ -51,11 +52,11 @@ const WORK = [
     link: "https://ibspl.com/",
   },
   {
-    title: "Circuit Summit '24",
-    date: "Sep 2024",
-    tag: "Landing Page",
-    image: "https://picsum.photos/seed/circuit-summit/640/460",
-    link: "https://example.com/circuit-summit",
+    title: "Co-Branding & Advartising Rights",
+    date: "March 2026",
+    tag: "Presentation",
+    image: "https://res.cloudinary.com/ob3nb2li/image/upload/v1791719620/Viranch_Metro_Advertising_Proposal.png",
+    link: "https://drive.google.com/file/d/1bLglWQo3iIkuuOs_aaK6cwQEmcu5jjKD/view",
   },
   {
     title: "Saffron & Silk",
@@ -273,19 +274,6 @@ export default function PortfolioWork() {
             </span>
           </div>
 
-          {/* <h1 className="pf-title">
-          {["Everything", "we've", "shipped,", "filed", "here."].map(
-            (w, i) => (
-              <span
-                className="pf-word"
-                style={{ animationDelay: `${0.12 + i * 0.08}s` }}
-                key={i}
-              >
-                {w}
-              </span>
-            ),
-          )}
-        </h1> */}
           <h1 className="pf-hero__headline">
             <span className="pf-word pf-word--a">Everything</span>{" "}
             <span className="pf-word pf-word--b">we've shipped,</span>
