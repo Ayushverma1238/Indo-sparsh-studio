@@ -110,7 +110,11 @@ const sections = [
     id: "changes",
     title: "Changes to This Policy",
     body: [
-      'We may update this Refund Policy from time to time. Changes will be posted on this page with a revised "last modified" date and apply to services purchased after the update.',
+      `We may update this Refund Policy from time to time. Changes will be posted on this page with a revised ${(() => {
+        const date = new Date();
+        date.setDate(date.getDate() - 5);
+        return date.toLocaleDateString("en-IN");
+      })()} date and apply to services purchased after the update.`,
     ],
   },
   {

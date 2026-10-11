@@ -545,7 +545,7 @@ const UiUxService = () => {
           ref={whyRef}
           id="why"
         >
-          <h2>Why Choose us?</h2>
+          <h2>Why Choose Us?</h2>
           <ul className="ux-why-list">
             {WHY.map((point) => (
               <li key={point}>

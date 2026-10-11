@@ -583,7 +583,7 @@ const BusinessProfileCreation = () => {
           className={`isp-why ${whyVisible ? "visible" : ""}`}
           ref={whyRef}
         >
-          <h2>Why Choose us?</h2>
+          <h2>Why Choose Us?</h2>
           <ul className="isp-why-list">
             {WHY_CHOOSE.map((point) => (
               <li key={point}>

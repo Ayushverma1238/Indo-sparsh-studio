@@ -1,14 +1,13 @@
 import "./Footer.css";
 import { GoArrowUpRight } from "react-icons/go";
 import { Link } from "react-router-dom";
-import { FaFacebookF, FaRegCopy, FaRegCircleCheck } from "react-icons/fa6";
+import { FaRegCopy, FaRegCircleCheck } from "react-icons/fa6";
 import {
   footerServices,
   supports,
   policies,
   companies,
 } from "../utils/quoteData.js";
-import { IoLogoInstagram, IoLogoWhatsapp } from "react-icons/io5";
 import SocialLinks from "./SocialLinks.jsx";
 import { useState, useEffect } from "react";
 

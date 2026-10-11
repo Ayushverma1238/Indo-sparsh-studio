@@ -118,14 +118,18 @@ const sections = [
     id: "governing-law",
     title: "Governing Law",
     body: [
-      "These Terms are governed by and construed in accordance with the laws of [Jurisdiction], without regard to its conflict of law principles. Any disputes arising under these Terms will be subject to the exclusive jurisdiction of the courts located in [Jurisdiction].",
+      "These Terms are governed by and construed in accordance with the laws of Lucknow Jurisdiction, without regard to its conflict of law principles. Any disputes arising under these Terms will be subject to the exclusive jurisdiction of the courts located in Lucknow.",
     ],
   },
   {
     id: "changes",
     title: "Changes to These Terms",
     body: [
-      'We may revise these Terms at any time. Updates will be posted on this page with a revised "last modified" date. We encourage you to review these Terms periodically.',
+      `We may revise these Terms at any time. Updates will be posted on this page with a revised ${(() => {
+        const date = new Date();
+        date.setDate(date.getDate() - 5);
+        return date.toLocaleDateString("en-IN");
+      })()} date. We encourage you to review these Terms periodically.`,
     ],
   },
   {

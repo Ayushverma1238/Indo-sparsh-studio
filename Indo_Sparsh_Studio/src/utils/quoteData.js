@@ -233,8 +233,7 @@ export const preferedContactMethod = ["Email", "Phone", "Whatsapp"];
 export const footerServices = [
   { name: "Business Profile Creation", path: "/services/profile-creation" },
   { name: "Website Development", path: "/services/website-development" },
-  { name: "Mobile App Development", path: "/services/app-development" },
-  { name: "Web Application Development", path: "/services/web-application" },
+  { name: "App Development", path: "/services/app-development" },
   { name: "UI/UX Design", path: "/services/ui-ux-design" },
   { name: "Digital Marketing", path: "/services/digital-marketing" },
   { name: "Graphic Designing", path: "/services/graphic-design" },

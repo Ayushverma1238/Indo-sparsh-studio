@@ -559,7 +559,7 @@ const WebsiteDevelopment = () => {
             ref={whyRef}
             id="why"
           >
-            <h2>Why Choose us?</h2>
+            <h2>Why Choose Us?</h2>
             <ul className="wd-why-list">
               {WHY.map((w) => (
                 <li key={w.tag}>

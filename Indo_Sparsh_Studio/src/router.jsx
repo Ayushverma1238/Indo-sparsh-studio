@@ -28,9 +28,6 @@ const PortfolioWork = lazy(
   () => import("./pages/src/Footer/Services/PortfolioWork"),
 );
 
-const WebAppBuildStory = lazy(
-  () => import("./pages/src/Footer/Services/WebApplicationPage"),
-);
 
 const UiUxService = lazy(() => import("./pages/src/Footer/Services/UiUxPage"));
 
@@ -157,10 +154,6 @@ const router = createBrowserRouter([
       {
         path: "services/website-development",
         element: Page(WebsiteDevelopment),
-      },
-      {
-        path: "services/web-application",
-        element: Page(WebAppBuildStory),
       },
       {
         path: "services/ui-ux-design",
