@@ -969,7 +969,6 @@ body.dark-mode .ux-page {
   transition:
     opacity 0.7s ease,
     transform 0.7s ease;
-  background: var(--ux-why-c);
 }
 .ux-why.visible {
   opacity: 1;

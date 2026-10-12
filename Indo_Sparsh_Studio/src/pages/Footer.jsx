@@ -12,7 +12,9 @@ import SocialLinks from "./SocialLinks.jsx";
 import { useState, useEffect } from "react";
 
 export default function Footer() {
-  const [isCopied, setIsCopied] = useState(false);
+  // const [isCopied, setIsCopied] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false)
+  const [phoneCopied, setPhoneCopied] = useState(false)
   const [email, setEmail] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [time, setTime] = useState("");
@@ -60,11 +62,15 @@ export default function Footer() {
     };
   }, []);
 
-  const handleCopy = () => {
-    setIsCopied(true);
-    navigator.clipboard.writeText("contact@indosparsh.com");
+  const handleCopy = (data, type) => {
+    if(type === 'email')
+      setEmailCopied(true);
+    else
+        setPhoneCopied(true)
+    navigator.clipboard.writeText(data);
     setTimeout(() => {
-      setIsCopied(false);
+      setEmailCopied(false);
+      setPhoneCopied(false);
     }, 3000);
   };
 
@@ -123,14 +129,17 @@ export default function Footer() {
               <Link to="mailto:contact@indosparsh.com?subject=Website Inquiry">
                 contact@indosparsh.com
               </Link>
-              <div onClick={handleCopy} className="mail-copy-icon">
-                {!isCopied ? <FaRegCopy /> : <FaRegCircleCheck />}
+              <div onClick={() => handleCopy("contact@indosparsh.com")} className="mail-copy-icon">
+                {!emailCopied ? <FaRegCopy /> : <FaRegCircleCheck />}
               </div>
             </div>
-            <p>
-              or give us a call{" "}
+            <p>or</p>
+            <div className="mail-link">
               <Link to="tel:+918005352770"> +91 8005351770</Link>
-            </p>
+              <div onClick={()=>handleCopy("+918005351770")} className="mail-copy-icon">
+                {!phoneCopied ? <FaRegCopy /> : <FaRegCircleCheck />}
+              </div>
+            </div>
           </div>
 
          
