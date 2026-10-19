@@ -95,7 +95,10 @@ body.light-mode {
   align-items: center;
   gap: clamp(6px, 1vw, 10px);
   margin-bottom: 4px;
-  width: 70%;
+  justify-content: center;
+  width: 90%;
+  min-width: 75%;
+  gap: 13px;
 }
 
 .footer-heading-website h1 {
@@ -110,19 +113,19 @@ body.light-mode {
 
 
 .footer-heading-website img {
-  height: clamp(45px, 6vw, 60px);
+  height: clamp(45px, 50px, 55px);
   width: auto;
-  flex-shrink: 0;
+  /* margin-right: 8px; */
+  /* flex-shrink: 0; */
   /* border-radius: 50%; */
   object-fit: contain;
 }
 
 .footer-seperator {
-  height: clamp(40px, 6vw, 60%);
+  height: clamp(40px, 8vw, 80%);
   width: 2px;
-  margin-right: clamp(5px, 1vw, 10px);
-  background-color: #d2d8e2;
-  flex-shrink: 0;
+  background-color: #898b8f;
+  /* flex-shrink: 0; */
 }
 
 
@@ -137,7 +140,7 @@ body.light-mode {
   }
 
   .footer-heading-website img {
-    height: clamp(42px, 13vw, 60px);
+    height: clamp(42px, 13vw, 55px);
   }
 
   .footer-seperator {

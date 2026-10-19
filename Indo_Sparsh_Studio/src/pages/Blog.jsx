@@ -1,5 +1,4 @@
-﻿import { useEffect } from "react";
-import "./Blog.css";
+﻿import "./Blog.css";
 import { Link } from "react-router-dom";
 import SEO from "../utils/seo";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import ScrollBeam from "../../../../ScrollBeam";
 import "./commonMarquee.css"
 

@@ -3,7 +3,7 @@ import "./RowCallingData.css";
 import { Link } from "react-router-dom";
 import SEO from "../../../../utils/seo";
 import ScrollBeam from "../../../ScrollBeam";
-import CommonMarquee from "./common/commonMarquee";
+import CommonMarquee from "./common/CommonMarquee";
 import ToolsUsed from "./common/ToolsUsed";
 
 /* ---------- scroll-reveal wrapper ---------- */

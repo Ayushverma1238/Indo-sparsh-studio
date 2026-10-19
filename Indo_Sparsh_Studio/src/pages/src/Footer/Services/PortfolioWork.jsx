@@ -12,7 +12,7 @@ const SERVICES = [
   { name: "Web Application" },
   { name: "UI/UX Design" },
   { name: "Website Redesign" },
-  { name: "Content Creation & Video Editing" },
+  { name: "Content Creation, Editing & Managing" },
   { name: "SEO Optimization" },
   { name: "Business Profile Creation" },
   { name: "Digital Marketing" },

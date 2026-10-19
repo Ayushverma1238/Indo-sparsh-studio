@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ScrollBeam from "../ScrollBeam";
-import "../blog.css"
+import "../Blog.css"
 const HomeBlogs = () => {
   const posts = [
     {

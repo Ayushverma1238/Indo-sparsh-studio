@@ -387,7 +387,7 @@ const HomeServices = () => {
                 <span></span>
               </div>
             </div>
-            <h3>Content Creation & Video Editing Services</h3>
+            <h3>Content Creation, Editing & Managing</h3>
             <p
               style={{
                 marginBottom: "20px",

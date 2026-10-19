@@ -26,7 +26,7 @@ const TEAM = [
   {
     image: "/images/ayush.jpeg",
     name: "Ayush Verma",
-    role: "Software Developer Engineer, 1+ year Experience",
+    role: "Software Developer Engineer, 3+ year Experience",
     study: "B.Tech CSE(AI), BBD University, Lucknow",
     bio: "Crafts responsive websites and high-performance mobile apps, turning ideas into seamless digital experiences.",
     focus: ["React", "Performance", "Accessibility", "Full Stack Website"],

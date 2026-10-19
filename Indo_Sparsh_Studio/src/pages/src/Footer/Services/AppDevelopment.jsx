@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
 import ProjectDiscuss from "../../../Home/ProjectDiscuss";
 import SEO from "../../../../utils/seo";
-import CommonMarquee from "./common/commonMarquee";
+import CommonMarquee from "./common/CommonMarquee";
 
 /* ---------------------------------------------------------
    Reveal-on-scroll hook + wrapper

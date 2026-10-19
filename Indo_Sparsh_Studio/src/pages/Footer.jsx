@@ -103,7 +103,7 @@ export default function Footer() {
       <div className="footer-content">
         <div className="footer-left">
           <div className="footer-heading-website">
-            <img src="/logo.png" alt="logo" />
+            <img src="/logo.webp" alt="logo" />
             <div className='footer-seperator'/>
             <h1>Indo Sparsh Studio</h1>
           </div>

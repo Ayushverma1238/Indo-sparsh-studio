@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ScrollBeam from "../../../ScrollBeam";
 import "../../../Services.css";
 import SEO from "../../../../utils/seo";
-import CommonMarquee from "./common/commonMarquee";
+import CommonMarquee from "./common/CommonMarquee";
 
 /* ---------- scroll-reveal wrapper ---------- */
 function Reveal({ as: Tag = "div", className = "", delay = 0, children }) {

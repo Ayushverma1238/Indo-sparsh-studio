@@ -14,7 +14,7 @@ const tags = [
   "Graphics Design",
   "Branding & Marketing",
   "Row Calling Data",
-  "Content Creation & Video Editing",
+  "Content Creation, Editing & Managing",
   "Business Consultancy",
 ];
 

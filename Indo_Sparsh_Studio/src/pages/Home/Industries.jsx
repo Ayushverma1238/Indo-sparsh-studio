@@ -20,35 +20,35 @@ const HomeIndustries = () => {
       <div className="industries-grid">
         <div className="industry-item">
           <div className="industry-img-wrap">
-            <img src="/tech/real-estate.jpeg" />
+            <img src="/tech/real-estate.webp" />
           </div>
           <p>Real Estate</p>
         </div>
 
         <div className="industry-item">
           <div className="industry-img-wrap">
-            <img src="/tech/education.jpeg" />
+            <img src="/tech/education.webp" />
           </div>
           <p>Education</p>
         </div>
 
         <div className="industry-item">
           <div className="industry-img-wrap">
-            <img src="/tech/ecommerce.jpeg" />
+            <img src="/tech/ecommerce.webp" />
           </div>
           <p>Ecommerce</p>
         </div>
 
         <div className="industry-item">
           <div className="industry-img-wrap">
-            <img src="/tech/automotive.jpeg" />
+            <img src="/tech/automotive.webp" />
           </div>
           <p>Automotive</p>
         </div>
 
         <div className="industry-item">
           <div className="industry-img-wrap">
-            <img src="/tech/finance.jpeg" />
+            <img src="/tech/finance.webp" />
           </div>
           <p>Banking & Finance</p>
         </div>
@@ -62,42 +62,42 @@ const HomeIndustries = () => {
 
         <div className="industry-item">
           <div className="industry-img-wrap">
-            <img src="/tech/tourism.jpeg" />
+            <img src="/tech/tourism.webp" />
           </div>
           <p>Hospitality & Tourism</p>
         </div>
 
         <div className="industry-item">
           <div className="industry-img-wrap">
-            <img src="/tech/media.jpeg" />
+            <img src="/tech/media.webp" />
           </div>
           <p>Entertainment</p>
         </div>
 
         <div className="industry-item">
           <div className="industry-img-wrap">
-            <img src="/tech/organization.jpeg" />
+            <img src="/tech/organization.webp" />
           </div>
           <p>Non-Profit Organization</p>
         </div>
 
         <div className="industry-item">
           <div className="industry-img-wrap">
-            <img src="/tech/sports.jpeg" />
+            <img src="/tech/sports.webp" />
           </div>
           <p>Sports & Fitness</p>
         </div>
 
         <div className="industry-item">
           <div className="industry-img-wrap">
-            <img src="/tech/solar.jpeg" />
+            <img src="/tech/solar.webp" />
           </div>
           <p>Solar Energy</p>
         </div>
 
         <div className="industry-item">
           <div className="industry-img-wrap">
-            <img src="/tech/technology.jpeg" />
+            <img src="/tech/technology.webp" />
           </div>
           <p>Technology & Software</p>
         </div>

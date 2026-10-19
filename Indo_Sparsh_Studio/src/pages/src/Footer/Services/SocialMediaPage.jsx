@@ -27,7 +27,7 @@ import ScrollBeam from "../../../ScrollBeam";
 import { Link } from "react-router-dom";
 import "../../../Services.css";
 import SEO from "../../../../utils/seo";
-import CommonMarquee from "./common/commonMarquee";
+import CommonMarquee from "./common/CommonMarquee";
 
 /**
  * Lightweight replacement for framer-motion's `whileInView`.
