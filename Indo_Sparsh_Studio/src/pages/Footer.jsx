@@ -129,14 +129,14 @@ export default function Footer() {
               <Link to="mailto:contact@indosparsh.com?subject=Website Inquiry">
                 contact@indosparsh.com
               </Link>
-              <div onClick={() => handleCopy("contact@indosparsh.com")} className="mail-copy-icon">
+              <div onClick={() => handleCopy("contact@indosparsh.com", "email")} className="mail-copy-icon">
                 {!emailCopied ? <FaRegCopy /> : <FaRegCircleCheck />}
               </div>
             </div>
             <p>or</p>
             <div className="mail-link">
               <Link to="tel:+918005352770"> +91 8005351770</Link>
-              <div onClick={()=>handleCopy("+918005351770")} className="mail-copy-icon">
+              <div onClick={()=>handleCopy("+918005351770", "phone")} className="mail-copy-icon">
                 {!phoneCopied ? <FaRegCopy /> : <FaRegCircleCheck />}
               </div>
             </div>

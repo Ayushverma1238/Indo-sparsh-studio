@@ -1,1005 +1,1106 @@
 @import "./_theme.css";
 
-/* ===================================================================
-   THEME TOKENS - aliased onto the shared studio design system.
-=================================================================== */
+/* ==================================================================
+   DESIGN DIRECTION: "The work, in motion"
+   Frosted glass over a slow colour field, with scroll-driven motion.
 
-.pf {
-  --paper: var(--color-bg);
-  --paper-raised: var(--color-surface);
-  --ink: var(--color-text);
-  --ink-soft: var(--color-text-muted);
-  --ink-faint: var(--color-text-muted);
-  --line: var(--color-border);
-  --line-strong: rgba(21, 21, 28, 0.28);
-  --accent: var(--color-accent);
-  --accent-ink: #ffffff;
-  --shadow: var(--color-shadow);
+   THEME
+   Dark mode applies when the site's dark-mode class is on the body or
+   the html element, or when the page has data-theme="dark". In dark
+   mode every surface is dark: the background, glass panels, cards,
+   filter menu, and buttons. Light mode is the reverse. All colours
+   live in the two token blocks below.
+   ================================================================== */
 
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
-  --font-mono: var(--font-mono);
+/* ------------------------------------------------------------------
+   TOKENS: LIGHT (default)
+   ------------------------------------------------------------------ */
 
-  --coral: var(--color-accent);
-  --yellow: var(--color-accent-2);
-  --blue: var(--color-primary);
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-body);
+.gl {
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --bg: #f2f1f7;
+  --text: #14151b;
+  --text-soft: rgba(20, 21, 27, 0.68);
+  --text-faint: rgba(20, 21, 27, 0.46);
+
+  --violet: #7b68ee;
+  --teal: #22c3b5;
+  --coral: #ff8a65;
+  --status: #2fc777;
+
+  --orb-opacity: 0.55;
+  --grain: 0.05;
+
+  --glass-top: rgba(15, 12, 12, 0.13);
+  --glass-bottom: rgba(255, 255, 255, 0.03);
+  --glass-solid: rgba(255, 255, 255, 0.94);
+  --glass-border: rgba(255, 255, 255, 0.9);
+  --glass-shadow: 0 30px 60px -30px rgba(40, 38, 90, 0.3);
+  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  --lift-shadow: 0 40px 80px -30px rgba(40, 38, 90, 0.35);
+  --sheen: rgba(255, 255, 255, 0.7);
+
+  --card-bg: #e3e2ec;
+  --hover-tint: rgba(20, 21, 27, 0.06);
+  --active-tint: rgba(20, 21, 27, 0.1);
+
+  --btn-bg: #fff;
+  --btn-text: #141414;
+  --btn-border: #b1a7a7;
+  --btn-shadow: 20px 14px 30px -14px rgba(21, 22, 29, 0.55);
+  --btn-shadow-hover: 15 20px 40px -14px rgba(21, 22, 29, 0.6);
+
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+  transition: background-color 0.6s ease, color 0.6s ease;
+  /* clip (not hidden) so sticky elements keep working inside the page */
   overflow-x: hidden;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+  overflow-x: clip;
 }
 
-body.dark-mode .pf {
-  --paper: var(--color-bg);
-  --paper-raised: var(--color-surface);
-  --ink: var(--color-text);
-  --ink-soft: var(--color-text-muted);
-  --ink-faint: var(--color-text-muted);
-  --line: var(--color-border);
-  --line-strong: rgba(255, 255, 255, 0.75);
-  --accent: var(--color-accent);
-  --accent-ink: #ffffff;
-  --shadow: var(--color-shadow);
+/* ------------------------------------------------------------------
+   TOKENS: DARK
+   Matches when the dark-mode class is on body or html, or when the
+   page has data-theme="dark".
+   ------------------------------------------------------------------ */
+
+.dark-mode .gl,
+.gl[data-theme="dark"] {
+  --bg: #07080c;
+  --text: #f3f4f7;
+  --text-soft: rgba(243, 244, 247, 0.66);
+  --text-faint: rgba(243, 244, 247, 0.42);
+
+  --violet: #8b7bff;
+  --teal: #3ddbd9;
+  --coral: #ff7a59;
+  --status: #35d07f;
+
+  --orb-opacity: 0.42;
+  --grain: 0.08;
+
+  
+  --glass-solid: rgba(24, 26, 36, 0.94);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.7);
+  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  --lift-shadow: 0 40px 80px -28px rgba(0, 0, 0, 0.8);
+  --sheen: rgba(255, 255, 255, 0.16);
+
+  --card-bg: #14151d;
+  --hover-tint: rgba(255, 255, 255, 0.08);
+  --active-tint: rgba(255, 255, 255, 0.14);
+
+  /* dark button: deep fill, thin violet edge, soft violet glow */
+  --btn-bg: linear-gradient(135deg, #1d1f2e 0%, #11121a 100%);
+  --btn-text: #f3f4f7;
+  --btn-border: rgba(139, 123, 255, 0.5);
+  --btn-shadow: 0 0 0 1px rgba(139, 123, 255, 0.12),
+    0 14px 34px -12px rgba(139, 123, 255, 0.45);
+  --btn-shadow-hover: 0 0 0 1px rgba(139, 123, 255, 0.3),
+    0 20px 44px -12px rgba(139, 123, 255, 0.6);
 }
 
-.pf * {
+/* ------------------------------------------------------------------
+   BASE
+   ------------------------------------------------------------------ */
+
+.gl *,
+.gl *::before,
+.gl *::after {
   box-sizing: border-box;
 }
 
-.pf h1,
-.pf h2,
-.pf h3 {
-  font-family: var(--font-display);
-  color: var(--ink);
+.gl h1,
+.gl h2,
+.gl h3,
+.gl h4 {
+  font-family: var(--font-display, inherit);
+  color: inherit;
+  font-weight: 600;
   margin: 0;
 }
 
-.pf p {
-  color: var(--ink-soft);
+.gl p {
+  margin: 0;
   line-height: 1.6;
-  margin: 0;
+  color: var(--text-soft);
 }
 
-.pf a {
+.gl a {
   color: inherit;
   text-decoration: none;
 }
 
-/* ===================================================================
-   SHARED
-=================================================================== */
-
-.pf-label {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: 20px;
+.gl button {
+  font: inherit;
+  color: inherit;
 }
 
-.pf-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.gl ol {
   list-style: none;
-  margin: 0 0 22px;
+  margin: 0;
   padding: 0;
 }
 
-.pf-tags li {
-  font-family: var(--font-display);
-  font-size: 0.7rem;
-  letter-spacing: 0.03em;
-  color: var(--ink-soft);
-  border: 1px solid var(--line);
-  border-radius: 100px;
-  padding: 4px 11px;
+.gl :focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 4px;
 }
 
-/* scroll reveal */
-.js-reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.js-reveal.is-in {
-  opacity: 1;
-  transform: translateY(0);
+/* ------------------------------------------------------------------
+   GLASS
+   One shared surface. Each element supplies its own radius and padding.
+   ------------------------------------------------------------------ */
+
+.gl-glass {
+  background: linear-gradient(140deg, var(--glass-top), var(--glass-bottom));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-inner);
+  -webkit-backdrop-filter: blur(22px) saturate(165%);
+  backdrop-filter: blur(40px) saturate(165%);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .js-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  .pf-word {
-    opacity: 1;
-    transform: none;
-    animation: none !important;
-  }
-  .pf-ticker-track {
-    animation: none !important;
+/* browsers without backdrop-filter get a solid panel instead */
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .gl-glass {
+    background: var(--glass-solid);
   }
 }
 
-/* crop marks, reused as a signature device across cards */
-.crop {
+/* ------------------------------------------------------------------
+   COLOUR FIELD AND GRAIN
+   ------------------------------------------------------------------ */
+
+.gl-bg {
   position: absolute;
-  width: 12px;
-  height: 12px;
-  border-color: var(--line-strong);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-.pf-card:hover .crop,
-.pf-team-card:hover .crop {
-  opacity: 1;
-}
-.crop-tl { top: 10px; left: 10px; border-top: 1px solid; border-left: 1px solid; }
-.crop-tr { top: 10px; right: 10px; border-top: 1px solid; border-right: 1px solid; }
-.crop-bl { bottom: 10px; left: 10px; border-bottom: 1px solid; border-left: 1px solid; }
-.crop-br { bottom: 10px; right: 10px; border-bottom: 1px solid; border-right: 1px solid; }
-
-/* ===================================================================
-   HEADER
-=================================================================== */
-
-.pf-header {
-  position: relative;
-  padding: 100px 8vw 90px;
+  inset: 0;
+  z-index: 0;
   overflow: hidden;
+  pointer-events: none;
 }
 
-.pf-header-top {
-  display: flex;
+/* a faint film grain so the gradients don't band */
+.gl-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: var(--grain);
+  mix-blend-mode: overlay;
+}
+
+.gl-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(84px);
+  opacity: var(--orb-opacity);
+  will-change: transform;
+}
+
+.gl-orb--a {
+  width: 640px;
+  height: 640px;
+  top: -160px;
+  left: -180px;
+  background: var(--violet);
+}
+
+.gl-orb--b {
+  width: 560px;
+  height: 560px;
+  top: 38%;
+  right: -200px;
+  background: var(--teal);
+  opacity: calc(var(--orb-opacity) * 0.8);
+}
+
+.gl-orb--c {
+  width: 520px;
+  height: 520px;
+  top: 78%;
+  left: 18%;
+  background: var(--coral);
+  opacity: calc(var(--orb-opacity) * 0.7);
+}
+
+.gl-orb--d {
+  width: 480px;
+  height: 480px;
+  top: 118%;
+  right: 10%;
+  background: var(--violet);
+  opacity: calc(var(--orb-opacity) * 0.7);
+}
+
+/* ------------------------------------------------------------------
+   HERO
+   ------------------------------------------------------------------ */
+
+.gl-hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 34px;
+  gap: clamp(40px, 5vw, 80px);
+  padding: clamp(120px, 14vh, 160px) clamp(20px, 5vw, 72px)
+    clamp(72px, 10vh, 120px);
 }
 
-.pf-header-kicker {
+/* status chip above the headline */
+.gl-status {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-display);
-  font-size: 0.88rem;
-  color: var(--ink-soft);
+  margin-bottom: 30px;
+  padding: 8px 16px 8px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--text);
+  animation: gl-fade 0.9s var(--ease) backwards;
 }
 
-.pf-kicker-mark {
+.gl-status-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--accent);
-  flex: 0 0 auto;
+  background: var(--status);
+  animation: gl-pulse 2.4s ease-out infinite;
 }
 
-.pf-header-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-size: 0.76rem;
-  color: var(--ink-faint);
-  border: 1px solid var(--line);
-  border-radius: 100px;
-  padding: 7px 14px 7px 12px;
+.gl-title {
+  font-size: clamp(3.4rem, 8.6vw, 7.8rem);
+  line-height: 0.94;
+  letter-spacing: -0.045em;
 }
 
-.pf-status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-success);
-  flex: 0 0 auto;
-  box-shadow: 0 0 0 3px rgba(78, 154, 81, 0.18);
+.gl-line {
+  display: block;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
 }
 
-.pf-title {
-  font-size: clamp(2.3rem, 6vw, 4.6rem);
-  font-weight: 500;
-  line-height: 1.06;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.26em;
-  max-width: 900px;
-  margin-bottom: 46px;
-}
-
-.pf-word {
+/* words resolve out of blur as the page loads */
+.gl-word {
   display: inline-block;
   opacity: 0;
-  transform: translateY(38px);
-  animation: pf-word-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  filter: blur(16px);
+  transform: translateY(0.18em);
+  animation: gl-word-in 1.2s var(--ease) forwards;
+  animation-delay: var(--d, 0ms);
 }
 
-@keyframes pf-word-in {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.gl-lead {
+  margin-top: 32px;
+  max-width: 34ch;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  color: var(--text-soft);
+  animation: gl-fade 1s var(--ease) 0.6s backwards;
 }
 
-.pf-header-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 48px;
-  align-items: start;
-}
-
-.pf-header-copy {
+.gl-actions {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 480px;
-  padding-top: 6px;
-}
-
-.pf-subtitle {
-  font-size: 1.08rem;
-  color: var(--ink);
-}
-
-.pf-page-note {
-  font-size: 0.94rem;
-}
-
-.pf-header-ticket {
-  position: relative;
-  justify-self: end;
-  width: 100%;
-  max-width: 280px;
-  background: var(--paper-raised);
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  padding: 22px 22px 30px;
-  transform: rotate(1.4deg);
-  box-shadow: 0 14px 30px var(--shadow);
-}
-
-.pf-ticket-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px dashed var(--line);
-  font-family: var(--font-display);
-}
-
-.pf-ticket-row:first-child {
-  padding-top: 0;
-}
-
-.pf-ticket-row:last-of-type {
-  border-bottom: none;
-}
-
-.pf-ticket-row span {
-  font-size: 0.78rem;
-  color: var(--ink-faint);
-}
-
-.pf-ticket-row strong {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--ink);
-  text-align: right;
-}
-
-.pf-ticket-stamp {
-  position: absolute;
-  bottom: -14px;
-  right: 18px;
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.02em;
-  color: var(--accent);
-  background: var(--paper);
-  border: 1.5px solid var(--accent);
-  border-radius: 3px;
-  padding: 5px 10px;
-  transform: rotate(-3deg);
-}
-
-@media (max-width: 860px) {
-  .pf-header-grid {
-    grid-template-columns: 1fr;
-  }
-  .pf-header-ticket {
-    justify-self: start;
-    max-width: 320px;
-    margin-top: 6px;
-  }
-}
-
-@media (max-width: 560px) {
-  .pf-header {
-    padding: 84px 6vw 70px;
-  }
-  .pf-header-top {
-    align-items: flex-start;
-  }
-}
-
-/* ===================================================================
-   ABOUT
-=================================================================== */
-
-.pf-about {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 60px;
-  padding: 40px 8vw 110px;
-  border-top: 1px solid var(--line);
-}
-
-.pf-about-copy h2 {
-  font-size: clamp(1.6rem, 2.6vw, 2.3rem);
-  font-weight: 500;
-  line-height: 1.25;
-  margin-bottom: 22px;
-}
-
-.pf-about-copy p {
-  margin-bottom: 16px;
-  max-width: 540px;
-}
-
-.pf-stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 26px;
-  align-content: start;
-}
-
-.pf-stat-block {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-}
-
-.pf-stat-block-value {
-  font-family: var(--font-display);
-  font-size: 2.1rem;
-  color: var(--ink);
-}
-
-.pf-stat-block-label {
-  font-family: var(--font-display);
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-@media (max-width: 860px) {
-  .pf-about {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===================================================================
-   PROCESS
-=================================================================== */
-
-.pf-process {
-  padding: 40px 8vw 110px;
-  border-top: 1px solid var(--line);
-}
-
-.pf-process-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
-}
-
-.pf-process-step {
-  display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 14px;
-  padding: 24px 20px 26px;
-  background: var(--paper-raised);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  transition: transform 0.35s ease, border-color 0.35s ease;
+  margin-top: 40px;
+  animation: gl-fade 1s var(--ease) 0.75s backwards;
 }
 
-.pf-process-step:hover {
-  transform: translateY(-4px);
-  border-color: var(--line-strong);
-}
-
-.pf-process-n {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  color: var(--accent);
-}
-
-.pf-process-step h3 {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: 4px;
-}
-
-.pf-process-step p {
-  font-size: 0.88rem;
-}
-
-@media (max-width: 900px) {
-  .pf-process-list {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (max-width: 560px) {
-  .pf-process-list {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===================================================================
-   SELECTED WORK (case studies)
-=================================================================== */
-
-.pf-work {
-  padding: 40px 8vw 40px;
-  border-top: 1px solid var(--line);
-}
-
-.pf-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 26px;
-}
-
-.pf-card {
-  position: relative;
-  background: var(--paper-raised);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 22px 24px 26px;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.4s ease, border-color 0.4s ease;
-}
-
-.pf-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 34px var(--shadow);
-  border-color: var(--line-strong);
-}
-
-.pf-card-top {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  color: var(--ink-faint);
-  margin-bottom: 18px;
-}
-
-.pf-thumb {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 96px;
-  margin-bottom: 20px;
-  border-radius: 4px;
-  background: linear-gradient(160deg, transparent, var(--line) 220%);
-}
-
-.pf-thumb-icon svg {
-  width: 46px;
-  height: 46px;
-  stroke: var(--ink);
-  stroke-width: 1.6;
-  transition: transform 0.5s ease;
-}
-
-.pf-card:hover .pf-thumb-icon svg {
-  transform: scale(1.08) rotate(-2deg);
-}
-
-.pf-card-category {
-  font-family: var(--font-display);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.pf-card-body h3 {
-  font-size: 1.35rem;
-  font-weight: 500;
-  margin: 8px 0 4px;
-}
-
-.pf-card-role {
-  font-size: 0.82rem;
-  color: var(--ink-faint);
-  margin-bottom: 12px;
-}
-
-.pf-card-blurb {
-  font-size: 0.92rem;
-  margin-bottom: 18px;
-}
-
-.pf-card-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-}
-
-.pf-stat {
-  display: flex;
-  flex-direction: column;
-}
-
-.pf-stat-value {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: var(--ink);
-}
-
-.pf-stat-label {
-  font-family: var(--font-display);
-  font-size: 0.62rem;
-  color: var(--ink-faint);
-  text-transform: uppercase;
-}
-
-.pf-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  color: var(--ink);
-}
-
-.pf-link svg {
-  width: 16px;
-  height: 16px;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  transition: transform 0.3s ease;
-}
-
-.pf-link:hover svg {
-  transform: translateX(4px);
-}
-
-@media (max-width: 780px) {
-  .pf-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===================================================================
-   TEAM
-=================================================================== */
-
-.pf-team {
-  padding: 110px 8vw 40px;
-  border-top: 1px solid var(--line);
-}
-
-.pf-team-heading {
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  font-weight: 500;
-  margin-bottom: 40px;
-}
-
-.pf-team-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 26px;
-}
-
-.pf-team-card {
-  position: relative;
-  background: var(--paper-raised);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 30px 28px 28px;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.4s ease, border-color 0.4s ease;
-}
-
-.pf-team-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 34px var(--shadow);
-  border-color: var(--line-strong);
-}
-
-.pf-team-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  letter-spacing: 0.03em;
-  margin-bottom: 20px;
-  transition: transform 0.4s ease;
-}
-
-.pf-team-card:hover .pf-team-avatar {
-  transform: rotate(-6deg) scale(1.05);
-}
-
-.pf-team-card h3 {
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin-bottom: 4px;
-}
-
-.pf-team-role {
-  font-size: 0.86rem;
-  color: var(--ink);
-  margin-bottom: 2px;
-}
-
-.pf-team-study {
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  color: var(--accent);
-  margin-bottom: 14px;
-}
-
-.pf-team-bio {
-  font-size: 0.9rem;
-  margin-bottom: 18px;
-}
-
-@media (max-width: 780px) {
-  .pf-team-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===================================================================
-   CTA
-=================================================================== */
-
-.pf-cta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 18px;
-  padding: 110px 8vw 100px;
-  border-top: 1px solid var(--line);
-}
-
-.pf-cta h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 500;
-  max-width: 620px;
-}
-
-.pf-cta p {
-  max-width: 480px;
-}
-
-.pf-cta-link {
+.gl-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 10px;
-  padding: 13px 24px;
-  background: var(--accent);
-  color: var(--accent-ink);
-  border-radius: 100px;
-  font-family: var(--font-display);
-  font-size: 0.82rem;
-  letter-spacing: 0.03em;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.pf-cta-link svg {
-  width: 16px;
-  height: 16px;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  transition: transform 0.3s ease;
-}
-
-.pf-cta-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px var(--shadow);
-}
-
-.pf-cta-link:hover svg {
-  transform: translateX(4px);
-}
-
-/* ===================================================================
-   BROWSE BY SERVICE - moving ticker + filtered work grid
-=================================================================== */
-
-.pf-services {
-  padding: 80px 0 140px;
-  border-top: 1px solid var(--line);
-}
-
-.pf-services .pf-label,
-.pf-services-heading,
-.pf-services-filterbar,
-.pf-services-empty {
-  padding-left: 8vw;
-  padding-right: 8vw;
-}
-
-.pf-services-heading {
-  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  justify-content: center;
+  padding: 15px 26px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 0.92rem;
   font-weight: 500;
-  margin-bottom: 34px;
-  max-width: 700px;
-}
-
-/* ticker */
-.pf-ticker {
-  position: relative;
-  overflow: hidden;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 18px 0;
-  margin: 26px auto;
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    black 6%,
-    black 94%,
-    transparent
-  );
-}
-
-.pf-ticker-track {
-  display: flex;
-  width: max-content;
-  gap: 14px;
-  animation: pf-ticker-scroll 34s linear infinite;
-}
-
-.pf-ticker:hover .pf-ticker-track {
-  animation-play-state: paused;
-}
-
-@keyframes pf-ticker-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    /* content is duplicated once in JSX, so -50% is exactly one full loop */
-    transform: translateX(-50%);
-  }
-}
-
-.pf-ticker-pill {
-  flex: 0 0 auto;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  letter-spacing: 0.02em;
-  color: var(--ink-soft);
-  background: var(--paper-raised);
-  border: 1px solid var(--line);
-  border-radius: 100px;
-  padding: 10px 20px;
-  cursor: pointer;
   white-space: nowrap;
-  transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease,
-    transform 0.3s ease;
+  cursor: pointer;
+  /* transition: transform 0.4s var(--ease), box-shadow 0.4s ease; */
 }
 
-.pf-ticker-pill:hover {
-  border-color: var(--ink);
-  color: var(--ink);
+.gl-btn-solid {
+  background: linear-gradient(160deg, var(--blue), var(--coral));
+  color: #fff;
+}
+.gl-btn-solid:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px var(--bc-shadow);
+}
+
+.gl-btn:hover {
   transform: translateY(-2px);
 }
 
-.pf-ticker-pill.is-active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-ink);
+/* primary: ink in light mode, deep dark fill with violet edge in dark mode */
+.gl-btn--solid {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border-color: var(--btn-border);
+  /* box-shadow: var(--btn-shadow); */
 }
 
-.pf-services-filterbar {
+
+/* secondary: glass */
+.gl-btn .gl-glass {
+  color: var(--text);
+  background: transparent;
+  border-color: var(--glass-border);
+}
+
+.gl-cue {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 40px;
+  gap: 14px;
+  margin-top: 56px;
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  animation: gl-fade 1s var(--ease) 1s backwards;
 }
 
-.pf-ticker-pill-static {
-  animation: none;
-}
-
-.pf-services-active {
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  color: var(--ink-faint);
-}
-
-.pf-services-active strong {
-  color: var(--ink);
-  font-style: normal;
-}
-
-.pf-services-empty {
-  font-size: 0.92rem;
-}
-
-/* filtered work grid */
-.pf-work-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  padding: 0 8vw;
-}
-
-.project-card {
+.gl-cue-line {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  background: var(--paper-raised);
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  width: 56px;
+  height: 1px;
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.4s ease, border-color 0.4s ease;
+  background: var(--text-faint);
+  opacity: 0.5;
 }
 
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 34px var(--shadow);
-  border-color: var(--line-strong);
+.gl-cue-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40%;
+  width: 40%;
+  background: var(--text);
+  animation: gl-cue-run 2.2s var(--ease) infinite;
 }
 
-.pf-work-card-image {
+/* ------------------------------------------------------------------
+   COLLAGE
+   ------------------------------------------------------------------ */
+
+.gl-collage {
   position: relative;
-  height: 170px;
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--line);
+  height: clamp(380px, 50vw, 600px);
 }
 
-.pf-work-card-image img {
+.gl-float {
+  position: absolute;
+  will-change: transform;
+}
+
+.gl-float--0 {
+  left: 0;
+  top: 8%;
+  width: 58%;
+  height: 60%;
+}
+
+.gl-float--1 {
+  right: 0;
+  top: 0;
+  width: 44%;
+  height: 40%;
+}
+
+.gl-float--2 {
+  right: 6%;
+  bottom: 0;
+  width: 50%;
+  height: 42%;
+}
+
+.gl-float-frame {
+  position: absolute;
+  inset: 0;
+  padding: 10px;
+  border-radius: 30px;
+  animation: gl-float-in 1.2s var(--ease) backwards;
+}
+
+.gl-float--0 .gl-float-frame {
+  animation-delay: 0.35s;
+}
+
+.gl-float--1 .gl-float-frame {
+  animation-delay: 0.5s;
+}
+
+.gl-float--2 .gl-float-frame {
+  animation-delay: 0.65s;
+}
+
+.gl-float-frame img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  display: block;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 22px;
 }
 
-.project-card:hover .pf-work-card-image img {
-  transform: scale(1.06);
-  
+/* floating stats badge, parallax-layered over the frames */
+.gl-float--badge {
+  left: 2%;
+  bottom: 4%;
 }
 
-.pf-work-card-tag {
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  font-family: var(--font-display);
-  font-size: 0.62rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink);
-  border: 1px solid var(--line-strong);
-  background: var(--paper);
-  border-radius: 100px;
-  padding: 5px 11px;
+.gl-badge {
+  display: flex;
+  gap: 28px;
+  padding: 18px 24px;
+  border-radius: 24px;
+  animation: gl-float-in 1.2s var(--ease) 0.9s backwards;
 }
 
-.pf-work-card-body {
+.gl-badge > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gl-badge-value {
+  font-family: var(--font-display, inherit);
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.gl-badge-label {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}
+
+/* ------------------------------------------------------------------
+   REEL: base layout (small screens, reduced motion)
+   ------------------------------------------------------------------ */
+
+.gl-reel {
+  position: relative;
+  z-index: 1;
+}
+
+.gl-reel-sticky {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4vh, 44px);
+  padding: clamp(72px, 10vh, 110px) 0 clamp(40px, 6vh, 64px);
+}
+
+.gl-reel-head {
+  position: relative;
+  z-index: 30; /* keeps the filter menu above the cards */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 clamp(20px, 5vw, 72px);
+}
+
+.gl-h2 {
+  font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* the counter and progress bar only exist in the pinned layout */
+.gl-index {
+  display: none;
+  margin-top: 12px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.gl-reel-viewport {
+  position: relative;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.gl-reel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.gl-track {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 16px 18px;
+  gap: clamp(18px, 2.2vw, 28px);
+  width: max-content;
+  padding: 24px clamp(20px, 5vw, 72px) 32px;
+  will-change: transform;
 }
 
-.pf-work-card-body h3 {
-  font-size: 1.02rem;
-  font-weight: 500;
-  line-height: 1.3;
-}
-
-.pf-work-card-date {
+.gl-slot {
   flex: 0 0 auto;
-  font-family: var(--font-display);
-  font-size: 0.68rem;
-  color: var(--ink-faint);
+  scroll-snap-align: start;
+  animation: gl-card-in 0.9s var(--ease) backwards;
+  animation-delay: min(calc(var(--i, 0) * 70ms), 560ms);
+}
+
+/* ------------------------------------------------------------------
+   CARD
+   ------------------------------------------------------------------ */
+
+.gl-card {
+  position: relative;
+  display: block;
+  width: clamp(260px, 28vw, 420px);
+  height: clamp(340px, 60vh, 540px);
+  border-radius: 30px;
+  overflow: hidden;
+  background: var(--card-bg);
+  transition: transform 0.6s var(--ease), box-shadow 0.6s ease;
+}
+
+.gl-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--lift-shadow);
+}
+
+.gl-card-media {
+  position: absolute;
+  inset: 0;
+}
+
+.gl-card-initial {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display, inherit);
+  font-size: 9rem;
+  font-weight: 600;
+  color: var(--text-faint);
+  opacity: 0.4;
+}
+
+.gl-card-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.4s var(--ease);
+}
+
+.gl-card:hover .gl-card-media img {
+  transform: scale(1.06);
+}
+
+/* service chip, top left, sits over the image */
+.gl-card-chip {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1;
+  max-width: calc(100% - 28px);
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  color: #000;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-@media (max-width: 980px) {
-  .pf-work-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* the glass title panel, bottom */
+.gl-card-panel {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  z-index: 1;
+  padding: 18px 20px;
+  border-radius: 22px;
 }
 
-@media (max-width: 620px) {
-  .pf-work-grid {
-    grid-template-columns: 1fr;
-  }
-  .pf-services-filterbar {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 12px;
-  }
-}
-
-.pf-hero__headline {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(2.6rem, 7vw, 4.4rem);
-  line-height: 1.05;
+.gl-card-title {
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
   letter-spacing: -0.02em;
-  margin: 0;
+  line-height: 1.2;
+  color: #000216 !important;
 }
 
-.pf-word {
-  display: inline-block;
+.gl-card-date {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: #080831;
+}
+
+/* light sheen that follows the pointer across the card */
+.gl-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    360px circle at var(--mx, 50%) var(--my, 30%),
+    var(--sheen),
+    transparent 60%
+  );
   opacity: 0;
-  transform: translateY(40px);
-  animation: pf-word-in 0.7s var(--ease) forwards;
+  transition: opacity 0.5s ease;
 }
 
-.pf-word--a {
-  animation-delay: 0.1s;
+.gl-card:hover::after {
+  opacity: 1;
 }
-.pf-word--b {
-  animation-delay: 0.2s;
-  background: linear-gradient(100deg, var(--blue), var(--coral));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+
+/* ------------------------------------------------------------------
+   FILTER MENU
+   The panel is near-solid so the names and counts stay readable over
+   the photos behind it. Light mode is a white panel. Dark mode is a
+   dark panel. The dark rules match when the dark-mode class is on
+   body or html, or when the page has data-theme="dark".
+   ------------------------------------------------------------------ */
+
+.gl-filter {
+  position: relative;
 }
-.pf-word--c {
-  animation-delay: 0.3s;
+
+.gl-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px 12px 20px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--text);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.4s var(--ease);
 }
-.pf-word--d {
-  animation-delay: 0.4s;
-  background: linear-gradient(100deg, var(--coral), var(--yellow));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+
+.gl-filter-btn:hover {
+  transform: translateY(-1px);
 }
-@keyframes pf-word-in {
+
+.gl-filter-label {
+  color: var(--text-soft);
+}
+
+.gl-filter-value {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+.gl-caret {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.4s var(--ease);
+}
+
+.gl-caret.is-open {
+  transform: translateY(2px) rotate(225deg);
+}
+
+/* the panel, light by default */
+.gl-filter-menu {
+  --m-text: #14151b;
+  --m-soft: rgba(20, 21, 27, 0.78);
+  --m-faint: rgba(20, 21, 27, 0.5);
+  --m-hover: rgba(20, 21, 27, 0.05);
+  --m-active: rgba(123, 104, 238, 0.12);
+  --m-dot: #6a55e6;
+
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 40;
+  width: min(360px, 88vw);
+  max-height: min(64vh, 480px);
+  overflow-y: auto;
+  padding: 8px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 30px 70px -24px rgba(40, 38, 90, 0.35),
+    inset 0 1px 0 #ffffff;
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  transform-origin: top right;
+  opacity: 0;
+  transform: translateY(-8px) scale(0.98);
+  visibility: hidden;
+  transition: opacity 0.35s ease, transform 0.5s var(--ease),
+    visibility 0.35s;
+  scrollbar-width: thin;
+  scrollbar-color: var(--m-faint) transparent;
+}
+
+.gl-filter-menu.is-open {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+.gl-filter-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.gl-filter-menu::-webkit-scrollbar-thumb {
+  background: var(--m-faint);
+  border-radius: 999px;
+}
+
+.gl-filter-menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gl-menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 14px;
+  background: none;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  color: var(--m-soft);
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* the service name takes the free space and wraps cleanly */
+.gl-menu-item > span:first-of-type {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* a marker dot for the active service; invisible otherwise so text lines up */
+.gl-menu-item::before {
+  content: "";
+  flex: 0 0 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.gl-menu-item:hover:not(:disabled) {
+  background: var(--m-hover);
+  color: var(--m-text);
+}
+
+.gl-menu-item.is-active {
+  background: var(--m-active);
+  color: var(--m-text);
+  font-weight: 500;
+}
+
+.gl-menu-item.is-active::before {
+  background: var(--m-dot);
+  box-shadow: 0 0 10px var(--m-dot);
+}
+
+.gl-menu-item:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.gl-menu-count {
+  flex: 0 0 auto;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  color: var(--m-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.gl-menu-item.is-active .gl-menu-count {
+  color: var(--m-dot);
+}
+
+/* dark mode: the panel is dark and its text is light */
+.dark-mode .gl-filter-menu,
+.gl[data-theme="dark"] .gl-filter-menu {
+  --m-text: #f3f4f7;
+  --m-soft: rgba(243, 244, 247, 0.82);
+  --m-faint: rgba(243, 244, 247, 0.55);
+  --m-hover: rgba(255, 255, 255, 0.08);
+  --m-active: rgba(139, 123, 255, 0.2);
+  --m-dot: #a596ff;
+
+  background: linear-gradient(
+    160deg,
+    rgba(28, 30, 44, 0.98) 0%,
+    rgba(12, 13, 20, 0.99) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ------------------------------------------------------------------
+   PROGRESS (pinned layout only)
+   ------------------------------------------------------------------ */
+
+.gl-progress {
+  display: none;
+  position: relative;
+  align-self: center;
+  width: min(560px, 70vw);
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.gl-progress-fill {
+  position: absolute;
+  inset: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--violet), var(--teal));
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* ------------------------------------------------------------------
+   REEL: PINNED (wide screens, motion allowed)
+   Scroll distance is set in JS. The sticky frame holds the reel in
+   view while the track moves sideways.
+   ------------------------------------------------------------------ */
+
+@media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+  .gl-reel-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .gl-index {
+    display: block;
+  }
+
+  .gl-reel-viewport {
+    overflow: hidden;
+    scroll-snap-type: none;
+  }
+
+  .gl-progress {
+    display: block;
+  }
+}
+
+/* ------------------------------------------------------------------
+   CLOSING
+   ------------------------------------------------------------------ */
+
+.gl-close {
+  position: relative;
+  z-index: 1;
+  
+  padding: clamp(120px, 16vh, 180px) clamp(20px, 5vw, 72px);
+}
+
+.gl-close-wrap {
+  max-width: 1240px;
+  border-radius: 24px;
+  border: 1px solid #d6cfcf;
+  margin: 0 auto;
+}
+
+.gl-close-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 40px 64px;
+  padding: clamp(40px, 7vw, 96px);
+  border-radius: 24px;
+}
+
+.gl-close-panel .gl-h2 {
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+}
+
+.gl-close-side p {
+  max-width: 36ch;
+  margin-bottom: 26px;
+  font-size: 1.05rem;
+}
+
+/* scroll reveal: opacity and transform only, so the glass keeps its backdrop */
+.gl-reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 1.1s var(--ease), transform 1.2s var(--ease);
+}
+
+.gl-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------------------------
+   KEYFRAMES
+   ------------------------------------------------------------------ */
+
+@keyframes gl-word-in {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+}
+
+@keyframes gl-fade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
   to {
     opacity: 1;
     transform: none;
   }
 }
-@keyframes pf-fade-in {
+
+@keyframes gl-float-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+  }
   to {
     opacity: 1;
+    transform: none;
   }
 }
+
+@keyframes gl-card-in {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gl-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(47, 199, 119, 0.5);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 9px rgba(47, 199, 119, 0);
+  }
+}
+
+@keyframes gl-cue-run {
+  from {
+    left: -40%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/* ------------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------------ */
+
+@media (max-width: 860px) {
+  .gl-hero {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+    padding-top: 140px;
+  }
+
+  .gl-collage {
+    height: 380px;
+  }
+
+  .gl-reel-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .gl-card {
+    width: 78vw;
+    height: 380px;
+  }
+
+  .gl-close-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .gl-collage {
+    height: 320px;
+  }
+
+  .gl-filter-menu {
+    left: 0;
+    right: auto;
+  }
+
+  .gl-badge {
+    gap: 18px;
+    padding: 14px 16px;
+  }
+
+  .gl-badge-value {
+    font-size: 1.8rem;
+  }
+}
+
+/* ------------------------------------------------------------------
+   REDUCED MOTION
+   ------------------------------------------------------------------ */
+
 @media (prefers-reduced-motion: reduce) {
-  .pf-word, .pf-eyebrow {
+  .gl *,
+  .gl *::before,
+  .gl *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .gl-word {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
+  .gl-reveal {
     opacity: 1;
     transform: none;
-    animation: none;
   }
 }
