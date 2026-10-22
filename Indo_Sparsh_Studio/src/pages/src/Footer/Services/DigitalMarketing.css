@@ -18,10 +18,10 @@ body.light-mode {
   --bg-elevated: var(--color-surface);
 
   --bg-sunken: var(--color-bg-alt);
-  --ink: var(--color-text);
   --ink-soft: var(--color-text-muted);
   --ink-faint: var(--color-text-muted);
   --line: var(--color-border);
+  --ink: var(--color-text);
   --line-strong: rgba(21, 21, 28, 0.18);
   --shadow: 0 24px 60px -30px var(--color-shadow);
 }
@@ -30,10 +30,10 @@ body.dark-mode {
   --bg: var(--color-bg);
   --bg-elevated: var(--color-bg-alt);
   --bg-sunken: var(--color-surface);
-  --ink: var(--color-text);
   --ink-soft: var(--color-text-muted);
   --ink-faint: var(--color-text-muted);
   --line: var(--color-border);
+  --ink: var(--color-text);
   --line-strong: rgba(255, 255, 255, 0.18);
   --shadow: 0 24px 70px -26px var(--color-shadow);
 }

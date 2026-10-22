@@ -38,7 +38,8 @@
   --teal: #22c3b5;
   --coral: #ff8a65;
   --status: #2fc777;
-
+ --ink: var(--color-text);
+  --line-strong: rgba(21, 21, 28, 0.18);
   --orb-opacity: 0.55;
   --grain: 0.05;
 
@@ -66,7 +67,9 @@
   --btn-border: #b1a7a7;
   --btn-shadow: 20px 14px 30px -14px rgba(21, 22, 29, 0.55);
   --btn-shadow-hover: 15 20px 40px -14px rgba(21, 22, 29, 0.6);
-
+  --coral: var(--color-accent);
+  --yellow: var(--color-accent-2);
+  --blue: var(--color-primary);
   position: relative;
   min-height: 100vh;
   background: var(--bg);
@@ -75,6 +78,7 @@
   transition: background-color 0.6s ease, color 0.6s ease;
   /* clip (not hidden) so sticky elements keep working inside the page */
   overflow-x: hidden;
+  --shadow: 0 24px 60px -30px var(--color-shadow);
   overflow-x: clip;
 }
 
@@ -90,7 +94,8 @@
   --text: #f3f4f7;
   --text-soft: rgba(243, 244, 247, 0.66);
   --text-faint: rgba(243, 244, 247, 0.42);
-
+  --ink: var(--color-text);
+  --line-strong: rgba(255, 255, 255, 0.18);
   --violet: #8b7bff;
   --teal: #3ddbd9;
   --coral: #ff7a59;
@@ -124,6 +129,7 @@
     0 14px 34px -12px rgba(139, 123, 255, 0.45);
   --btn-shadow-hover: 0 0 0 1px rgba(139, 123, 255, 0.3),
     0 20px 44px -12px rgba(139, 123, 255, 0.6);
+     --shadow: 0 24px 70px -26px var(--color-shadow);
 }
 
 /* ------------------------------------------------------------------
@@ -360,13 +366,12 @@
 .gl-btn--solid {
   background: var(--btn-bg);
   color: var(--btn-text);
-  border-color: var(--btn-border);
-  box-shadow: var(--btn-shadow);
+  border: 2px solid var(--btn-border);
+  /* border-color: var(--btn-border); */
+  /* box-shadow: var(--btn-shadow); */
 }
 
-.gl-btn--solid:hover {
-  box-shadow: var(--btn-shadow-hover);
-}
+
 
 /* secondary: glass, with no fill so the border reads clearly */
 .gl-btn.gl-glass {
@@ -1272,3 +1277,25 @@
     transform: none;
   }
 }
+
+
+.gl-btn-solid {
+  background: linear-gradient(160deg, var(--blue), var(--coral));
+  color: #fff;
+}
+.gl-btn-solid:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px var(--shadow);
+}
+
+/* .gl-btn--solid-light {
+  background: transparent;
+  color: inherit;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.gl-btn--solid {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line-strong);
+} */
