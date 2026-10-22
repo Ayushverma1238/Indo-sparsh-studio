@@ -143,7 +143,7 @@ export const pricingPlans = [
       "10 Reels + 20 graphic posts",
       "AI-assisted video creation",
       "Competitor analysis",
-      "Advanced audience targeting",
+      "Advenced audience targeting",
       "Audience research",
     ],
     button: "Choose Pro",

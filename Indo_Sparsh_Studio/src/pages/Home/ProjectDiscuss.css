@@ -1,5 +1,25 @@
 /* ================= PROJECTS WE DISCUSS ================= */
+:root{
+   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
 
+body.light-mode {
+  --btn-bg: #fff;
+  --btn-text: #141414;
+  --btn-border: #b1a7a7;
+  --btn-shadow: 0 14px 30px -14px rgba(21, 22, 29, 0.55);
+  --btn-shadow-hover: 0 20px 40px -14px rgba(21, 22, 29, 0.6);
+}
+
+body.dark-mode{
+  --btn-bg: linear-gradient(135deg, #1d1f2e 0%, #11121a 100%);
+  --btn-text: #f3f4f7;
+  --btn-border: rgba(139, 123, 255, 0.5);
+  --btn-shadow: 0 0 0 1px rgba(139, 123, 255, 0.12),
+    0 14px 34px -12px rgba(139, 123, 255, 0.45);
+  --btn-shadow-hover: 0 0 0 1px rgba(139, 123, 255, 0.3),
+    0 20px 44px -12px rgba(139, 123, 255, 0.6);
+}
 .projects-discuss {
   padding: 120px 8% 120px;
   background: radial-gradient(circle at top, #020617, #000014);
@@ -115,12 +135,12 @@
   text-align: center;
   /* background: rgba(2, 6, 23, 0.9); */
   background: linear-gradient(145deg, rgb(2, 2, 78), rgb(1, 5, 19));
-  border: 1px solid rgba(34, 211, 238, 0.35);
+  border: 1px solid rgba(204, 210, 211, 0.88);
   border-radius: 28px;
   padding: 60px 40px;
-  box-shadow:
+  /* box-shadow:
     0 0 40px rgba(34, 211, 238, 0.3),
-    0 0 120px rgba(168, 85, 247, 0.2);
+    0 0 120px rgba(168, 85, 247, 0.2); */
 }
 
 .pd-cta h2 {
@@ -134,7 +154,7 @@
   margin-bottom: 26px;
 }
 
-.pd-cta a {
+/* .pd-cta a {
   display: inline-block;
   padding: 14px 40px;
   border-radius: 40px;
@@ -150,7 +170,7 @@
 .pd-cta a:hover {
   transform: scale(1.12);
   box-shadow: 0 0 35px #22d3ee;
-}
+} */
 
 /* Animations */
 @keyframes fadeUp {
@@ -187,4 +207,32 @@
   .pd-cta {
     padding: 45px 24px;
   }
+}
+
+
+.gl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 26px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s ease;
+}
+
+.gl-btn:hover {
+  transform: scale(0.9);
+}
+
+/* primary: white in light mode, deep dark fill with violet edge in dark mode */
+.gl-btn--solid {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border-color: var(--btn-border);
+  /* box-shadow: var(--btn-shadow); */
 }

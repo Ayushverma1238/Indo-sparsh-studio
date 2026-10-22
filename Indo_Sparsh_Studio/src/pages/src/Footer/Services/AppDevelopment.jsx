@@ -155,7 +155,7 @@ const PACKAGES = [
     list: [
       "Custom backend & database",
       "Third-party API integrations (CRM, WhatsApp, maps & more)",
-      "Advanced features - chat, live tracking, subscriptions, analytics",
+      "Advenced features - chat, live tracking, subscriptions, analytics",
       "Performance & security audit",
       "Priority development queue",
       "3 rounds of revisions",

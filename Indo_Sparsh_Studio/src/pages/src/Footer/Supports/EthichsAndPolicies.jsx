@@ -115,7 +115,7 @@ const policyData = [
       "What happens if a project is paused, cancelled, or needs to change scope.",
     items: [
       {
-        h: "Advance payments",
+        h: "Advence payments",
         p: "The initial advance secures your project slot and covers early planning and design work, so it is generally non-refundable once work has started.",
       },
       {

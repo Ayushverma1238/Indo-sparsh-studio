@@ -39,7 +39,7 @@ const RecentProjects = () => {
                 link: "https://ibspl.com/",
               },
               {
-                title: "Co-Branding & Advartising Rights",
+                title: "Co-Branding & Advertising Rights",
                 date: "March 2026",
                 tag: "Presentation",
                 image:
@@ -71,7 +71,7 @@ const RecentProjects = () => {
                   link: "https://ibspl.com/",
                 },
                 {
-                  title: "Co-Branding & Advartising Rights",
+                  title: "Co-Branding & Advertising Rights",
                   date: "March 2026",
                   tag: "Presentation",
                   image:

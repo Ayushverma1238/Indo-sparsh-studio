@@ -10,6 +10,12 @@
    mode every surface is dark: the background, glass panels, cards,
    filter menu, and buttons. Light mode is the reverse. All colours
    live in the two token blocks below.
+
+   LAYOUT
+   - Wide screens (861px and up): the project reel is pinned and moves
+     sideways as you scroll. The cards and heading are centred.
+   - Tablets and phones (860px and below): the reel is a swipeable row.
+     The bottom call-to-action is centred.
    ================================================================== */
 
 /* ------------------------------------------------------------------
@@ -18,6 +24,10 @@
 
 .gl {
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* one card width, shared by the cards and the track padding that
+     centres them. Narrower on short screens and on phones (see below). */
+  --card-width: min(clamp(300px, 34vw, 520px), calc(60vh * 1.5));
 
   --bg: #f2f1f7;
   --text: #14151b;
@@ -44,6 +54,12 @@
   --card-bg: #e3e2ec;
   --hover-tint: rgba(20, 21, 27, 0.06);
   --active-tint: rgba(20, 21, 27, 0.1);
+
+  /* card title panel */
+  --panel-bg: rgba(255, 255, 255, 0.9);
+  --panel-title: #14151b;
+  --panel-date: #5b4fd6;
+  --panel-dot: #6a55e6;
 
   --btn-bg: #fff;
   --btn-text: #141414;
@@ -83,7 +99,6 @@
   --orb-opacity: 0.42;
   --grain: 0.08;
 
-  
   --glass-solid: rgba(24, 26, 36, 0.94);
   --glass-border: rgba(255, 255, 255, 0.14);
   --glass-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.7);
@@ -94,6 +109,12 @@
   --card-bg: #14151d;
   --hover-tint: rgba(255, 255, 255, 0.08);
   --active-tint: rgba(255, 255, 255, 0.14);
+
+  /* card title panel */
+  --panel-bg: rgba(12, 13, 20, 0.82);
+  --panel-title: #f3f4f7;
+  --panel-date: #b3a8ff;
+  --panel-dot: #a596ff;
 
   /* dark button: deep fill, thin violet edge, soft violet glow */
   --btn-bg: linear-gradient(135deg, #1d1f2e 0%, #11121a 100%);
@@ -161,7 +182,7 @@
   background: linear-gradient(140deg, var(--glass-top), var(--glass-bottom));
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), var(--glass-inner);
-  -webkit-backdrop-filter: blur(22px) saturate(165%);
+  -webkit-backdrop-filter: blur(40px) saturate(165%);
   backdrop-filter: blur(40px) saturate(165%);
 }
 
@@ -328,33 +349,27 @@
   font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
-  /* transition: transform 0.4s var(--ease), box-shadow 0.4s ease; */
-}
-
-.gl-btn-solid {
-  background: linear-gradient(160deg, var(--blue), var(--coral));
-  color: #fff;
-}
-.gl-btn-solid:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 28px var(--bc-shadow);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s ease;
 }
 
 .gl-btn:hover {
   transform: translateY(-2px);
 }
 
-/* primary: ink in light mode, deep dark fill with violet edge in dark mode */
+/* primary: white in light mode, deep dark fill with violet edge in dark mode */
 .gl-btn--solid {
   background: var(--btn-bg);
   color: var(--btn-text);
   border-color: var(--btn-border);
-  /* box-shadow: var(--btn-shadow); */
+  box-shadow: var(--btn-shadow);
 }
 
+.gl-btn--solid:hover {
+  box-shadow: var(--btn-shadow-hover);
+}
 
-/* secondary: glass */
-.gl-btn .gl-glass {
+/* secondary: glass, with no fill so the border reads clearly */
+.gl-btn.gl-glass {
   color: var(--text);
   background: transparent;
   border-color: var(--glass-border);
@@ -490,6 +505,9 @@
 
 /* ------------------------------------------------------------------
    REEL: base layout (small screens, reduced motion)
+   The heading, counter and filter are centred. The track has padding
+   on each side equal to half the screen minus half a card, so the
+   first and last cards sit in the middle.
    ------------------------------------------------------------------ */
 
 .gl-reel {
@@ -509,10 +527,10 @@
   position: relative;
   z-index: 30; /* keeps the filter menu above the cards */
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
   padding: 0 clamp(20px, 5vw, 72px);
 }
 
@@ -537,6 +555,7 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .gl-reel-viewport::-webkit-scrollbar {
@@ -548,27 +567,30 @@
   align-items: center;
   gap: clamp(18px, 2.2vw, 28px);
   width: max-content;
-  padding: 24px clamp(20px, 5vw, 72px) 32px;
+  padding: 24px calc(50% - var(--card-width) / 2) 32px;
   will-change: transform;
 }
 
 .gl-slot {
   flex: 0 0 auto;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   animation: gl-card-in 0.9s var(--ease) backwards;
   animation-delay: min(calc(var(--i, 0) * 70ms), 560ms);
 }
 
 /* ------------------------------------------------------------------
    CARD
+   A landscape rectangle. The width comes from --card-width, and the
+   height follows the aspect ratio. To change the shape, edit
+   `aspect-ratio` only.
    ------------------------------------------------------------------ */
 
 .gl-card {
   position: relative;
   display: block;
-  width: clamp(260px, 28vw, 420px);
-  height: clamp(340px, 60vh, 540px);
-  border-radius: 30px;
+  width: var(--card-width);
+  aspect-ratio: 3 / 2;
+  border-radius: 22px;
   overflow: hidden;
   background: var(--card-bg);
   transition: transform 0.6s var(--ease), box-shadow 0.6s ease;
@@ -609,11 +631,12 @@
   transform: scale(1.06);
 }
 
-/* service chip, top left, sits over the image */
+/* service chip, centred at the top of the card */
 .gl-card-chip {
   position: absolute;
   top: 14px;
-  left: 14px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1;
   max-width: calc(100% - 28px);
   padding: 7px 12px;
@@ -625,29 +648,64 @@
   text-overflow: ellipsis;
 }
 
-/* the glass title panel, bottom */
+/* the title panel, bottom.
+   - min-height keeps it proportional to the card; it grows for two-line titles
+   - the title and date are stacked and centred in the panel
+   - a solid background keeps the text readable over any screenshot */
 .gl-card-panel {
   position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 14px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
   z-index: 1;
-  padding: 18px 20px;
-  border-radius: 22px;
+  min-height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 16px 20px;
+  border-radius: 18px;
+  background: var(--panel-bg);
+  box-shadow: 0 18px 36px -20px rgba(0, 0, 0, 0.45);
 }
 
+/* the project title: bold, sized to the screen, two lines at most */
 .gl-card-title {
-  font-size: clamp(1.25rem, 2vw, 1.6rem);
-  letter-spacing: -0.02em;
+  font-size: clamp(1.05rem, 1.6vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
   line-height: 1.2;
-  color: #000216 !important;
+  color: var(--panel-title);
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
+/* the date: a small centred label with a coloured dot */
 .gl-card-date {
-  display: block;
-  margin-top: 8px;
-  font-size: 0.78rem;
-  color: #080831;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--panel-date);
+  font-variant-numeric: tabular-nums;
+}
+
+.gl-card-date::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--panel-dot);
+  box-shadow: 0 0 8px var(--panel-dot);
 }
 
 /* light sheen that follows the pointer across the card */
@@ -917,21 +975,40 @@
   }
 }
 
+/* shorter screens, including a laptop with the browser toolbar showing:
+   smaller cards and a smaller title so the card, heading and progress
+   bar all fit */
+@media (min-width: 861px) and (max-height: 700px) and (prefers-reduced-motion: no-preference) {
+  .gl {
+    --card-width: min(clamp(300px, 34vw, 520px), calc(36vh * 1.5));
+  }
+
+  .gl-card-panel {
+    padding: 12px 16px;
+    gap: 4px;
+  }
+
+  .gl-card-title {
+    font-size: clamp(0.95rem, 2.2vh, 1.2rem);
+  }
+}
+
 /* ------------------------------------------------------------------
-   CLOSING
+   CLOSING CALL-TO-ACTION
+   Wide screens: heading on the left, text and button on the right.
+   Small screens: one column, everything centred (see RESPONSIVE).
    ------------------------------------------------------------------ */
 
 .gl-close {
   position: relative;
   z-index: 1;
-  
   padding: clamp(120px, 16vh, 180px) clamp(20px, 5vw, 72px);
 }
 
 .gl-close-wrap {
   max-width: 1240px;
   border-radius: 24px;
-  border: 1px solid #d6cfcf;
+  border: 1px solid var(--wrap-border, #d6cfcf);
   margin: 0 auto;
 }
 
@@ -1032,9 +1109,21 @@
 
 /* ------------------------------------------------------------------
    RESPONSIVE
+   Tablets and phones: the reel is a swipeable row, and the bottom
+   call-to-action is centred. Phones use 4:3 cards.
    ------------------------------------------------------------------ */
 
+@media (max-width: 1100px) {
+  .gl-hero {
+    gap: 40px;
+  }
+}
+
 @media (max-width: 860px) {
+  .gl {
+    --card-width: min(78vw, 560px);
+  }
+
   .gl-hero {
     grid-template-columns: minmax(0, 1fr);
     min-height: auto;
@@ -1045,30 +1134,91 @@
     height: 380px;
   }
 
-  .gl-reel-head {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-
   .gl-card {
-    width: 78vw;
-    height: 380px;
+    aspect-ratio: 4 / 3;
   }
 
+  .gl-card-panel {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 14px 16px;
+  }
+
+  .gl-card-title {
+    font-size: clamp(1rem, 2.8vw, 1.25rem);
+  }
+
+  /* bottom call-to-action: one column, centred */
   .gl-close-panel {
     grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    gap: 28px;
+  }
+
+  .gl-close-panel .gl-h2 {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .gl-close-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gl-close-side p {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 @media (max-width: 560px) {
+  .gl {
+    --card-width: 84vw;
+  }
+
+  .gl-title {
+    font-size: clamp(2.6rem, 13vw, 4rem);
+  }
+
   .gl-collage {
     height: 320px;
   }
 
+  .gl-card {
+    aspect-ratio: 4 / 3;
+  }
+
+  .gl-card-chip {
+    font-size: 0.66rem;
+  }
+
+  .gl-card-panel {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    gap: 4px;
+  }
+
+  .gl-card-title {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+
+  .gl-card-date {
+    font-size: 0.66rem;
+  }
+
+  /* filter menu opens centred under its button */
   .gl-filter-menu {
-    left: 0;
+    left: 50%;
     right: auto;
+    margin-left: calc(min(360px, 88vw) / -2);
+    transform-origin: top center;
   }
 
   .gl-badge {
@@ -1078,6 +1228,24 @@
 
   .gl-badge-value {
     font-size: 1.8rem;
+  }
+
+  /* bottom call-to-action: tighter spacing on phones */
+  .gl-close {
+    padding: 80px 20px;
+  }
+
+  .gl-close-panel {
+    padding: 28px 22px;
+    border-radius: 22px;
+  }
+
+  .gl-close-panel .gl-h2 {
+    font-size: clamp(1.9rem, 9vw, 2.4rem);
+  }
+
+  .gl-close-side p {
+    font-size: 0.98rem;
   }
 }
 
