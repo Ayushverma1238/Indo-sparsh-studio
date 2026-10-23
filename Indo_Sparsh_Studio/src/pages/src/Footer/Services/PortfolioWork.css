@@ -1,13 +1,20 @@
 @import "./_theme.css";
 
 /* ==================================================================
-   MERGED PORTFOLIO
+   MERGED PORTFOLIO: RESPONSIVE
    - Hero: headline, status chip, parallax image collage and stats badge
    - Deck: a left column with the heading, copy, filter and button, and
      project cards on the right that tilt into a stack as you scroll
    - Bottom call to action
 
    All surfaces are solid. There is no glass effect.
+
+   SIZING
+   Everything scales with the screen. Widths use the page width token
+   (--page-max) and the side padding (--pad-x). Type, cards and the
+   collage use viewport units with upper limits, so large screens fill
+   out and nothing becomes oversized. To change how wide the page can
+   grow, edit --page-max.
 
    THEME
    Light is the default. Dark applies when the site's dark-mode class is
@@ -29,6 +36,10 @@
   /* height of the fixed site header (announcement bar and nav).
      The pinned deck starts below it. Change this if your header is taller. */
   --nav-h: 196px;
+
+  /* widest the content can grow, and the side padding that scales with it */
+  --page-max: 1840px;
+  --pad-x: clamp(20px, 4.5vw, 120px);
 
   --bg: #f5f5fa;
   --surface: #ffffff;
@@ -145,14 +156,13 @@
   isolation: isolate;
   overflow: hidden;
   min-height: 100vh;
-  max-width: 1400px;
+  max-width: var(--page-max);
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   align-items: center;
-  gap: clamp(40px, 5vw, 80px);
-  padding: clamp(120px, 14vh, 160px) clamp(20px, 5vw, 72px)
-    clamp(72px, 10vh, 120px);
+  gap: clamp(40px, 5vw, 140px);
+  padding: clamp(120px, 14vh, 180px) var(--pad-x) clamp(72px, 10vh, 140px);
 }
 
 /* a soft accent glow behind the hero */
@@ -164,8 +174,8 @@
   z-index: -1;
   width: 60vw;
   height: 60vw;
-  max-width: 760px;
-  max-height: 760px;
+  max-width: 1000px;
+  max-height: 1000px;
   border-radius: 50%;
   background: radial-gradient(circle, var(--accent) 0%, transparent 65%);
   opacity: 0.12;
@@ -177,6 +187,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  min-width: 0;
 }
 
 /* status chip above the headline */
@@ -184,12 +195,12 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 30px;
+  margin-bottom: clamp(30px, 2.4vw, 44px);
   padding: 8px 16px 8px 12px;
   border-radius: 999px;
   border: 1px solid var(--line);
   background: var(--surface);
-  font-size: 0.8rem;
+  font-size: clamp(0.8rem, 0.85vw, 1rem);
   color: var(--text);
   animation: pf-fade 0.9s var(--ease) backwards;
 }
@@ -203,7 +214,7 @@
 }
 
 .pf-hero-title {
-  font-size: clamp(3.4rem, 8.6vw, 7.8rem);
+  font-size: clamp(3.4rem, 8.6vw, 10.5rem);
   font-weight: 700;
   line-height: 0.94;
   letter-spacing: -0.045em;
@@ -227,9 +238,9 @@
 }
 
 .pf-hero-lead {
-  margin-top: 32px;
-  max-width: 34ch;
-  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  margin-top: clamp(32px, 2.6vw, 48px);
+  max-width: 36ch;
+  font-size: clamp(1.05rem, 1.5vw, 1.6rem);
   color: var(--text-soft);
   animation: pf-fade 1s var(--ease) 0.6s backwards;
 }
@@ -238,8 +249,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 14px;
-  margin-top: 40px;
+  gap: clamp(14px, 1.1vw, 22px);
+  margin-top: clamp(40px, 3vw, 60px);
   animation: pf-fade 1s var(--ease) 0.75s backwards;
 }
 
@@ -247,15 +258,15 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-top: 56px;
-  font-size: 0.8rem;
+  margin-top: clamp(56px, 4.5vw, 90px);
+  font-size: clamp(0.8rem, 0.85vw, 1rem);
   color: var(--text-faint);
   animation: pf-fade 1s var(--ease) 1s backwards;
 }
 
 .pf-cue-line {
   position: relative;
-  width: 56px;
+  width: clamp(56px, 4vw, 90px);
   height: 1px;
   overflow: hidden;
   background: var(--text-faint);
@@ -281,7 +292,8 @@
 
 .pf-collage {
   position: relative;
-  height: clamp(380px, 50vw, 600px);
+  height: clamp(380px, min(52vw, 84vh), 900px);
+  min-width: 0;
 }
 
 .pf-float {
@@ -318,8 +330,8 @@
 .pf-float-frame {
   position: absolute;
   inset: 0;
-  padding: 10px;
-  border-radius: 26px;
+  padding: clamp(10px, 0.7vw, 14px);
+  border-radius: clamp(26px, 1.6vw, 34px);
   border: 1px solid var(--card-border);
   background: var(--card-bg);
   box-shadow: var(--card-shadow);
@@ -343,14 +355,14 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 18px;
+  border-radius: clamp(18px, 1.2vw, 24px);
 }
 
 .pf-badge {
   display: flex;
-  gap: 28px;
-  padding: 18px 24px;
-  border-radius: 22px;
+  gap: clamp(28px, 2.4vw, 44px);
+  padding: clamp(18px, 1.6vw, 30px) clamp(24px, 2vw, 36px);
+  border-radius: clamp(22px, 1.4vw, 30px);
   border: 1px solid var(--card-border);
   background: var(--surface);
   box-shadow: var(--card-shadow);
@@ -365,7 +377,7 @@
 
 .pf-badge-value {
   font-family: var(--font-display, inherit);
-  font-size: 2.4rem;
+  font-size: clamp(2.4rem, 3vw, 4.2rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -374,7 +386,7 @@
 }
 
 .pf-badge-label {
-  font-size: 0.78rem;
+  font-size: clamp(0.78rem, 0.9vw, 1.05rem);
   color: var(--text-soft);
 }
 
@@ -392,12 +404,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 28px;
+  padding: clamp(15px, 1.1vw, 20px) clamp(28px, 2.2vw, 42px);
   border: 0;
   border-radius: 12px;
   background: var(--btn-bg);
   font-family: var(--font-display, inherit);
-  font-size: 0.95rem;
+  font-size: clamp(0.95rem, 1vw, 1.15rem);
   font-weight: 600;
   letter-spacing: 0.01em;
   white-space: nowrap;
@@ -444,9 +456,9 @@
   display: flex;
   flex-direction: column;
   gap: 56px;
-  max-width: 1400px;
+  max-width: var(--page-max);
   margin: 0 auto;
-  padding: 140px clamp(20px, 5vw, 72px) 72px;
+  padding: 140px var(--pad-x) 72px;
 }
 
 /* wide screens with motion: pinned, two columns */
@@ -455,10 +467,10 @@
   top: 0;
   height: 100vh;
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   align-items: center;
-  gap: clamp(32px, 5vw, 96px);
-  padding: calc(var(--nav-h) + 12px) clamp(24px, 5vw, 80px) 32px;
+  gap: clamp(40px, 5vw, 160px);
+  padding: calc(var(--nav-h) + 12px) var(--pad-x) 32px;
   overflow: hidden;
 }
 
@@ -470,8 +482,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 22px;
-  max-width: 540px;
+  gap: clamp(22px, 1.6vw, 34px);
+  max-width: clamp(540px, 36vw, 820px);
+  min-width: 0;
 }
 
 /* each piece fades in on load, one after another */
@@ -496,7 +509,7 @@
 }
 
 .pf-title {
-  font-size: clamp(2.6rem, 5.2vw, 4.6rem);
+  font-size: clamp(2.6rem, 5.4vw, 7.2rem);
   font-weight: 700;
   line-height: 1.04;
   letter-spacing: -0.035em;
@@ -508,8 +521,8 @@
 }
 
 .pf-lead {
-  max-width: 40ch;
-  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  max-width: 44ch;
+  font-size: clamp(1rem, 1.3vw, 1.5rem);
   line-height: 1.6;
   color: var(--text-soft);
 }
@@ -527,9 +540,10 @@
 .pf-select {
   appearance: none;
   -webkit-appearance: none;
-  min-width: 260px;
+  min-width: clamp(260px, 22vw, 380px);
   max-width: 100%;
-  padding: 13px 44px 13px 16px;
+  padding: clamp(13px, 1vw, 18px) clamp(44px, 3vw, 56px) clamp(13px, 1vw, 18px)
+    clamp(16px, 1.2vw, 22px);
   border: 1px solid var(--field-border);
   border-radius: 12px;
   background-color: var(--field-bg);
@@ -539,7 +553,7 @@
   background-size: 6px 6px, 6px 6px;
   background-repeat: no-repeat;
   color: var(--text);
-  font-size: 0.95rem;
+  font-size: clamp(0.95rem, 0.95vw, 1.15rem);
   cursor: pointer;
 }
 
@@ -554,7 +568,7 @@
 }
 
 .pf-count {
-  font-size: 0.85rem;
+  font-size: clamp(0.85rem, 0.9vw, 1.05rem);
   color: var(--text-faint);
 }
 
@@ -564,11 +578,12 @@
 
 .pf-stage {
   position: relative;
+  min-width: 0;
 }
 
-/* pinned: a fixed-height stage, so the cards have room to stack */
+/* pinned: a tall stage, so the cards have room to stack */
 .pf-frame.is-pinned .pf-stage {
-  height: min(68vh, 640px);
+  height: min(76vh, 1000px);
 }
 
 /* small screens: the cards form a column */
@@ -583,13 +598,15 @@
    DECK: CARD
    Solid. The entry tilt and the stacking are set by the script in
    pinned mode, and by the classes below otherwise.
+   The width grows with the screen, and is also limited by the screen
+   height, so a card never becomes taller than the viewport allows.
    ------------------------------------------------------------------ */
 
 .pf-card {
   display: block;
-  width: min(88vw, 500px);
-  padding: 12px;
-  border-radius: 22px;
+  width: min(88vw, 560px);
+  padding: clamp(12px, 0.8vw, 18px);
+  border-radius: clamp(22px, 1.4vw, 30px);
   border: 1px solid var(--card-border);
   background: var(--card-bg);
   box-shadow: var(--card-shadow);
@@ -601,14 +618,14 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: clamp(280px, 34vw, 500px);
+  width: clamp(280px, min(34vw, 60vh), 760px);
   will-change: transform, opacity;
 }
 
 .pf-card-media {
   position: relative;
-  height: clamp(150px, 24vh, 220px);
-  border-radius: 14px;
+  height: clamp(150px, 26vh, 380px);
+  border-radius: clamp(14px, 0.9vw, 20px);
   overflow: hidden;
   background: var(--media-bg);
 }
@@ -628,22 +645,22 @@
 .pf-card-body {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 18px 10px 10px;
+  gap: clamp(10px, 0.8vw, 16px);
+  padding: clamp(18px, 1.2vw, 28px) clamp(10px, 0.8vw, 16px) clamp(10px, 0.8vw, 16px);
 }
 
 .pf .pf-card-meta {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  font-size: 0.76rem;
+  font-size: clamp(0.76rem, 0.8vw, 1rem);
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--card-accent);
 }
 
 .pf .pf-card-title {
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-size: clamp(1.2rem, 1.9vw, 2.3rem);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -675,12 +692,12 @@
 
 .pf-cta {
   position: relative;
-  padding: clamp(120px, 16vh, 180px) clamp(20px, 5vw, 72px);
+  padding: clamp(120px, 16vh, 200px) var(--pad-x);
   border-top: 1px solid var(--line);
 }
 
 .pf-cta-wrap {
-  max-width: 1240px;
+  max-width: var(--page-max);
   margin: 0 auto;
 }
 
@@ -688,16 +705,16 @@
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   align-items: end;
-  gap: 40px 64px;
-  padding: clamp(40px, 7vw, 96px);
-  border-radius: 28px;
+  gap: clamp(40px, 4vw, 96px);
+  padding: clamp(40px, 6vw, 150px);
+  border-radius: clamp(28px, 2vw, 40px);
   border: 1px solid var(--card-border);
   background: var(--surface);
   box-shadow: var(--card-shadow);
 }
 
 .pf-cta-title {
-  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  font-size: clamp(2.4rem, 5.2vw, 6.5rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.05;
@@ -711,9 +728,9 @@
 }
 
 .pf-cta-side p {
-  max-width: 36ch;
-  margin-bottom: 26px;
-  font-size: 1.05rem;
+  max-width: 40ch;
+  margin-bottom: clamp(26px, 2vw, 40px);
+  font-size: clamp(1.05rem, 1.2vw, 1.35rem);
   color: var(--text-soft);
 }
 
@@ -784,6 +801,8 @@
 
 /* ------------------------------------------------------------------
    RESPONSIVE
+   Large screens are covered by the fluid sizes above. The breakpoints
+   below handle tablets and phones.
    ------------------------------------------------------------------ */
 
 @media (max-width: 1100px) {
@@ -807,6 +826,10 @@
   /* deck */
   .pf-frame {
     padding-top: 140px;
+  }
+
+  .pf-intro {
+    max-width: 100%;
   }
 
   .pf-select {
@@ -847,6 +870,10 @@
 }
 
 @media (max-width: 560px) {
+  .pf {
+    --pad-x: 20px;
+  }
+
   .pf-hero-title {
     font-size: clamp(2.6rem, 13vw, 4rem);
   }
@@ -875,8 +902,6 @@
   /* deck */
   .pf-frame {
     gap: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
   }
 
   .pf-card-media,
