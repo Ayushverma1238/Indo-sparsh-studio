@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import "./PortfolioWork.css";
 import ScrollBeam from "../../../ScrollBeam";
 import SEO from "../../../../utils/seo";
@@ -16,9 +10,27 @@ import SEO from "../../../../utils/seo";
 const ALL = "All work";
 const CONTACT_HREF = "/contact"; // point this at your real contact route
 
-/* The reel pins and moves sideways only on wide screens when motion is allowed. */
-const PIN_QUERY =
+/* The deck: how far the page scrolls between one card and the next, and
+   how long each card takes to arrive. Both are percentages of the
+   viewport height, so the animation scales with the screen. */
+const STEP_VH = 40;
+const ENTRY_VH = 60;
+
+/* Each card starts tilted by 30 to 60 degrees and settles into a small
+   tilt, so the cards read as a stack. Change the values to taste. */
+const ROT_IN = [-42, 36, -58, 46, -34, 60];
+const SETTLE = [-6, 4, -3, 6, -4.5, 3];
+
+/* The pinned deck runs only on wide screens, and only when motion is
+   allowed. Everywhere else the cards stack in a list and tilt into place
+   as they come into view. */
+const DESK_QUERY =
   "(min-width: 861px) and (prefers-reduced-motion: no-preference)";
+
+/* Hero parallax: how far each frame drifts against the scroll. Positive
+   reads as further away (slower), negative as closer (faster). */
+const HERO_DEPTHS = [0.12, -0.08, 0.2];
+const BADGE_DEPTH = -0.1;
 
 /* Every service the studio offers. A project's `service` must match one of these exactly. */
 const SERVICES = [
@@ -217,7 +229,7 @@ const WORK = [
 ];
 
 /* ------------------------------------------------------------------
-   DERIVED DATA
+   DERIVED DATA AND HELPERS
    ------------------------------------------------------------------ */
 
 const SERVICE_COUNTS = WORK.reduce((map, w) => {
@@ -232,17 +244,10 @@ const HERO_PICKS = ["Hola 9", "Foundry Roasters", "Ledgerly"]
   .map(byTitle)
   .filter(Boolean);
 
-/* How far each hero element drifts against the scroll. Positive reads as
-   further away (slower), negative as closer (faster). */
-const HERO_DEPTHS = [0.12, -0.08, 0.2];
-const BADGE_DEPTH = -0.1;
-
-/* ------------------------------------------------------------------
-   HELPERS
-   ------------------------------------------------------------------ */
-
 const cx = (...parts) => parts.filter(Boolean).join(" ");
-const pad = (n) => String(n).padStart(2, "0");
+const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+const easeOut = (t) => 1 - Math.pow(1 - t, 3);
 
 /* Flips to true once the element is on screen (runs once). */
 function useInView(threshold = 0.2) {
@@ -276,108 +281,31 @@ function useInView(threshold = 0.2) {
    PIECES
    ------------------------------------------------------------------ */
 
+/* Fades and rises into view the first time it appears. */
 function Reveal({ className = "", children }) {
   const [ref, inView] = useInView(0.2);
   return (
-    <div ref={ref} className={cx("gl-reveal", inView && "is-in", className)}>
+    <div ref={ref} className={cx("pf-reveal", inView && "is-in", className)}>
       {children}
     </div>
   );
 }
 
-function FilterMenu({ value, onChange }) {
-  const [open, setOpen] = useState(false);
-  const wrapRef = useRef(null);
-
-  /* close on outside press or Escape */
-  useEffect(() => {
-    if (!open) return undefined;
-    const onPointer = (e) => {
-      if (!wrapRef.current?.contains(e.target)) setOpen(false);
-    };
-    const onKey = (e) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    document.addEventListener("pointerdown", onPointer);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("pointerdown", onPointer);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
-
-  const choose = (name) => {
-    setOpen(false);
-    onChange(name);
-  };
-
-  return (
-    <div className="gl-filter" ref={wrapRef}>
-      <button
-        type="button"
-        className="gl-glass gl-filter-btn"
-        aria-expanded={open}
-        aria-controls="gl-filter-menu"
-        onClick={() => setOpen((o) => !o)}
-      >
-        <span className="gl-filter-label">Filter</span>
-        <span className="gl-filter-value">{value}</span>
-        <span className={cx("gl-caret", open && "is-open")} aria-hidden="true" />
-      </button>
-
-      <div
-        id="gl-filter-menu"
-        className={cx("gl-glass gl-filter-menu", open && "is-open")}
-      >
-        <ul>
-          {[ALL, ...SERVICES].map((name) => {
-            const count = name === ALL ? WORK.length : SERVICE_COUNTS[name] || 0;
-            const active = value === name;
-            return (
-              <li key={name}>
-                <button
-                  type="button"
-                  className={cx("gl-menu-item", active && "is-active")}
-                  aria-pressed={active}
-                  disabled={count === 0}
-                  onClick={() => choose(name)}
-                >
-                  <span>{name}</span>
-                  <span className="gl-menu-count">{count}</span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
-function ReelCard({ project }) {
+function ProjectCard({ project, index }) {
   const { title, date, service, image, link } = project;
-
-  /* feeds the light sheen that follows the pointer across the card */
-  const onPointerMove = (e) => {
-    const el = e.currentTarget;
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
-  };
+  const rotIn = ROT_IN[index % ROT_IN.length];
+  const settle = SETTLE[index % SETTLE.length];
 
   return (
     <a
-      className="gl-card"
+      className="pf-card"
       href={link}
       target="_blank"
       rel="noopener noreferrer"
+      style={{ "--rot-in": `${rotIn}deg`, "--settle": `${settle}deg` }}
       aria-label={`${title}, ${service}, ${date}, opens in a new tab`}
-      onPointerMove={onPointerMove}
     >
-      <div className="gl-card-media">
-        <span className="gl-card-initial" aria-hidden="true">
-          {title.charAt(0)}
-        </span>
+      <div className="pf-card-media">
         <img
           src={image}
           alt=""
@@ -388,12 +316,12 @@ function ReelCard({ project }) {
           }}
         />
       </div>
-
-      <span className="gl-card-chip gl-glass">{service}</span>
-
-      <div className="gl-card-panel gl-glass">
-        <h3 className="gl-card-title">{title}</h3>
-        <span className="gl-card-date">{date}</span>
+      <div className="pf-card-body">
+        <div className="pf-card-meta">
+          <span>{service}</span>
+          <span>{date}</span>
+        </div>
+        <h3 className="pf-card-title">{title}</h3>
       </div>
     </a>
   );
@@ -403,85 +331,127 @@ function ReelCard({ project }) {
    PAGE
    ------------------------------------------------------------------ */
 
-export default function PortfolioGlassThemed() {
-  const rootRef = useRef(null);
-  const secRef = useRef(null); // tall section that sets the scroll distance
-  const stickyRef = useRef(null); // pinned frame
-  const viewportRef = useRef(null); // clips the track
-  const trackRef = useRef(null); // moves sideways
-  const barRef = useRef(null); // progress fill
-
+export default function PortfolioMerged() {
   const [activeService, setActiveService] = useState(ALL);
-  const [current, setCurrent] = useState(1);
+  const heroRef = useRef(null); // hero section, for its parallax layers
+  const secRef = useRef(null); // tall section that sets the deck's scroll distance
+  const frameRef = useRef(null); // the sticky frame of the deck
+  const stageRef = useRef(null); // holds the deck's cards
+
+  const isAll = activeService === ALL;
 
   const visible = useMemo(
-    () =>
-      activeService === ALL
-        ? WORK
-        : WORK.filter((w) => w.service === activeService),
-    [activeService]
+    () => (isAll ? WORK : WORK.filter((w) => w.service === activeService)),
+    [activeService, isAll]
   );
-  const total = visible.length;
 
-  /* Scroll-linked motion: parallax depth layers, plus the pinned reel. */
-  useLayoutEffect(() => {
-    const root = rootRef.current;
-    const sec = secRef.current;
-    const viewport = viewportRef.current;
-    const track = trackRef.current;
-    const bar = barRef.current;
-    if (!root || !sec || !viewport || !track) return undefined;
+  /* Hero parallax: the collage frames and the badge drift at different
+     speeds as the page scrolls. */
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return undefined;
+    }
 
-    const pinnedMQ = window.matchMedia(PIN_QUERY);
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const depthEls = Array.from(root.querySelectorAll("[data-depth]"));
-    let frame = 0;
-    let lastIndex = -1;
-
-    const maxShift = () => Math.max(0, track.offsetWidth - viewport.clientWidth);
-
-    /* set the scroll distance so the track has room to travel sideways */
-    const measure = () => {
-      if (pinnedMQ.matches) {
-        sec.style.height = `${maxShift() + window.innerHeight}px`;
-      } else {
-        sec.style.height = "";
-        track.style.transform = "";
-        if (bar) bar.style.transform = "";
-      }
-    };
+    const layers = Array.from(hero.querySelectorAll("[data-depth]"));
+    let rafId = 0;
 
     const update = () => {
-      frame = 0;
+      rafId = 0;
       const y = window.scrollY;
-
-      if (!reduced) {
-        depthEls.forEach((el) => {
-          const depth = Number(el.dataset.depth) || 0;
-          el.style.transform = `translate3d(0, ${(y * depth).toFixed(1)}px, 0)`;
-        });
-      }
-
-      if (pinnedMQ.matches) {
-        const start = sec.getBoundingClientRect().top + y;
-        const range = sec.offsetHeight - window.innerHeight;
-        const p =
-          range > 0 ? Math.min(1, Math.max(0, (y - start) / range)) : 0;
-
-        track.style.transform = `translate3d(${(-p * maxShift()).toFixed(1)}px, 0, 0)`;
-        if (bar) bar.style.transform = `scaleX(${p.toFixed(4)})`;
-
-        const count = track.children.length;
-        const index = count ? Math.round(p * (count - 1)) + 1 : 0;
-        if (index !== lastIndex) {
-          lastIndex = index;
-          setCurrent(index);
-        }
-      }
+      layers.forEach((el) => {
+        const depth = Number(el.dataset.depth) || 0;
+        el.style.transform = `translate3d(0, ${(y * depth).toFixed(1)}px, 0)`;
+      });
     };
 
     const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
+      if (!rafId) rafId = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
+
+  /* Pinned deck (desktop). Sets the scroll distance, then positions every
+     card from the scroll position: each card arrives tilted, moves to its
+     place in the stack, and settles. */
+  useLayoutEffect(() => {
+    const sec = secRef.current;
+    const frame = frameRef.current;
+    const stage = stageRef.current;
+    if (!sec || !frame || !stage) return undefined;
+
+    const cards = Array.from(stage.querySelectorAll(".pf-card"));
+    const count = cards.length;
+    const deskMQ = window.matchMedia(DESK_QUERY);
+    let rafId = 0;
+
+    const measure = () => {
+      if (deskMQ.matches) {
+        const vh = window.innerHeight;
+        const step = (vh * STEP_VH) / 100;
+        const entry = (vh * ENTRY_VH) / 100;
+        const range = Math.max(0, count - 1) * step + entry;
+        frame.classList.add("is-pinned");
+        sec.style.height = `${range + vh}px`;
+      } else {
+        frame.classList.remove("is-pinned");
+        sec.style.height = "";
+        cards.forEach((el) => {
+          el.style.transform = "";
+          el.style.opacity = "";
+          el.style.zIndex = "";
+        });
+      }
+    };
+
+    const paint = () => {
+      rafId = 0;
+      if (!deskMQ.matches) return;
+
+      const vh = window.innerHeight;
+      const step = (vh * STEP_VH) / 100;
+      const entry = (vh * ENTRY_VH) / 100;
+
+      /* how far the deck has scrolled past the top of the screen */
+      const pos = -sec.getBoundingClientRect().top;
+      const mid = (count - 1) / 2;
+      /* the horizontal and vertical spacing of the settled stack */
+      const cascade = count > 1 ? Math.min(22, 140 / (count - 1)) : 0;
+
+      cards.forEach((el, i) => {
+        const local = clamp((pos - i * step) / entry, 0, 1);
+        const e = easeOut(local);
+
+        const xEnd = (i - mid) * cascade;
+        const yEnd = (i - mid) * cascade * 0.8;
+
+        const rot = lerp(
+          ROT_IN[i % ROT_IN.length],
+          SETTLE[i % SETTLE.length],
+          e
+        );
+        const x = lerp(xEnd + 60, xEnd, e);
+        const y = lerp(vh * 0.6, yEnd, e);
+        const s = lerp(0.92, 1, e);
+
+        el.style.transform = `translate(-50%, -50%) translate3d(${x.toFixed(
+          1
+        )}px, ${y.toFixed(1)}px, 0) rotate(${rot.toFixed(
+          2
+        )}deg) scale(${s.toFixed(3)})`;
+        el.style.opacity = Math.min(1, local * 3).toFixed(3);
+        el.style.zIndex = String(i + 1);
+      });
+    };
+
+    const onScroll = () => {
+      if (!rafId) rafId = requestAnimationFrame(paint);
     };
     const onResize = () => {
       measure();
@@ -489,35 +459,58 @@ export default function PortfolioGlassThemed() {
     };
 
     measure();
-    update();
+    paint();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
-      if (frame) cancelAnimationFrame(frame);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, [visible]);
 
+  /* Stacked list (small screens, reduced motion). Each card tilts into
+     place the first time it comes into view. */
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return undefined;
+
+    const cards = Array.from(stage.querySelectorAll(".pf-card"));
+    if (typeof IntersectionObserver === "undefined") {
+      cards.forEach((c) => c.classList.add("is-in"));
+      return undefined;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    cards.forEach((c) => io.observe(c));
+    return () => io.disconnect();
+  }, [visible]);
+
+  /* Changing the service restarts the deck from its first card. */
   const pickService = (name) => {
     setActiveService(name);
-    /* start the reel again from its first card for the new selection */
     const sec = secRef.current;
-    const viewport = viewportRef.current;
-    if (window.matchMedia(PIN_QUERY).matches) {
-      if (sec) {
-        window.scrollTo({
-          top: sec.getBoundingClientRect().top + window.scrollY,
-          behavior: "smooth",
-        });
-      }
-    } else if (viewport) {
-      viewport.scrollTo({ left: 0, behavior: "smooth" });
+    if (sec && window.matchMedia(DESK_QUERY).matches) {
+      window.scrollTo({
+        top: sec.getBoundingClientRect().top + window.scrollY,
+        behavior: "smooth",
+      });
     }
   };
 
-  const jumpToReel = (e) => {
+  const jumpToWork = (e) => {
     e.preventDefault();
     secRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -530,78 +523,74 @@ export default function PortfolioGlassThemed() {
         keywords="Indo Sparsh Studio portfolio, web development portfolio, app development portfolio, digital marketing portfolio, UI UX design portfolio, graphic design portfolio, branding portfolio, creative agency portfolio"
       />
 
-      <main className="gl" ref={rootRef}>
-        {/* colour field and grain behind the glass */}
-        <div className="gl-bg" aria-hidden="true">
-          <span className="gl-orb gl-orb--a" data-depth="0.05" />
-          <span className="gl-orb gl-orb--b" data-depth="-0.04" />
-          <span className="gl-orb gl-orb--c" data-depth="0.09" />
-          <span className="gl-orb gl-orb--d" data-depth="-0.03" />
-        </div>
-
+      <main className="pf">
         {/* HERO */}
-        <section className="gl-hero">
-          <div className="gl-hero-copy">
-            <span className="gl-status gl-glass">
-              <span className="gl-status-dot" aria-hidden="true" />
+        <section ref={heroRef} className="pf-hero">
+          <div className="pf-hero-copy">
+            <span className="pf-status">
+              <span className="pf-status-dot" aria-hidden="true" />
               Open for new briefs
             </span>
 
-            <h1 className="gl-title">
-              <span className="gl-line">
-                <span className="gl-word" style={{ "--d": "0ms" }}>
+            <h1 className="pf-hero-title">
+              <span className="pf-hero-line">
+                <span className="pf-hero-word" style={{ "--d": "0ms" }}>
                   The work,
                 </span>
               </span>
-              <span className="gl-line">
-                <span className="gl-word" style={{ "--d": "180ms" }}>
+              <span className="pf-hero-line">
+                <span className="pf-hero-word" style={{ "--d": "180ms" }}>
                   in motion.
                 </span>
               </span>
             </h1>
 
-            <p className="gl-lead">
+            <p className="pf-hero-lead">
               {WORK.length} projects across web, apps, marketing and design.
-              Keep scrolling to move through them.
+              Keep scrolling to browse them.
             </p>
 
-            <div className="gl-actions">
-              <a className="gl-btn gl-btn-solid" href={CONTACT_HREF}>
+            <div className="pf-hero-actions">
+              <a className="pf-btn" href={CONTACT_HREF}>
                 Start a project
               </a>
-              <a className="gl-btn gl-btn--solid" href="#reel" onClick={jumpToReel}>
-                Watch the reel
+              <a
+                className="pf-btn pf-btn-ghost"
+                href="#work"
+                onClick={jumpToWork}
+              >
+                See the work
               </a>
             </div>
 
-            <div className="gl-cue" aria-hidden="true">
-              <span className="gl-cue-line" />
+            <div className="pf-cue" aria-hidden="true">
+              <span className="pf-cue-line" />
               <span>Scroll to browse</span>
             </div>
           </div>
 
-          <div className="gl-collage" aria-hidden="true">
+          <div className="pf-collage" aria-hidden="true">
             {HERO_PICKS.map((project, i) => (
               <div
                 key={project.title}
-                className={`gl-float gl-float--${i}`}
+                className={`pf-float pf-float--${i}`}
                 data-depth={HERO_DEPTHS[i]}
               >
-                <div className="gl-float-frame gl-glass">
+                <div className="pf-float-frame">
                   <img src={project.image} alt="" decoding="async" />
                 </div>
               </div>
             ))}
 
-            <div className="gl-float gl-float--badge" data-depth={BADGE_DEPTH}>
-              <div className="gl-badge gl-glass">
+            <div className="pf-float pf-float--badge" data-depth={BADGE_DEPTH}>
+              <div className="pf-badge">
                 <div>
-                  <span className="gl-badge-value">{WORK.length}</span>
-                  <span className="gl-badge-label">Projects filed</span>
+                  <span className="pf-badge-value">{WORK.length}</span>
+                  <span className="pf-badge-label">Projects filed</span>
                 </div>
                 <div>
-                  <span className="gl-badge-value">{LINES_IN_USE}</span>
-                  <span className="gl-badge-label">Service lines</span>
+                  <span className="pf-badge-value">{LINES_IN_USE}</span>
+                  <span className="pf-badge-label">Service lines</span>
                 </div>
               </div>
             </div>
@@ -610,50 +599,68 @@ export default function PortfolioGlassThemed() {
 
         <ScrollBeam />
 
-        {/* REEL: pinned on wide screens, a swipeable row everywhere else */}
-        <section id="reel" ref={secRef} className="gl-reel">
-          <div ref={stickyRef} className="gl-reel-sticky">
-            <header className="gl-reel-head">
-              <div>
-                <h2 className="gl-h2">Selected work</h2>
-                <span className="gl-index">
-                  {pad(current)} / {pad(total)}
-                </span>
-              </div>
-              <FilterMenu value={activeService} onChange={pickService} />
-            </header>
+        {/* THE DECK */}
+        <section ref={secRef} className="pf-section" id="work">
+          <div ref={frameRef} className="pf-frame">
+            <div className="pf-intro">
+              <h2 className="pf-title">
+                Projects we've <span className="pf-accent">shipped.</span>
+              </h2>
 
-            <div ref={viewportRef} className="gl-reel-viewport">
-              <ol ref={trackRef} className="gl-track">
-                {visible.map((project, i) => (
-                  <li
-                    key={`${activeService}-${project.title}`}
-                    className="gl-slot"
-                    style={{ "--i": i }}
-                  >
-                    <ReelCard project={project} />
-                  </li>
-                ))}
-              </ol>
+              <p className="pf-lead">
+                Websites, apps, campaigns and brand systems, taken from brief
+                to launch. Scroll to browse the work.
+              </p>
+
+              <div className="pf-controls">
+                <select
+                  className="pf-select"
+                  aria-label="Filter by service"
+                  value={activeService}
+                  onChange={(e) => pickService(e.target.value)}
+                >
+                  <option value={ALL}>{`All work (${WORK.length})`}</option>
+                  {SERVICES.filter((s) => SERVICE_COUNTS[s]).map((s) => (
+                    <option key={s} value={s}>
+                      {`${s} (${SERVICE_COUNTS[s]})`}
+                    </option>
+                  ))}
+                </select>
+
+                <a className="pf-btn" href={CONTACT_HREF}>
+                  Get in touch
+                </a>
+              </div>
+
+              <span className="pf-count">
+                Showing {visible.length}{" "}
+                {visible.length === 1 ? "project" : "projects"}
+              </span>
             </div>
 
-            <div className="gl-progress gl-glass">
-              <span ref={barRef} className="gl-progress-fill" />
+            <div ref={stageRef} className="pf-stage">
+              {visible.map((project, i) => (
+                <ProjectCard
+                  key={`${activeService}-${project.title}-${i}`}
+                  project={project}
+                  index={i}
+                />
+              ))}
             </div>
           </div>
         </section>
 
-        {/* CLOSING */}
-        <section className="gl-close">
-          <Reveal className="gl-close-wrap">
-            <div className="gl-close-panel gl-glass">
-              <h2 className="gl-h2">Have a project in mind?</h2>
-              <div className="gl-close-side">
+        {/* BOTTOM CALL TO ACTION */}
+        <section className="pf-cta">
+          <Reveal className="pf-cta-wrap">
+            <div className="pf-cta-panel">
+              <h2 className="pf-cta-title">Have a project in mind?</h2>
+              <div className="pf-cta-side">
                 <p>
-                  Tell us what you're building and we'll reply with a plan and
-                  a timeline.
+                  Tell us what you're building and we'll reply with a plan and a
+                  timeline.
                 </p>
-                <a className="gl-btn gl-btn--solid" href={CONTACT_HREF}>
+                <a className="pf-btn" href={CONTACT_HREF}>
                   Start a project
                 </a>
               </div>
