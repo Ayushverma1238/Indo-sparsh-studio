@@ -233,7 +233,7 @@ const WebsiteDevelopment = () => {
         Skip to content
       </a>
 
-      <main id="main">
+      <main id="main" className="wd">
         {/* ======================= HERO ======================= */}
         <div className={`wd-root ${loaded ? "is-loaded" : ""}`}>
           <section className="wd-hero">

@@ -1,73 +1,5 @@
-/* ================= THEME TOKENS ================= */
-
-body.dark-mode {
-  --bg: rgba(2, 6, 23, 0.95);
-  --bg-solid: #020617;
-  --border: rgba(34, 211, 238, 0.4);
-  --text: #e5faff;
-  --text-dim: #8fb4bf;
-  --input-bg: rgba(2, 6, 23, 0.9);
-  --accent-a: #22d3ee;
-  --accent-b: #a855f7;
-  --ai-bubble-bg: rgba(34, 211, 238, 0.15);
-  --ai-bubble-border: rgba(34, 211, 238, 0.4);
-  --btn-text: #020617;
-  --social-link-bg: rgba(34, 211, 238, 0.12);
-  --social-link-border: rgba(34, 211, 238, 0.3);
-  --social-link-hover: rgba(34, 211, 238, 0.25);
-  --social-link-text: #22d3ee;
-}
-
-body.light-mode {
-  --bg: rgba(255, 255, 255, 0.97);
-  --bg-solid: #ffffff;
-  --border: rgba(14, 116, 144, 0.25);
-  --text: #0f172a;
-  --text-dim: #55677a;
-  --input-bg: #f1f5f9;
-  --accent-a: #06b6d4;
-  --accent-b: #9333ea;
-  --ai-bubble-bg: rgba(6, 182, 212, 0.1);
-  --ai-bubble-border: rgba(6, 182, 212, 0.35);
-  --btn-text: #ffffff;
-  --social-link-bg: rgba(6, 182, 212, 0.08);
-  --social-link-border: rgba(6, 182, 212, 0.2);
-  --social-link-hover: rgba(6, 182, 212, 0.15);
-  --social-link-text: #06b6d4;
-}
-
-/* ================= FLOATING BUTTON ================= */
-
-.ai-chat-btn {
-  position: fixed;
-  bottom: 30px;
-  right: 25px;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-a), var(--accent-b));
-  box-shadow:
-    0 0 20px var(--accent-a),
-    0 0 50px var(--accent-a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  cursor: pointer;
-  z-index: 999999;
-  animation: pulseAI 2.5s infinite;
-  transition: background 0.4s ease, box-shadow 0.4s ease;
-}
-
-@keyframes pulseAI {
-  0%,
-  100% {
-    box-shadow: 0 0 20px var(--accent-a);
-  }
-  50% {
-    box-shadow: 0 0 45px var(--accent-a);
-  }
-}
+/* Theme tokens, the floating button, and its animation live in
+   AIChatLauncher.css, which loads with the first page view. */
 
 /* ================= CHAT BOX ================= */
 
@@ -136,30 +68,6 @@ body.light-mode {
   }
 }
 
-.ai-header-actions {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.ai-theme-toggle,
-.ai-close-btn {
-  background: rgba(0, 0, 0, 0.12);
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  line-height: 1;
-  padding: 6px 8px;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.ai-theme-toggle:hover,
-.ai-close-btn:hover {
-  background: rgba(0, 0, 0, 0.22);
-  transform: scale(1.08);
-}
-
 /* ================= BODY ================= */
 
 .ai-chat-body {
@@ -170,6 +78,8 @@ body.light-mode {
   flex-direction: column;
   gap: 12px;
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-a) transparent;
 }
 
 .ai-chat-body::-webkit-scrollbar {
@@ -198,7 +108,8 @@ body.light-mode {
   justify-content: flex-end;
 }
 
-/* Messages */
+/* ================= MESSAGES ================= */
+
 .chat-msg {
   max-width: 85%;
   padding: 10px 14px;
@@ -224,7 +135,7 @@ body.light-mode {
   border-bottom-right-radius: 4px;
 }
 
-/* ---- Paragraph / list separation inside a bubble ---- */
+/* Paragraph and list spacing inside a bubble */
 .chat-msg p {
   margin: 0;
   line-height: 1.6;
@@ -310,18 +221,9 @@ body.light-mode {
   }
 }
 
-/* ================= SOCIAL LINKS ================= */
+/* ================= LINKS ================= */
 
-/* Social Link Container */
-.social-link-wrapper {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px;
-  margin: 2px 0;
-}
-
-/* Individual Social Link */
+/* Social link chip */
 .social-link {
   display: inline-flex;
   align-items: center;
@@ -342,7 +244,7 @@ body.light-mode {
 }
 
 .social-link::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -387,66 +289,31 @@ body.light-mode {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-weight: 400;
+  word-break: break-all;
 }
 
-/* Social link variants for different platforms */
-.social-link.instagram {
-  --social-platform-color: #E4405F;
-}
-.social-link.instagram:hover {
-  border-color: #E4405F;
-  box-shadow: 0 4px 12px rgba(228, 64, 95, 0.3);
+/* Light and dark chip tints */
+body.light-mode .social-link {
+  background: rgba(6, 182, 212, 0.08);
+  border-color: rgba(6, 182, 212, 0.25);
 }
 
-.social-link.facebook {
-  --social-platform-color: #1877F2;
-}
-.social-link.facebook:hover {
-  border-color: #1877F2;
-  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
+body.light-mode .social-link:hover {
+  background: rgba(6, 182, 212, 0.15);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
 }
 
-.social-link.twitter {
-  --social-platform-color: #1DA1F2;
-}
-.social-link.twitter:hover {
-  border-color: #1DA1F2;
-  box-shadow: 0 4px 12px rgba(29, 161, 242, 0.3);
+body.dark-mode .social-link {
+  background: rgba(34, 211, 238, 0.12);
+  border-color: rgba(34, 211, 238, 0.3);
 }
 
-.social-link.youtube {
-  --social-platform-color: #FF0000;
-}
-.social-link.youtube:hover {
-  border-color: #FF0000;
-  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+body.dark-mode .social-link:hover {
+  background: rgba(34, 211, 238, 0.25);
+  box-shadow: 0 4px 12px rgba(34, 211, 238, 0.25);
 }
 
-.social-link.linkedin {
-  --social-platform-color: #0A66C2;
-}
-.social-link.linkedin:hover {
-  border-color: #0A66C2;
-  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
-}
-
-.social-link.tiktok {
-  --social-platform-color: #00f2ea;
-}
-.social-link.tiktok:hover {
-  border-color: #00f2ea;
-  box-shadow: 0 4px 12px rgba(0, 242, 234, 0.3);
-}
-
-.social-link.github {
-  --social-platform-color: #6e5494;
-}
-.social-link.github:hover {
-  border-color: #6e5494;
-  box-shadow: 0 4px 12px rgba(110, 84, 148, 0.3);
-}
-
-/* Regular Link Styles (non-social) */
+/* Plain link */
 .link {
   color: var(--social-link-text);
   text-decoration: underline;
@@ -460,7 +327,7 @@ body.light-mode {
   opacity: 0.8;
 }
 
-/* User message link styles */
+/* Links inside user bubbles (white on gradient) */
 .chat-msg.user .social-link {
   background: rgba(255, 255, 255, 0.15);
   border-color: rgba(255, 255, 255, 0.3);
@@ -556,33 +423,19 @@ body.light-mode {
     height: 420px;
   }
 
-  .ai-chat-btn {
-    right: 15px;
-    width: 56px;
-    height: 56px;
-    font-size: 1.5rem;
-  }
-  
-  .social-link .social-url {
-    max-width: 80px;
-  }
-  
   .social-link {
     padding: 3px 8px 3px 6px;
     font-size: 0.8em;
   }
-}
 
-/* ================= SCROLLBAR STYLING ================= */
-
-.ai-chat-body {
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-a) transparent;
+  .social-link .social-url {
+    max-width: 80px;
+  }
 }
 
 /* ================= UTILITY ================= */
 
-/* Ensure links in messages are properly spaced */
+/* Spacing for links inside message text */
 .chat-msg a {
   margin: 0 2px;
 }
@@ -591,31 +444,4 @@ body.light-mode {
 .chat-msg .link,
 .chat-msg .social-link .social-url {
   word-break: break-all;
-}
-
-/* Better spacing for inline elements */
-.chat-msg .social-link-wrapper + .social-link-wrapper {
-  margin-top: 4px;
-}
-
-/* Light mode specific adjustments */
-body.light-mode .social-link {
-  background: rgba(6, 182, 212, 0.08);
-  border-color: rgba(6, 182, 212, 0.25);
-}
-
-body.light-mode .social-link:hover {
-  background: rgba(6, 182, 212, 0.15);
-  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
-}
-
-/* Dark mode specific adjustments */
-body.dark-mode .social-link {
-  background: rgba(34, 211, 238, 0.12);
-  border-color: rgba(34, 211, 238, 0.3);
-}
-
-body.dark-mode .social-link:hover {
-  background: rgba(34, 211, 238, 0.25);
-  box-shadow: 0 4px 12px rgba(34, 211, 238, 0.25);
 }

@@ -1,15 +1,13 @@
-﻿import { Outlet, NavLink, useLocation, useNavigate } from "react-router-dom";
+﻿import { Outlet, NavLink, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { IoStarSharp } from "react-icons/io5";
-import { BiSolidCookie } from "react-icons/bi";
 import "./Layout.css";
-import AIChatWidget from "../pages/AIChatWidget";
+import AIChatLauncher from "../pages/AIChatLauncher";
 import Footer from "../pages/Footer";
 import WhatsAppButton from "../pages/WhatsAppButton";
 import CallButton from "../pages/CallButton";
 import ScrollToTop from "../pages/ScrollToTop";
-// import AIHackerCursor from "../pages/AIHackerCursor";
 import PageLoader from "../pages/PageLoader";
 import { ChatProvider } from "../context/ChatContext";
 
@@ -17,7 +15,6 @@ export default function Layout() {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("theme");
     return saved ? saved === "dark" : true;
@@ -247,10 +244,9 @@ export default function Layout() {
         </main>
 
         {/* ================= GLOBAL COMPONENTS ================= */}
-        {/* <AIHackerCursor /> */}
         <ScrollToTop />
-        <AIChatWidget />
         <Footer />
+        <AIChatLauncher />
         <CallButton />
         <WhatsAppButton />
       </ChatProvider>

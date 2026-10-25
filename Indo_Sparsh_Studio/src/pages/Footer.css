@@ -1,3 +1,4 @@
+@import "./src/Footer/Services/_theme.css";
 /* ================= FOOTER ================= */
 * {
   box-sizing: border-box;
@@ -14,6 +15,7 @@
   --text-body: #cbd5f5;
   --text-bright: #f8fafc;
   --bg-time: #03010c;
+  --font-display: var(--font-display);
 }
 
 body.dark-mode{
@@ -774,7 +776,7 @@ body.light-mode .time-card {
   margin: 0;
   font-size: 28px;
   font-weight: 700;
-  font-variant-numeric: tabular-nums;
+  /* font-variant-numeric: tabular-nums; */
   letter-spacing: -0.5px;
 
   background: linear-gradient(
@@ -810,8 +812,9 @@ body.light-mode .time-card {
   font-size: 28px;
   font-weight: 700;
   color: var(--text-body);
-  font-variant-numeric: tabular-nums;
+  /* font-variant-numeric: tabular-nums; */
   letter-spacing: -0.5px;
+  /* font-family: var(--font-display); */
 }
 
 

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./WebServe.css";
@@ -61,9 +60,7 @@ const WebServe = () => {
 
   // Preserve the rotating pill effect, with fewer React updates.
   useEffect(() => {
-    const mediaQuery = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    );
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     if (mediaQuery.matches) return;
 
@@ -78,51 +75,46 @@ const WebServe = () => {
     <>
       <section className="home-hero">
         {/* Eager-loaded poster: important for initial rendering */}
-        <img
-          src="/video/hero-poster.webp"
-          alt=""
-          aria-hidden="true"
-          className={`hero-media hero-poster ${
-            isVideoLoaded ? "fade-out" : "fade-in"
-          }`}
-          fetchPriority="high"
-          decoding="async"
-          width="1920"
-          height="1080"
-        />
-
-        {/* Load the background video after the initial render */}
-        {shouldLoadVideo && (
-          <video
-            ref={videoRef}
-            className={`hero-media hero-video ${
-              isVideoLoaded ? "fade-in" : "fade-out"
-            }`}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
+       <div className="hv-media">
+        {/* Poster: visible first, fades out once the video plays */}
+        <div className={`hv-layer hv-poster ${isVideoLoaded ? "hv-hide" : ""}`}>
+          <img
+            src="/video/hero-poster-800.webp"
+            srcSet="/video/hero-poster-480.webp 480w, /video/hero-poster-800.webp 800w, /video/hero-poster.webp 1268w"
+            sizes="100vw"
+            width="1268"
+            height="689"
+            fetchPriority="high"
+            decoding="async"
+            alt=""
             aria-hidden="true"
-            tabIndex={-1}
-            onLoadedData={() => setIsVideoLoaded(true)}
-          >
-            <source src="/video/hero-bg.mp4" type="video/mp4" />
-          </video>
-        )}
+          />
+        </div>
+
+        {/* Video: runs on desktop and mobile */}
+        <video
+          className={`hv-layer hv-video ${isVideoLoaded ? "hv-show" : ""}`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          onPlaying={() => setIsVideoLoaded(true)}
+        >
+          <source src="/video/hero-bg.mp4" type="video/mp4" />
+        </video>
+      </div>
 
         <div className="home-container">
           <h1 className="hero-title">
             <span className="title-line">Empowering</span>
             <br />
-            <span className="title-highlight">
-              Your Digital Journey
-            </span>
+            <span className="title-highlight">Your Digital Journey</span>
           </h1>
 
           <p className="hero-bio">
-            We Build, Promote &amp; Grow Your Business Online with
-            Result-Driven Digital Solutions.
+            We Build, Promote &amp; Grow Your Business Online with Result-Driven
+            Digital Solutions.
           </p>
 
           <div className="pill-group">
